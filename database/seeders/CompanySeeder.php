@@ -14,7 +14,7 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('companys')->insert([
+        DB::table('companies')->insert([
             [
                 'company_name'=>"Rumah Sakit Mitra Medika",
                 'business'=>'Health',

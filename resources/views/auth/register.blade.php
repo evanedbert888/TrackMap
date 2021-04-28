@@ -26,6 +26,30 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Sex -->
+            <div class="mt-4">
+                <x-label for="sex" :value="__('Sex')" />
+
+                <select name="sex" id="sex" class="block block mt-1 w-32 rounded-md">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <!-- Birth Date -->
+            <div class="mt-4">
+                <x-label for="birth_date" :value="__('Birth Date')" />
+
+                <x-input id="birth_date" class="block mt-1" type="date" name="birth_date" :value="old('birth_date')" required />
+            </div>
+
+            <!-- Address -->
+            <div class="mt-4">
+                <x-label for="address" :value="__('Address')" />
+
+                <textarea class="block mt-1 rounded-md " name="address" id="address" cols="41" rows="3"></textarea>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

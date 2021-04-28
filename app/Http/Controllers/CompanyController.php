@@ -23,6 +23,23 @@ class CompanyController extends Controller
         return redirect()->route('company_list');
     }
 
-    public function
+    public function company_patch($name,Request $request){
+        $validateCompany = $request->validate([
+           'company_name' => 'required|string|max:255',
+           ''
+        ]);
+        return redirect()->route('company_detail',[]);
+    }
+
+    public function company_form(){
+        return view('company.company_form');
+    }
+
+    public function add_company(Request $request){
+        $validateCompany = $request->validate([
+
+        ]);
+        return redirect()->route('company_list');
+    }
 
 }
