@@ -24,31 +24,31 @@
 <div class="w-full h-full">
     <div class="flex flex-no-wrap">
         <!-- Sidebar starts -->
-        <div  style="min-height: 700px" class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
-            <div class="px-8">
+        <div  style="height: auto;" class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
+            <div class="px-8" style="position: fixed">
                 <div class="h-16 w-full flex items-center">
                     <!-- logo -->
                 </div>
                 <ul class="mt-12">
                     <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
-                        <div class="flex items-center">
-                            <span class="text-sm">Dashboard</span>
-                        </div>
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Dasboard') }}
+                        </x-dropdown-link>
                     </li>
                     <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                        <div class="flex items-center">
-                            <span class="text-sm">Destination</span>
-                        </div>
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Destinations') }}
+                        </x-dropdown-link>
                     </li>
                     <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                        <div class="flex items-center">
-                            <span class="text-sm">Employee</span>
-                        </div>
+                        <x-dropdown-link :href="route('employee_list')">
+                            {{ __('Employee') }}
+                        </x-dropdown-link>
                     </li>
                     <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                        <div class="flex items-center">
-                            <span class="text-sm">Task</span>
-                        </div>
+                        <x-dropdown-link :href="route('dashboard')">
+                            {{ __('Task') }}
+                        </x-dropdown-link>
                     </li>
                 </ul>
             </div>
@@ -165,11 +165,13 @@
                                     </x-slot>
                 
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('register')"
-                                                onclick="event.preventDefault();
-                                                            this.closest('form').submit();">
-                                            {{ __('Profile') }}
-                                        </x-dropdown-link>
+                                        <form method="POST" action="{{ route('profile') }}">
+                                            <x-dropdown-link :href="route('register')"
+                                                    onclick="event.preventDefault();
+                                                                this.closest('form').submit();">
+                                                {{ __('Profile') }}
+                                            </x-dropdown-link>
+                                        </form>
                                         <!-- Authentication -->
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf

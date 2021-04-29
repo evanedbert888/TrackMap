@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::prefix('/Sales Map')->group(function() {
+Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::patch('/Profile_Update',[UserController::class,'profile_update'])->name('profile_update');
 
@@ -43,7 +43,7 @@ Route::prefix('/Sales Map')->group(function() {
     Route::post('/AddCompany',[CompanyController::class,'add_company'])->name('add_company');
 
     // Employee
-    Route::get('/EmployeeList',[EmployeeController::class,'employee_form'])->name('employee_list');
+    Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
     Route::get('/EmployeeDetail/{name}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
     Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
 
