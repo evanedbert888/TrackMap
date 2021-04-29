@@ -24,8 +24,8 @@
 <div class="w-full h-full">
     <div class="flex flex-no-wrap">
         <!-- Sidebar starts -->
-        <div  style="min-height: 700px" class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
-            <div class="px-8">
+        <div  style="height: auto;" class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
+            <div class="px-8" style="position: fixed">
                 <div class="h-16 w-full flex items-center">
                     <!-- logo -->
                 </div>
