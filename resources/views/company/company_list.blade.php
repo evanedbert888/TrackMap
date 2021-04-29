@@ -1,45 +1,53 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Company List') }}
+        </h2>
+    </x-slot>
 
-    <title>Sales Map</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-</head>
-<body>
-    <main>
-        <div class="mx-auto">
-            <ol>
-                @foreach($lists as $list)
-                <li>
-                    <div  class="bg-green-400 rounded-md mb-4 w-32">
-                        <img src="" alt="">
-                        <p class="ml-0"> {{$list->company_name}} </p>
-                        <p class="ml-0"> {{$list->address}} </p>
-                        <div>
-                            <button class="mr-0" type="button">Detail</button>
-                            <form action="{{route('company_delete',['id'=>$list->id])}}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <button class="mr-0" type="submit">Delete</button>
-                            </form>
+    <div class="py-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white overflow-hidden shadow-sm">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="container">
+                        <div class="text-center pb-4 font-semibold text-lg">
+                            <p> List of Destinations </p>
                         </div>
+                            @foreach($lists as $list)
+                                    <div class="container mx-auto bg-green-400 rounded-lg mb-4 p-4 w-3/5 h-2/3">
+                                        <table>
+                                            <tr>
+                                                <span class="flex">
+                                                    <td class = "ml-0 pr-20">
+                                                        <p class="p-1"> {{$list->company_name}} </p>
+                                                        <div class="w-96">
+                                                            <p class="p-1 text-justify"> {{$list->address}} </p>
+                                                        </div>
+                                                    </td>
+                                                </span>
+                                                <span>
+                                                    <td class="p-4">
+                                                        <a href="{{route('company_detail',['name'=>$list->company_name])}}">
+                                                            <button class="bg-yellow-500 p-3 my-2 rounded-lg hover:bg-yellow-400" type="button">Detail</button>
+                                                        </a>
+                                                    </td>
+                                                    <td class="p-4">
+                                                        <form action="{{route('company_delete',['id'=>$list->id])}}" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button class="bg-red-500 p-3 my-2 rounded-lg hover:bg-red-400" type="submit">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </span>
+                                            </tr>
+                                        </table>
+                                    </div>
+                            @endforeach
+                        {{$lists->links()}}
                     </div>
-                </li>
-                @endforeach
-            </ol>
-            {{$lists->links()}}
+                </div>
+            </div>
         </div>
-    </main>
-</body>
-</html>
+    </div>
+</x-app-layout>
+
