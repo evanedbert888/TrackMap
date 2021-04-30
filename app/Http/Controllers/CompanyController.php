@@ -18,6 +18,10 @@ class CompanyController extends Controller
         return view('company.company_detail',['details'=>$details]);
     }
 
+    public function company_form() {
+        return view('company.company_form');
+    }
+
     public function company_delete($id){
         DB::table('companies')->where('id','=',$id)->delete();
         return redirect()->route('company_list');

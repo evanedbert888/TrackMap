@@ -39,12 +39,13 @@ Route::prefix('/SalesMap')->group(function() {
     Route::patch('/CompanyPatch/{name}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
-    Route::view('/CompanyForm','company.company_form')->name('company_form');
+    Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
+
     Route::post('/AddCompany',[CompanyController::class,'add_company'])->name('add_company');
 
     // Employee
     Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
-    Route::get('/EmployeeDetail/{name}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
+    Route::get('/EmployeeDetail/{id}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
     Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
 
 });

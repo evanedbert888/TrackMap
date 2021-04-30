@@ -23,10 +23,15 @@
                                         </div>
                                     </div>
                                     <div class="mt-6 ml-5">
-                                        <x-button>Detail</x-button>
+                                        <a href="{{ route('employee_detail',['id'=>$list->id]) }}">
+                                            <x-button>Detail</x-button>
+                                        </a>
                                     </div>
                                     <div class="mt-6 ml-5">
-                                        <x-delbutton>Delete</x-delbutton>
+                                        <form method="POST" action="{{ route('employee_delete',['id'=>$list->id]) }}">
+                                            @method('DELETE')
+                                            @csrf
+                                            <x-delbutton>Delete</x-delbutton>
                                     </div>
                                 </li>
                             </ul>

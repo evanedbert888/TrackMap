@@ -24,19 +24,19 @@
 <div class="w-full h-full">
     <div class="flex flex-no-wrap">
         <!-- Sidebar starts -->
-        <div  style="height: auto;" class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
-            <div class="px-8" style="position: fixed">
+        <div class="w-64 absolute lg:relative bg-white shadow h-screen flex-col justify-between hidden lg:flex pb-12">
+            <div class="px-8">
                 <div class="h-16 w-full flex items-center">
                     <!-- logo -->
                 </div>
-                <ul class="mt-12">
+                <ul class="mt-12 w-full">
                     <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                         <x-dropdown-link :href="route('dashboard')">
                             {{ __('Dasboard') }}
                         </x-dropdown-link>
                     </li>
                     <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                        <x-dropdown-link :href="route('dashboard')">
+                        <x-dropdown-link :href="route('company_form')">
                             {{ __('Destinations') }}
                         </x-dropdown-link>
                     </li>
