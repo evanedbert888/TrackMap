@@ -11,11 +11,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach ($lists as $list)
                         <div class="p-5 bg-blue-300 border border-white-200 mb-5 sm:rounded-lg">
-                            <ul class="">
+                            <ul>
                                 <li class="flex">
                                     <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
                                     <div class="w-full ml-5 mt-3">
-                                        <div class="">
+                                        <div>
                                             <h6 class="font-bold text-2xl">{{ $list->name }}</h6>
                                         </div>
                                         <div class="text-sm">
@@ -32,6 +32,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <x-delbutton>Delete</x-delbutton>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>
