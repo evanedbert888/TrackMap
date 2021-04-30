@@ -36,7 +36,6 @@ Route::prefix('/SalesMap')->group(function() {
     Route::delete('/CompanyDelete/{id}',[CompanyController::class,'company_delete'])->name('company_delete');
 
     // Update Company
-    Route::get('/CompanyUpdate/{name}',[CompanyController::class,'company_update'])->name('company_update');
     Route::patch('/CompanyPatch/{name}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
