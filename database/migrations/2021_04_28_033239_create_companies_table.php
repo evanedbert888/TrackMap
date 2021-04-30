@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->longText('description');
+            $table->timestamps();
         });
     }
 
