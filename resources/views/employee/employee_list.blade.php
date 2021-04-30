@@ -32,6 +32,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <x-delbutton>Delete</x-delbutton>
+                                        </form>
                                     </div>
                                 </li>
                             </ul>

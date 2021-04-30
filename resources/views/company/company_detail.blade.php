@@ -9,13 +9,15 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <img class="object-cover h-44 w-full object-top" src="https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg" alt="">
+                <div class="object-cover h-44 w-full object-top bg-no-repeat" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
+                    <img class="float-left rounded-full h-44 w-44 object-cover m-10" src="https://images.bisnis-cdn.com/posts/2021/03/27/1373332/mihoyo.jpg" alt="">
+                </div>
                 <div>
                     <table>
                         <tr>
-                            <span class="flex">
+                            <span class="flex m-0">
                                 <td>
-                                    <img class="rounded-full h-44 w-44 object-cover mx-10" src="https://images.bisnis-cdn.com/posts/2021/03/27/1373332/mihoyo.jpg" alt="">
+
                                 </td>
                             </span>
                             <span>
