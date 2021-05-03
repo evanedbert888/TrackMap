@@ -12,42 +12,42 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
             <!-- Email Address -->
-            <div class="mt-4">
+            <div class="mt-2">
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+        
+            <!-- Name -->
+            <div  class="mt-4">
+                <x-label for="name" :value="__('Name')" />
 
-            <!-- Sex -->
-            <div class="mt-4">
-                <x-label for="sex" :value="__('Sex')" />
-
-                <select name="sex" id="sex" class="block block mt-1 w-32 rounded-md">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
             <!-- Birth Date -->
             <div class="mt-4">
                 <x-label for="birth_date" :value="__('Birth Date')" />
 
-                <x-input id="birth_date" class="block mt-1" type="date" name="birth_date" :value="old('birth_date')" required />
+                <x-input id="birth_date" class="block mt-1" type="date" name="birth_date" :value="old('birth_date')" required class="w-full"/>
+            </div>
+
+            <!-- Sex -->
+            <div class="mt-4">
+                <x-label for="sex" :value="__('Sex')" />
+
+                <select name="sex" id="sex" class="block mt-1 w-full rounded-md">
+                    <option value="male" class="block block rounded-md">Male</option>
+                    <option value="female">Female</option>
+                </select>
             </div>
 
             <!-- Address -->
             <div class="mt-4">
                 <x-label for="address" :value="__('Address')" />
 
-                <textarea class="block mt-1 rounded-md " name="address" id="address" cols="41" rows="3"></textarea>
+                <textarea class="block mt-1 rounded-md" name="address" id="address" cols="42" rows="4"></textarea>
             </div>
 
             <!-- Password -->
