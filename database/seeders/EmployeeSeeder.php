@@ -24,6 +24,7 @@ class EmployeeSeeder extends Seeder
                 'sex'=>'male',
                 'email'=>'sulaiman132@gmail.com',
                 'role'=>'salesman',
+                'motto'=>'Your Motto',
                 'address'=>'Jl Waru Gg Waru kari No.E6',
                 'password'=>Hash::make('salesmamSulaiman')
             ],
@@ -34,6 +35,7 @@ class EmployeeSeeder extends Seeder
                 'sex'=>'male',
                 'email'=>'erwinyanto@gmail.com',
                 'role'=>'courier',
+                'motto'=>'Your Motto',
                 'address'=>'Jl sarimi Gg Karuya No.F1',
                 'password'=>Hash::make('salesmamErwin')
             ],
@@ -44,6 +46,7 @@ class EmployeeSeeder extends Seeder
                 'sex'=>'female',
                 'email'=>'yeniyo345@gmail.com',
                 'role'=>'salesman',
+                'motto'=>'Your Motto',
                 'address'=>'Jl sarimi Gg Puncaksari No.A2',
                 'password'=>Hash::make('salesmamYeni')
             ],
@@ -54,6 +57,7 @@ class EmployeeSeeder extends Seeder
                 'sex'=>'male',
                 'email'=>'hanifkumal@gmail.com',
                 'role'=>'salesman',
+                'motto'=>'Your Motto',
                 'address'=>'Jl merdeka Gg ratu jaya No.C2',
                 'password'=>Hash::make('salesmamHanif')
             ],
@@ -64,6 +68,7 @@ class EmployeeSeeder extends Seeder
                 'sex'=>'male',
                 'email'=>'william777@gmail.com',
                 'role'=>'courier',
+                'motto'=>'Your Motto',
                 'address'=>'Jl pelangi Gg tujuh No.B7',
                 'password'=>Hash::make('salesmamWilliam')
             ]

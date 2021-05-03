@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('sex');
             $table->string('email')->unique();
             $table->string('role');
+            $table->string('motto')->default('Your Motto');
             $table->string('address');
             $table->string('password');
             $table->timestamps();
