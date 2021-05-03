@@ -192,13 +192,11 @@
                                     </x-slot>
                 
                                     <x-slot name="content">
-                                        <form method="POST" action="{{ route('profile') }}">
-                                            <x-dropdown-link :href="route('register')"
-                                                    onclick="event.preventDefault();
-                                                                this.closest('form').submit();">
-                                                {{ __('Profile') }}
-                                            </x-dropdown-link>
-                                        </form>
+                                        <x-dropdown-link :href="route('profile')"
+                                                onclick="event.preventDefault();
+                                                            location.href = {{ route('profile') }};">
+                                            {{ __('Profile') }}
+                                        </x-dropdown-link>
                                         <!-- Authentication -->
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
