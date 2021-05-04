@@ -6,10 +6,10 @@
     </x-slot>
 
     <div class="py-8">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <table>
+                <div class="px-5 bg-white border-b border-gray-200">
+                    <table class="w-full">
                         <tr>
                             <td>
                                 <span class="flex container">
@@ -26,7 +26,7 @@
                                         <div class="my-4">
                                             <x-label for="business" :value="__('Business')" />
 
-                                            <x-input id="business" class="block mt-1 w-96" type="text" name="business" :value="old('business')" required autofocus />
+                                            <x-input id="business" class="block mt-1 w-96" type="text" name="business" :value="old('business')" required />
                                         </div>
 
                                         <!-- Address -->
@@ -36,12 +36,19 @@
                                             <textarea class="block mt-1 rounded-md " name="address" id="address" cols="40" rows="2"></textarea>
                                         </div>
 
+                                        <!-- Email -->
+                                        <div class="my-4">
+                                            <x-label for="email" :value="__('Email')" />
+
+                                            <x-input id="business" class="block mt-1 w-96" type="text" name="email" :value="old('email')" required />
+                                        </div>
+
                                         <!-- Coordinate -->
                                         <div class="my-4">
                                             <div>
                                                 <x-label for="coordinate" :value="__('Coordinate')" />
 
-                                                <x-input id="coordinate" class="block mt-1 w-96" type="text" name="coordinate" :value="old('coordinate')" required autofocus />
+                                                <x-input id="coordinate" class="block mt-1 w-96" type="text" name="coordinate" :value="old('coordinate')" required />
                                             </div>
                                         </div>
 
@@ -52,7 +59,7 @@
                                             <textarea class="block mt-1 rounded-md " name="description" id="description" cols="40" rows="3"></textarea>
                                         </div>
 
-                                        <div class="my-4">
+                                        <div class="my-4 float-right">
                                            <x-button>
                                                 {{ __('Submit') }}
                                             </x-button>
@@ -62,7 +69,11 @@
                             </td>
                             <td>
                                 <span class="flex container border border-5 border-red">
-
+                                    <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
+                                        <div class="w-full">
+                                            <p class="text-center">SHOW MAP</p>
+                                        </div>
+                                    </div>
                                 </span>
                             </td>
                         </tr>
