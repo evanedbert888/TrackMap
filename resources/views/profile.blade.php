@@ -28,23 +28,23 @@
                             <p class="font-bold text-lg">Detail</p>
                             <table>
                                 <tr>
-                                    <td>Birth Date :</td>
-                                    <td>{{ $details[0]->birth_date }}</td>
+                                    <td>Birth Date</td>
+                                    <td>{{  __(": ").$details[0]->birth_date }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Sex :</td>
-                                    <td>{{ $details[0]->sex }}</td>                                
+                                    <td>Sex</td>
+                                    <td>{{  __(": ").$details[0]->sex }}</td>                                
                                 </tr>
                                 <tr>
-                                    <td>Address :</td>
-                                    <td>{{ $details[0]->address }}</td>
+                                    <td>Address</td>
+                                    <td>{{ __(": ").$details[0]->address }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Join At :</td>
+                                    <td>Join At</td>
                                     @php
                                         $time = explode(' ',$details[0]->created_at);
                                     @endphp
-                                    <td>{{ $time[0] }}</td>
+                                    <td>{{  __(": ").$time[0] }}</td>
                                 </tr>
                             </table>
                         </div>
