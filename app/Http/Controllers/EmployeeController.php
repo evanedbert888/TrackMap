@@ -9,7 +9,7 @@ use App\Models\Employee;
 class EmployeeController extends Controller
 {
     public function employee_list(){
-        $lists = DB::table('employees')->paginate(5);
+        $lists = DB::table('employees')->orderBy('id','desc')->paginate(5);
         return view('employee.employee_list',['lists'=>$lists]);
     }
 
