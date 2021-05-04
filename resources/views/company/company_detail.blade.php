@@ -10,8 +10,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="container">
-                    <div class="bg-cover h-44 w-full object-top bg-no-repeat mb-3" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                        <img class="float-left rounded-full h-44 w-44 object-cover ml-28 mt-28 mr-3" src="https://images.bisnis-cdn.com/posts/2021/03/27/1373332/mihoyo.jpg" alt="">
+                    <div class="bg-cover h-44 w-full object-top bg-no-repeat mb-2" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
+                        <img class="float-left rounded-full h-40 w-40 object-cover ml-20 mt-28 mr-3" src="https://images.bisnis-cdn.com/posts/2021/03/27/1373332/mihoyo.jpg" alt="">
                     </div>
                     <div>
                         <x-button class="float-right mr-5" type="submit">
