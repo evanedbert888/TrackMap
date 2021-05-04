@@ -14,27 +14,21 @@
                         <img class="float-left rounded-full h-44 w-44 object-cover ml-28 mt-28 mr-3" src="https://images.bisnis-cdn.com/posts/2021/03/27/1373332/mihoyo.jpg" alt="">
                     </div>
                     <div>
+                        <x-button class="float-right mr-5" type="submit">
+                             edit
+                        </x-button>
                         <table>
-                            <div>
-                                <tr> {{$detail->company_name}} </tr>
-                            </div>
-                            <div>
-                                <tr> {{__('Email')}} </tr>
-                            </div>
-                            <div>
-                                <tr> {{$detail->address}} </tr>
-                            </div>
+                            <tr> <td>{{$detail->company_name}}</td> </tr>
+                            <tr> <td>{{__('Email')}}</td> </tr>
+                            <tr> <td>{{$detail->address}}</td> </tr>
                         </table>
                     </div>
                 </div>
-                <div class="py-8">
-                    <div class="float-left m-5 w-full">
+                <div class="py-2">
+                    <div class="float-left m-5 mr-10 mb-10 w-full">
                         <span class="text-2xl"> Detail </span>
-                        <button class="float-right mr-10" type="submit">
-                             Save
-                        </button>
-                        <hr class="border border-5 border-black border-solid">
-                        <div class="overflow-scroll">
+                        <hr class="border border-5 border-black border-solid mr-10">
+                        <div class="overflow-x-scroll mr-10">
                             {{$detail->description}}
                         </div>
                     </div>
