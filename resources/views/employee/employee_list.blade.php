@@ -38,6 +38,7 @@
                             </ul>
                         </div>
                     @endforeach
+                    {{ $lists->links() }}
                 </div>
             </div>
         </div>

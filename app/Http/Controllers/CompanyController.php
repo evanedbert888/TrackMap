@@ -34,12 +34,12 @@ class CompanyController extends Controller
     }
 
     public function company_list(){
-        $lists = DB::table('companies')->paginate(5);
+        $lists = DB::table('companies')->orderBy('id','desc')->paginate(5);
         return view('company.company_list',['lists'=>$lists]);
     }
 
-    public function company_detail($name){
-        $details = DB::table('companies')->where('company_name','=',$name)->get();
+    public function company_detail($id){
+        $details = DB::table('companies')->where('id','=',$id)->get();
         return view('company.company_detail',['details'=>$details]);
     }
 
@@ -53,7 +53,12 @@ class CompanyController extends Controller
         return redirect()->route('company_list');
     }
 
-    public function company_patch($name,Request $request){
+    public function edit_company($id){
+        $details = DB::table('companies')->where('id','=',$id)->get();
+        return view('company.edit_company',['details'=>$details]);
+    }
+
+    public function company_patch($id,Request $request){
         $validateCompany = $request->validate([
            'company_name' => 'required|string|max:255',
            'business' => 'required|string|max:30',
@@ -70,12 +75,13 @@ class CompanyController extends Controller
         $company->company_name = $validateCompany['company_name'];
         $company->business = $validateCompany['business'];
         $company->address = $validateCompany['address'];
+        $company->email = $validateCompany['email'];
         $company->latitude = $latitude;
         $company->longitude = $longitude;
         $company->description = $validateCompany['description'];
         $company->update();
 
-        return redirect()->route('company_detail',['name'=>$validateCompany['company_name']]);
+        return redirect()->route('company_detail',['id'=>$validateCompany['id']]);
     }
 
     public function add_company(Request $request){
@@ -83,6 +89,7 @@ class CompanyController extends Controller
             'company_name' => 'required|string|max:255',
             'business' => 'required|string|max:30',
             'address' => 'required|string|max:300',
+            'email' => 'required|string|max:255',
             'coordinate' => 'required',
             'description' => 'required|max:300'
         ]);
@@ -95,6 +102,7 @@ class CompanyController extends Controller
         $company->company_name = $validateCompany['company_name'];
         $company->business = $validateCompany['business'];
         $company->address = $validateCompany['address'];
+        $company->email = $validateCompany['email'];
         $company->latitude = $latitude;
         $company->longitude = $longitude;
         $company->description = $validateCompany['description'];

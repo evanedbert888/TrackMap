@@ -176,7 +176,7 @@
                             <!-- Page Heading -->
                             {{ $header }}
                         </div>
-                        <div class="w-1/2 flex items-center pl-8 justify-end">
+                        <div class="w-1/2 flex items-center pr-2 justify-end">
                             <div class="hidden sm:flex sm:items-center sm:ml-6">
                                 <x-dropdown align="right" width="48">
                                     <x-slot name="trigger">

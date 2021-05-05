@@ -32,11 +32,12 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Company
     Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');
-    Route::get('/CompanyDetail/{name}',[CompanyController::class,'company_detail'])->name('company_detail');
+    Route::get('/CompanyDetail/{id}',[CompanyController::class,'company_detail'])->name('company_detail');
     Route::delete('/CompanyDelete/{id}',[CompanyController::class,'company_delete'])->name('company_delete');
 
     // Update Company
-    Route::patch('/CompanyPatch/{name}',[CompanyController::class,'company_patch'])->name('company_patch');
+    Route::get('/EditCompany/{id}',[CompanyController::class,'edit_company'])->name('edit_company');
+    Route::patch('/CompanyPatch/{id}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');

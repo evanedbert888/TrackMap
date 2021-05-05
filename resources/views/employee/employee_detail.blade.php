@@ -13,31 +13,32 @@
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
                     <div>
-                        <div class="ml-60 mt-6 mr-5">
+                        <div class="ml-60 mx-5">
                             <div>
                                 <h6 class="font-bold text-2xl">{{ $details[0]->name }}</h6>
+                            </div>
+                            <div class="text-md">
+                                <h2>{{ $details[0]->motto }}</h2>
                             </div>
                             <div class="text-sm">
                                 <h2>{{ $details[0]->email }}</h2>
                             </div>
-                            {{-- <div class="text-sm">
-                                <h2>{{ $details[0]->motto }}</h2>
-                            </div> --}}
                         </div>
                         <div class="mx-5 mt-3">
-                            <p class="font-bold text-lg">Detail</p>
-                            <table>
+                            <p class="font-bold text-xl">Detail</p>
+                            <hr class="border border-5 border-black border-solid">
+                            <table class="mt-3">
                                 <tr>
-                                    <td>Birth Date :</td>
-                                    <td>{{ $details[0]->birth_date }}</td>
+                                    <td>Birth Date</td>
+                                    <td>{{ __(": ").$details[0]->birth_date }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Sex :</td>
-                                    <td>{{ $details[0]->sex }}</td>                                
+                                    <td>Sex</td>
+                                    <td>{{ __(": ").$details[0]->sex }}</td>                                
                                 </tr>
                                 <tr>
-                                    <td>Address :</td>
-                                    <td>{{ $details[0]->address }}</td>
+                                    <td>Address</td>
+                                    <td>{{ __(": ").$details[0]->address }}</td>
                                 </tr>
                             </table>
                         </div>
