@@ -13,8 +13,8 @@ class CompanyController extends Controller
         return view('company.company_list',['lists'=>$lists]);
     }
 
-    public function company_detail($name){
-        $details = DB::table('companies')->where('company_name','=',$name)->get();
+    public function company_detail($id){
+        $details = DB::table('companies')->where('id','=',$id)->get();
         return view('company.company_detail',['details'=>$details]);
     }
 
@@ -32,7 +32,7 @@ class CompanyController extends Controller
         return view('company.edit_company',['details'=>$details]);
     }
 
-    public function company_patch($name,Request $request){
+    public function company_patch($id,Request $request){
         $validateCompany = $request->validate([
            'company_name' => 'required|string|max:255',
            'business' => 'required|string|max:30',
@@ -55,7 +55,7 @@ class CompanyController extends Controller
         $company->description = $validateCompany['description'];
         $company->update();
 
-        return redirect()->route('company_detail',['name'=>$validateCompany['company_name']]);
+        return redirect()->route('company_detail',['id'=>$validateCompany['id']]);
     }
 
     public function add_company(Request $request){

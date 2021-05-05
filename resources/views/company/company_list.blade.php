@@ -27,7 +27,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-6 ml-5">
-                                            <a href="{{route('company_detail',['name'=>$list->company_name])}}">
+                                            <a href="{{route('company_detail',['id'=>$list->id])}}">
                                                 <x-button>Detail</x-button>
                                             </a>
                                         </div>

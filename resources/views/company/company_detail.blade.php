@@ -13,9 +13,9 @@
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
                     <a class="float-right mr-5" href="{{ route('edit_company',['id'=>$details[0]->id]) }}">
-                    <x-button type="submit">
-                         edit
-                    </x-button>
+                        <x-button type="submit">
+                            edit
+                        </x-button>
                     </a>
                     <div>
                         <div class="ml-60 mx-5 mt-6">
