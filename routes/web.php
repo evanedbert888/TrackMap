@@ -40,12 +40,11 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
-
     Route::post('/AddCompany',[CompanyController::class,'add_company'])->name('add_company');
+    Route::get('/CompanyLocation',[CompanyController::class,'getAddress'])->name('get_address');
 
     // Employee
     Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
     Route::get('/EmployeeDetail/{id}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
     Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
-
 });

@@ -18,7 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('company_name');
             $table->string('business');
             $table->string('address');
-            $table->string('email')->unique();
+            $table->string('email')->default('email');
             $table->string('latitude');
             $table->string('longitude');
             $table->longText('description');

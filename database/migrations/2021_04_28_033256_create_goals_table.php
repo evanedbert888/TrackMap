@@ -19,6 +19,7 @@ class CreateGoalsTable extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->string('latitude');
             $table->string('longitude');
+            $table->timestamps();
         });
     }
 

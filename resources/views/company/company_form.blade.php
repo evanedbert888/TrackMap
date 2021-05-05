@@ -17,39 +17,47 @@
                                     @csrf
                                     <!-- Company Name -->
                                         <div class="my-4">
-                                            <x-label for="company_name" :value="__('Company Name')" />
+                                            <x-label for="company_name" :value="__('Company Name')"/>
 
-                                            <x-input id="company_name" class="block mt-1 w-96" type="text" name="company_name" :value="old('company_name')" required autofocus />
+                                            <x-input id="company_name" class="block mt-1 w-96" type="text"
+                                                     name="company_name" :value="old('company_name')" required
+                                                     autofocus/>
                                         </div>
 
                                         <!-- Business -->
                                         <div class="my-4">
-                                            <x-label for="business" :value="__('Business')" />
+                                            <x-label for="business" :value="__('Business')"/>
 
-                                            <x-input id="business" class="block mt-1 w-96" type="text" name="business" :value="old('business')" required autofocus />
+                                            <x-input id="business" class="block mt-1 w-96" type="text" name="business"
+                                                     :value="old('business')" required autofocus/>
                                         </div>
 
                                         <!-- Address -->
                                         <div class="my-4">
-                                            <x-label for="address" :value="__('Address')" />
+                                            <x-label for="address" :value="__('Address')"/>
 
-                                            <textarea class="block mt-1 rounded-md " name="address" id="address" cols="40" rows="2"></textarea>
+                                            <textarea class="block mt-1 rounded-md " name="address" id="address"
+                                                      cols="40" rows="2"></textarea>
+                                            <x-button id="search">search</x-button>
                                         </div>
 
                                         <!-- Coordinate -->
                                         <div class="my-4">
                                             <div>
-                                                <x-label for="coordinate" :value="__('Coordinate')" />
+                                                <x-label for="coordinate" :value="__('Coordinate')"/>
 
-                                                <x-input id="coordinate" class="block mt-1 w-96" type="text" name="coordinate" :value="old('coordinate')" required autofocus />
+                                                <x-input id="coordinate" class="block mt-1 w-96" type="text"
+                                                         name="coordinate" :value="old('coordinate')" required
+                                                         autofocus/>
                                             </div>
                                         </div>
 
                                         <!-- Description -->
                                         <div class="my-4">
-                                            <x-label for="description" :value="__('Description')" />
+                                            <x-label for="description" :value="__('Description')"/>
 
-                                            <textarea class="block mt-1 rounded-md " name="description" id="description" cols="40" rows="3"></textarea>
+                                            <textarea class="block mt-1 rounded-md " name="description" id="description"
+                                                      cols="40" rows="3"></textarea>
                                         </div>
 
                                         <div class="my-4">
@@ -71,4 +79,30 @@
             </div>
         </div>
     </div>
+    <script !src="">
+        var btnSearch = document.querySelector("#search")
+        btnSearch.addEventListener("click", () => {
+            var address = document.querySelector("#address").value
+            console.log(address)
+            getCoordinateOfAddress(address)
+        })
+
+        function getCoordinateOfAddress(address) {
+            fetch('http://127.0.0.1:8000/api/GeoSearch?address=' + address, {
+                method: "get"
+            })
+                .then(response => response.json())
+                .then(responseJson => {
+                    console.log(responseJson)
+                    setCoordinate(responseJson)
+                })
+            .catch(error =>{
+                console.log(error)
+            })
+        }
+
+        function setCoordinate(coordinate) {
+            document.querySelector("#coordinate").value = `${coordinate.x},${coordinate.y}`
+        }
+    </script>
 </x-app-layout>
