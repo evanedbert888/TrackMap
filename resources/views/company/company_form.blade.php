@@ -38,8 +38,20 @@
                                         <div class="my-4">
                                             <x-label for="business" :value="__('Business')"/>
 
-                                            <x-input id="business" class="block mt-1 w-96" type="text" name="business"
-                                                     :value="old('business')" required autofocus/>
+                                            <select name="business" id="business" class="block mt-1 w-96 rounded-md">
+                                                <option class="hidden"></option>
+                                                <option class="bg-gray-200" value="Bank">Bank</option>
+                                                <option class="bg-gray-200" value="Cafe">Cafe</option>
+                                                <option class="bg-gray-200" value="Entertainment">Entertainment</option>
+                                                <option class="bg-gray-200" value="Fashion">Fashion</option>
+                                                <option class="bg-gray-200" value="Food">Food</option>
+                                                <option class="bg-gray-200" value="Health">Health</option>
+                                                <option class="bg-gray-200" value="Hotel">Hotel</option>
+                                                <option class="bg-gray-200" value="Pastry">Pastry</option>
+                                                <option class="bg-gray-200" value="Printing">Printing</option>
+                                                <option class="bg-gray-200" value="Sports">Sports</option>
+                                                <option class="bg-gray-200" value="Technology">Technology</option>
+                                            </select>
                                         </div>
 
                                         <!-- Address -->
@@ -48,7 +60,7 @@
 
                                             <textarea class="block mt-1 rounded-md " name="address" id="address"
                                                       cols="40" rows="2"></textarea>
-                                            <x-button id="search" type="button" name="search">search</x-button>
+                                            <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
                                         </div>
 
                                         <!-- Email -->
