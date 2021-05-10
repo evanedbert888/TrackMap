@@ -16,6 +16,12 @@ class UserController extends Controller
         return view('profile',['details'=>$details]);
     }
 
+    public function edit_profile(){
+        $id = Auth::user()->id;
+        $details = DB::table('users')->where('id','=',$id)->get();
+        return view('edit_profile',['details'=>$details]);
+    }
+
     public function profile_update() {
 
     }
