@@ -38,8 +38,9 @@
                 <x-label for="sex" :value="__('Sex')" />
 
                 <select name="sex" id="sex" class="block mt-1 w-full rounded-md">
-                    <option value="male" class="block block rounded-md">Male</option>
-                    <option value="female">Female</option>
+                    <option class="hidden"></option>
+                    <option class="bg-gray-200" value="male">Male</option>
+                    <option class="bg-gray-200" value="female">Female</option>
                 </select>
             </div>
 
