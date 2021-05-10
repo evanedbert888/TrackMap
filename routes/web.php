@@ -29,6 +29,7 @@ require __DIR__.'/auth.php';
 Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::patch('/Profile_Update',[UserController::class,'profile_update'])->name('profile_update');
+    Route::get('/Task_pairing',[UserController::class,'task_pairing'])->name('task_pairing');
 
     // Company
     Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');

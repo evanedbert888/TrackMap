@@ -20,23 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/View/Components/editinput.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/savebutton.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/company/edit_company.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/editinput.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/savebutton.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CompanySeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CompanySeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/company/company_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/company/company_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/company/company_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/company/company_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/company/company_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/company/company_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/employee_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employee/employee_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employee/employee_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/company/edit_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/company/edit_company.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +191,13 @@
       <workItem from="1620027657286" duration="1058000" />
       <workItem from="1620102924238" duration="2081000" />
       <workItem from="1620113097014" duration="11549000" />
-      <workItem from="1620193207815" duration="518000" />
+      <workItem from="1620193207815" duration="3554000" />
+      <workItem from="1620231493071" duration="742000" />
+      <workItem from="1620271309057" duration="597000" />
+      <workItem from="1620358085817" duration="2457000" />
+      <workItem from="1620453858120" duration="12751000" />
+      <workItem from="1620616872549" duration="2252000" />
+      <workItem from="1620630558574" duration="338000" />
     </task>
     <servers />
   </component>
@@ -234,5 +229,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620103422665" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620454315327">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1620454315327" />
   </component>
 </project>

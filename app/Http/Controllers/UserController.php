@@ -19,4 +19,12 @@ class UserController extends Controller
     public function profile_update() {
 
     }
+
+    public function task_pairing() {
+        $companies = DB::table('companies')->get();
+        $employees = DB::table('employees')->get();
+        $businesses = DB::table('companies')->pluck('business');
+        $temps = DB::table('temps')->get();
+        return view('task_pairing',["companies"=>$companies,"employees"=>$employees,"businesses"=>$businesses]);
+    }
 }

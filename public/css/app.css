@@ -13297,6 +13297,22 @@ select {
   margin-left: 24rem;
 }
 
+.mt-128 {
+  margin-top: 32rem;
+}
+
+.mr-128 {
+  margin-right: 32rem;
+}
+
+.mb-128 {
+  margin-bottom: 32rem;
+}
+
+.ml-128 {
+  margin-left: 32rem;
+}
+
 .mt-auto {
   margin-top: auto;
 }

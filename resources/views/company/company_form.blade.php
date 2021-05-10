@@ -5,6 +5,16 @@
         </h2>
     </x-slot>
 
+    <?php
+        if (isset($_POST["search"])) {
+            $address = $_POST["address"];
+            ?>
+                <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $address;
+                ?>&output=embed"></iframe>
+            <?php
+        }
+    ?>
+
     <div class="py-8">
         <div class="w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -38,7 +48,7 @@
 
                                             <textarea class="block mt-1 rounded-md " name="address" id="address"
                                                       cols="40" rows="2"></textarea>
-                                            <x-button id="search">search</x-button>
+                                            <x-button id="search" type="button" name="search">search</x-button>
                                         </div>
 
                                         <!-- Email -->

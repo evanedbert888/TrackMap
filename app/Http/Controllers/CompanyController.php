@@ -63,6 +63,7 @@ class CompanyController extends Controller
            'company_name' => 'required|string|max:255',
            'business' => 'required|string|max:30',
            'address' => 'required|string|max:300',
+           'email' => 'required|string|max:255',
            'coordinate' => 'required',
            'description' => 'required|max:300'
         ]);
@@ -81,7 +82,7 @@ class CompanyController extends Controller
         $company->description = $validateCompany['description'];
         $company->update();
 
-        return redirect()->route('company_detail',['id'=>$validateCompany['id']]);
+        return redirect()->route('company_detail',['id'=>$id]);
     }
 
     public function add_company(Request $request){
