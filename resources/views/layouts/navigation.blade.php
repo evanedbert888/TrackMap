@@ -80,7 +80,7 @@
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
                                     <div class="hidden space-x-8 sm:-my-px sm:flex">
-                                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                        <x-nav-link :href="route('task_pairing')" :active="request()->routeIs('task_pairing')">
                                             {{ __('Task') }}
                                         </x-nav-link>
                                     </div>
@@ -113,16 +113,21 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 hidden">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    <a href="{{ route('profile') }}">
-                                                        <div class="flex items-center">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" />
-                                                                <circle cx="12" cy="7" r="4" />
-                                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                                                            </svg>
-                                                            <span class="text-sm ml-2">My Profile</span>
-                                                        </div>
-                                                    </a>
+                                                    <form method="POST" action="{{ route('profile') }}">
+                                                        @csrf
+                                                        <x-dropdown-link :href="route('profile')"
+                                                                onclick="event.preventDefault();
+                                                                            this.closest('form').submit();">
+                                                                <div class="flex items-center">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                        <path stroke="none" d="M0 0h24v24H0z" />
+                                                                        <circle cx="12" cy="7" r="4" />
+                                                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                                    </svg>
+                                                                    <span class="text-sm ml-2">My Profile</span>
+                                                                </div>         
+                                                        </x-dropdown-link>
+                                                    </form>
                                                 </li>
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mt-2">
                                                     <form method="POST" action="{{ route('logout') }}">
