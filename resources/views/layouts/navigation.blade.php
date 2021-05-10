@@ -25,7 +25,7 @@
         <div class="w-full h-full">
             <div class="flex flex-no-wrap">
                 <!-- Sidebar starts -->
-                <div id="slidebar" class="absolute bg-white shadow h-screen flex-col justify-between transform -translate-x-full z-40 transition duration-500" onclick="sidebarHandler(false)">
+                <div id="slidebar" class="absolute bg-white shadow h-screen flex-col justify-between transform -translate-x-full z-40 transition duration-500">
                     <div class="px-8">
                         <div class="flex items-center">
                             <img class="mt-0.5" src="http://localhost/Project/TrackMap/resources/views/components/img/Logo.png">
