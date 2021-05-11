@@ -5,16 +5,6 @@
         </h2>
     </x-slot>
 
-    <?php
-        if (isset($_POST["search"])) {
-            $address = $_POST["address"];
-            ?>
-                <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $address;
-                ?>&output=embed"></iframe>
-            <?php
-        }
-    ?>
-
     <div class="py-8">
         <div class="w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -96,11 +86,9 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="flex container border border-5 border-red">
-                                    <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
-                                        <div class="w-full">
-                                            <p class="text-center">SHOW MAP</p>
-                                        </div>
+                                <span class="flex container ml-44">
+                                    <div>
+                                        <iframe id="map" height="400px" width="768px" src="https://maps.google.com/maps?q=&output=embed"></iframe>
                                     </div>
                                 </span>
                             </td>
@@ -116,6 +104,7 @@
             var address = document.querySelector("#address").value
             console.log(address)
             getCoordinateOfAddress(address)
+            map(address)
         })
 
         function getCoordinateOfAddress(address) {
@@ -134,6 +123,10 @@
 
         function setCoordinate(coordinate) {
             document.querySelector("#coordinate").value = `${coordinate.x},${coordinate.y}`
+        }
+
+        function map(address) {
+            document.getElementById("map").src=`https://maps.google.com/maps?q=${address}&output=embed`
         }
     </script>
 </x-app-layout>
