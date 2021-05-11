@@ -35,7 +35,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Rumah Shabby & Roof Top Cafe",
-                'business'=>'Fashion',
+                'business'=>'Entertainment',
                 'address'=>'Jl. P. Natakusuma, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78116',
                 'email'=>'shabbynrooftop@gmail.com',
                 'latitude'=>'-0.03504574089089836',
@@ -44,7 +44,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Aming Coffee 2",
-                'business'=>'Cafe',
+                'business'=>'Food & Drinks',
                 'address'=>'Jl. Slt. Abdurrahman No.25, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'amingcoffee2@gmail.com',
                 'latitude'=>'-0.05355410187953165',
@@ -53,7 +53,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"BNI KK M.Yamin",
-                'business'=>'Bank',
+                'business'=>'Financial & Utility',
                 'address'=>'Jl. Prof. M.Yamin, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78115',
                 'email'=>'bnimyamin@bank.co.id',
                 'latitude'=>'-0.05863977283944164',
@@ -62,7 +62,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Hotel Merpati",
-                'business'=>'Hotel',
+                'business'=>'Tourism',
                 'address'=>'Jl. Imam Bonjol No.111, Benua Melayu Laut, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78243',
                 'email'=>'merpatihotel@merpati.co.id',
                 'latitude'=>'-0.04629945926496524',
@@ -71,7 +71,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Amazon Coffee",
-                'business'=>'Cafe',
+                'business'=>'Food & Drinks',
                 'address'=>'Jl. Reformasi No.8A, Bansir Laut, Kec. Pontianak Tenggara, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'amzoncoffee@gmail.com',
                 'latitude'=>'-0.0626526847682696',
@@ -80,7 +80,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Mr Cakes And Bakery",
-                'business'=>'Pastry',
+                'business'=>'Food & Drinks',
                 'address'=>'Gg. Sukma 8, Sungai Jawi, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'mrcakesnbakery@bakery.co.id',
                 'latitude'=>'-0.040094832322255504',
@@ -116,7 +116,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"PT Leo Perdana Mandiri",
-                'business'=>'Printing',
+                'business'=>'Technology',
                 'address'=>'Jl. nusa indah baru no A8 - A9, Tengah, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78243',
                 'email'=>'leoperdanamandiri@gmail.com',
                 'latitude'=>'-0.02408421472162801',
@@ -125,7 +125,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Pizza Hut Delivery - PHD Indonesia",
-                'business'=>'Food',
+                'business'=>'Food & Drinks',
                 'address'=>'Jl. Prof. M.Yamin No.1 Kel, Kota Baru, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78121',
                 'email'=>'pizzahut@pdh.co.id',
                 'latitude'=>'-0.05040203300332711',

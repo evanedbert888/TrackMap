@@ -73,10 +73,9 @@
                         </div>
                     </div>
                     <div class="bg-blue-500 rounded-lg mt-3 p-3">
-                        <div class="grid grid-cols-1">
+                        <div class="w-full">
                             <div class="flex mx-auto justify-center">
-                                <table class="table-auto border-separate border border-black border-3">
-                                    <caption class="font-semibold"> Pairing Table </caption>
+                                <table class="table-auto border-separate border border-black border-3 w-full">
                                     <thead>
                                         <tr class="text-center text-xl">
                                             <th class="border border-black border-3"> ID </th>
@@ -93,7 +92,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="mt-0 ml-auto mr-20">
+                            <div class="mt-3 ml-auto mr-20">
                                 <x-button>
                                     {{__("Save")}}
                                 </x-button>
