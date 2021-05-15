@@ -1,7 +1,4 @@
 <script>
-    // var sideBar = document.getElementById("slidebar").classList;
-    // var menu = document.getElementById("menu").classList;
-    // var cross = document.getElementById("cross").classList;
     const sidebarHandler = (check) => {
         if (check) {
             document.getElementById("slidebar").style.transform = "translateX(0px)";
@@ -17,7 +14,6 @@
         let single = element.getElementsByTagName("ul")[0];
         single.classList.toggle("hidden");
     }
-
 </script>
 <!-- Primary Navigation Menu -->
 <div class="w-full h-full">
@@ -113,7 +109,7 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 hidden">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    <form method="POST" action="{{ route('profile') }}">
+                                                    <form method="GET" action="{{ route('profile') }}">
                                                         @csrf
                                                         <x-dropdown-link :href="route('profile')"
                                                                 onclick="event.preventDefault();
