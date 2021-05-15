@@ -30,8 +30,11 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::get('/EditProfile',[UserController::class,'edit_profile'])->name('edit_profile');
     Route::patch('/ProfileUpdate',[UserController::class,'profile_update'])->name('profile_update');
-    Route::get('/TaskPairing',[UserController::class, ''])->name('task_pairing');
-    Route::get('/TaskPairingShowEmployees',[UserController::class,'show_employee_by_role'])->name('show_employees');
+
+    // Task Pairing
+    Route::get('/TaskPairing',[UserController::class, 'task_pairing'])->name('task_pairing');
+    Route::get('/TaskPairingShowEmployees/{id?}',[UserController::class,'show_employee_by_role'])->name('show_employees');
+    Route::get('/TaskPairingShowCompanies/{id?}',[UserController::class,'show_company_by_business'])->name('show_companies');
 
     // Company
     Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');
