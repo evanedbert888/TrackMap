@@ -13,13 +13,13 @@ class UserController extends Controller
     public function profile(){
         $id = Auth::user()->id;
         $details = DB::table('users')->where('id','=',$id)->get();
-        return view('profile',['details'=>$details]);
+        return view('Desktop.profile',['details'=>$details]);
     }
 
     public function edit_profile(){
         $id = Auth::user()->id;
         $details = DB::table('users')->where('id','=',$id)->get();
-        return view('edit_profile',['details'=>$details]);
+        return view('Desktop.edit_profile',['details'=>$details]);
     }
 
     public function profile_update() {
@@ -31,6 +31,6 @@ class UserController extends Controller
         $employees = DB::table('employees')->get();
         $businesses = DB::table('companies')->pluck('business');
         $temps = DB::table('temps')->get();
-        return view('task_pairing',["companies"=>$companies,"employees"=>$employees,"businesses"=>$businesses]);
+        return view('Desktop.task_pairing',["companies"=>$companies,"employees"=>$employees,"businesses"=>$businesses]);
     }
 }

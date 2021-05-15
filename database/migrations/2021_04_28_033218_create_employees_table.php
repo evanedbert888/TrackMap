@@ -15,15 +15,9 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('age');
-            $table->date('birth_date');
-            $table->string('sex');
-            $table->string('email')->unique();
-            $table->string('role');
+            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('role_id');
             $table->string('motto')->default('Your Motto');
-            $table->string('address');
-            $table->string('password');
             $table->timestamps();
         });
     }
