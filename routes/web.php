@@ -29,8 +29,9 @@ require __DIR__.'/auth.php';
 Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::get('/EditProfile',[UserController::class,'edit_profile'])->name('edit_profile');
-    Route::patch('/Profile_Update',[UserController::class,'profile_update'])->name('profile_update');
-    Route::get('/Task_pairing',[UserController::class,'task_pairing'])->name('task_pairing');
+    Route::patch('/ProfileUpdate',[UserController::class,'profile_update'])->name('profile_update');
+    Route::get('/TaskPairing',[UserController::class, ''])->name('task_pairing');
+    Route::get('/TaskPairingShowEmployees',[UserController::class,'show_employee_by_role'])->name('show_employees');
 
     // Company
     Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');
