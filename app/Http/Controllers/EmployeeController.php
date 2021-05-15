@@ -10,12 +10,12 @@ class EmployeeController extends Controller
 {
     public function employee_list(){
         $lists = DB::table('employees')->orderBy('id','desc')->paginate(5);
-        return view('employee.employee_list',['lists'=>$lists]);
+        return view('Desktop.employee.employee_list',['lists'=>$lists]);
     }
 
     public function employee_detail($id){
         $details = DB::table('employees')->where('id','=',$id)->get();
-        return view('employee.employee_detail',['details'=>$details]);
+        return view('Desktop.employee.employee_detail',['details'=>$details]);
     }
 
     public function employee_delete($id){

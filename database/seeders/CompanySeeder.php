@@ -17,7 +17,7 @@ class CompanySeeder extends Seeder
         DB::table('companies')->insert([
             [
                 'company_name'=>"Rumah Sakit Mitra Medika",
-                'business'=>'Health',
+                'business_id'=>1,
                 'address'=>'Jl. Slt. Abdurrahman No.25, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'mitramedia@mm.co.id',
                 'latitude'=>'-0.0366396002310127',
@@ -26,7 +26,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Avatar Games",
-                'business'=>'Entertainment',
+                'business_id'=>3,
                 'address'=>'Jl. P. Natakusuma No.2, Sungai Bangkong, Pontianak, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'avatergames@gmail.com',
                 'latitude'=>'-0.038607713657094235',
@@ -35,7 +35,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Rumah Shabby & Roof Top Cafe",
-                'business'=>'Fashion',
+                'business_id'=>3,
                 'address'=>'Jl. P. Natakusuma, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78116',
                 'email'=>'shabbynrooftop@gmail.com',
                 'latitude'=>'-0.03504574089089836',
@@ -44,7 +44,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Aming Coffee 2",
-                'business'=>'Cafe',
+                'business_id'=>4,
                 'address'=>'Jl. Slt. Abdurrahman No.25, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'amingcoffee2@gmail.com',
                 'latitude'=>'-0.05355410187953165',
@@ -53,7 +53,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"BNI KK M.Yamin",
-                'business'=>'Bank',
+                'business_id'=>6,
                 'address'=>'Jl. Prof. M.Yamin, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78115',
                 'email'=>'bnimyamin@bank.co.id',
                 'latitude'=>'-0.05863977283944164',
@@ -62,7 +62,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Hotel Merpati",
-                'business'=>'Hotel',
+                'business_id'=>7,
                 'address'=>'Jl. Imam Bonjol No.111, Benua Melayu Laut, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78243',
                 'email'=>'merpatihotel@merpati.co.id',
                 'latitude'=>'-0.04629945926496524',
@@ -71,7 +71,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Amazon Coffee",
-                'business'=>'Cafe',
+                'business_id'=>4,
                 'address'=>'Jl. Reformasi No.8A, Bansir Laut, Kec. Pontianak Tenggara, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'amzoncoffee@gmail.com',
                 'latitude'=>'-0.0626526847682696',
@@ -80,7 +80,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Mr Cakes And Bakery",
-                'business'=>'Pastry',
+                'business_id'=>4,
                 'address'=>'Gg. Sukma 8, Sungai Jawi, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'mrcakesnbakery@bakery.co.id',
                 'latitude'=>'-0.040094832322255504',
@@ -89,7 +89,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"You Computer",
-                'business'=>'Technology',
+                'business_id'=>2,
                 'address'=>'Jl. Prof. M.Yamin No.20, Kota Baru, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78116',
                 'email'=>'youcomputer@gmail.com',
                 'latitude'=>'-0.05113046196673768',
@@ -98,7 +98,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Cakra Arena GOR bulutangkis",
-                'business'=>'Sports',
+                'business_id'=>5,
                 'address'=>'Gg. Karya Baru 6 No.34, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78115',
                 'email'=>'cakraarena@gmail.com',
                 'latitude'=>'-0.056096937593034774',
@@ -107,7 +107,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Laboratorium Klinik Prodia",
-                'business'=>'Health',
+                'business_id'=>1,
                 'address'=>'Jl. Jenderal Ahmad Yani No.6C, Benua Melayu Darat, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113',
                 'email'=>'prodialb@gmail.com',
                 'latitude'=>'-0.036707814397645935',
@@ -116,7 +116,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"PT Leo Perdana Mandiri",
-                'business'=>'Printing',
+                'business_id'=>2,
                 'address'=>'Jl. nusa indah baru no A8 - A9, Tengah, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78243',
                 'email'=>'leoperdanamandiri@gmail.com',
                 'latitude'=>'-0.02408421472162801',
@@ -125,7 +125,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Pizza Hut Delivery - PHD Indonesia",
-                'business'=>'Food',
+                'business_id'=>4,
                 'address'=>'Jl. Prof. M.Yamin No.1 Kel, Kota Baru, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78121',
                 'email'=>'pizzahut@pdh.co.id',
                 'latitude'=>'-0.05040203300332711',
@@ -134,7 +134,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Kolam Renang Delta Kapuas",
-                'business'=>'Sports',
+                'business_id'=>5,
                 'address'=>'Jl. Nipah Kuning Dalam, Pal Lima, Kec. Pontianak Bar., Kota Pontianak, Kalimantan Barat 78244',
                 'email'=>'deltakapuas@gmail.com',
                 'latitude'=>'-0.01713917637230021',
@@ -143,7 +143,7 @@ class CompanySeeder extends Seeder
             ],
             [
                 'company_name'=>"Yellow Ponsel Pancasila",
-                'business'=>'Technology',
+                'business_id'=>2,
                 'address'=>'Jl. Gusti Hamzah No.3, Sungai Bangkong, Kec. Pontianak Kota, Kota Pontianak, Kalimantan Barat 78244',
                 'email'=>'yellowponsel@gmail.com',
                 'latitude'=>'-0.021172746888143863',
