@@ -144,7 +144,7 @@
                                                 </li>
                                             </ul>
                                             <div class="relative">
-                                                <img class="h-10 w-10" src="http://localhost/Project/TrackMap/resources/views/components/img/white.png">
+                                                <img class="h-10 w-16" src="http://localhost/Project/TrackMap/resources/views/components/img/white.png">
                                             </div>
                                         </div>
                                         <p class="text-gray-800 text-sm mx-3">{{ Auth::user()->name }}</p>
