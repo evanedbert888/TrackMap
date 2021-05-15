@@ -27,10 +27,20 @@ class UserController extends Controller
     }
 
     public function task_pairing() {
-        $companies = DB::table('companies')->get();
-        $employees = DB::table('employees')->get();
-        $businesses = DB::table('companies')->pluck('business');
-        $temps = DB::table('temps')->get();
-        return view('Desktop.task_pairing',["companies"=>$companies,"employees"=>$employees,"businesses"=>$businesses]);
+        $roles = DB::table('roles')->OrderBy('role_name')->get();
+        $businesses = DB::table('businesses')->OrderBy('name')->get();
+        return view('Desktop.task_pairing',["roles"=>$roles,"businesses"=>$businesses]);
+    }
+
+    public function show_employee_by_role($id) {
+        $data = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
+        ->select('users.id','users.name','users.image','employees.role_id')
+        ->where('employees.role_id','=',$id)->orderBy('name')->get();
+        return response()->json($data);
+    }
+
+    public function show_company_by_business($id) {
+        $data = DB::table('companies')->where('business_id','=',$id)->orderBy('company_name')->get();
+        return response()->json($data);
     }
 }
