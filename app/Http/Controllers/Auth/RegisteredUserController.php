@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Register;
+use App\Models\Employee;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
+use phpDocumentor\Reflection\Types\Null_;
 
 class RegisteredUserController extends Controller
 {
@@ -20,9 +23,26 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('auth.check-email');
     }
 
+    public function checkEmail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email|max:255'
+        ]);
+        
+        $email = Register::where('email','=',$request->email)
+                            ->where('status','=','available')->get();
+
+        if(count($email) == 0){
+            echo "<script language='javascript' type='text/javascript'>alert('Email Tidak Ditemukan');  
+                </script>";
+            return view('auth.check-email');
+        }
+        else
+            return view('auth.register', ['email'=>$email]);
+    }
     /**
      * Handle an incoming registration request.
      *
@@ -64,10 +84,10 @@ class RegisteredUserController extends Controller
             'birth_date' => Carbon::create($request->birth_date),
             'address' => $request->address
         ]);
+        
+        $email = Register::where('email', '=',  $request->email)->update(['status' => 'unavailable']);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

@@ -24,7 +24,9 @@
                 <div id="slidebar" class="absolute bg-white shadow h-screen flex-col justify-between transform -translate-x-full z-40 transition duration-500">
                     <div class="px-8">
                         <div class="flex items-center">
-                            <img class="mt-0.5" src="http://localhost/Project/TrackMap/resources/views/components/img/Logo.png">
+                            <a href="{{ route('dashboard') }}" class="navbar-brand">
+                                <img class="mt-0.5" src="http://localhost/Project/TrackMap/resources/views/components/img/Logo.png">
+                            </a>
                         </div>
                         <ul class="mt-8">
                             <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
