@@ -13,6 +13,7 @@
                 </div>
                 <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
                     <form method="POST" action="{{ route('profile_update') }}">
+                        @csrf
                         @method('PATCH')
                         <div class="float-right mr-5 mt-5">
                             <x-savebutton type="submit">
@@ -22,10 +23,10 @@
                         <div>
                             <div class="ml-60 mx-5">
                                 <div>
-                                    <x-editinput id="name"  class="font-bold text-2xl" type="text" value="{{ $details[0]->name }}"/>
+                                    <x-editinput id="name" name="name" class="font-bold text-2xl" type="text" value="{{ $details[0]->name }}"/>
                                 </div>
                                 <div class="text-sm mt-1">
-                                    <x-editinput id="email" type="text" value="{{ $details[0]->email }}"/>
+                                    <x-editinput id="email" name="email" type="text" value="{{ $details[0]->email }}"/>
                                 </div>
                                 {{-- <div class="text-sm">
                                     <h2>{{ $details[0]->motto }}</h2>
@@ -35,22 +36,24 @@
                                 <p class="font-bold text-lg">Detail</p>
                                 <hr class="border border-5 border-black border-solid mb-3">
                                 <table>
-                                    <tr>
+                                    <tr class="mb-4">
                                         <td>Birth Date</td>
                                         <td>:</td>
-                                        <td><x-editinput id="adderss" type="text" value="{{ $details[0]->birth_date }}"/></td>
+                                        <td><x-editinput id="birth_date" name="birth_date" type="date" value="{{ $details[0]->birth_date }}"/></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="mb-4">
                                         <td>Sex</td>
                                         <td>:</td>
-                                        <td><x-editinput id="adderss" type="text" value="{{ $details[0]->sex }}"/></td>
+                                        <td><x-editinput id="sex" name="sex" type="text" value="{{ $details[0]->sex }}"/></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="mb-4">
                                         <td>Address</td>
                                         <td>:</td>
-                                        <td><x-editinput id="adderss" type="text" value="{{ $details[0]->address }}"/></td>
+                                        <td>
+                                            <textarea class="rounded-lg" name="address" id="address" cols="40" rows="2">{{$details[0]->address }}</textarea>
+                                        </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="mb-4">
                                         <td>Join At</td>
                                         <td>:</td>
                                         @php

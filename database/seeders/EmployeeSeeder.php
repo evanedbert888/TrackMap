@@ -18,60 +18,25 @@ class EmployeeSeeder extends Seeder
     {
         DB::table('employees')->insert([
             [
-                'name'=>'Sulaiman',
-                'age'=>28,
-                'birth_date'=>Carbon::create('1993','11','02'),
-                'sex'=>'male',
-                'email'=>'sulaiman132@gmail.com',
-                'role'=>'salesman',
-                'motto'=>'Your Motto',
-                'address'=>'Jl Waru Gg Waru kari No.E6',
-                'password'=>Hash::make('salesmamSulaiman')
+                'user_id' => 3,
+                'role_id' => 2,
             ],
             [
-                'name'=>'Erwin',
-                'age'=>25,
-                'birth_date'=>Carbon::create('1996','06','15'),
-                'sex'=>'male',
-                'email'=>'erwinyanto@gmail.com',
-                'role'=>'courier',
-                'motto'=>'Your Motto',
-                'address'=>'Jl sarimi Gg Karuya No.F1',
-                'password'=>Hash::make('salesmamErwin')
+                'user_id' => 4,
+                'role_id' => 1,
             ],
             [
-                'name'=>'Yeni',
-                'age'=>26,
-                'birth_date'=>Carbon::create('1995','05','12'),
-                'sex'=>'female',
-                'email'=>'yeniyo345@gmail.com',
-                'role'=>'salesman',
-                'motto'=>'Your Motto',
-                'address'=>'Jl sarimi Gg Puncaksari No.A2',
-                'password'=>Hash::make('salesmamYeni')
+                'user_id' => 5,
+                'role_id' => 1,
             ],
             [
-                'name'=>'Hanif',
-                'age'=>25,
-                'birth_date'=>Carbon::create('1996','08','11'),
-                'sex'=>'male',
-                'email'=>'hanifkumal@gmail.com',
-                'role'=>'salesman',
-                'motto'=>'Your Motto',
-                'address'=>'Jl merdeka Gg ratu jaya No.C2',
-                'password'=>Hash::make('salesmamHanif')
+                'user_id' => 6,
+                'role_id' => 2,
             ],
             [
-                'name'=>'William',
-                'age'=>29,
-                'birth_date'=>Carbon::create('1992','11','27'),
-                'sex'=>'male',
-                'email'=>'william777@gmail.com',
-                'role'=>'courier',
-                'motto'=>'Your Motto',
-                'address'=>'Jl pelangi Gg tujuh No.B7',
-                'password'=>Hash::make('salesmamWilliam')
-            ]
+                'user_id' => 7,
+                'role_id' => 1,
+            ],
         ]);
     }
 }

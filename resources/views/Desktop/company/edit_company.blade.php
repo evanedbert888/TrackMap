@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$details[0]->company_name}}
+            {{$details->company_name}}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32 ml-10" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg">
                 </div>
                 <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
-                    <form method="POST" action="{{ route('company_patch',['id'=>$details[0]->id]) }}">
+                    <form method="POST" action="{{ route('company_patch',['id'=>$details->id]) }}">
                         @method('PATCH')
                         @csrf
                         <div class="float-right mr-5">
@@ -23,11 +23,16 @@
                         <div>
                             <div class="ml-60 mx-5">
                                 <div>
-                                    <x-editinput name="company_name" id="company_name" class="font-bold text-2xl" type="text" value="{{ $details[0]->company_name }}"/>
+                                    <x-editinput name="company_name" id="company_name" class="font-bold text-2xl" type="text" value="{{ $details->company_name }}"/>
                                 </div>
-{{--                                <div class="text-sm mt-1">--}}
-{{--                                    <x-editinput name="business" id="business" type="text" value="{{ $details[0]->business }}"/>--}}
-{{--                                </div>--}}
+                                <div class="text-sm mt-1">
+                                    <select class="rounded-lg" name="business" id="business">
+                                        <option value="{{$details->business_id}}">{{$details->business->name}}</option>
+                                        @foreach($businesses as $business)
+                                            <option value={{$business->id}}> {{$business->name}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="mx-5 mt-3">
                                 <p class="font-bold text-xl">Detail</p>
@@ -36,22 +41,22 @@
                                     <tr>
                                         <td>Address</td>
                                         <td>:</td>
-                                        <td><x-editinput name="address" id="address" type="text" value="{{ $details[0]->address }}"/></td>
+                                        <td><x-editinput name="address" id="address" type="text" value="{{ $details->address }}"/></td>
                                     </tr>
                                     <tr>
                                         <td>email</td>
                                         <td>:</td>
-                                        <td><x-editinput name="email" id="email" type="text" value="{{ $details[0]->email }}"/></td>
+                                        <td><x-editinput name="email" id="email" type="text" value="{{ $details->email }}"/></td>
                                     </tr>
                                     <tr>
                                         <td>Coordinate</td>
                                         <td>:</td>
-                                        <td><x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details[0]->latitude }},{{ $details[0]->longitude }}"/></td>
+                                        <td><x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->latitude }},{{ $details->longitude }}"/></td>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td><x-editinput name="description" id="description" type="text" value="{{ $details[0]->description }}"/></td>
+                                        <td><x-editinput name="description" id="description" type="text" value="{{ $details->description }}"/></td>
                                     </tr>
                                 </table>
                             </div>

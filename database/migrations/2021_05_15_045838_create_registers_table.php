@@ -14,9 +14,10 @@ class CreateRegistersTable extends Migration
     public function up()
     {
         Schema::create('registers', function (Blueprint $table) {
-            $table->bigIncrements('register_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->string('email')->unique();
-            $table->string('status');
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

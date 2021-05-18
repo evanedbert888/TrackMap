@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+// Desktop
 Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::get('/EditProfile',[UserController::class,'edit_profile'])->name('edit_profile');
@@ -54,4 +56,21 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
     Route::get('/EmployeeDetail/{id}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
     Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
+
+    // Update Employee
+    Route::get('/EditEmployee/{id}',[EmployeeController::class])->name('edit_employee');
+    Route::patch('/EmployeePatch/{id}',[EmployeeController::class])->name('employee_patch');
+
+    // Email Register
+    Route::get('/EmailRegister',[RegisterController::class,"email_register"])->name('email_register');
+    Route::post('/AddEmail',[RegisterController::class,'add_email'])->name('add_email');
+
+    // Register List
+    Route::get('/RegisterList',[RegisterController::class,'register_list'])->name('register_list');
+    Route::delete('/RegisterDelete',[RegisterController::class,'regsiter_delete'])->name('register_delete');
+});
+
+// Mobile
+Route::prefix('SalesMap')->group(function (){
+
 });

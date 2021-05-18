@@ -79,7 +79,7 @@
                                     <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
                                         <option class="hidden"></option>
                                         @foreach ($roles as $role)
-                                            <option class="bg-gray-200" value="{{ $role->role_id }}">{{ $role->role_name }}</option>
+                                            <option class="bg-gray-200" value="{{ $role->id }}">{{ $role->role_name }}</option>
                                         @endforeach
                                     </select>
                                 </form>
@@ -89,7 +89,7 @@
                                 <select name="business" id="business" class="w-80 block mt-1 rounded-md" onchange="showCompanies()">
                                     <option class="hidden"></option>
                                     @foreach ($businesses as $business)
-                                        <option class="bg-gray-200" value="{{ $business->business_id }}">{{ $business->name }}</option>
+                                        <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -136,13 +136,21 @@
                                             <th class="border border-black border-3"> Action </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="border border-black border-3"></td>
-                                            <td class="border border-black border-3"></td>
-                                            <td class="border border-black border-3"></td>
-                                            <td class="border border-black border-3"></td>
-                                        </tr>
+                                    <tbody class="text-center">
+                                        @foreach($temps as $temp)
+                                            <tr>
+                                                <td class="border border-black border-3">{{$temp->id}}</td>
+                                                <td class="border border-black border-3">{{$temp->employee->user->name}}</td>
+                                                <td class="border border-black border-3">{{$temp->company->company_name}}</td>
+                                                <td class="border border-black border-3">
+                                                    <form action="#" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <x-delbutton>Delete</x-delbutton>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

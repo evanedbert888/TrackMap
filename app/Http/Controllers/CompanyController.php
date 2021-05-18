@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Company;
@@ -39,12 +40,11 @@ class CompanyController extends Controller
     }
 
     public function company_detail($id){
-        $details = DB::table('companies')->where('id','=',$id)->get();
+        $details = Company::find($id);
         return view('Desktop.company.company_detail',['details'=>$details]);
     }
 
     public function company_form() {
-
         return view('Desktop.company.company_form');
     }
 
@@ -54,14 +54,15 @@ class CompanyController extends Controller
     }
 
     public function edit_company($id){
-        $details = DB::table('companies')->where('id','=',$id)->get();
-        return view('Desktop.company.edit_company',['details'=>$details]);
+        $details = Company::find($id);
+        $businesses = Business::all();
+        return view('Desktop.company.edit_company',['details'=>$details,'businesses'=>$businesses]);
     }
 
     public function company_patch($id,Request $request){
         $validateCompany = $request->validate([
            'company_name' => 'required|string|max:255',
-//           'business' => 'required|string|max:30',
+           'business' => 'required',
            'address' => 'required|string|max:300',
            'email' => 'required|string|max:255',
            'coordinate' => 'required',
@@ -75,7 +76,7 @@ class CompanyController extends Controller
         $company = new Company;
         $company->updateById($id, array(
                 "company_name" => $validateCompany['company_name'],
-                //        $company->business = $validateCompany['business'],
+                "business_id" => $validateCompany['business'],
                 "address" => $validateCompany['address'],
                 "email" => $validateCompany['email'],
                 "latitude" => $latitude,

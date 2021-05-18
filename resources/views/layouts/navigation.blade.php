@@ -28,7 +28,7 @@
                         </div>
                         <ul class="mt-8">
                             <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
-                                <div class="flex items-center">                       
+                                <div class="flex items-center">
                                     <div class="hidden sm:flex">
                                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                             {{ __('Dashboard') }}
@@ -43,7 +43,7 @@
                                             <x-slot name="trigger">
                                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                                     <div>{{ 'Company' }}</div>
-                    
+
                                                     <div class="ml-1">
                                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -51,10 +51,10 @@
                                                     </div>
                                                 </button>
                                             </x-slot>
-                    
+
                                             <x-slot name="content">
                                                 <x-dropdown-link :href="route('company_list')">
-                                                    {{ __('List') }}
+                                                    {{ __('Company List') }}
                                                 </x-dropdown-link>
                                                 <x-dropdown-link :href="route('company_form')">
                                                     {{ __('Add Company') }}
@@ -66,10 +66,32 @@
                             </li>
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
-                                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                                        <x-nav-link :href="route('employee_list')" :active="request()->routeIs('employee_list')">
-                                            {{ __('Employee') }}
-                                        </x-nav-link>
+                                    <div class="hidden sm:flex sm:items-center">
+                                        <x-dropdown width="48">
+                                            <x-slot name="trigger">
+                                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                                    <div>{{ 'Employee' }}</div>
+
+                                                    <div class="ml-1">
+                                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                </button>
+                                            </x-slot>
+
+                                            <x-slot name="content">
+                                                <x-dropdown-link :href="route('employee_list')">
+                                                    {{ __('Employee List') }}
+                                                </x-dropdown-link>
+                                                <x-dropdown-link :href="route('email_register')">
+                                                    {{ __('Email Register') }}
+                                                </x-dropdown-link>
+                                                <x-dropdown-link :href="route('register_list')">
+                                                    {{ __('Register List') }}
+                                                </x-dropdown-link>
+                                            </x-slot>
+                                        </x-dropdown>
                                     </div>
                                 </div>
                             </li>
@@ -104,7 +126,7 @@
                                 {{ $header }}
                             </div>
                             <div class="w-1/2 hidden lg:flex px-8">
-                                <div class="w-full flex items-center justify-end">                            
+                                <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">
                                             <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 hidden">
@@ -121,7 +143,7 @@
                                                                         <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                                                                     </svg>
                                                                     <span class="text-sm ml-2">My Profile</span>
-                                                                </div>         
+                                                                </div>
                                                         </x-dropdown-link>
                                                     </form>
                                                 </li>
@@ -138,7 +160,7 @@
                                                                     <path d="M7 12h14l-3 -3m0 6l3 -3" />
                                                                 </svg>
                                                                 <span class="text-sm ml-2">Sign out</span>
-                                                            </div>            
+                                                            </div>
                                                         </x-dropdown-link>
                                                     </form>
                                                 </li>

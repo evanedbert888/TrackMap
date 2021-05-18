@@ -11,4 +11,8 @@ class Goal extends Model
     protected $fillable = [
         'company_id', 'employee_id', 'latitude', 'longitude'
     ];
+
+    public function company() {
+        return $this->belongsTo(Company::class,'company_id','id');
+    }
 }

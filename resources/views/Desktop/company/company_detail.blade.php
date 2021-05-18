@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$details[0]->company_name}}
+            {{$details->company_name}}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32 ml-10" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg">
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
-                    <a class="float-right mr-5" href="{{ route('edit_company',['id'=>$details[0]->id]) }}">
+                    <a class="float-right mr-5" href="{{ route('edit_company',['id'=>$details->id]) }}">
                         <x-button type="submit">
                             edit
                         </x-button>
@@ -20,10 +20,10 @@
                     <div>
                         <div class="ml-60 mx-5 mt-6">
                             <div>
-                                <h6 class="font-bold text-2xl">{{ $details[0]->company_name }}</h6>
+                                <h6 class="font-bold text-2xl">{{ $details->company_name }}</h6>
                             </div>
                             <div class="text-sm">
-                                <h2>{{ $details[0]->email }}</h2>
+                                <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
                         <div class="mx-5 mt-3">
@@ -32,11 +32,15 @@
                             <table class="mt-3">
                                 <tr>
                                     <td>Address</td>
-                                    <td>{{ __(": ").$details[0]->address }}</td>
+                                    <td>{{ __(": ").$details->address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Business</td>
+                                    <td>{{ __(": ").$details->business->name }}</td>
                                 </tr>
                                 <tr>
                                     <td>Description</td>
-                                    <td>{{ __(": ").$details[0]->description }}</td>
+                                    <td>{{ __(": ").$details->description }}</td>
                                 </tr>
                             </table>
                         </div>

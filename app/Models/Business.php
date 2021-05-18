@@ -11,4 +11,8 @@ class Business extends Model
     protected $fillable = [
         'business_name'
     ];
+
+    public function company() {
+        return $this->belongsTo(Company::class,'id','business_id');
+    }
 }

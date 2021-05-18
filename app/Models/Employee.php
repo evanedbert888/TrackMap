@@ -9,6 +9,18 @@ class Employee extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'age', 'birth_date', 'sex', 'email', 'role', 'motto' ,'address', 'password'
+        'user_id', 'role_id', 'motto'
     ];
+
+    public function role() {
+        return $this->hasOne(Role::class,'role_id','role_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function temps() {
+        return $this->hasMany(Temp::class, 'employee_id', 'id');
+    }
 }

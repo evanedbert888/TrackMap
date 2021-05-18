@@ -18,4 +18,16 @@ class Company extends Model
     {
         return DB::table('companies')->where('id', '=', $id)->update($data);
     }
+
+    public function business() {
+        return $this->hasOne(Business::class,'id','business_id');
+    }
+
+    public function goals() {
+        return $this->hasMany(Goal::class,'company_id','id');
+    }
+
+    public function temps() {
+        return $this->hasMany(Temp::class,'company_id','id');
+    }
 }

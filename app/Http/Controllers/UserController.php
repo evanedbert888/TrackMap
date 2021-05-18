@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\Temp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
@@ -22,14 +24,47 @@ class UserController extends Controller
         return view('Desktop.edit_profile',['details'=>$details]);
     }
 
-    public function profile_update() {
+    public function profile_update(Request $request) {
+        $id = Auth::id();
+        $validateProfile = $request->validate([
+           'name' => 'required|string|max:255',
+           'email' => 'required|string|max:255',
+           'sex' => 'required',
+           'birth_date' => 'required',
+           'address' => 'required|max:300|string'
+        ]);
 
+        $birth_year = date("Y",strtotime($request->birth_date));
+        $curr_year = date("Y",strtotime("now"));
+        $age = $curr_year - $birth_year;
+
+        $birth_month = date("M",strtotime($request->birth_date));
+        $birth_day = date("D",strtotime($request->birth_date));
+
+        $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
+        $now_date = strtotime("now");
+        if ($now_date < $this_date) {
+            $age = $age - 1;
+        }
+
+        $user = new User();
+        $user->updateById($id, array(
+            "name" => $validateProfile['name'],
+            "email" => $validateProfile['email'],
+            'age' => $age,
+            'sex' => $validateProfile['sex'],
+            'birth_date' => Carbon::create($request->birth_date),
+            'address' => $validateProfile['address']
+        ));
+
+        return redirect()->route('profile');
     }
 
     public function task_pairing() {
         $roles = DB::table('roles')->OrderBy('role_name')->get();
         $businesses = DB::table('businesses')->OrderBy('name')->get();
-        return view('Desktop.task_pairing',["roles"=>$roles,"businesses"=>$businesses]);
+        $temps = Temp::all();
+        return view('Desktop.task_pairing',["roles"=>$roles,"businesses"=>$businesses,"temps"=>$temps]);
     }
 
     public function show_employee_by_role($id) {
