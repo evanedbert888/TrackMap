@@ -13,17 +13,17 @@
             @csrf
 
             <!-- Email Address -->
-            <div class="mt-2">
+            <div class="mt-2 hidden">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $email[0]->email }}" required />
             </div>
 
             <!-- Name -->
             <div  class="mt-4">
                 <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
             <!-- Birth Date -->
