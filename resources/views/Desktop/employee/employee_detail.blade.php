@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $details[0]->name.__(" Detail") }}
+            {{ $details->user->name.__(" Detail") }}
         </h2>
     </x-slot>
 
@@ -12,16 +12,21 @@
                     <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32 ml-10" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
+                    <a class="float-right mr-5" href="{{route('edit_employee',['id'=>$details->id])}}">
+                        <x-button type="submit">
+                            edit
+                        </x-button>
+                    </a>
                     <div>
                         <div class="ml-60 mx-5">
                             <div>
-                                <h6 class="font-bold text-2xl">{{ $details[0]->name }}</h6>
+                                <h6 class="font-bold text-2xl">{{ $details->user->name }}</h6>
                             </div>
                             <div class="text-md">
-                                <h2>{{ $details[0]->motto }}</h2>
+                                <h2>{{ $details->motto }}</h2>
                             </div>
                             <div class="text-sm">
-                                <h2>{{ $details[0]->email }}</h2>
+                                <h2>{{ $details->user->email }}</h2>
                             </div>
                         </div>
                         <div class="mx-5 mt-3">
@@ -30,15 +35,15 @@
                             <table class="mt-3">
                                 <tr>
                                     <td>Birth Date</td>
-                                    <td>{{ __(": ").$details[0]->birth_date }}</td>
+                                    <td>{{ __(": ").$details->user->birth_date }}</td>
                                 </tr>
                                 <tr>
                                     <td>Sex</td>
-                                    <td>{{ __(": ").$details[0]->sex }}</td>                                
+                                    <td>{{ __(": ").$details->user->sex }}</td>
                                 </tr>
                                 <tr>
                                     <td>Address</td>
-                                    <td>{{ __(": ").$details[0]->address }}</td>
+                                    <td>{{ __(": ").$details->user->address }}</td>
                                 </tr>
                             </table>
                         </div>

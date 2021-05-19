@@ -15,10 +15,11 @@ class CreateGoalsTable extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('employee_id');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->unsignedBigInteger('company_id');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('status')->default('unfinished');
             $table->timestamps();
         });
     }

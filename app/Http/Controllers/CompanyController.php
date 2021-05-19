@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Company;
 use Illuminate\Support\Facades\Http;
@@ -35,13 +36,21 @@ class CompanyController extends Controller
     }
 
     public function company_list(){
-        $lists = DB::table('companies')->orderBy('id','desc')->paginate(5);
-        return view('Desktop.company.company_list',['lists'=>$lists]);
+        $lists = Company::query()->orderBy('id','desc')->paginate(5);
+        if (Auth::user()->role == 'admin') {
+            return view('Desktop.company.company_list',['lists'=>$lists]);
+        } else {
+            return view('Mobile.company.destination_list',['lists'=>$lists]);
+        }
     }
 
     public function company_detail($id){
         $details = Company::find($id);
-        return view('Desktop.company.company_detail',['details'=>$details]);
+        if (Auth::user()->role == 'admin') {
+            return view('Desktop.company.company_detail',['details'=>$details]);
+        } else {
+            return view('Mobile.company.destination_detail',['details'=>$details]);
+        }
     }
 
     public function company_form() {

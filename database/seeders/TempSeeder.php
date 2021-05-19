@@ -39,6 +39,16 @@ class TempSeeder extends Seeder
                'user_id' => 2,
                'employee_id' => 5,
                'company_id' => 13
+           ],
+           [
+               'user_id' => 1,
+               'employee_id' => 3,
+               'company_id' => 8
+           ],
+           [
+               'user_id' => 2,
+               'employee_id' => 1,
+               'company_id' => 11
            ]
         ]);
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Employee extends Model
 {
@@ -11,6 +12,11 @@ class Employee extends Model
     protected $fillable = [
         'user_id', 'role_id', 'motto'
     ];
+
+    public function updateById($id, $data = array())
+    {
+        return DB::table('employees')->where('id', '=', $id)->update($data);
+    }
 
     public function role() {
         return $this->hasOne(Role::class,'role_id','role_id');
@@ -23,4 +29,10 @@ class Employee extends Model
     public function temps() {
         return $this->hasMany(Temp::class, 'employee_id', 'id');
     }
+
+    public function goals() {
+        return $this->hasMany(Goal::class, 'employee_id', 'id');
+    }
+
+
 }

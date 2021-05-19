@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'Sulaiman',
                 'email'=>'sulaiman132@gmail.com',
-                'password'=>Hash::make('salesmamSulaiman'),
+                'password'=>Hash::make('salesmanSulaiman'),
                 'age'=>28,
                 'sex'=>'male',
                 'role'=>'employee',
@@ -50,7 +50,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'Erwin',
                 'email'=>'erwinyanto@gmail.com',
-                'password'=>Hash::make('salesmamErwin'),
+                'password'=>Hash::make('salesmanErwin'),
                 'age'=>25,
                 'sex'=>'male',
                 'role'=>'employee',
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'Yeni',
                 'email'=>'yeniyo345@gmail.com',
-                'password'=>Hash::make('salesmamYeni'),
+                'password'=>Hash::make('salesmanYeni'),
                 'age'=>26,
                 'sex'=>'female',
                 'role'=>'employee',
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'Hanif',
                 'email'=>'hanifkumal@gmail.com',
-                'password'=>Hash::make('salesmamHanif'),
+                'password'=>Hash::make('salesmanHanif'),
                 'age'=>25,
                 'sex'=>'male',
                 'role'=>'employee',
@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
             [
                 'name'=>'William',
                 'email'=>'william777@gmail.com',
-                'password'=>Hash::make('salesmamWilliam'),
+                'password'=>Hash::make('salesmanWilliam'),
                 'age'=>29,
                 'sex'=>'male',
                 'role'=>'employee',

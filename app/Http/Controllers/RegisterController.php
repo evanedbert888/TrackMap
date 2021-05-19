@@ -30,4 +30,9 @@ class RegisterController extends Controller
         $registers = Register::query()->paginate(10);
         return view('Desktop.register_list',['registers'=>$registers]);
     }
+
+//    public function register_delete($id) {
+//        Register::destroy($id);
+//        return redirect()->route('register_list');
+//    }
 }

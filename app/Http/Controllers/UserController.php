@@ -59,23 +59,4 @@ class UserController extends Controller
 
         return redirect()->route('profile');
     }
-
-    public function task_pairing() {
-        $roles = DB::table('roles')->OrderBy('role_name')->get();
-        $businesses = DB::table('businesses')->OrderBy('name')->get();
-        $temps = Temp::all();
-        return view('Desktop.task_pairing',["roles"=>$roles,"businesses"=>$businesses,"temps"=>$temps]);
-    }
-
-    public function show_employee_by_role($id) {
-        $data = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
-        ->select('users.id','users.name','users.image','employees.role_id')
-        ->where('employees.role_id','=',$id)->orderBy('name')->get();
-        return response()->json($data);
-    }
-
-    public function show_company_by_business($id) {
-        $data = DB::table('companies')->where('business_id','=',$id)->orderBy('company_name')->get();
-        return response()->json($data);
-    }
 }

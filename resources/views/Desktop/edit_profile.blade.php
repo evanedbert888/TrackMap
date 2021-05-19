@@ -36,24 +36,24 @@
                                 <p class="font-bold text-lg">Detail</p>
                                 <hr class="border border-5 border-black border-solid mb-3">
                                 <table>
-                                    <tr class="mb-4">
+                                    <tr>
                                         <td>Birth Date</td>
                                         <td>:</td>
                                         <td><x-editinput id="birth_date" name="birth_date" type="date" value="{{ $details[0]->birth_date }}"/></td>
                                     </tr>
-                                    <tr class="mb-4">
+                                    <tr>
                                         <td>Sex</td>
                                         <td>:</td>
                                         <td><x-editinput id="sex" name="sex" type="text" value="{{ $details[0]->sex }}"/></td>
                                     </tr>
-                                    <tr class="mb-4">
+                                    <tr>
                                         <td>Address</td>
                                         <td>:</td>
                                         <td>
                                             <textarea class="rounded-lg" name="address" id="address" cols="40" rows="2">{{$details[0]->address }}</textarea>
                                         </td>
                                     </tr>
-                                    <tr class="mb-4">
+                                    <tr>
                                         <td>Join At</td>
                                         <td>:</td>
                                         @php

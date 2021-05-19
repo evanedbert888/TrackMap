@@ -129,35 +129,42 @@
                             <div class="flex mx-auto justify-center">
                                 <table class="w-full table-auto border-separate border border-black border-3">
                                     <thead>
-                                        <tr class="text-center text-base">
-                                            <th class="border border-black border-3"> No </th>
-                                            <th class="border border-black border-3"> Employee </th>
-                                            <th class="border border-black border-3"> Company </th>
-                                            <th class="border border-black border-3"> Action </th>
-                                        </tr>
+                                    <tr class="text-center text-base">
+                                        <th class="border border-black border-3"> No </th>
+                                        <th class="border border-black border-3"> Employee </th>
+                                        <th class="border border-black border-3"> Company </th>
+                                        <th class="border border-black border-3"> Action </th>
+                                    </tr>
                                     </thead>
                                     <tbody class="text-center">
-                                        @foreach($temps as $temp)
-                                            <tr>
+                                    @foreach($temps as $temp)
+                                        <tr>
                                                 <td class="border border-black border-3">{{$temp->id}}</td>
-                                                <td class="border border-black border-3">{{$temp->employee->user->name}}</td>
-                                                <td class="border border-black border-3">{{$temp->company->company_name}}</td>
                                                 <td class="border border-black border-3">
-                                                    <form action="#" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <x-delbutton>Delete</x-delbutton>
-                                                    </form>
+                                                    {{$temp->employee->user->name}}
                                                 </td>
-                                            </tr>
-                                        @endforeach
+                                                <td class="border border-black border-3">
+                                                    {{$temp->company->company_name}}
+                                                </td>
+                                            <td class="border border-black border-3">
+                                                <form action="{{route('temp_delete',['id'=>$temp->id])}}" method="POST">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <x-delbutton>Delete</x-delbutton>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            {{-- <div class="mt-0 ml-auto mr-20">
-                                <x-button>
-                                    {{__("Save")}}
-                                </x-button> --}}
+                            <div class="mt-2 ml-0 mr-32">
+                                <form action="{{route('task_insert')}}" method="POST">
+                                    @csrf
+                                    <x-button id="save">
+                                        {{__("Save")}}
+                                    </x-button>
+                                </form>
                             </div>
                         </div>
                     </div>
