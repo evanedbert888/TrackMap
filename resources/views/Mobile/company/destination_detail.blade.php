@@ -18,6 +18,7 @@
                         <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
                         <x-editinput type="hidden" name="latitude" id="latitude" value="{{$details->latitude}}"/>
                         <x-editinput type="hidden" name="longitude" id="longitude" value="{{$details->longitude}}"/>
+                        <x-editinput type="hidden" name="status" id="status" value="finished"/>
                         <div class="float-right mr-5">
                             <x-button type="submit">
                                 Check-In
