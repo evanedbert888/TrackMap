@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Models\User;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,11 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
 
     // Task Pairing
-    Route::get('/TaskPairing',[UserController::class, 'task_pairing'])->name('task_pairing');
-    Route::get('/TaskPairingShowEmployees/{id?}',[UserController::class,'show_employee_by_role'])->name('show_employees');
-    Route::get('/TaskPairingShowCompanies/{id?}',[UserController::class,'show_company_by_business'])->name('show_companies');
+    Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
+    Route::get('/TaskPairingShowEmployees/{id?}',[TaskController::class,'show_employee_by_role'])->name('show_employees');
+    Route::get('/TaskPairingShowCompanies/{id?}',[TaskController::class,'show_company_by_business'])->name('show_companies');
+    Route::delete('TaskDelete/{id}',[TaskController::class,'temp_delete'])->name('temp_delete');
+    Route::post('/TaskInsert',[TaskController::class,'goals_insert'])->name('task_insert');
 
     // Company
     Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');

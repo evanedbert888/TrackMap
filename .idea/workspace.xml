@@ -21,21 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Goal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Goal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_28_033256_create_goals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_28_033256_create_goals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/GoalSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/GoalSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/TempSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/TempSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -233,7 +219,7 @@
       <workItem from="1621301369462" duration="4801000" />
       <workItem from="1621326701616" duration="6289000" />
       <workItem from="1621341068041" duration="6240000" />
-      <workItem from="1621392409567" duration="18115000" />
+      <workItem from="1621392409567" duration="19145000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -242,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621331100593</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="merge conflicts">
+      <created>1621412830078</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621412830078</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +255,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="new updates" />
+    <MESSAGE value="merge conflicts" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge conflicts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621395038020">
@@ -281,10 +275,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1621046579380" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1621330526583">
+    <state x="147" y="65" key="MergeDialog" timestamp="1621412807181">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621330526582" />
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621412807181" />
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1621412811724">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621412811724" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1620103422665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
