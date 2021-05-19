@@ -6,6 +6,8 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
     Route::get('/EditProfile',[UserController::class,'edit_profile'])->name('edit_profile');
     Route::patch('/ProfileUpdate',[UserController::class,'profile_update'])->name('profile_update');
+
+    // User
+    Route::get('/User', [UserController::class, 'show_user'])->name('show_user');
+    Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
 
     // Task Pairing
     Route::get('/TaskPairing',[UserController::class, 'task_pairing'])->name('task_pairing');

@@ -78,4 +78,13 @@ class UserController extends Controller
         $data = DB::table('companies')->where('business_id','=',$id)->orderBy('company_name')->get();
         return response()->json($data);
     }
+
+    public function show_user() {
+        $uvdusers = DB::table('users')->where('status','=','Unverified')->orderBy('created_at')->get();
+        $vdusers = DB::table('users')->where('status','=','Verified')->orderBy('updated_at')->get();
+        return view('Desktop.user_verify', ["uvdusers"=>$uvdusers, "vdusers"=>$vdusers]);
+    }
+
+    public function user_verify() {
+    }
 }

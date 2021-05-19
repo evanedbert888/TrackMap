@@ -25,7 +25,7 @@
                     <div class="px-8">
                         <div class="flex items-center">
                             <a href="{{ route('dashboard') }}" class="navbar-brand">
-                                <img class="mt-0.5" src="http://localhost/Project/TrackMap/resources/views/components/img/Logo.png">
+                                <x-application-logo />
                             </a>
                         </div>
                         <ul class="mt-8">
@@ -34,6 +34,15 @@
                                     <div class="hidden sm:flex">
                                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                             {{ __('Dashboard') }}
+                                        </x-nav-link>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
+                                <div class="flex items-center">
+                                    <div class="hidden sm:flex">
+                                        <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
+                                            {{ __('User') }}
                                         </x-nav-link>
                                     </div>
                                 </div>
