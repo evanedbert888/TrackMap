@@ -59,4 +59,13 @@ class UserController extends Controller
 
         return redirect()->route('profile');
     }
+
+    // User Manage
+    public function show_user() {
+        $uvdusers = DB::table('users')->where('status','=','Unverified')
+                    ->orderBy('created_at')->get();
+        $vdusers = DB::table('users')->where('status','=','Verified')
+                    ->orderBy('updated_at')->get();
+        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers]);
+    }
 }

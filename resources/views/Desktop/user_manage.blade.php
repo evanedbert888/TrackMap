@@ -20,23 +20,6 @@
             // })
         }
 
-        // function setUserToTable(user){
-        //     var data = ""
-        //     $.each(user, function(key, value){
-        //         data = data + "<tr"
-        //         <tr class="bg-yellow-100">
-        //         <td>
-        //             <input id="remember_me" type="checkbox" class="rounded border-black text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="verify">
-        //         </td>
-        //         <td>Budi</td>
-        //         <td>12 November 2000</td>
-        //         <td>Male</td>
-        //         <td>Jalan Kebangsaan</td>
-        //         <td>budi@gmail.com</td>
-        //         </tr>
-        //     })
-        //     $('#unverified').html(data);
-        // }
     </script>
 
     <div class="py-8">
