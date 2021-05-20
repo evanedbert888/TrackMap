@@ -46,8 +46,10 @@ class TaskController extends Controller
         return redirect()->route('task_pairing');
     }
 
-    public function history($id) {
-        $histories = Goal::query()->where('status','=','finished')->where('employee_id','=',$id);
+    public function history() {
+        $user_id = Auth::user()->id;
+        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+        $histories = Goal::query()->where('status','=','finished')->where('employee_id','=',$employee_id);
     }
 
     public function temp_delete($id) {
