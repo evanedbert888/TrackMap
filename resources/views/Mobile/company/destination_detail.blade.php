@@ -12,19 +12,22 @@
                     <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32 ml-10" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg">
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
-                    <form action="" method="POST">
-                        @method('PATCH')
-                        @csrf
-                        <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
-                        <x-editinput type="hidden" name="latitude" id="latitude" value="{{$details->latitude}}"/>
-                        <x-editinput type="hidden" name="longitude" id="longitude" value="{{$details->longitude}}"/>
-                        <x-editinput type="hidden" name="status" id="status" value="finished"/>
-                        <div class="float-right mr-5">
-                            <x-button type="submit">
-                                Check-In
-                            </x-button>
-                        </div>
-                    </form>
+                    @if($count == 0)
+
+                    @elseif($count == 1)
+                        <form action="{{route('task_patch')}}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
+                            <x-editinput type="hidden" name="latitude" id="latitude" value="{{$details->latitude}}"/>
+                            <x-editinput type="hidden" name="longitude" id="longitude" value="{{$details->longitude}}"/>
+                            <div class="float-right mr-5">
+                                <x-button type="submit">
+                                    Check-In
+                                </x-button>
+                            </div>
+                        </form>
+                    @endif
                     <div>
                         <div class="ml-60 mx-5 mt-6">
                             <div>

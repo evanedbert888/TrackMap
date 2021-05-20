@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Business;
+use App\Models\Employee;
+use App\Models\Goal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -49,7 +51,13 @@ class CompanyController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('Desktop.company.company_detail',['details'=>$details]);
         } else {
-            return view('Mobile.company.destination_detail',['details'=>$details]);
+            $user_id = Auth::user()->id;
+            $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+            $count = Goal::query()->where('employee_id','=',$employee_id)
+                ->where('company_id','=',$id)
+                ->where('status','=','unfinished')
+                ->count();
+            return view('Mobile.company.destination_detail',['details'=>$details,'count'=>$count]);
         }
     }
 

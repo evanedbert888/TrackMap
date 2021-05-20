@@ -19,7 +19,11 @@ class EmployeeController extends Controller
 
     public function employee_detail($id){
         $details = Employee::query()->find($id);
-        return view('Desktop.employee.employee_detail',['details'=>$details]);
+        if (Auth::user()->role == 'admin') {
+            return view('Desktop.employee.employee_detail',['details'=>$details]);
+        } else {
+            return view('Mobile.employee_profile',['details'=>$details]);
+        }
     }
 
     public function edit_employee($id){

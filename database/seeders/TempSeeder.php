@@ -49,7 +49,22 @@ class TempSeeder extends Seeder
                'user_id' => 2,
                'employee_id' => 1,
                'company_id' => 11
-           ]
+           ],
+           [
+               'user_id' => 2,
+               'employee_id' => 1,
+               'company_id' => 2
+           ],
+           [
+               'user_id' => 2,
+               'employee_id' => 2,
+               'company_id' => 5
+           ],
+           [
+               'user_id' => 2,
+               'employee_id' => 4,
+               'company_id' => 14
+           ],
         ]);
     }
 }

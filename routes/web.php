@@ -81,9 +81,17 @@ Route::prefix('/SalesMap')->group(function() {
 
 // Mobile
 Route::prefix('/SalesMap')->group(function (){
+    // Destination
     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('destination_list');
     Route::get('/DestinationDetail/{id}',[CompanyController::class,'company_detail'])->name('destination_detail');
+
+    // Task
     Route::get('/TaskList',[TaskController::class,'task_list'])->name('task_list');
     Route::patch('/TaskPatch',[TaskController::class,'task_checkIn'])->name('task_patch');
-    Route::get('/History',[TaskController::class,'history'])
+
+    // History
+    Route::get('/History',[TaskController::class,'history'])->name('history');
+
+    // Employee Profile
+    Route::get('/EmployeeProfile',[EmployeeController::class,'employee_detail'])->name('employee_profile');
 });

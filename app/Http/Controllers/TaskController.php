@@ -49,7 +49,10 @@ class TaskController extends Controller
     public function history() {
         $user_id = Auth::user()->id;
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $histories = Goal::query()->where('status','=','finished')->where('employee_id','=',$employee_id);
+        $histories = Goal::query()->where('status','=','finished')
+            ->where('employee_id','=',$employee_id)
+            ->paginate(5);
+        return view('Mobile.company.goal_history',['histories'=>$histories]);
     }
 
     public function temp_delete($id) {
@@ -60,11 +63,28 @@ class TaskController extends Controller
     public function task_list() {
         $user_id = Auth::user()->id;
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $goals = Goal::query()->where('employee_id','=',$employee_id)->paginate(5);
+        $goals = Goal::query()->where('employee_id','=',$employee_id)
+            ->where('status','=','unfinished')
+            ->paginate(5);
         return view('Mobile.company.task_list',['goals'=>$goals]);
     }
 
     public function task_checkIn(Request $request) {
-        dump($request);
+        $user_id = Auth::user()->id;
+        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+        $goal_id = Goal::query()->where('employee_id','=',$employee_id)
+            ->where('company_id','=',$request->id)
+            ->where('status','=','unfinished')
+            ->pluck('id');
+
+        $goal = new Goal();
+        $goal->updateById($goal_id, array(
+           "latitude" => $request->latitude,
+           "longitude" => $request->longitude,
+           "status" => 'finished',
+           "updated_at" => date(now()),
+        ));
+
+        return redirect()->route('task_list');
     }
 }
