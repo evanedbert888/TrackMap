@@ -6,6 +6,9 @@ use App\Models\Company;
 use App\Models\Employee;
 use App\Models\Goal;
 use App\Models\Temp;
+use App\Models\User;
+use Dotenv\Validator;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +32,21 @@ class TaskController extends Controller
     public function show_company_by_business($id) {
         $data = DB::table('companies')->where('business_id','=',$id)->orderBy('company_name')->get();
         return response()->json($data);
+    }
+
+    public function store_task(Request $request) {
+        $validateTask = Validator::make($request->all(), [
+            'employee' => 'required',
+            'company' => 'required',
+        ]);
+        $temp = new Temp;
+        $user_id = Auth::user()->id;
+        $temp->user_id = $user_id;
+        $temp->employee_id = $validateTask['employee'];
+        $temp->company_id = $validateTask['company'];
+        $temp->save();
+
+        return response()->json(['success'=>'Added new records.']);
     }
 
     public function goals_insert() {
