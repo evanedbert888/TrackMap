@@ -38,23 +38,28 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
-                                <div class="flex items-center">
-                                    <div class="hidden sm:flex">
-                                        <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
-                                            {{ __('User') }}
-                                        </x-nav-link>
+                            @if(Auth::user()->role == 'admin')
+                                <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
+                                    <div class="flex items-center">
+                                        <div class="hidden sm:flex">
+                                            <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
+                                                {{ __('User') }}
+                                            </x-nav-link>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endif
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
                                     <div class="hidden sm:flex sm:items-center">
                                         <x-dropdown width="48">
                                             <x-slot name="trigger">
                                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                                    <div>{{ 'Company' }}</div>
-
+                                                    @if(Auth::user()->role == 'admin')
+                                                        <div>{{ 'Company' }}</div>
+                                                    @elseif(Auth::user()->role == 'employee')
+                                                        <div>{{ 'Destination' }}</div>
+                                                    @endif
                                                     <div class="ml-1">
                                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -65,56 +70,79 @@
 
                                             <x-slot name="content">
                                                 <x-dropdown-link :href="route('company_list')">
-                                                    {{ __('Company List') }}
+                                                    @if(Auth::user()->role == 'admin')
+                                                        {{ __('Company List') }}
+                                                    @elseif(Auth::user()->role == 'employee')
+                                                        {{ __('Destination List') }}
+                                                    @endif
                                                 </x-dropdown-link>
-                                                <x-dropdown-link :href="route('company_form')">
-                                                    {{ __('Add Company') }}
-                                                </x-dropdown-link>
+                                                @if(Auth::user()->role == 'admin')
+                                                    <x-dropdown-link :href="route('company_form')">
+                                                        {{ __('Add Company') }}
+                                                    </x-dropdown-link>
+                                                @elseif(Auth::user()->role == 'employee')
+                                                    <x-dropdown-link :href="route('task_list')">
+                                                        {{ __('Task List') }}
+                                                    </x-dropdown-link>
+                                                @endif
                                             </x-slot>
                                         </x-dropdown>
                                     </div>
                                 </div>
                             </li>
-                            <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                                <div class="flex items-center">
-                                    <div class="hidden sm:flex sm:items-center">
-                                        <x-dropdown width="48">
-                                            <x-slot name="trigger">
-                                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                                    <div>{{ 'Employee' }}</div>
 
-                                                    <div class="ml-1">
-                                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                        </svg>
-                                                    </div>
-                                                </button>
-                                            </x-slot>
+                            @if(Auth::user()->role == 'admin')
+                                <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
+                                    <div class="flex items-center">
+                                        <div class="hidden sm:flex sm:items-center">
+                                            <x-dropdown width="48">
+                                                <x-slot name="trigger">
+                                                    <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                                        <div>{{ 'Employee' }}</div>
 
-                                            <x-slot name="content">
-                                                <x-dropdown-link :href="route('employee_list')">
-                                                    {{ __('Employee List') }}
-                                                </x-dropdown-link>
-                                                <x-dropdown-link :href="route('email_register')">
-                                                    {{ __('Email Register') }}
-                                                </x-dropdown-link>
-                                                <x-dropdown-link :href="route('register_list')">
-                                                    {{ __('Register List') }}
-                                                </x-dropdown-link>
-                                            </x-slot>
-                                        </x-dropdown>
+                                                        <div class="ml-1">
+                                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                </x-slot>
+
+                                                <x-slot name="content">
+                                                    <x-dropdown-link :href="route('employee_list')">
+                                                        {{ __('Employee List') }}
+                                                    </x-dropdown-link>
+                                                    <x-dropdown-link :href="route('email_register')">
+                                                        {{ __('Email Register') }}
+                                                    </x-dropdown-link>
+                                                    <x-dropdown-link :href="route('register_list')">
+                                                        {{ __('Register List') }}
+                                                    </x-dropdown-link>
+                                                </x-slot>
+                                            </x-dropdown>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
-                                <div class="flex items-center">
-                                    <div class="hidden space-x-8 sm:-my-px sm:flex">
-                                        <x-nav-link :href="route('task_pairing')" :active="request()->routeIs('task_pairing')">
-                                            {{ __('Task') }}
-                                        </x-nav-link>
+                                </li>
+                                <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
+                                    <div class="flex items-center">
+                                        <div class="hidden space-x-8 sm:-my-px sm:flex">
+                                            <x-nav-link :href="route('task_pairing')" :active="request()->routeIs('task_pairing')">
+                                                {{ __('Task') }}
+                                            </x-nav-link>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @elseif(Auth::user()->role == 'employee')
+                                <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
+                                    <div class="flex items-center">
+                                        <div class="hidden space-x-8 sm:-my-px sm:flex">
+                                            <x-nav-link :href="route('history')" :active="request()->routeIs('history')">
+                                                {{ __('History') }}
+                                            </x-nav-link>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
