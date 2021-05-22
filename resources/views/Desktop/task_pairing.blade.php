@@ -84,26 +84,47 @@
             document.getElementById('companyName').textContent = splitedCompany[1];
             checkToEnableAddButton();
         }
+
+        function addNewColumn(task) { // add table !error
+            var i = 0;
+            var data = ""
+            $.each(task, function(key, value){
+                data = data + "<tr>";
+                data = data + "<td class='border border-black border-3'>"+(i+1)+"</td>";
+                data = data + "<td class='border border-black border-3'>{{$temps['+i+'']->employee->user->name}}</td>";
+                data = data + "<td class='border border-black border-3'>{{$temps["+i+"]->company->company_name}}</td>";
+                data = data + "<td class='border border-black border-3'><form action='{{route('temp_delete',['id'=>$temps["+i+"]->id])}}' method='POST'>@method('DELETE')@csrf<x-delbutton>Delete</x-delbutton></form></td>";
+                data = data + "</tr>";
+                i++;
+            })
+            $('#tableTask').html(data);
+        }
         
-        // function storeTask(employee, company) {
-        //     var _token = $("input[name='_token']").val();
-        //     var employee = employee;
-        //     var company = company;
-        //     $.ajax({
-        //         url:'{{ route('store_task') }},
-        //         type:"POST",
-        //         data: {_token:_token, employee:employee, company:company},
-        //         success:function(data){
-        //             console.log(msg.success);
-        //             $('.alert-block').css('display','block').append('<strong>'+msg.success+'</strong>');
-        //         },
-        //         error:function(err){
-        //             $.each(err, function(key, value) {
-        //                 console.log('.'+key+'_err'+value);
-        //             })
-        //         }
-        //     })
-        // }
+        function showTask() {
+            $.ajax({
+                url:'{{ route('show_task') }}',
+                method:'get',
+                success:function(data){
+                    addNewColumn(data);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+        function storeTask(employee, company) {
+            $.ajax({
+                url:'{{ route('store_task') }}'+'/'+employee+'/'+company,
+                method:"get",
+                success:function(data){
+                    showTask();
+                },
+                error:function(err){
+                    console.log(employee+','+company);
+                }
+            })
+        }
 
         function addTask() {
             var employee = document.getElementById('employee').value;
@@ -194,30 +215,7 @@
                                         <th class="border border-black border-3"> Action </th>
                                     </tr>
                                     </thead>
-                                    <tbody class="text-center">
-                                    <?php $i=0; ?>
-                                    @foreach($temps as $temp)
-                                    @php
-                                        $i++;
-                                    @endphp
-                                        <tr>
-                                                <td class="border border-black border-3">{{ $i }}</td>
-                                                <td class="border border-black border-3">
-                                                    {{$temp->employee->user->name}}
-                                                </td>
-                                                <td class="border border-black border-3">
-                                                    {{$temp->company->company_name}}
-                                                </td>
-                                            <td class="border border-black border-3">
-                                                <form action="{{route('temp_delete',['id'=>$temp->id])}}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <x-delbutton>Delete</x-delbutton>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
+                                    <tbody class="text-center" id="tableTask"></tbody>
                                 </table>
                             </div>
                             <div class="mt-2 flex justify-end">

@@ -81,6 +81,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'age' => $age,
             'sex' => $request->sex,
+            'role' => 'employee',
             'birth_date' => Carbon::create($request->birth_date),
             'address' => $request->address
         ]);
