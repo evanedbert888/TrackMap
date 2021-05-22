@@ -34,21 +34,22 @@ class TaskController extends Controller
         return response()->json($data);
     }
 
-    public function store_task(Request $request) {
-        $validateTask = Validator::make($request->all(), [
-            'employee' => 'required',
-            'company' => 'required',
-        ]);
+    public function store_task($employee, $company) {
         $temp = new Temp;
         $user_id = Auth::user()->id;
         $temp->user_id = $user_id;
-        $temp->employee_id = $validateTask['employee'];
-        $temp->company_id = $validateTask['company'];
+        $temp->employee_id = $employee;
+        $temp->company_id = $company;
         $temp->save();
 
         return response()->json(['success'=>'Added new records.']);
     }
 
+    public function show_task() {
+        $tasks = Temp::all();
+        return response()->json($tasks);
+    }
+    
     public function goals_insert() {
         $count = Temp::all()->count();
         for ($id = 1; $id <= $count; $id++) {

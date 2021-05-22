@@ -44,7 +44,8 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
     Route::get('/TaskPairingShowEmployees/{id?}',[TaskController::class,'show_employee_by_role'])->name('show_employees');
     Route::get('/TaskPairingShowCompanies/{id?}',[TaskController::class,'show_company_by_business'])->name('show_companies');
-    Route::post('/StoreTask/',[TaskController::class,'store_task'])->name('store_task');
+    Route::get('/StoreTask/{employee?}/{company?}',[TaskController::class,'store_task'])->name('store_task');
+    Route::get('/ShowTask',[TaskController::class,'show_task'])->name('show_task');
     Route::delete('TaskDelete/{id}',[TaskController::class,'temp_delete'])->name('temp_delete');
     Route::post('/TaskInsert',[TaskController::class,'goals_insert'])->name('task_insert');
 
