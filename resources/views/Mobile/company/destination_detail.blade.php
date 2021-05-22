@@ -19,8 +19,8 @@
                             @method('PATCH')
                             @csrf
                             <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
-                            <x-editinput type="hidden" name="latitude" id="latitude" value="{{$details->latitude}}"/>
-                            <x-editinput type="hidden" name="longitude" id="longitude" value="{{$details->longitude}}"/>
+                            <x-editinput type="hidden" name="latitude" id="latitude" value=""/>
+                            <x-editinput type="hidden" name="longitude" id="longitude" value=""/>
                             <div class="float-right mr-5">
                                 <x-button type="submit">
                                     Check-In
@@ -69,3 +69,26 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    function getCoordinate() {
+        navigator.geolocation.getCurrentPosition(getCoordinateSuccess)
+    }
+
+    function getCoordinateSuccess(geoLocationPosition) {
+        console.log(geoLocationPosition)
+        setCoordinateToFormField(geoLocationPosition.coords)
+    }
+
+    function setCoordinateToFormField(coordinate) {
+        document.querySelector('#latitude').setAttribute('value',coordinate.latitude)
+        document.querySelector('#longitude').setAttribute('value',coordinate.longitude)
+    }
+
+    function onload() {
+        getCoordinate()
+    }
+
+    onload()
+
+</script>

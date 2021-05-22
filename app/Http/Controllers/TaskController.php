@@ -70,7 +70,8 @@ class TaskController extends Controller
         $histories = Goal::query()->where('status','=','finished')
             ->where('employee_id','=',$employee_id)
             ->paginate(5);
-        return view('Mobile.company.goal_history',['histories'=>$histories]);
+//        return view('Mobile.company.goal_history',['histories'=>$histories]);
+        return view('Test Mobile.history',['histories'=>$histories]);
     }
 
     public function temp_delete($id) {

@@ -96,3 +96,12 @@ Route::prefix('/SalesMap')->group(function (){
     // Employee Profile
     Route::get('/EmployeeProfile',[EmployeeController::class,'employee_detail'])->name('employee_profile');
 });
+
+// Test Mobile View
+Route::prefix('/SalesMap/Mobile')->group(function () {
+    Route::get('/MobileView',function () {
+       return view('layouts.mobile');
+    });
+    Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
+
+});
