@@ -46,7 +46,10 @@ class TaskController extends Controller
     }
 
     public function show_task() {
-        $tasks = Temp::all();
+        $tasks = DB::table('temps')
+                    ->join('users','temps.employee_id', '=', 'users.id')
+                    ->join('companies','temps.company_id', '=', 'companies.id')
+                    ->select('temps.*','users.name as employee_name','companies.company_name')->get();
         return response()->json($tasks);
     }
     
@@ -76,7 +79,7 @@ class TaskController extends Controller
 
     public function temp_delete($id) {
         Temp::destroy($id);
-        return redirect()->route('task_pairing');
+        return response()->json(['success'=>'deleted record.']);
     }
 
     public function task_list() {
