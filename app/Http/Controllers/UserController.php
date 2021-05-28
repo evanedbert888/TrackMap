@@ -68,4 +68,10 @@ class UserController extends Controller
                     ->orderBy('updated_at')->get();
         return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers]);
     }
+
+    public function update_status_user(Request $request) {
+        $ids = $request->ids;
+        User::whereIn('id',$ids)->update(['status'=>'Verified']);
+        return response()->json($ids);
+    }
 }
