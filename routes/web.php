@@ -39,6 +39,7 @@ Route::prefix('/SalesMap')->group(function() {
     // User
     Route::get('/User', [UserController::class, 'show_user'])->name('show_user');
     Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
+    Route::post('/UpdateStatusUser', [UserController::class, 'update_status_user'])->name('update_status_user');
 
     // Task Pairing
     Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
