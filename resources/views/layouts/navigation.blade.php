@@ -31,7 +31,7 @@
                         <ul class="mt-8">
                             <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
-                                    <div class="hidden sm:flex">
+                                    <div class="sm:flex">
                                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                             {{ __('Dashboard') }}
                                         </x-nav-link>
@@ -41,7 +41,7 @@
                             @if(Auth::user()->role == 'admin')
                                 <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
-                                        <div class="hidden sm:flex">
+                                        <div class="sm:flex">
                                             <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
                                                 {{ __('User') }}
                                             </x-nav-link>
@@ -51,7 +51,7 @@
                             @endif
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
-                                    <div class="hidden sm:flex sm:items-center">
+                                    <div class="sm:flex sm:items-center">
                                         <x-dropdown width="48">
                                             <x-slot name="trigger">
                                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -94,7 +94,7 @@
                             @if(Auth::user()->role == 'admin')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
-                                        <div class="hidden sm:flex sm:items-center">
+                                        <div class="sm:flex sm:items-center">
                                             <x-dropdown width="48">
                                                 <x-slot name="trigger">
                                                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -125,7 +125,7 @@
                                 </li>
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
-                                        <div class="hidden space-x-8 sm:-my-px sm:flex">
+                                        <div class="space-x-8 sm:-my-px sm:flex">
                                             <x-nav-link :href="route('task_pairing')" :active="request()->routeIs('task_pairing')">
                                                 {{ __('Task') }}
                                             </x-nav-link>
@@ -135,7 +135,7 @@
                             @elseif(Auth::user()->role == 'employee')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
-                                        <div class="hidden space-x-8 sm:-my-px sm:flex">
+                                        <div class="space-x-8 sm:-my-px sm:flex">
                                             <x-nav-link :href="route('history')" :active="request()->routeIs('history')">
                                                 {{ __('History') }}
                                             </x-nav-link>
@@ -150,9 +150,9 @@
                 <div class="w-full">
                     <div class="bg-gray-800 opacity-50 w-full h-full absolute hidden" id="closeSideBar" onclick="sidebarHandler(false)"></div>
                     <!-- Navigation starts -->
-                    <nav class="h-16 flex items-center lg:items-stretch justify-end lg:justify-between bg-white shadow relative z-0">
-                        <div class="hidden lg:flex w-full">
-                            <div class="text-gray-600 ml-8 mr-4 mt-4 visible" onclick="sidebarHandler(true)" id="menu">
+                    <nav class="h-16 flex items-center items-stretch justify-end justify-between bg-white shadow relative z-0">
+                        <div class="flex w-full">
+                            <div class="text-gray-600 visible ml-4 sm:ml-8 mr-4 mt-4" onclick="sidebarHandler(true)" id="menu">
                                 <svg aria-label="Main Menu" aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu cursor-pointer" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
                                     <line x1="4" y1="6" x2="20" y2="6" />
@@ -160,11 +160,11 @@
                                     <line x1="4" y1="18" x2="20" y2="18" />
                                 </svg>
                             </div>
-                            <div class="w-1/2 h-full hidden lg:flex items-center px-8">
+                            <div class="w-1/2 h-full flex items-center px-8">
                                 <!-- Page Header -->
                                 {{ $header }}
                             </div>
-                            <div class="w-1/2 hidden lg:flex px-8">
+                            <div class="w-1/2 flex px-4 sm:px-8">
                                 <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">

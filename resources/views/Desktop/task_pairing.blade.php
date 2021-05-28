@@ -85,21 +85,36 @@
             checkToEnableAddButton();
         }
 
-        function addNewColumn(task) { // add table !error
+        function deleteTask(id){
+            $.ajax({
+                url:'{{ route('temp_delete') }}'+"/"+id,
+                method:"get",
+                success:function(data){
+                    showTask();
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            })
+        }
+
+        function addNewColumn(task) {
             var i = 0;
             var data = ""
             $.each(task, function(key, value){
                 data = data + "<tr>";
                 data = data + "<td class='border border-black border-3'>"+(i+1)+"</td>";
-                data = data + "<td class='border border-black border-3'>" + "</td>";
-                data = data + "<td class='border border-black border-3'>" + "</td>" + {{$temps->company->company_name}};
-                data = data + "<td class='border border-black border-3'>"+"<form action='{{route('temp_delete',['id'=>$temps["+i+"]->id])}}' method='POST'>@method('DELETE')@csrf<x-delbutton>Delete</x-delbutton></form></td>";
+                data = data + "<td class='border border-black border-3'>"+value.employee_name+"</td>";
+                data = data + "<td class='border border-black border-3'>"+value.company_name+"</td>";
+                data = data + "<td class='border border-black border-3'>";
+                data = data + "<button type='submit' value='"+value.id+"' onclick='deleteTask(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
+                data = data + "</td>";
                 data = data + "</tr>";
                 i++;
             })
             $('#tableTask').html(data);
         }
-
+        
         function showTask() {
             $.ajax({
                 url:'{{ route('show_task') }}',

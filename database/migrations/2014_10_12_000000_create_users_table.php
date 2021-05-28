@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('age');
             $table->string('sex');
-            $table->string('role')->nullable();
+            $table->string('role')->default('employee');
             $table->string('status')->default('Unverified');
             $table->date('birth_date');
             $table->string('address');

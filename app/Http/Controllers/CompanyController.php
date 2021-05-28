@@ -53,8 +53,7 @@ class CompanyController extends Controller
             return view('Desktop.company.company_detail',['details'=>$details]);
         } else {
             $user_id = Auth::user()->id;
-            $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-            $count = Goal::query()->where('employee_id','=',$employee_id)
+            $count = Goal::query()->where('employee_id','=',$user_id)
                 ->where('company_id','=',$id)
                 ->where('status','=','unfinished')
                 ->count();

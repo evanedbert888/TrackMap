@@ -39,6 +39,7 @@ Route::prefix('/SalesMap')->group(function() {
     // User
     Route::get('/User', [UserController::class, 'show_user'])->name('show_user');
     Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
+    Route::post('/UpdateStatusUser', [UserController::class, 'update_status_user'])->name('update_status_user');
 
     // Task Pairing
     Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
@@ -46,7 +47,7 @@ Route::prefix('/SalesMap')->group(function() {
     Route::get('/TaskPairingShowCompanies/{id?}',[TaskController::class,'show_company_by_business'])->name('show_companies');
     Route::get('/StoreTask/{employee?}/{company?}',[TaskController::class,'store_task'])->name('store_task');
     Route::get('/ShowTask',[TaskController::class,'show_task'])->name('show_task');
-    Route::delete('TaskDelete/{id}',[TaskController::class,'temp_delete'])->name('temp_delete');
+    Route::get('TaskDelete/{id?}',[TaskController::class,'temp_delete'])->name('temp_delete');
     Route::post('/TaskInsert',[TaskController::class,'goals_insert'])->name('task_insert');
 
     // Company

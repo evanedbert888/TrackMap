@@ -81,7 +81,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'age' => $age,
             'sex' => $request->sex,
-            'role' => 'employee',
             'birth_date' => Carbon::create($request->birth_date),
             'address' => $request->address
         ]);
@@ -89,6 +88,11 @@ class RegisteredUserController extends Controller
         $email = Register::where('email', '=',  $request->email)->update(['status' => 'unavailable']);
 
         event(new Registered($user));
+
+        $new_user = User::orderBy('id','desc')->first();
+        $employee = new Employee();
+        $employee->user_id = $new_user->id;
+        $employee->save();
 
         Auth::login($user);
 

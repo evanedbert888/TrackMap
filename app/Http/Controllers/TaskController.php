@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+use function GuzzleHttp\Promise\task;
+
 class TaskController extends Controller
 {
     public function task_pairing() {
@@ -46,30 +48,34 @@ class TaskController extends Controller
     }
 
     public function show_task() {
-        $tasks = Temp::all();
+        $tasks = DB::table('temps')
+                    ->join('users','temps.employee_id', '=', 'users.id')
+                    ->join('companies','temps.company_id', '=', 'companies.id')
+                    ->select('temps.*','users.name as employee_name','companies.company_name')->get();
         return response()->json($tasks);
     }
 
     public function goals_insert() {
         $count = Temp::all()->count();
         for ($id = 1; $id <= $count; $id++) {
-            $tasks = Temp::query()->find($id);
+            $tasks = Temp::first();
 
             $goal = new Goal();
-            $goal->employee_id = $tasks->employee_id;
             $goal->company_id = $tasks->company_id;
+            $goal->employee_id = $tasks->employee_id;
+            $goal->latitude = "-0.0366396002310127"; // belum otomatis
+            $goal->longitude = "109.32923988720279"; // belum otomatis
             $goal->save();
 
-            Temp::destroy($id);
+            Temp::destroy($tasks->id);
         }
         return redirect()->route('task_pairing');
     }
 
     public function history() {
         $user_id = Auth::user()->id;
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $histories = Goal::query()->where('status','=','finished')
-            ->where('employee_id','=',$employee_id)
+            ->where('employee_id','=',$user_id)
             ->paginate(5);
 //        return view('Mobile.company.goal_history',['histories'=>$histories]);
         return view('Test_Mobile.history',['histories'=>$histories]);
@@ -77,13 +83,12 @@ class TaskController extends Controller
 
     public function temp_delete($id) {
         Temp::destroy($id);
-        return redirect()->route('task_pairing');
+        return response()->json(['success'=>'deleted record.']);
     }
 
     public function task_list() {
         $user_id = Auth::user()->id;
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $goals = Goal::query()->where('employee_id','=',$employee_id)
+        $goals = Goal::query()->where('employee_id','=',$user_id)
             ->where('status','=','unfinished')
             ->paginate(5);
         $count = Goal::query()->where('employee_id','=',$employee_id)
@@ -95,8 +100,7 @@ class TaskController extends Controller
 
     public function task_checkIn(Request $request) {
         $user_id = Auth::user()->id;
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $goal_id = Goal::query()->where('employee_id','=',$employee_id)
+        $goal_id = Goal::query()->where('employee_id','=',$user_id)
             ->where('company_id','=',$request->id)
             ->where('status','=','unfinished')
             ->pluck('id');
