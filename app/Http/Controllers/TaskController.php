@@ -74,9 +74,8 @@ class TaskController extends Controller
 
     public function history() {
         $user_id = Auth::user()->id;
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $histories = Goal::query()->where('status','=','finished')
-            ->where('employee_id','=',$employee_id)
+            ->where('employee_id','=',$user_id)
             ->paginate(5);
         return view('Mobile.company.goal_history',['histories'=>$histories]);
     }
@@ -88,7 +87,6 @@ class TaskController extends Controller
 
     public function task_list() {
         $user_id = Auth::user()->id;
-        // $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goals = Goal::query()->where('employee_id','=',$user_id)
             ->where('status','=','unfinished')
             ->paginate(5);
@@ -97,7 +95,6 @@ class TaskController extends Controller
 
     public function task_checkIn(Request $request) {
         $user_id = Auth::user()->id;
-        // $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goal_id = Goal::query()->where('employee_id','=',$user_id)
             ->where('company_id','=',$request->id)
             ->where('status','=','unfinished')
