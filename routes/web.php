@@ -69,8 +69,8 @@ Route::prefix('/SalesMap')->group(function() {
     Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
 
     // Update Employee
-    Route::get('/EditEmployee/{id}',[EmployeeController::class])->name('edit_employee');
-    Route::patch('/EmployeePatch/{id}',[EmployeeController::class])->name('employee_patch');
+    Route::get('/EditEmployee/{id}',[EmployeeController::class,'edit_employee'])->name('edit_employee');
+    Route::patch('/EmployeePatch/{id}',[EmployeeController::class,'employee_patch'])->name('employee_patch');
 
     // Email Register
     Route::get('/EmailRegister',[RegisterController::class,"email_register"])->name('email_register');
@@ -98,11 +98,12 @@ Route::prefix('/SalesMap')->group(function (){
     Route::get('/EmployeeProfile',[EmployeeController::class,'employee_detail'])->name('employee_profile');
 });
 
-// Test Mobile View
+// Test_Mobile View
 Route::prefix('/SalesMap/Mobile')->group(function () {
     Route::get('/MobileView',function () {
        return view('layouts.mobile');
     });
     Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
-
+    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('profile');
+    Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('destination_list');
 });

@@ -12,11 +12,11 @@
                     <table class="w-full">
                         <tr>
                             <td>
-                                <span class="flex container">
+                                <span class="flex container justify-end">
                                     <form action="{{route('add_company')}}" method="POST">
                                     @csrf
                                     <!-- Company Name -->
-                                        <div class="my-4">
+                                        <div class="my-3 space-y-0">
                                             <x-label for="company_name" :value="__('Company Name')"/>
 
                                             <x-input id="company_name" class="block mt-1 w-96" type="text"
@@ -25,43 +25,38 @@
                                         </div>
 
                                         <!-- Business -->
-                                        <div class="my-4">
+                                        <div class="my-3 space-y-0">
                                             <x-label for="business" :value="__('Business')"/>
 
                                             <select name="business" id="business" class="block mt-1 w-96 rounded-md">
                                                 <option class="hidden"></option>
-                                                <option class="bg-gray-200" value="Bank">Bank</option>
-                                                <option class="bg-gray-200" value="Cafe">Cafe</option>
-                                                <option class="bg-gray-200" value="Entertainment">Entertainment</option>
-                                                <option class="bg-gray-200" value="Fashion">Fashion</option>
-                                                <option class="bg-gray-200" value="Food">Food</option>
-                                                <option class="bg-gray-200" value="Health">Health</option>
-                                                <option class="bg-gray-200" value="Hotel">Hotel</option>
-                                                <option class="bg-gray-200" value="Pastry">Pastry</option>
-                                                <option class="bg-gray-200" value="Printing">Printing</option>
-                                                <option class="bg-gray-200" value="Sports">Sports</option>
-                                                <option class="bg-gray-200" value="Technology">Technology</option>
+                                                @foreach($businesses as $business)
+                                                    <option class="bg-gray-200 hover:bg-gray-400" value="{{$business->id}}">{{$business->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
                                         <!-- Address -->
-                                        <div class="my-4">
-                                            <x-label for="address" :value="__('Address')"/>
+                                        <div class="my-3">
+                                            <div class="space-y-0">
+                                                <x-label for="address" :value="__('Address')"/>
 
-                                            <textarea class="block mt-1 rounded-md " name="address" id="address"
-                                                      cols="40" rows="2"></textarea>
+                                                <x-input class="block mt-1 w-96" type="text"
+                                                         name="address" id="address" required
+                                                         autofocus/>
+                                            </div>
                                             <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
                                         </div>
 
                                         <!-- Email -->
-                                        <div class="my-4">
+                                        <div class="my-3 space-y-0">
                                             <x-label for="email" :value="__('Email')" />
 
                                             <x-input id="email" class="block mt-1 w-96" type="text" name="email" :value="old('email')" required />
                                         </div>
 
                                         <!-- Coordinate -->
-                                        <div class="my-4">
+                                        <div class="my-3 space-y-0">
                                             <div>
                                                 <x-label for="coordinate" :value="__('Coordinate')"/>
 
@@ -70,14 +65,14 @@
                                         </div>
 
                                         <!-- Description -->
-                                        <div class="my-4">
+                                        <div class="my-3 space-y-0">
                                             <x-label for="description" :value="__('Description')"/>
 
                                             <textarea class="block mt-1 rounded-md " name="description" id="description"
                                                       cols="40" rows="3"></textarea>
                                         </div>
 
-                                        <div class="my-4 float-right">
+                                        <div class="mb-3 mt-0 float-right">
                                            <x-button>
                                                 {{ __('Submit') }}
                                             </x-button>
@@ -86,9 +81,9 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="flex container ml-44">
+                                <span class="flex container justify-center">
                                     <div>
-                                        <iframe id="map" height="400px" width="768px" src="https://maps.google.com/maps?q=&output=embed"></iframe>
+                                        <iframe id="map" height="540px" width="810px" src="https://maps.google.com/maps?q=&output=embed"></iframe>
                                     </div>
                                 </span>
                             </td>

@@ -42,7 +42,8 @@ class CompanyController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('Desktop.company.company_list',['lists'=>$lists]);
         } else {
-            return view('Mobile.company.destination_list',['lists'=>$lists]);
+            return view('Test_Mobile.destination_list',['lists'=>$lists]);
+//            return view('Mobile.company.destination_list',['lists'=>$lists]);
         }
     }
 
@@ -62,7 +63,8 @@ class CompanyController extends Controller
     }
 
     public function company_form() {
-        return view('Desktop.company.company_form');
+        $businesses = Business::all();
+        return view('Desktop.company.company_form',['businesses'=>$businesses]);
     }
 
     public function company_delete($id){
@@ -107,7 +109,7 @@ class CompanyController extends Controller
     public function add_company(Request $request){
         $validateCompany = $request->validate([
             'company_name' => 'required|string|max:255',
-            'business' => 'required|string|max:30',
+            'business' => 'required',
             'address' => 'required|string|max:300',
             'email' => 'required|string|max:255',
             'coordinate' => 'required',
@@ -120,7 +122,7 @@ class CompanyController extends Controller
 
         $company = new Company();
         $company->company_name = $validateCompany['company_name'];
-        $company->business = $validateCompany['business'];
+        $company->business_id = $validateCompany['business'];
         $company->address = $validateCompany['address'];
         $company->email = $validateCompany['email'];
         $company->latitude = $latitude;

@@ -91,15 +91,15 @@
             $.each(task, function(key, value){
                 data = data + "<tr>";
                 data = data + "<td class='border border-black border-3'>"+(i+1)+"</td>";
-                data = data + "<td class='border border-black border-3'>{{$temps['+i+'']->employee->user->name}}</td>";
-                data = data + "<td class='border border-black border-3'>{{$temps["+i+"]->company->company_name}}</td>";
-                data = data + "<td class='border border-black border-3'><form action='{{route('temp_delete',['id'=>$temps["+i+"]->id])}}' method='POST'>@method('DELETE')@csrf<x-delbutton>Delete</x-delbutton></form></td>";
+                data = data + "<td class='border border-black border-3'>" + "</td>";
+                data = data + "<td class='border border-black border-3'>" + "</td>" + {{$temps->company->company_name}};
+                data = data + "<td class='border border-black border-3'>"+"<form action='{{route('temp_delete',['id'=>$temps["+i+"]->id])}}' method='POST'>@method('DELETE')@csrf<x-delbutton>Delete</x-delbutton></form></td>";
                 data = data + "</tr>";
                 i++;
             })
             $('#tableTask').html(data);
         }
-        
+
         function showTask() {
             $.ajax({
                 url:'{{ route('show_task') }}',

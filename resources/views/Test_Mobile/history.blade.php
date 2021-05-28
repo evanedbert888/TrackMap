@@ -15,7 +15,7 @@
             @foreach($histories as $history)
                 <div class="grid grid-cols-3 justify-center items-center">
                     <img class="rounded-full w-16 mx-auto" src="https://cdn.iconscout.com/icon/free/png-256/people-1659484-1410006.png" alt="image">
-                    <div class="text-sm text-semibold text-gray-800 text-left">
+                    <div class="text-sm text-bold text-gray-800 text-left">
                         <p>{{$history->company->company_name}}</p>
                         <p>{{$history->company->business->name}}</p>
                     </div>

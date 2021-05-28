@@ -10,26 +10,26 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
-                        <div class="text-center pb-4 font-semibold text-lg">
+                        <div class="text-center pb-2 font-semibold text-lg">
                             <p> List of Registers </p>
                         </div>
-                        <div class="flex container justify-center content-center text-center">
-                            <table class="table-auto border border-collapse border border-green-500">
+                        <div class="flex container justify-center text-center">
+                            <table class="table-auto border-4 border-collapse">
                                 <thead>
-                                    <th class="border border-green-700 px-4"> ID </th>
-                                    <th class="border border-green-700 px-5"> Email </th>
-                                    <th class="border border-green-700 px-3"> Status </th>
-                                    <th class="border border-green-700 px-4"> Registered By </th>
-                                    <th class="border border-green-700 px-4"> Registered At </th>
+                                    <th class="border-4 border-green-400 px-4"> ID </th>
+                                    <th class="border-4 border-green-400 px-5"> Email </th>
+                                    <th class="border-4 border-green-400 px-3"> Status </th>
+                                    <th class="border-4 border-green-400 px-4"> Registered By </th>
+                                    <th class="border-4 border-green-400 px-4"> Registered At </th>
                                 </thead>
                                 <tbody>
                                     @foreach($registers as $register)
                                         <tr>
-                                            <td class="border border-green-700 px-4"> {{$register->id}} </td>
-                                            <td class="border border-green-700 px-5"> {{$register->email}} </td>
-                                            <td class="border border-green-700 px-3"> {{$register->status}} </td>
-                                            <td class="border border-green-700 px-4"> {{$register->user->name}} </td>
-                                            <td class="border border-green-700 px-4"> {{$register->created_at}} </td>
+                                            <td class="border-4 border-green-400 px-4"> {{$register->id}} </td>
+                                            <td class="border-4 border-green-400 px-5"> {{$register->email}} </td>
+                                            <td class="border-4 border-green-400 px-3"> {{$register->status}} </td>
+                                            <td class="border-4 border-green-400 px-4"> {{$register->user->name}} </td>
+                                            <td class="border-4 border-green-400 px-4"> {{$register->created_at}} </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

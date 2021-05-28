@@ -49,7 +49,7 @@ class TaskController extends Controller
         $tasks = Temp::all();
         return response()->json($tasks);
     }
-    
+
     public function goals_insert() {
         $count = Temp::all()->count();
         for ($id = 1; $id <= $count; $id++) {
@@ -72,7 +72,7 @@ class TaskController extends Controller
             ->where('employee_id','=',$employee_id)
             ->paginate(5);
 //        return view('Mobile.company.goal_history',['histories'=>$histories]);
-        return view('Test Mobile.history',['histories'=>$histories]);
+        return view('Test_Mobile.history',['histories'=>$histories]);
     }
 
     public function temp_delete($id) {
@@ -86,7 +86,11 @@ class TaskController extends Controller
         $goals = Goal::query()->where('employee_id','=',$employee_id)
             ->where('status','=','unfinished')
             ->paginate(5);
-        return view('Mobile.company.task_list',['goals'=>$goals]);
+        $count = Goal::query()->where('employee_id','=',$employee_id)
+            ->where('status','=','unfinished')
+            ->count();
+        return view('Test_Mobile.task_list',['goals'=>$goals,'count'=>$count]);
+//        return view('Mobile.company.task_list',['goals'=>$goals]);
     }
 
     public function task_checkIn(Request $request) {
