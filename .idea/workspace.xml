@@ -20,17 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Test_Mobile/history.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/email_register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/email_register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Test Mobile/history.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +236,8 @@
       <workItem from="1621766315168" duration="14000" />
       <workItem from="1621918168760" duration="12330000" />
       <workItem from="1622034503528" duration="41000" />
+      <workItem from="1622203036885" duration="3583000" />
+      <workItem from="1622432797972" duration="5331000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -271,7 +267,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621659918374</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="new updates on mobile">
+      <created>1622203065180</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622203065180</updated>
+    </task>
+    <task id="LOCAL-00006" summary="new updates on mobile">
+      <created>1622203111861</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622203111861</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +302,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge conflicts" />
     <MESSAGE value="new updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="new updates" />
+    <MESSAGE value="new updates on mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="new updates on mobile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621395038020">
@@ -315,10 +326,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621412807181" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1621412811724">
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1622203091431">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621412811724" />
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1622203091431" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1620103422665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

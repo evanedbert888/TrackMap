@@ -79,4 +79,8 @@ class UserController extends Controller
         User::whereIn('id',$ids)->update(['status'=>'Verified']);
         return response()->json($ids);
     }
+
+    public function delete_user_manage($id) {
+
+    }
 }

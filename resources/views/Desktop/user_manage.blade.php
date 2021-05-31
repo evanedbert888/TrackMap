@@ -8,7 +8,7 @@
         $(function(e) {
             $("#chkbxAll").click(function() {
                 $(".chkbx").prop('checked' ,$(this).prop('checked'));
-                
+
                 if ($('.chkbx:checked').length > 0) {
                     $("#butverify").prop('disabled',false);
                 }
@@ -16,7 +16,7 @@
                     $("#butverify").prop('disabled',true);
                 }
             })
-            
+
         });
 
         $(document).on('click', '.chkbx', function() {
@@ -26,7 +26,7 @@
             else {
                 $('#chkbxAll').prop('checked', false);
             }
-                
+
             if ($('.chkbx:checked').length > 0) {
                 $("#butverify").prop('disabled',false);
             }
@@ -50,13 +50,13 @@
                 },
                 success:function(data){
                     location.reload();
-                }, 
+                },
                 error:function(err){
                     console.log(err);
                 }
             });
         }
-        
+
     </script>
 
     <div class="py-8">
@@ -118,24 +118,25 @@
                                     <tbody class="text-center" id="verified" name="verified">
                                         <?php $i = 1; ?>
                                         @foreach($vdusers as $user)
-                                        <tr class="bg-yellow-100">
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->birth_date }}</td>
-                                            <td>{{ $user->sex }}</td>
-                                            <td>{{ $user->address }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>
-                                                <x-button value="{{ $user->id }}">Edit</x-button>
-                                                <x-delbutton value="{{ $user->id }}">Delete</x-delbutton>
-                                            </td>
-                                        </tr>
+                                            <tr class="bg-yellow-100">
+                                                <td>{{ $i }}</td>
+                                                <td>{{ $user->name }}</td>
+                                                <td>{{ $user->birth_date }}</td>
+                                                <td>{{ $user->sex }}</td>
+                                                <td>{{ $user->address }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>
+                                                    <x-button value="{{ $user->id }}">Edit</x-button>
+                                                    
+                                                    <x-delbutton value="{{ $user->id }}">Delete</x-delbutton>
+                                                </td>
+                                            </tr>
                                         @php
                                             $i ++;
                                         @endphp
                                         @endforeach
                                     </tbody>
-                                </table> 
+                                </table>
                             </div>
                         </div>
                     </div>

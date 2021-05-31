@@ -88,7 +88,8 @@ class TaskController extends Controller
 
     public function task_list() {
         $user_id = Auth::user()->id;
-        $goals = Goal::query()->where('employee_id','=',$user_id)
+        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+        $goals = Goal::query()->where('employee_id','=',$employee_id)
             ->where('status','=','unfinished')
             ->paginate(5);
         $count = Goal::query()->where('employee_id','=',$employee_id)
