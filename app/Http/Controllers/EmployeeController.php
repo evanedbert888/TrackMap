@@ -13,7 +13,7 @@ use App\Models\Employee;
 class EmployeeController extends Controller
 {
     public function employee_list(){
-        $lists = Employee::query()->paginate(5);
+        $lists = Employee::query()->orderBy('id','desc')->paginate(5);
         return view('Desktop.employee.employee_list',['lists'=>$lists]);
     }
 
@@ -73,7 +73,10 @@ class EmployeeController extends Controller
     }
 
     public function employee_delete($id){
+        $employee = DB::table('employees')->where('id','=',$id)->get();
+        $user_id = $employee[0]->user_id;
         DB::table('employees')->where('id','=',$id)->delete();
+        DB::table('users')->where('id','=',$user_id)->delete();
         return redirect()->route('employee_list');
     }
 }

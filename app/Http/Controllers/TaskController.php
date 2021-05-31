@@ -26,7 +26,7 @@ class TaskController extends Controller
 
     public function show_employee_by_role($id) {
         $data = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
-            ->select('users.id','users.name','users.image','employees.role_id')
+            ->select('employees.id','users.name','users.image','employees.role_id')
             ->where('employees.role_id','=',$id)->orderBy('name')->get();
         return response()->json($data);
     }
@@ -49,7 +49,8 @@ class TaskController extends Controller
 
     public function show_task() {
         $tasks = DB::table('temps')
-                    ->join('users','temps.employee_id', '=', 'users.id')
+                    ->join('employees','temps.employee_id', '=', 'employees.id')
+                    ->join('users', 'employees.user_id', '=', 'users.id')
                     ->join('companies','temps.company_id', '=', 'companies.id')
                     ->select('temps.*','users.name as employee_name','companies.company_name')->get();
         return response()->json($tasks);
