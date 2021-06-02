@@ -13,7 +13,7 @@
         </div>
         @if($count == 0)
             <p class="text-center text-lg text-semibold">You don't have any available tasks</p>
-        @elseif($count>1)
+        @elseif($count>=1)
             <div class="grid grid-cols-1 gap-y-4 bg-blue-400">
                 @foreach($goals as $goal)
                     <div class="grid grid-cols-3 justify-center items-center">

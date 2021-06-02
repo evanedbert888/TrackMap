@@ -27,7 +27,7 @@ class EmployeeController extends Controller
     }
 
     public function edit_employee($id){
-        $details = Employee::query()->find($id);
+        $details = Employee::query()->where('user_id','=',$id)->first();
         return view('Desktop.employee.edit_employee',['details'=>$details]);
     }
 
@@ -78,5 +78,17 @@ class EmployeeController extends Controller
         DB::table('employees')->where('id','=',$id)->delete();
         DB::table('users')->where('id','=',$user_id)->delete();
         return redirect()->route('employee_list');
+    }
+
+    public function role_list() {
+
+    }
+
+    public function add_role() {
+
+    }
+
+    public function delete_role($id) {
+
     }
 }
