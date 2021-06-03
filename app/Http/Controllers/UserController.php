@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Role;
 use App\Models\Temp;
 use Illuminate\Http\Request;
@@ -68,16 +69,25 @@ class UserController extends Controller
     // User Manage
     public function show_user() {
         $uvdusers = DB::table('users')->where('status','=','Unverified')
+                    ->where('role','=','employee')
                     ->orderBy('created_at')->get();
         $vdusers = DB::table('users')->where('status','=','Verified')
                     ->orderBy('updated_at')->get();
-        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers]);
+        $roles = DB::table('roles')->get();
+        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
 
     public function update_status_user(Request $request) {
         $ids = $request->ids;
+        $roles = $request->roles;
+
         User::whereIn('id',$ids)->update(['status'=>'Verified']);
-        return response()->json($ids);
+        for ($i=0; $i < count($roles); $i++) { 
+            $id = $ids[$i];
+            $role = $roles[$i];
+            $query = Employee::where('user_id','=',$id)->update(['role_id'=>$role]);
+        }
+        return response()->json();
     }
 
     public function delete_user_manage($id) {
