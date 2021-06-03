@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function profile(){
         $id = Auth::user()->id;
-        $details = User::query()->where('id','=',$id)->get();
+        $details = User::query()->find($id);
         return view('Desktop.profile',['details'=>$details]);
 //        if (Auth::user()->role == 'admin') {
 //            return view('Desktop.profile',['details'=>$details]);
@@ -24,8 +24,7 @@ class UserController extends Controller
 //        }
     }
 
-    public function edit_profile(){
-        $id = Auth::user()->id;
+    public function edit_profile($id){
         $details = DB::table('users')->where('id','=',$id)->get();
         return view('Desktop.edit_profile',['details'=>$details]);
     }
@@ -68,11 +67,8 @@ class UserController extends Controller
 
     // User Manage
     public function show_user() {
-        $uvdusers = DB::table('users')->where('status','=','Unverified')
-                    ->where('role','=','employee')
-                    ->orderBy('created_at')->get();
-        $vdusers = DB::table('users')->where('status','=','Verified')
-                    ->orderBy('updated_at')->get();
+        $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
+        $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
         $roles = DB::table('roles')->get();
         return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
@@ -90,7 +86,10 @@ class UserController extends Controller
         return response()->json();
     }
 
-    public function delete_user_manage($id) {
-
+    public function delete_user_manage($id,$employee_id) {
+        User::destroy($id);
+        Employee::destroy($employee_id);
+        echo "A user has been deleted";
+        return redirect()->route('show_user');
     }
 }

@@ -33,13 +33,14 @@ require __DIR__.'/auth.php';
 // Desktop
 Route::prefix('/SalesMap')->group(function() {
     Route::get('/Profile',[UserController::class,'profile'])->name('profile');
-    Route::get('/EditProfile',[UserController::class,'edit_profile'])->name('edit_profile');
+    Route::get('/EditProfile/{id}',[UserController::class,'edit_profile'])->name('edit_profile');
     Route::patch('/ProfileUpdate',[UserController::class,'profile_update'])->name('profile_update');
 
     // User
     Route::get('/User', [UserController::class, 'show_user'])->name('show_user');
     Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
     Route::post('/UpdateStatusUser', [UserController::class, 'update_status_user'])->name('update_status_user');
+    Route::delete('/DeleteUser', [UserController::class, 'delete_user_manage'])->name('delete_user_manage');
 
     // Task Pairing
     Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
@@ -57,7 +58,7 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Update Company
     Route::get('/EditCompany/{id}',[CompanyController::class,'edit_company'])->name('edit_company');
-    Route::patch('/CompanyPatch/{id}',[CompanyController::class,'company_patch'])->name('company_patch');
+    Route::patch('/CompanyPatch/{id}/{user_id}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
@@ -72,6 +73,11 @@ Route::prefix('/SalesMap')->group(function() {
     // Update Employee
     Route::get('/EditEmployee/{id}',[EmployeeController::class,'edit_employee'])->name('edit_employee');
     Route::patch('/EmployeePatch/{id}',[EmployeeController::class,'employee_patch'])->name('employee_patch');
+
+    // Role
+    Route::get('RoleList',[EmployeeController::class,'role_list'])->name('role_list');
+    Route::post('AddRole',[EmployeeController::class,'add_role'])->name('add_role');
+    Route::delete('DeleteRole/{id}',[EmployeeController::class,'delete_role'])->name('delete_role');
 
     // Email Register
     Route::get('/EmailRegister',[RegisterController::class,"email_register"])->name('email_register');

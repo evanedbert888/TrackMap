@@ -166,9 +166,20 @@
                                                 <td>{{ $user->address }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>
-                                                    <x-button value="{{ $user->id }}">Edit</x-button>
-                                                    
-                                                    <x-delbutton value="{{ $user->id }}">Delete</x-delbutton>
+                                                    @if($user->role == 'employee')
+                                                        <a href="{{route('edit_employee',['id'=>$user->id])}}">
+                                                            <x-button>Edit</x-button>
+                                                        </a>
+                                                        <form action="{{route('employee_delete',['id'=>$user->employee->id])}}" method="POST">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <x-delbutton type="submit">Delete</x-delbutton>
+                                                        </form>
+                                                    @elseif($user->role == 'admin')
+                                                        <a href="{{route('edit_profile',['id'=>$user->id])}}">
+                                                            <x-button>Edit</x-button>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @php
