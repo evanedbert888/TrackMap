@@ -94,13 +94,21 @@ class UserController extends Controller
     public function show_user() {
         $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
-        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers]);
+        $roles = DB::table('roles')->get();
+        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
 
     public function update_status_user(Request $request) {
         $ids = $request->ids;
+        $roles = $request->roles;
+
         User::whereIn('id',$ids)->update(['status'=>'Verified']);
-        return response()->json($ids);
+        for ($i=0; $i < count($roles); $i++) { 
+            $id = $ids[$i];
+            $role = $roles[$i];
+            $query = Employee::where('user_id','=',$id)->update(['role_id'=>$role]);
+        }
+        return response()->json();
     }
 
     public function delete_user_manage($id,$employee_id) {
