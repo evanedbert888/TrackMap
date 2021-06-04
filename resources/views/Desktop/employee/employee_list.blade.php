@@ -13,7 +13,7 @@
                         <div class="p-5 bg-blue-300 border border-white-200 mb-5 sm:rounded-lg">
                             <ul>
                                 <li class="flex">
-                                    <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80">
+                                    <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="{{url('storage/'.$list->user->image)}}">
                                     <div class="w-full ml-5 mt-3">
                                         <div>
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>
@@ -26,13 +26,6 @@
                                         <a href="{{ route('employee_detail',['id'=>$list->id]) }}">
                                             <x-button>Detail</x-button>
                                         </a>
-                                    </div>
-                                    <div class="mt-6 ml-5">
-                                        <form method="POST" action="{{ route('employee_delete',['id'=>$list->id]) }}">
-                                            @method('DELETE')
-                                            @csrf
-                                            <x-delbutton>Delete</x-delbutton>
-                                        </form>
                                     </div>
                                 </li>
                             </ul>

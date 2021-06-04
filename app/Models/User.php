@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'age', 'sex', 'birth_date', 'address'
+        'name', 'email', 'password', 'age', 'sex', 'birth_date', 'address', 'image'
     ];
 
     /**
@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function updateById($id, $data = array())
     {
-        return DB::table('users')->where('id', '=', $id)->update($data);
+        return User::query()->find($id)->update($data);
     }
 
     public function employee() {

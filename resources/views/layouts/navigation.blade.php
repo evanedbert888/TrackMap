@@ -170,11 +170,28 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 hidden">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    <form method="GET" action="{{ route('profile') }}">
-                                                        @csrf
-                                                        <x-dropdown-link :href="route('profile')"
-                                                                onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
+                                                    @if(Auth::user()->role == 'admin')
+                                                        <form method="GET" action="{{ route('profile') }}">
+                                                            @csrf
+                                                            <x-dropdown-link :href="route('profile')"
+                                                                    onclick="event.preventDefault();
+                                                                                this.closest('form').submit();">
+                                                                    <div class="flex items-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z" />
+                                                                            <circle cx="12" cy="7" r="4" />
+                                                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                                        </svg>
+                                                                        <span class="text-sm ml-2">My Profile</span>
+                                                                    </div>
+                                                            </x-dropdown-link>
+                                                        </form>
+                                                    @elseif(Auth::user()->role == 'employee')
+                                                        <form method="GET" action="{{ route('profile') }}">
+                                                            @csrf
+                                                            <x-dropdown-link :href="route('profile')"
+                                                                             onclick="event.preventDefault();
+                                                                                this.closest('form').submit();">
                                                                 <div class="flex items-center">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -183,8 +200,9 @@
                                                                     </svg>
                                                                     <span class="text-sm ml-2">My Profile</span>
                                                                 </div>
-                                                        </x-dropdown-link>
-                                                    </form>
+                                                            </x-dropdown-link>
+                                                        </form>
+                                                    @endif
                                                 </li>
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mt-2">
                                                     <form method="POST" action="{{ route('logout') }}">

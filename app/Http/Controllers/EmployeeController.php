@@ -22,7 +22,7 @@ class EmployeeController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('Desktop.employee.employee_detail',['details'=>$details]);
         } else {
-            return view('Mobile.employee_profile',['details'=>$details]);
+            return view('Mobile.employee.employee_profile',['details'=>$details]);
         }
     }
 
@@ -31,7 +31,7 @@ class EmployeeController extends Controller
         return view('Desktop.employee.edit_employee',['details'=>$details]);
     }
 
-    public function employee_patch($id, $user_id, Request $request){
+    public function employee_patch($id, Request $request){
         $validateEmployee = $request->validate([
            'name' => 'string|required|max:255',
            'motto' => 'string|required|max:255',
@@ -53,6 +53,8 @@ class EmployeeController extends Controller
         if ($now_date < $this_date) {
             $age = $age - 1;
         }
+
+        $user_id = Employee::query()->where('id','=',$id)->pluck('user_id');
 
         $user = new User();
         $user->updateById($user_id, array(

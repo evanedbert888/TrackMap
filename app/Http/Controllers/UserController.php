@@ -6,60 +6,85 @@ use App\Models\Employee;
 use App\Models\Role;
 use App\Models\Temp;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Concerns\InteractsWithInput;
 
 class UserController extends Controller
 {
     public function profile(){
         $id = Auth::user()->id;
         $details = User::query()->find($id);
-        return view('Desktop.profile',['details'=>$details]);
-//        if (Auth::user()->role == 'admin') {
-//            return view('Desktop.profile',['details'=>$details]);
-//        } elseif (Auth::user()->role == 'employee') {
-//            return view('Test_Mobile.employee_profile',['details'=>$details]);
-//        }
+        if (Auth::user()->role == 'admin') {
+            return view('Desktop.profile',['details'=>$details]);
+        } elseif (Auth::user()->role == 'employee') {
+            return view('Test_Mobile.employee_profile',['details'=>$details]);
+        }
     }
 
     public function edit_profile($id){
-        $details = DB::table('users')->where('id','=',$id)->get();
+        $details = User::query()->find($id);
         return view('Desktop.edit_profile',['details'=>$details]);
     }
 
     public function profile_update(Request $request) {
         $id = Auth::id();
+        $img_name = Auth::User()->image;
         $validateProfile = $request->validate([
            'name' => 'required|string|max:255',
            'email' => 'required|string|max:255',
            'sex' => 'required',
            'birth_date' => 'required',
-           'address' => 'required|max:300|string'
+           'address' => 'required|max:300|string',
+           'image' => 'nullable|image|mimes:jpeg,png,jpg'
         ]);
 
-        $birth_year = date("Y",strtotime($request->birth_date));
-        $curr_year = date("Y",strtotime("now"));
+        if ($request->hasFile('image')) {
+            $folder = 'admin'.$id;
+            if ($img_name == 'images/Profile.png'){
+
+            } else {
+                Storage::delete($img_name);
+            }
+
+            $image_name = $request->file('image')->getClientOriginalName();
+            $new_image_name = 'admin/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
+            $img_name = $new_image_name;
+
+            $request->image->storeAs('public',$img_name);
+            asset('public/'.$new_image_name);
+        }
+
+        $date = $request->birth_date;
+        function formatDate($input,$date) {
+              return date($input,strtotime($date));
+        }
+
+        $birth_year = formatDate("Y",$date);
+        $curr_year = formatDate("Y","now");
         $age = $curr_year - $birth_year;
 
-        $birth_month = date("M",strtotime($request->birth_date));
-        $birth_day = date("D",strtotime($request->birth_date));
+        $birth_month = formatDate("M",$date);
+        $birth_day = formatDate("D",$date);
 
         $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
         $now_date = strtotime("now");
         if ($now_date < $this_date) {
-            $age = $age - 1;
+           $age = $age - 1;
         }
 
         $user = new User();
         $user->updateById($id, array(
-            "name" => $validateProfile['name'],
-            "email" => $validateProfile['email'],
-            'age' => $age,
-            'sex' => $validateProfile['sex'],
-            'birth_date' => Carbon::create($request->birth_date),
-            'address' => $validateProfile['address']
+           "name" => $validateProfile['name'],
+           "email" => $validateProfile['email'],
+           'age' => $age,
+           'sex' => $validateProfile['sex'],
+           'birth_date' => Carbon::create($request->birth_date),
+           'address' => $validateProfile['address'],
+           'image' => $img_name
         ));
 
         return redirect()->route('profile');

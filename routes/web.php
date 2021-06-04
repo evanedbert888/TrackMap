@@ -58,7 +58,7 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Update Company
     Route::get('/EditCompany/{id}',[CompanyController::class,'edit_company'])->name('edit_company');
-    Route::patch('/CompanyPatch/{id}/{user_id}',[CompanyController::class,'company_patch'])->name('company_patch');
+    Route::patch('/CompanyPatch/{id}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
