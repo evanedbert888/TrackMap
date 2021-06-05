@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Role;
-use App\Models\Temp;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Concerns\InteractsWithInput;
 
 class UserController extends Controller
 {
@@ -21,7 +18,7 @@ class UserController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('Desktop.profile',['details'=>$details]);
         } elseif (Auth::user()->role == 'employee') {
-            return view('Test_Mobile.employee_profile',['details'=>$details]);
+            return view('Mobile.employee.employee_profile',['details'=>$details]);
         }
     }
 
@@ -44,10 +41,8 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'admin'.$id;
-            if ($img_name == 'images/Profile.png'){
-
-            } else {
-                Storage::delete($img_name);
+            if(File::exists('storage/admin/'.$folder)){
+                File::cleanDirectory('storage/admin/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
@@ -94,7 +89,7 @@ class UserController extends Controller
     public function show_user() {
         $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
-        $roles = DB::table('roles')->get();
+        $roles = Role::all();
         return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
 
@@ -103,7 +98,7 @@ class UserController extends Controller
         $roles = $request->roles;
 
         User::whereIn('id',$ids)->update(['status'=>'Verified']);
-        for ($i=0; $i < count($roles); $i++) { 
+        for ($i=0; $i < count($roles); $i++) {
             $id = $ids[$i];
             $role = $roles[$i];
             $query = Employee::where('user_id','=',$id)->update(['role_id'=>$role]);

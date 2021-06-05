@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function updateById($id, $data = array())
     {
-        return User::query()->find($id)->update($data);
+        return DB::table('users')->where('id', '=', $id)->update($data);
     }
 
     public function employee() {

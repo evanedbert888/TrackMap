@@ -12,7 +12,7 @@
                     <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32 ml-10" src="{{url('storage/'.$details->user->image)}}">
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
-                    <a class="float-right mr-5" href="{{route('edit_employee',['id'=>$details->user_id])}}">
+                    <a class="float-right mr-5" href="{{route('edit_employee',['id'=>$details->id])}}">
                         <x-button type="submit">
                             edit
                         </x-button>

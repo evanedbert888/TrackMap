@@ -85,7 +85,7 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Register List
     Route::get('/RegisterList',[RegisterController::class,'register_list'])->name('register_list');
-    Route::delete('/RegisterDelete',[RegisterController::class,'regsiter_delete'])->name('register_delete');
+    Route::delete('/RegisterDelete',[RegisterController::class,'register_delete'])->name('register_delete');
 });
 
 // Mobile
@@ -102,7 +102,7 @@ Route::prefix('/SalesMap')->group(function (){
     Route::get('/History',[TaskController::class,'history'])->name('history');
 
     // Employee Profile
-    Route::get('/EmployeeProfile',[EmployeeController::class,'employee_detail'])->name('employee_profile');
+    Route::get('/EmployeeProfile/{id?}',[EmployeeController::class,'employee_detail'])->name('employee_profile');
 });
 
 // Test_Mobile View
