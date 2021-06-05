@@ -17,7 +17,7 @@
                         @csrf
                         <div class="float-right mr-5">
                             <x-savebutton type="submit" class="mt-5">
-                                update
+                                Update
                             </x-savebutton>
                         </div>
                         <div>

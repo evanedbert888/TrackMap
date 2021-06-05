@@ -22,13 +22,9 @@
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Test_Mobile/task_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Test_Mobile/task_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/edit_employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employee/edit_employee_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employee/employee_profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,12 +156,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XAMPP/htdocs/heroines" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Mobile\employee" />
       <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Desktop" />
     </key>
   </component>
@@ -244,6 +241,12 @@
       <workItem from="1622432797972" duration="10706000" />
       <workItem from="1622466643365" duration="1638000" />
       <workItem from="1622514206293" duration="6022000" />
+      <workItem from="1622603398906" duration="4822000" />
+      <workItem from="1622614320978" duration="6109000" />
+      <workItem from="1622692196704" duration="7327000" />
+      <workItem from="1622729239418" duration="2446000" />
+      <workItem from="1622777506845" duration="19790000" />
+      <workItem from="1622864648651" duration="9336000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -294,7 +297,28 @@
       <option name="project" value="LOCAL" />
       <updated>1622444125953</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="new updates">
+      <created>1622788812884</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1622788812884</updated>
+    </task>
+    <task id="LOCAL-00009" summary="new commit">
+      <created>1622870253768</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622870253768</updated>
+    </task>
+    <task id="LOCAL-00010" summary="new commit">
+      <created>1622870624055</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1622870624055</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,36 +338,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="merge conflicts" />
-    <MESSAGE value="new updates" />
     <MESSAGE value="new updates on mobile" />
     <MESSAGE value="commit updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit updates" />
+    <MESSAGE value="new updates" />
+    <MESSAGE value="new commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621395038020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1621395038020" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1621415949873">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622870689953">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1621415949873" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622870689953" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1621331141482">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1621331141482" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1621766327195">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1622698818255">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1621766327195" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1621412807181">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1622698818255" />
+    <state x="147" y="65" key="MergeDialog" timestamp="1622870485282">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1621412807181" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1622203091431">
+    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1622870485282" />
+    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1622870611632">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1622203091431" />
+    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1622870611632" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1620103422665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
