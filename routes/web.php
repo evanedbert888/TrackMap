@@ -100,9 +100,6 @@ Route::prefix('/SalesMap')->group(function (){
 
     // History
     Route::get('/History',[TaskController::class,'history'])->name('history');
-
-    // Employee Profile
-    Route::get('/EmployeeProfile/{id?}',[EmployeeController::class,'employee_detail'])->name('employee_profile');
 });
 
 // Test_Mobile View
