@@ -1,38 +1,53 @@
-@extends('layouts.mobile')
-@section('title','Destinations')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Company List') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-    <div>
-        <div class="grid grid-cols-3 p-4 items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            <div class="text-bold text-xl text-center">
-                <h2>Tasks</h2>
+    <div class="py-0 md:py-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="flex justify-center mb-5">
+                        <p class="text-3xl font-bold">Tasks</p>
+                    </div>
+                    @if($count == 0)
+                        <p class="text-center text-lg text-semibold">You don't have any available tasks</p>
+                    @elseif($count>=1)
+                        <div class="mb-5">
+                            @php
+                                $i=1;
+                            @endphp
+                            @foreach($goals as $goal)
+                                <div class="flex w-full items-center px-2">
+                                    <img class="rounded-full w-16" src="https://cdn.iconscout.com/icon/free/png-256/people-1659484-1410006.png" alt="image">
+                                    <div class="ml-3 text-sm text-semibold text-gray-800 text-left">
+                                        <p class="font-bold text-lg">{{$goal->company->company_name}}</p>
+                                        <p>{{$goal->company->business->name}}</p>
+                                    </div>
+                                    <div class="flex items-center ml-auto">
+                                        <a href="{{route('destination_detail',['id'=>$goal->company->id])}}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                @if ($i == count($goals))
+
+                                @else
+                                    <div class="border border-black mx-2"></div>
+                                @endif
+                                @php
+                                    $i++;
+                                @endphp
+                            @endforeach
+                        </div>
+                        {{$goals->links()}}
+                    @endif
+                </div>
             </div>
         </div>
-        @if($count == 0)
-            <p class="text-center text-lg text-semibold">You don't have any available tasks</p>
-        @elseif($count>=1)
-            <div class="grid grid-cols-1 gap-y-4 bg-blue-400">
-                @foreach($goals as $goal)
-                    <div class="grid grid-cols-3 justify-center items-center">
-                        <img class="rounded-full w-16 mx-auto" src="https://cdn.iconscout.com/icon/free/png-256/people-1659484-1410006.png" alt="image">
-                        <div class="text-sm text-semibold text-gray-800 text-left">
-                            <p>{{$goal->company->company_name}}</p>
-                            <p>{{$goal->company->business->name}}</p>
-                        </div>
-                        <div class="flex justify-start items-center">
-                            <a href="{{route('destination_detail',['id'=>$goal->company->id])}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            {{$goals->links()}}
-        @endif
     </div>
-@endsection
+</x-app-layout>
