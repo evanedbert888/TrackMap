@@ -9,7 +9,7 @@
         $(function(e) {
             $("#chkbxAll").click(function() {
                 $(".chkbx").prop('checked' ,$(this).prop('checked'));
-                
+
                 if ($('.chkbx:checked').length > 0) {
                     $(".role").prop('disabled', false);
                     $('#butverify').prop('disabled',false);
@@ -24,7 +24,7 @@
 
         $(document).on('click', '.chkbx', function() {
             var id = $(this).attr('value');
-            
+
             if ($('.chkbx').length === $('.chkbx:checked').length) {
                 $('#chkbxAll').prop('checked', true);
             }
@@ -40,7 +40,7 @@
                 $("#role"+id).prop('disabled', true);
                 $("#role"+id).val('');
             }
-                
+
             if ($('.chkbx:checked').length > 0) {
                 $('#butverify').prop('disabled',false);
             }
@@ -70,7 +70,7 @@
                     data : {
                         _token:$("input[name=_token]").val(),
                         ids : listId,
-                        roles : listRole    
+                        roles : listRole
                     },
                     success:function(data){
                         location.reload();
@@ -93,7 +93,7 @@
             document.getElementById('modal').style.transitionDuration = "300ms";
             document.getElementById('modal').classList.add('opacity-100','translate-y-0','sm:scale-100');
         }
-        
+
         function hiddenModal() {
             document.getElementById('modal').classList.remove('opacity-100','translate-y-0','sm:scale-100');
             document.getElementById('modal').style.transitionTimingFunction = "ease-in";
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                         @else
-                            
+
                         @endif
                         @if (count($vdusers) > 0)
                             <div class="verified">
@@ -187,22 +187,16 @@
                                                     <td>{{ $user->address }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>
-                                                        @if($user->role == 'employee')
-                                                            <a href="{{route('edit_employee',['id'=>$user->id])}}">
-                                                                <x-button>Edit</x-button>
-                                                            </a>
+                                                        <a href="{{route('edit_employee',['id'=>$user->employee->id])}}">
+                                                            <x-button>Edit</x-button>
+                                                        </a>
                                                     </td>
                                                     <td>
-                                                            <form action="{{route('employee_delete',['id'=>$user->employee->id])}}" method="POST">
-                                                                @csrf
-                                                                @method("DELETE")
-                                                                <x-delbutton type="submit">Delete</x-delbutton>
-                                                            </form>
-                                                        @elseif($user->role == 'admin')
-                                                            <a href="{{route('edit_profile',['id'=>$user->id])}}">
-                                                                <x-button>Edit</x-button>
-                                                            </a>
-                                                        @endif
+                                                        <form action="{{route('employee_delete',['id'=>$user->employee->id])}}" method="POST">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <x-delbutton type="submit">Delete</x-delbutton>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @php
@@ -212,9 +206,9 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div> 
+                            </div>
                         @else
-                            
+
                         @endif
                     </div>
                 </div>
@@ -223,10 +217,10 @@
         <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>
-                
+
                 <!-- This element is to trick the browser into centering the modal contents. -->
                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            
+
                 <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                     <form method="POST" action="{{ route('add_role') }}">
                         @csrf
