@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
+use App\Models\Role;
 
 class EmployeeController extends Controller
 {
@@ -84,8 +85,12 @@ class EmployeeController extends Controller
 
     }
 
-    public function add_role() {
-
+    public function add_role(Request $request) {
+        $new_role = $request->newRole;
+        $role = new Role();
+        $role->role_name = $new_role;
+        $role->save();
+        return redirect()->route('show_user');
     }
 
     public function delete_role($id) {

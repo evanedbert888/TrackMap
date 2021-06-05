@@ -75,9 +75,9 @@ Route::prefix('/SalesMap')->group(function() {
     Route::patch('/EmployeePatch/{id}',[EmployeeController::class,'employee_patch'])->name('employee_patch');
 
     // Role
-    Route::get('RoleList',[EmployeeController::class,'role_list'])->name('role_list');
-    Route::post('AddRole',[EmployeeController::class,'add_role'])->name('add_role');
-    Route::delete('DeleteRole/{id}',[EmployeeController::class,'delete_role'])->name('delete_role');
+    Route::get('/RoleList',[EmployeeController::class,'role_list'])->name('role_list');
+    Route::post('/AddRole',[EmployeeController::class,'add_role'])->name('add_role');
+    Route::delete('/DeleteRole/{id}',[EmployeeController::class,'delete_role'])->name('delete_role');
 
     // Email Register
     Route::get('/EmailRegister',[RegisterController::class,"email_register"])->name('email_register');
