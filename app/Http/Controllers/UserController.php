@@ -67,7 +67,7 @@ class UserController extends Controller
 
     // User Manage
     public function show_user() {
-        $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
+        $uvdusers = User::query()->where('status','=','Unverified')->where('role','=','employee')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
         $roles = DB::table('roles')->get();
         return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
