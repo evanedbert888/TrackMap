@@ -160,7 +160,7 @@
                                     <line x1="4" y1="18" x2="20" y2="18" />
                                 </svg>
                             </div>
-                            <div class="w-1/2 h-full flex items-center px-8">
+                            <div class="w-1/2 h-full flex items-center px-8 invisible md:visible">
                                 <!-- Page Header -->
                                 {{ $header }}
                             </div>
@@ -168,7 +168,7 @@
                                 <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">
-                                            <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 sm:mt-16 hidden">
+                                            <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 hidden sm:mt-16">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
                                                     <form method="GET" action="{{ route('profile') }}">
                                                         @csrf

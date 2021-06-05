@@ -153,6 +153,7 @@
             document.getElementById('employee').disabled = true;
             document.getElementById('company').disabled = true;
             document.getElementById('butadd').disabled = true;
+            document.getElementById('save').disabled = false;
             document.getElementById('role').value = "";
             document.getElementById('business').value = "";
             document.getElementById('employee').value = "";
@@ -236,7 +237,7 @@
                             <div class="mt-2 flex justify-end">
                                 <form action="{{route('task_insert')}}" method="POST">
                                     @csrf
-                                    <x-button id="save">
+                                    <x-button id="save" disabled>
                                         {{__("Save")}}
                                     </x-button>
                                 </form>

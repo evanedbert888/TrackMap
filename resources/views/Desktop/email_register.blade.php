@@ -24,7 +24,7 @@
                                              autofocus/>
                                 </div>
 
-                                <div class="my-4">
+                                <div class="my-4 flex items-center justify-end">
                                     <x-button>
                                         {{ __('Submit') }}
                                     </x-button>

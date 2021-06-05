@@ -38,10 +38,11 @@ class CompanyController extends Controller
     }
 
     public function company_list(){
-        $lists = Company::query()->orderBy('id','desc')->paginate(5);
         if (Auth::user()->role == 'admin') {
+            $lists = Company::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.company.company_list',['lists'=>$lists]);
         } else {
+            $lists = Company::query()->orderBy('id','desc')->paginate(7);
             return view('Test_Mobile.destination_list',['lists'=>$lists]);
 //            return view('Mobile.company.destination_list',['lists'=>$lists]);
         }

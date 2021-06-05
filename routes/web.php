@@ -58,7 +58,7 @@ Route::prefix('/SalesMap')->group(function() {
 
     // Update Company
     Route::get('/EditCompany/{id}',[CompanyController::class,'edit_company'])->name('edit_company');
-    Route::patch('/CompanyPatch/{id}/{user_id}',[CompanyController::class,'company_patch'])->name('company_patch');
+    Route::patch('/CompanyPatch/{id}',[CompanyController::class,'company_patch'])->name('company_patch');
 
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
@@ -106,11 +106,11 @@ Route::prefix('/SalesMap')->group(function (){
 });
 
 // Test_Mobile View
-// Route::prefix('/SalesMap/Mobile')->group(function () {
-//     Route::get('/MobileView',function () {
-//        return view('layouts.mobile');
-//     });
-//     Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
-//     Route::get('/Employee_Profile',[UserController::class,'profile'])->name('profile');
-//     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('destination_list');
-// });
+Route::prefix('/SalesMap/Mobile')->group(function () {
+    Route::get('/MobileView',function () {
+       return view('layouts.mobile');
+    });
+    Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
+    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('moblie_employee_profile');
+    Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('mobile_destination_list');
+});
