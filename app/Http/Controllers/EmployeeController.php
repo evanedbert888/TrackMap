@@ -118,10 +118,6 @@ class EmployeeController extends Controller
         return redirect()->route('show_user');
     }
 
-    public function role_list() {
-
-    }
-
     public function add_role(Request $request) {
         $new_role = $request->newRole;
         $role = new Role();
