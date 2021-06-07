@@ -17,6 +17,11 @@ use function GuzzleHttp\Promise\task;
 
 class TaskController extends Controller
 {
+    public function task_view(){
+        $goals = Goal::all();
+        return view('Desktop.task_list',['goals'=>$goals]);
+    }
+
     public function task_pairing() {
         $roles = DB::table('roles')->OrderBy('role_name')->get();
         $businesses = DB::table('businesses')->OrderBy('name')->get();
@@ -38,8 +43,6 @@ class TaskController extends Controller
 
     public function store_task($employee, $company) {
         $temp = new Temp;
-        $user_id = Auth::user()->id;
-        $temp->user_id = $user_id;
         $temp->employee_id = $employee;
         $temp->company_id = $company;
         $temp->save();
@@ -60,12 +63,14 @@ class TaskController extends Controller
         $count = Temp::all()->count();
         for ($id = 1; $id <= $count; $id++) {
             $tasks = Temp::first();
+            $companys = Company::firstwhere('id',$tasks->company_id);
 
             $goal = new Goal();
+            $goal->user_id = Auth::user()->id;
             $goal->company_id = $tasks->company_id;
             $goal->employee_id = $tasks->employee_id;
-            $goal->latitude = "-0.0366396002310127"; // belum otomatis
-            $goal->longitude = "109.32923988720279"; // belum otomatis
+            $goal->latitude = $companys->latitude;
+            $goal->longitude = $companys->longitude;
             $goal->save();
 
             Temp::destroy($tasks->id);
