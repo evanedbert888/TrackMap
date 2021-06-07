@@ -56,4 +56,8 @@ class User extends Authenticatable
     public function registers() {
         return $this->hasMany(Register::class, 'user_id', 'id');
     }
+
+    public function goals() {
+        return $this->hasMany(Goal::class, 'user_id', 'id');
+    }
 }
