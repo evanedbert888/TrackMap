@@ -125,10 +125,29 @@
                                 </li>
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
-                                        <div class="space-x-8 sm:-my-px sm:flex">
-                                            <x-nav-link :href="route('task_pairing')" :active="request()->routeIs('task_pairing')">
-                                                {{ __('Task') }}
-                                            </x-nav-link>
+                                        <div class="sm:flex sm:items-center">
+                                            <x-dropdown width="48">
+                                                <x-slot name="trigger">
+                                                    <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                                        <div>{{ 'Task' }}</div>
+
+                                                        <div class="ml-1">
+                                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                            </svg>
+                                                        </div>
+                                                    </button>
+                                                </x-slot>
+
+                                                <x-slot name="content">
+                                                    <x-dropdown-link :href="route('task_pairing')">
+                                                        {{ __('Task Pairing') }}
+                                                    </x-dropdown-link>
+                                                    <x-dropdown-link :href="route('task_view')">
+                                                        {{ __('Task List') }}
+                                                    </x-dropdown-link>
+                                                </x-slot>
+                                            </x-dropdown>
                                         </div>
                                     </div>
                                 </li>
@@ -168,7 +187,7 @@
                                 <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">
-                                            <ul class="p-2 w-full border-r bg-white absolute rounded left-0 shadow mt-12 hidden sm:mt-16">
+                                            <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
                                                     <form method="GET" action="{{ route('profile') }}">
                                                         @csrf
@@ -204,9 +223,6 @@
                                                     </form>
                                                 </li>
                                             </ul>
-                                            <div class="relative">
-                                                <img class="h-10 w-16" src="http://localhost/Project/TrackMap/resources/views/components/img/white.png">
-                                            </div>
                                         </div>
                                         <p class="text-gray-800 text-sm mx-3">{{ Auth::user()->name }}</p>
                                         <div class="cursor-pointer text-gray-600">

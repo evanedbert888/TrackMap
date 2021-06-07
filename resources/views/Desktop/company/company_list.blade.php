@@ -17,7 +17,7 @@
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
                                 <ul>
                                     <li class="flex">
-                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg">
+                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="{{ URL::to('/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg') }}">
                                         <div class="w-full ml-5 mt-3">
                                             <div>
                                                 <h6 class="font-bold text-2xl">{{ $list->company_name }}</h6>
