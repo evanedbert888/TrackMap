@@ -93,6 +93,7 @@
             </div>
         </div>
     </div>
+
     <script !src="">
         var btnSearch = document.querySelector("#search")
         btnSearch.addEventListener("click", () => {

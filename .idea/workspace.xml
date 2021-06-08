@@ -21,8 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,6 +256,7 @@
       <workItem from="1622864648651" duration="13539000" />
       <workItem from="1623033225335" duration="2558000" />
       <workItem from="1623050665649" duration="1167000" />
+      <workItem from="1623121253500" duration="14129000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -352,10 +362,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="new commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621395038020">
+    <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623058865068">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1621395038020" />
+    <state x="480" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1623058865068" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622870689953">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

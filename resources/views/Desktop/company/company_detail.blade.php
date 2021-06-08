@@ -30,6 +30,8 @@
                             <p class="font-bold text-xl">Detail</p>
                             <hr class="border border-5 border-black border-solid">
                             <table class="mt-3">
+                                <span class="hidden" id="latitude" value="{{$details->latitude}}"></span>
+                                <span class="hidden" id="longitude" value="{{$details->longitude}}"></span>
                                 <tr class="align-top">
                                     <td>Address</td>
                                     <td>:</td>
@@ -47,14 +49,21 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="mx-2 mt-5 bg-blue-400 h-96 flex flex-wrap content-center md:mx-5">
-                            <div class="w-full">
-                                <p class="text-center">SHOW MAP</p>
+                        <span class="flex container justify-center mt-3">
+                            <div>
+                                <iframe id="map"></iframe>
                             </div>
-                        </div>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe7I-2_FRkLUXrR8rCOqVdVRWQ5B9mMMk&callback=initMap">
+    </script>
+    <script src="{{asset("js/showMap.js")}}">
+
+    </script>
 </x-app-layout>

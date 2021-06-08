@@ -27,9 +27,8 @@
                                 </div>
                                 <div class="text-sm mt-1">
                                     <select class="rounded-lg" name="business" id="business">
-                                        <option value="{{$details->business_id}}">{{$details->business->name}}</option>
                                         @foreach($businesses as $business)
-                                            <option value={{$business->id}}> {{$business->name}} </option>
+                                            <option value={{$business->id}} {{ $business->id == $details->business_id ? 'selected' : '' }}> {{$business->name}} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -52,6 +51,8 @@
                                         <td>Coordinate</td>
                                         <td>:</td>
                                         <td><x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->latitude }},{{ $details->longitude }}"/></td>
+                                        <span class="hidden" id="latitude" value="{{$details->latitude}}"></span>
+                                        <span class="hidden" id="longitude" value="{{$details->longitude}}"></span>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
@@ -60,15 +61,21 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
-                                <div class="w-full">
-                                    <p class="text-center">SHOW MAP</p>
-                                </div>
-                            </div>
+                            <span class="flex container justify-center mt-3">
+                                <div id="map"></div>
+                            </span>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACn--E4pZFC2QX1QhIY8gnPFz2a7b0XvM&callback=initMap&libraries=&v=weekly">
+    </script>
+    <script src="{{asset("js/showMap.js")}}">
+
+    </script>
+
 </x-app-layout>
