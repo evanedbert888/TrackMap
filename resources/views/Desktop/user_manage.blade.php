@@ -118,27 +118,27 @@
                                 <div class="flex mx-auto justify-center">
                                     <table class="w-full table-auto mt-4">
                                         <thead>
-                                            <tr class="text-center text-base">
+                                            <tr class="text-center text-lg">
                                                 <th><input type="checkbox" id="chkbxAll" class="rounded border-black text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></th>
-                                                <th> Name </th>
+                                                <th class="text-left"> Name </th>
+                                                <th class="text-left"> Address </th>
+                                                <th class="text-left"> Email </th>
                                                 <th> Birth Date </th>
                                                 <th> Sex </th>
-                                                <th> Address </th>
-                                                <th> Email </th>
                                                 <th> Role </th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center" id="unverified" name="unverified">
                                             @foreach($uvdusers as $user)
-                                            <tr class="bg-red-100 border border-black border-b-2 border-t-0 border-r-0 border-l-0">
+                                            <tr class="bg-red-100 text-lg border border-white border-b-4 border-t-0 border-r-0 border-l-0">
                                                 <td>
                                                     <input value="{{ $user->id }}" type="checkbox" name="ids" id="chkbx{{ $user->id }}" class="chkbx rounded border-black text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                                 </td>
-                                                <td>{{ $user->name }}</td>
+                                                <td class="text-left">{{ $user->name }}</td>
+                                                <td class="text-left">{{ $user->address }}</td>
+                                                <td class="text-left">{{ $user->email }}</td>
                                                 <td>{{ $user->birth_date }}</td>
                                                 <td>{{ $user->sex }}</td>
-                                                <td>{{ $user->address }}</td>
-                                                <td>{{ $user->email }}</td>
                                                 <td>
                                                     <select name="role" id="role{{$user->id}}" class="rounded-md role" disabled>
                                                         <option class="hidden"></option>
@@ -166,26 +166,28 @@
                                 <div class="flex mx-auto justify-center">
                                     <table class="w-full table-auto mt-4">
                                         <thead>
-                                            <tr class="text-center text-base">
+                                            <tr class="text-center text-lg">
                                                 <th> No </th>
-                                                <th> Name </th>
+                                                <th class="text-left"> Name </th>
+                                                <th class="text-left"> Address </th>
+                                                <th class="text-left"> Email </th>
                                                 <th> Birth Date </th>
                                                 <th> Sex </th>
-                                                <th> Address </th>
-                                                <th> Email </th>
                                                 <th colspan="2"> Action </th>
                                             </tr>
                                         </thead>
                                         <tbody class="text-center" id="verified" name="verified">
-                                            <?php $i = 1; ?>
+                                            @php
+                                                $i = 1;
+                                            @endphp
                                             @foreach($vdusers as $user)
-                                                <tr class="bg-yellow-100">
+                                                <tr class="bg-yellow-100 text-lg border border-white border-b-4 border-t-0 border-r-0 border-l-0">
                                                     <td>{{ $i }}</td>
-                                                    <td>{{ $user->name }}</td>
+                                                    <td class="text-left">{{ $user->name }}</td>
+                                                    <td class="text-left">{{ $user->address }}</td>
+                                                    <td class="text-left">{{ $user->email }}</td>
                                                     <td>{{ $user->birth_date }}</td>
                                                     <td>{{ $user->sex }}</td>
-                                                    <td>{{ $user->address }}</td>
-                                                    <td>{{ $user->email }}</td>
                                                     <td>
                                                         <a href="{{route('edit_employee',['id'=>$user->employee->id])}}">
                                                             <x-button>Edit</x-button>
