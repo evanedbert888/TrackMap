@@ -8,34 +8,48 @@
     <div class="py-8">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="container">
-                        <div class="text-center pb-2 font-semibold text-lg">
-                            <p> List of Registers </p>
-                        </div>
-                        <div class="flex container justify-center text-center">
-                            <table class="table-auto border-4 border-collapse">
-                                <thead>
-                                    <th class="border-4 border-green-400 px-4"> ID </th>
-                                    <th class="border-4 border-green-400 px-5"> Email </th>
-                                    <th class="border-4 border-green-400 px-3"> Status </th>
-                                    <th class="border-4 border-green-400 px-4"> Registered By </th>
-                                    <th class="border-4 border-green-400 px-4"> Registered At </th>
-                                </thead>
-                                <tbody>
-                                    @foreach($registers as $register)
-                                        <tr>
-                                            <td class="border-4 border-green-400 px-4"> {{$register->id}} </td>
-                                            <td class="border-4 border-green-400 px-5"> {{$register->email}} </td>
-                                            <td class="border-4 border-green-400 px-3"> {{$register->status}} </td>
-                                            <td class="border-4 border-green-400 px-4"> {{$register->user->name}} </td>
-                                            <td class="border-4 border-green-400 px-4"> {{$register->created_at}} </td>
+                <div class="p-5 bg-white border-b border-gray-200">
+                    <div class="w-full">
+                        @if (count($registers) > 0)
+                            <h1 class="text-2xl font-bold">List of Registers</h1>
+                            <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>
+                            <div class="flex mx-auto justify-center">
+                                <table class="w-full table-auto mt-4">
+                                    <thead>
+                                        <tr class="text-center text-lg">
+                                            <th> No </th>
+                                            <th class="text-left"> Email </th>
+                                            <th class="text-left"> Registered By </th>
+                                            <th> Status </th>
+                                            <th> Registered At </th>
+                                            <th> Used At </th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        {{$registers->links()}}
+                                    </thead>
+                                    <tbody class="text-center text-lg">
+                                        @php
+                                            $i = 1;
+                                        @endphp
+                                        @foreach($registers as $register)
+                                            <tr class="bg-red-100 border border-white border-b-4 border-t-0 border-r-0 border-l-0">
+                                                <td> {{ $i++ }} </td>
+                                                <td class="text-left"> {{$register->email}} </td>
+                                                <td class="text-left"> {{$register->user->name}} </td>
+                                                <td> {{$register->status}} </td>
+                                                <td> {{$register->created_at}} </td>
+                                                @if ($register->status == "available")
+                                                    <td>{{ __("-") }}</td>
+                                                @else
+                                                    <td>{{ $register->updated_at }}</td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{$registers->links()}}
+                        @else
+                            <p class="font-bold text-lg">Nothing Registerd</p>
+                        @endif
                     </div>
                     <div class="flex justify-end my-2">
                         <a href="{{route('email_register')}}" class="">

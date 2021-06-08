@@ -19,19 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/email_register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/email_register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/register_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/task_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +251,7 @@
       <workItem from="1622864648651" duration="13539000" />
       <workItem from="1623033225335" duration="2558000" />
       <workItem from="1623050665649" duration="1167000" />
-      <workItem from="1623121253500" duration="14129000" />
+      <workItem from="1623121253500" duration="14558000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -335,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622883085887</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="new commit">
+      <created>1623140734848</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1623140734848</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

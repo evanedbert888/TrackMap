@@ -18,7 +18,7 @@ use function GuzzleHttp\Promise\task;
 class TaskController extends Controller
 {
     public function task_view(){
-        $goals = Goal::all();
+        $goals = Goal::query()->paginate(12);
         return view('Desktop.task_list',['goals'=>$goals]);
     }
 
