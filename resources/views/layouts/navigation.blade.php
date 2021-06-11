@@ -187,7 +187,7 @@
                                 <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">
-                                            <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden">
+                                            <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden md:mt-14">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
                                                     <form method="GET" action="{{ route('profile') }}">
                                                         @csrf
@@ -222,7 +222,10 @@
                                                         </x-dropdown-link>
                                                     </form>
                                                 </li>
-                                            </ul>
+                                            </ul> 
+                                            <div class="relative hidden md:block">
+                                                <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
+                                            </div>
                                         </div>
                                         <p class="text-gray-800 text-sm mx-3">{{ Auth::user()->name }}</p>
                                         <div class="cursor-pointer text-gray-600">
