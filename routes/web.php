@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoalController;
@@ -87,6 +88,50 @@ Route::prefix('/SalesMap')->group(function() {
     // Register List
     Route::get('/RegisterList',[RegisterController::class,'register_list'])->name('register_list');
     // Route::delete('/RegisterDelete',[RegisterController::class,'register_delete'])->name('register_delete');
+
+//    // Users
+//    Route::group(['prefix' => 'users', 'name' => 'users.'], function() {
+//        Route::get('/', [UserController::class, 'index'])->name('index');
+//        Route::get('/edit', [UserController::class, 'edit'])->name('edit');
+//        Route::patch('/', [UserController::class, 'update'])->name('update');
+//    });
+
+//    // Employees
+//    Route::group(['prefix' => 'employees', 'name' => 'employees.'], function () {
+//       Route::get('/', [EmployeeController::class, 'index'])->name('index');
+//       Route::get('/{employee}', [EmployeeController::class, 'index/employee'])->name('index/employee');
+//       Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
+//       Route::patch('/{employee}', [EmployeeController::class, 'update'])->name('update');
+//       Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
+//    });
+
+//    // Destinations
+//    Route::group(['prefix' => 'destinations', 'name' => 'destinations.'], function (){
+//        Route::get('/', [DestinationController::class, 'index'])->name('index');
+//        Route::get('/{destination}', [DestinationController::class, 'index/destination'])->name('index/destination');
+//        Route::get('/create', [DestinationController::class, 'create'])->name('create');
+//        Route::post('/',[DestinationController::class, 'store'])->name('store');
+//        Route::get('/{destination}/edit', [DestinationController::class, 'edit'])->name('edit');
+//        Route::patch('/{destination}', [DestinationController::class, 'update'])->name('update');
+//        Route::delete('/{destination}', [DestinationController::class, 'destroy'])->name('destroy');
+//    });
+
+//    // Registered-emails
+//    Route::group(['prefix' => 'registered-emails', 'name' => 'registers.'], function (){
+//        Route::get('/', [RegisterEmailController::class, 'index'])->name('index');
+//        Route::get('/create', [RegisterEmailController::class, 'create'])->name('create');
+//        Route::post('/', [RegisterEmailController::class, 'store'])->name('store');
+//    });
+
+    // Business-categories
+    Route::group(['prefix' => 'business-categories', 'name' => 'businesses.'], function() {
+        Route::get('/', [BusinessCategoryController::class, 'index'])->name('index');
+        Route::get('/create', [BusinessCategoryController::class, 'create'])->name('create');
+        Route::post('/', [BusinessCategoryController::class, 'store'])->name('store');
+        Route::get('/{business-categories}/edit', [BusinessCategoryController::class, 'edit'])->name('edit');
+        Route::put('/{business-categories}', [BusinessCategoryController::class, 'update'])->name('update');
+        Route::delete('/{business-categories}', [BusinessCategoryController::class, 'destroy'])->name('destroy');
+    });
 });
 
 // Mobile
@@ -109,6 +154,6 @@ Route::prefix('/SalesMap/Mobile')->group(function () {
        return view('layouts.mobile');
     });
     Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
-    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('moblie_employee_profile');
+    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('mobile_destination_list');
 });

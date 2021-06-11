@@ -20,7 +20,7 @@ class Company extends Model
     }
 
     public function business() {
-        return $this->hasOne(Business::class,'id','business_id');
+        return $this->hasOne(BusinessCategory::class,'id','business_id');
     }
 
     public function goals() {

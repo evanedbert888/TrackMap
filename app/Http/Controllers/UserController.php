@@ -16,7 +16,7 @@ class UserController extends Controller
         $id = Auth::user()->id;
         $details = User::query()->find($id);
         if (Auth::user()->role == 'admin') {
-            return view('Desktop.profile',['details'=>$details]);
+            return view('Desktop.user.profile',['details'=>$details]);
         } elseif (Auth::user()->role == 'employee') {
             return view('Mobile.employee.employee_profile',['details'=>$details]);
         }
@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function edit_profile($id){
         $details = User::query()->find($id);
-        return view('Desktop.edit_profile',['details'=>$details]);
+        return view('Desktop.user.edit_profile',['details'=>$details]);
     }
 
     public function profile_update(Request $request) {

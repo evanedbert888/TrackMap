@@ -13,7 +13,11 @@
                         <div class="p-5 bg-blue-300 border border-white-200 mb-5 sm:rounded-lg">
                             <ul>
                                 <li class="flex">
-                                    <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="{{url('storage/'.$list->user->image)}}">
+                                    @if($list->user->image == '/img/Profile.png')
+                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{URL::to($list->user->image)}}">
+                                    @else
+                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{url('storage/'.$list->user->image)}}">
+                                    @endif
                                     <div class="w-full ml-5 mt-3">
                                         <div>
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>

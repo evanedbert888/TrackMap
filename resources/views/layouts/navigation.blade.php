@@ -80,6 +80,9 @@
                                                     <x-dropdown-link :href="route('company_form')">
                                                         {{ __('Add Company') }}
                                                     </x-dropdown-link>
+{{--                                                    <x-dropdown-link href="{{route('businesses.index')}}">--}}
+{{--                                                        {{ __('BusinessCategory Categories') }}--}}
+{{--                                                    </x-dropdown-link>--}}
                                                 @elseif(Auth::user()->role == 'employee')
                                                     <x-dropdown-link :href="route('task_list')">
                                                         {{ __('Task List') }}
@@ -112,11 +115,8 @@
                                                     <x-dropdown-link :href="route('employee_list')">
                                                         {{ __('Employee List') }}
                                                     </x-dropdown-link>
-                                                    <x-dropdown-link :href="route('email_register')">
-                                                        {{ __('Email Register') }}
-                                                    </x-dropdown-link>
                                                     <x-dropdown-link :href="route('register_list')">
-                                                        {{ __('Register List') }}
+                                                        {{ __('Registered Emails') }}
                                                     </x-dropdown-link>
                                                 </x-slot>
                                             </x-dropdown>
