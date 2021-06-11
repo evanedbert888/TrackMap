@@ -8,9 +8,14 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <style>
-            #map{
+            #viewMap{
                 height:420px;
                 width:1100px;
+            }
+
+            #findMap{
+                height: 450px;
+                width: 800px;
             }
         </style>
 
@@ -19,8 +24,10 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
 
         <!-- Scripts -->
+        <script src="https://js.arcgis.com/4.19/"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>

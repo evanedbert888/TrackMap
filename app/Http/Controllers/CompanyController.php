@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Business;
+use App\Models\BusinessCategory;
 use App\Models\Employee;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Company;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 
 class CompanyController extends Controller
@@ -65,7 +66,7 @@ class CompanyController extends Controller
     }
 
     public function company_form() {
-        $businesses = Business::all();
+        $businesses = BusinessCategory::all();
         return view('Desktop.company.company_form',['businesses'=>$businesses]);
     }
 
@@ -76,19 +77,36 @@ class CompanyController extends Controller
 
     public function edit_company($id){
         $details = Company::find($id);
-        $businesses = Business::all();
+        $businesses = BusinessCategory::all();
         return view('Desktop.company.edit_company',['details'=>$details,'businesses'=>$businesses]);
     }
 
     public function company_patch($id,Request $request){
         $validateCompany = $request->validate([
            'company_name' => 'required|string|max:255',
-           'business' => 'required',
+           'business-categories' => 'required',
            'address' => 'required|string|max:300',
            'email' => 'required|string|max:255',
            'coordinate' => 'required',
+           'image' => 'nullable|image|mimes:jpeg,jpg,png',
            'description' => 'required|max:300'
         ]);
+
+        $img_name = Company::query()->where('id','=',$id)->pluck('image');
+
+        if ($request->hasFile('image')) {
+            $folder = 'company'.$id;
+            if(File::exists('storage/company/'.$folder)){
+                File::cleanDirectory('storage/company/'.$folder);
+            }
+
+            $image_name = $request->file('image')->getClientOriginalName();
+            $new_image_name = 'company/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
+            $img_name = $new_image_name;
+
+            $request->image->storeAs('public',$img_name);
+            asset('public/'.$new_image_name);
+        }
 
         $split = explode(",", $request->coordinate);
         $latitude = $split[0];
@@ -97,11 +115,12 @@ class CompanyController extends Controller
         $company = new Company;
         $company->updateById($id, array(
                 "company_name" => $validateCompany['company_name'],
-                "business_id" => $validateCompany['business'],
+                "business_id" => $validateCompany['business-categories'],
                 "address" => $validateCompany['address'],
                 "email" => $validateCompany['email'],
                 "latitude" => $latitude,
                 "longitude" => $longitude,
+                "image" => $img_name,
                 'description' => $validateCompany['description']
             )
         );
@@ -111,7 +130,7 @@ class CompanyController extends Controller
     public function add_company(Request $request){
         $validateCompany = $request->validate([
             'company_name' => 'required|string|max:255',
-            'business' => 'required',
+            'business-categories' => 'required',
             'address' => 'required|string|max:300',
             'email' => 'required|string|max:255',
             'coordinate' => 'required',
@@ -124,7 +143,7 @@ class CompanyController extends Controller
 
         $company = new Company();
         $company->company_name = $validateCompany['company_name'];
-        $company->business_id = $validateCompany['business'];
+        $company->business_id = $validateCompany['business-categories'];
         $company->address = $validateCompany['address'];
         $company->email = $validateCompany['email'];
         $company->latitude = $latitude;

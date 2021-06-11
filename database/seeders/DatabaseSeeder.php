@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CompanySeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(GoalSeeder::class);
+//        $this->call(GoalSeeder::class);
         $this->call(EmployeeSeeder::class);
-        $this->call(BusinessSeeder::class);
+        $this->call(BusinessCategorySeeder::class);
         $this->call(RegisterSeeder::class);
-        $this->call(TempSeeder::class);
+//        $this->call(TempSeeder::class);
         $this->call(RoleSeeder::class);
     }
 }

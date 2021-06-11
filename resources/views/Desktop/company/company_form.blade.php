@@ -24,7 +24,7 @@
                                                      autofocus/>
                                         </div>
 
-                                        <!-- Business -->
+                                        <!-- BusinessCategory -->
                                         <div class="my-3 space-y-0">
                                             <x-label for="business" :value="__('Business')"/>
 
@@ -82,8 +82,7 @@
                             </td>
                             <td>
                                 <span class="flex container justify-center">
-                                    <div>
-                                        <iframe id="map" height="540px" width="810px" src="https://maps.google.com/maps?q=&output=embed"></iframe>
+                                    <div id="findMap">
                                     </div>
                                 </span>
                             </td>
@@ -94,35 +93,96 @@
         </div>
     </div>
 
-    <script !src="">
-        var btnSearch = document.querySelector("#search")
-        btnSearch.addEventListener("click", () => {
-            var address = document.querySelector("#address").value
-            console.log(address)
-            getCoordinateOfAddress(address)
-            map(address)
-        })
+    <script>
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer"
 
-        function getCoordinateOfAddress(address) {
-            fetch('http://127.0.0.1:8000/api/GeoSearch?address=' + address, {
-                method: "get"
+        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
+
+            esriConfig.apiKey = "AAPK3b583452b37548898ee56ef34a6ac70c8D9oQpRakOG5ZEnv5UySaM8NXnJNjuC5TScW4rTgoe-Lxp7ANLXwa0btm44QL0oa";
+
+            const map = new Map({
+                basemap: "arcgis-topographic" //Basemap layer service
+            });
+
+            const view = new MapView({
+                map: map,
+                center: [109.342506,-0.026330], //Longitude, latitude
+                zoom: 14,
+                container: "findMap"
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
+            var btnSearch = document.querySelector("#search")
+            btnSearch.addEventListener("click", () => {
+                var address = document.querySelector("#address").value
+                console.log(address)
+                getCoordinateOfAddress(address)
             })
-                .then(response => response.json())
-                .then(responseJson => {
-                    console.log(responseJson)
-                    setCoordinate(responseJson)
+
+            function getCoordinateOfAddress(address) {
+                fetch('http://127.0.0.1:8000/api/GeoSearch?address=' + address, {
+                    method: "get"
                 })
-            .catch(error =>{
-                console.log(error)
-            })
-        }
+                    .then(response => response.json())
+                    .then(responseJson => {
+                        console.log(responseJson)
+                        setCoordinate(responseJson,address)
+                    })
+                    .catch(error =>{
+                        console.log(error)
+                    })
+            }
 
-        function setCoordinate(coordinate) {
-            document.querySelector("#coordinate").value = `${coordinate.x},${coordinate.y}`
-        }
+            function setCoordinate(coordinate,address) {
+                let title=  Math.round(coordinate.x * 100000)/100000 + ", " + Math.round(coordinate.y * 100000)/100000
+                document.querySelector("#coordinate").value = title
+                const point = {
+                    type: "point",
+                    longitude: coordinate.x,
+                    latitude: coordinate.y
+                }
+                placeMarker(point,address,title)
+            }
 
-        function map(address) {
-            document.getElementById("map").src=`https://maps.google.com/maps?q=${address}&output=embed`
-        }
+            let symbol = {
+                type: "picture-marker",
+                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrW1r1C8ccnzU0P5cbXV2JKHu-cqkDK-V_jA&usqp=CAU",
+                height: "20px",
+                width: "20px"
+            }
+
+            function placeMarker(point,address,title) {
+                console.log(point)
+                const popupTemplate = {
+                    title: "{Name}",
+                    content: "{Description}"
+                }
+                const attributes = {
+                    Name: title,
+                    Description: address
+                }
+
+                const pointGraphic = new Graphic({
+                    geometry: point,
+                    symbol: symbol,
+                    attributes: attributes,
+                    popupTemplate: popupTemplate
+                });
+                graphicsLayer.add(pointGraphic);
+
+                view.popup.open({
+                    title:  title,
+                    content: address,
+                    location: point
+                });
+            }
+        });
     </script>
 </x-app-layout>

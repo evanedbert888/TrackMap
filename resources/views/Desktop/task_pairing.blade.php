@@ -36,7 +36,7 @@
 
         // Companies
         function showCompanies() {
-            var business = document.getElementById('business').value;
+            var business = document.getElementById('business-categories').value;
             document.getElementById('divCompany').classList.remove('hidden');
             getCompanyByRole(business);
         }
@@ -133,7 +133,7 @@
             })
             $('#tableTask').html(data);
         }
-        
+
         function showTask() {
             $.ajax({
                 url:'{{ route('show_task') }}',
@@ -175,7 +175,7 @@
             document.getElementById('butadd').disabled = true;
             document.getElementById('save').disabled = false;
             document.getElementById('role').value = "";
-            document.getElementById('business').value = "";
+            document.getElementById('business-categories').value = "";
             document.getElementById('employee').value = "";
             document.getElementById('company').value = "";
         }
