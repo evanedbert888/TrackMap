@@ -81,7 +81,7 @@
                                                         {{ __('Add Company') }}
                                                     </x-dropdown-link>
 {{--                                                    <x-dropdown-link href="{{route('businesses.index')}}">--}}
-{{--                                                        {{ __('BusinessCategory Categories') }}--}}
+{{--                                                        {{ __('Business Categories') }}--}}
 {{--                                                    </x-dropdown-link>--}}
                                                 @elseif(Auth::user()->role == 'employee')
                                                     <x-dropdown-link :href="route('task_list')">

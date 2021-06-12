@@ -14,8 +14,8 @@
             }
 
             #findMap{
-                height: 450px;
-                width: 800px;
+                height: 500px;
+                width: 820px;
             }
         </style>
 

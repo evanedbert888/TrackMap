@@ -14,29 +14,29 @@ use Illuminate\Support\Facades\Http;
 
 class CompanyController extends Controller
 {
-    public function token() {
-        $url = "https://www.arcgis.com/sharing/oauth2/token?client_id=FAvQ2yQYsmb4D8Rk&grant_type=client_credentials&client_secret=05e56276f99f46fda1b066b8b7e4eb4a&f=pjson";
-        $response = Http::get($url);
-
-        return $response["access_token"];
-    }
-
-    public function getAddress($address) {
-        $response = $this->token();
-        $url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=".$address."&forStorage=true
-        &token=".$response."&f=pjson";
-
-        $response = Http::get($url);
-        $candidates = $response["candidates"];
-        $array = $candidates[0];
-        $location = $array["location"];
-        $x = strval($location["x"]);
-        $y = strval($location["y"]);
-        return [
-            "x"=>$x,
-            "y"=>$y
-        ];
-    }
+//    public function token() {
+//        $url = "https://www.arcgis.com/sharing/oauth2/token?client_id=FAvQ2yQYsmb4D8Rk&grant_type=client_credentials&client_secret=05e56276f99f46fda1b066b8b7e4eb4a&f=pjson";
+//        $response = Http::get($url);
+//
+//        return $response["access_token"];
+//    }
+//
+//    public function getAddress($address) {
+//        $response = $this->token();
+//        $url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=".$address."&forStorage=true
+//        &token=".$response."&f=pjson";
+//
+//        $response = Http::get($url);
+//        $candidates = $response["candidates"];
+//        $array = $candidates[0];
+//        $location = $array["location"];
+//        $x = strval($location["x"]);
+//        $y = strval($location["y"]);
+//        return [
+//            "x"=>$x,
+//            "y"=>$y
+//        ];
+//    }
 
     public function company_list(){
         if (Auth::user()->role == 'admin') {
@@ -84,7 +84,7 @@ class CompanyController extends Controller
     public function company_patch($id,Request $request){
         $validateCompany = $request->validate([
            'company_name' => 'required|string|max:255',
-           'business-categories' => 'required',
+           'business' => 'required',
            'address' => 'required|string|max:300',
            'email' => 'required|string|max:255',
            'coordinate' => 'required',
@@ -115,7 +115,7 @@ class CompanyController extends Controller
         $company = new Company;
         $company->updateById($id, array(
                 "company_name" => $validateCompany['company_name'],
-                "business_id" => $validateCompany['business-categories'],
+                "business_id" => $validateCompany['business'],
                 "address" => $validateCompany['address'],
                 "email" => $validateCompany['email'],
                 "latitude" => $latitude,
@@ -130,7 +130,7 @@ class CompanyController extends Controller
     public function add_company(Request $request){
         $validateCompany = $request->validate([
             'company_name' => 'required|string|max:255',
-            'business-categories' => 'required',
+            'business' => 'required',
             'address' => 'required|string|max:300',
             'email' => 'required|string|max:255',
             'coordinate' => 'required',
@@ -143,7 +143,7 @@ class CompanyController extends Controller
 
         $company = new Company();
         $company->company_name = $validateCompany['company_name'];
-        $company->business_id = $validateCompany['business-categories'];
+        $company->business_id = $validateCompany['business'];
         $company->address = $validateCompany['address'];
         $company->email = $validateCompany['email'];
         $company->latitude = $latitude;

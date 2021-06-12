@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Goal;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    public function dashboard() {
+        $user_id = Auth::user()->id;
+        $goals = Goal::query()->where('status','=','finished')
+            ->where('user_id','=',$user_id)->get();
+        return view('dashboard',['goals'=>$goals]);
+    }
+
     public function profile(){
         $id = Auth::user()->id;
         $details = User::query()->find($id);
