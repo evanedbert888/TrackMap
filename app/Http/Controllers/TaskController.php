@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusinessCategory;
 use App\Models\Company;
 use App\Models\Employee;
 use App\Models\Goal;
@@ -24,7 +25,7 @@ class TaskController extends Controller
 
     public function task_pairing() {
         $roles = DB::table('roles')->OrderBy('role_name')->get();
-        $businesses = DB::table('businesses')->OrderBy('name')->get();
+        $businesses = BusinessCategory::query()->orderBy('name')->get();
         $temps = Temp::all();
         return view('Desktop.task_pairing',["roles"=>$roles,"businesses"=>$businesses,"temps"=>$temps]);
     }

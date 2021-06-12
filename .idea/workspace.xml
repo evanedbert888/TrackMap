@@ -21,31 +21,21 @@
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Business.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BusinessCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_28_033239_create_companies_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_28_033239_create_companies_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_11_052013_create_businesses_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/BusinessSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/BusinessCategorySeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/GoalSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/GoalSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/showMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BusinessCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Goal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Goal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/company_list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/edit_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user/edit_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -284,7 +274,10 @@
       <workItem from="1623291244784" duration="538000" />
       <workItem from="1623297125711" duration="14891000" />
       <workItem from="1623321277322" duration="5664000" />
-      <workItem from="1623382463671" duration="5324000" />
+      <workItem from="1623382463671" duration="22816000" />
+      <workItem from="1623415636160" duration="5103000" />
+      <workItem from="1623462280897" duration="797000" />
+      <workItem from="1623467331315" duration="8793000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -377,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623140856571</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="new commit">
+      <created>1623390394325</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1623390394325</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

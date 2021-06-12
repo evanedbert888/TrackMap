@@ -11,7 +11,7 @@ class BusinessCategory extends Model
     protected $table = 'business_categories';
 
     protected $fillable = [
-        'business_name'
+        'name'
     ];
 
     public function company() {

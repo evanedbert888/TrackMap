@@ -25,7 +25,7 @@ class BusinessCategoryController extends Controller
      */
     public function index()
     {
-        $categories = BusinessCategory::all();
+        $categories = BusinessCategory::query()->paginate(7);
         return view('desktop.business-categories.index',['categories'=>$categories]);
     }
 

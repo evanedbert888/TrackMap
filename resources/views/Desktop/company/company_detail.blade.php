@@ -34,9 +34,8 @@
                             <p class="font-bold text-xl">Detail</p>
                             <hr class="border border-5 border-black border-solid">
                             <table class="mt-3">
-                                <span class="hidden" id="latitude" value="{{$details->latitude}}"></span>
-                                <span class="hidden" id="longitude" value="{{$details->longitude}}"></span>
-                                <span class="hidden" id="marker" value="{{public_path('/img/marker_pin.png')}}"></span>
+                                <input type="hidden" id="latitude" value="{{$details->latitude}}"/>
+                                <input type="hidden" id="longitude" value="{{$details->longitude}}"/>
                                 <tr class="align-top">
                                     <td>Address</td>
                                     <td>:</td>
@@ -77,7 +76,7 @@
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
             const map = new Map({
-                basemap: "arcgis-topographic" //Basemap layer service
+                basemap: "osm-standard-relief" //Basemap layer service
             });
 
             const view = new MapView({
@@ -105,8 +104,8 @@
             const pictureMarkerSymbol = {
                 type: "picture-marker",
                 url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
-                height: "20px",
-                width: "20px"
+                height: "25px",
+                width: "25px"
             };
 
             const pointGraphic = new Graphic({

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 class Goal extends Model
 {
     use HasFactory;
+    protected $table = "goals";
+
     protected $fillable = [
         'company_id', 'employee_id', 'latitude', 'longitude'
     ];

@@ -85,15 +85,14 @@
             "esri/views/MapView",
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
-            "esri/tasks/Locator",
-            "esri/symbols/PictureMarkerSymbol"
+            "esri/tasks/Locator"
 
         ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator) {
 
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
             const map = new Map({
-                basemap: "arcgis-topographic" //Basemap layer service
+                basemap: "osm-standard-relief" //Basemap layer service
             });
 
             const view = new MapView({
@@ -121,8 +120,8 @@
             const pictureMarkerSymbol = {
                 type: "picture-marker",
                 url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
-                height: "30px",
-                width: "30px"
+                height: "25px",
+                width: "25px"
             };
 
             const pointGraphic = new Graphic({
