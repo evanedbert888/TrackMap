@@ -7,7 +7,6 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
-use App\Models\User;
 use App\Http\Controllers\TaskController;
 
 /*
