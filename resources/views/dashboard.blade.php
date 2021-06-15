@@ -103,15 +103,10 @@
                 }
             },
             popupTemplate: {                     // autocasts as new PopupTemplate()
-                title: "Finished Place",    //belum dapat menampilkan nama company dari database
+                title: "Finished Place",    //belum dapat menampilan nama company
                 content: [{
                     type: "fields",
                     fieldInfos: [
-                        {
-                            fieldName: "company",
-                            label: "Company Name",
-                            visible: true
-                        },
                         {
                             fieldName: "address",
                             label: "Company Address",
