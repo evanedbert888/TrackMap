@@ -7,7 +7,6 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
-use App\Models\User;
 use App\Http\Controllers\TaskController;
 
 /*
@@ -26,8 +25,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', [UserController::class,'dashboard'])
-    ->middleware(['auth'])->name('dashboard');
+Route::view('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
+
+Route::get('/dashboardgetgoals', [UserController::class,'dashboard'])
+    ->name('dashboard_goals');
 
 require __DIR__.'/auth.php';
 

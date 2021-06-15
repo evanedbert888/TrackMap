@@ -16,9 +16,15 @@ class UserController extends Controller
 {
     public function dashboard() {
         $user_id = Auth::user()->id;
-        $goals = Goal::query()->where('status','=','finished')
-            ->where('user_id','=',$user_id)->get();
-        return view('dashboard',['goals'=>$goals]);
+        $goals = Goal::query()
+            ->join('employees', 'goals.employee_id', '=', 'employees.id')
+            ->join('users', 'employees.user_id', '=', 'users.id')
+            ->join('companies', 'goals.company_id', '=', 'companies.id')
+            ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+            ->where('goals.status','=','finished')
+            ->where('goals.user_id','=',$user_id)
+            ->get();
+        return response()->json($goals);
     }
 
     public function profile(){

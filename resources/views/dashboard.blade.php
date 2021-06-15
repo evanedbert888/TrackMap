@@ -5,174 +5,152 @@
         </h2>
     </x-slot>
 
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url : '{{ route('dashboard_goals') }}',
+                type : 'GET',
+                success:function(data){
+                    pushArray(data);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
+        })
+    </script>
+
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <span class="flex container justify-center">
                         <div id="viewMap"></div>
-                        @foreach($goals as $goal)
-                            <input type="hidden" id="latitude" value="{{$goal->latitude}}"/>
-                            <input type="hidden" id="longitude" value="{{$goal->longitude}}"/>
-                            <input type="hidden" id="employee_name" value="{{$goal->employee->user->name}}"/>
-{{--                            <input type="hidden" id="destination_name" value="{{$goal->company->company_name}}"/>--}}
-                            <input type="hidden" id="user_name" value="{{$goal->user->name}}"/>
-                        @endforeach
                     </span>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        require([
-            "esri/config",
-            "esri/Map",
-            "esri/views/MapView",
-
-            "esri/Graphic",
-            "esri/layers/GraphicsLayer"
-        ],
-            function(esriConfig, Map, MapView, Graphic, GraphicsLayer) {
-
-            esriConfig.apiKey = "AAPK3b583452b37548898ee56ef34a6ac70c8D9oQpRakOG5ZEnv5UySaM8NXnJNjuC5TScW4rTgoe-Lxp7ANLXwa0btm44QL0oa";
-
-            const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
-            });
-
-            const view = new MapView({
-                map: map,
-                center: [109.342506,-0.026330], //Longitude, latitude
-                zoom: 13,
-                container: "viewMap"
-            });
-
-            const graphicsLayer = new GraphicsLayer();
-            map.add(graphicsLayer);
-
-            function findIDValue(point) {
-                let find = document.getElementById(point)
-                let value = find.attributes.getNamedItem('value').value;
-                return value;
-            }
-
-            const point = {
-                type: "point",
-                longitude: findIDValue('longitude'),
-                latitude: findIDValue('latitude'),
-            };
-
-            const pictureMarkerSymbol = {
-                type: "picture-marker",
-                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
-                height: "20px",
-                width: "20px"
-            };
-
-            const pointGraphic = new Graphic({
-                geometry: point,
-                symbol: pictureMarkerSymbol
-            });
-            graphicsLayer.add(pointGraphic);
-        });
-    </script>
 </x-app-layout>
 <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
-<script src="https://js.arcgis.com/4.19/"></script>
 <script>
-    {
-        "places": [
-            {
-                "id": 1,
-                "address": "200 N Spring St, Los Angeles, CA 90012",
-                "longitude": -118.24354,
-                "latitude": 34.05389
-            },
-            {
-                "id": 2,
-                "address": "419 N Fairfax Ave, Los Angeles, CA 90036",
-                "longitude": -118.31966,
-                "latitude": 34.13375
-            }
-        ]
+    var places = [];
+
+    function pushArray(data) {
+        $.each(data, function(key,value) {    
+            places.push({ 
+                id: value.id,
+                address: value.address,
+                company: value.company_name,
+                employee: value.employee_name,
+                longitude: value.longitude,
+                latitude: value.latitude
+            });
+        })
     }
 
-    require([
+     require([
         "esri/config",
         "esri/Map",
         "esri/views/MapView",
 
-        "esri/tasks/Locator",
         "esri/Graphic",
-        "esri/layers/GraphicsLayer"
+        "esri/layers/GraphicsLayer",
+        "esri/tasks/Locator",
+        "esri/layers/FeatureLayer",
 
-    ], function(esriConfig,Map, MapView, FeatureLayer, Graphic, GraphicsLayer) {
-        esriConfig.apiKey = "AAPK05b0d7c5ec0d4ae1927e0bbcfd70d2a4gWIVK3qxuiuX3_O59_EWgQA1ztAKxDTETQeKQ7JoLB0XLhlE6uYCfnTLxyHe0XPM";
+
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, FeatureLayer, ) {
+        esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
         const map = new Map({
-        basemap: "streets-navigation-vector" //Basemap layer service
+            basemap: "streets-navigation-vector" //Basemap layer service
         });
-
 
         const view = new MapView({
-            container: "map",
             map: map,
-            center: [ -118.31966,  34.13375],
-            zoom: 15
+            center: [ 109.3425,  -0.0383],
+            zoom: 12,
+            container: "viewMap"
         });
+
         var graphics = places.map(function (place) {
             return new Graphic({
                 attributes: {
-                ObjectId: place.id,
-                address: place.address
+                    ObjectId: place.id,
+                    address: place.address,
+                    company: place.company,
+                    employee: place.employee
                 },
                 geometry: {
-                longitude: place.longitude,
-                latitude: place.latitude
+                    longitude: place.longitude,
+                    latitude: place.latitude,
+                    type : "point"
                 }
             });
         });
+
         var featureLayer = new FeatureLayer({
             source: graphics,
             renderer: {
                 type: "simple",                    // autocasts as new SimpleRenderer()
                 symbol: {                          // autocasts as new SimpleMarkerSymbol()
-                type: "simple-marker",
-                color: "#102A44",
-                outline: {                       // autocasts as new SimpleLineSymbol()
-                    color: "#598DD8",
-                    width: 2
-                }
+                    type: "simple-marker",
+                    color: "#102A44",
+                    outline: {                       // autocasts as new SimpleLineSymbol()
+                        color: "#598DD8",
+                        width: 2
+                    }
                 }
             },
             popupTemplate: {                     // autocasts as new PopupTemplate()
-                title: "Places in Los Angeles",
+                title: "Finished Place",    //belum dapat menampilkan nama company dari database
                 content: [{
-                type: "fields",
-                fieldInfos: [
-                    {
-                    fieldName: "address",
-                    label: "Address",
-                    visible: true
-                    }
-                ]
+                    type: "fields",
+                    fieldInfos: [
+                        {
+                            fieldName: "company",
+                            label: "Company Name",
+                            visible: true
+                        },
+                        {
+                            fieldName: "address",
+                            label: "Company Address",
+                            visible: true
+                        },
+                        {
+                            fieldName: "employee",
+                            label: "Employee Name",
+                            visible: true
+                        }
+                    ]
                 }]
             },
             objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
             fields: [
                 {
-                name: "ObjectID",
-                alias: "ObjectID",
-                type: "oid"
+                    name: "ObjectID",
+                    alias: "ObjectID",
+                    type: "oid"
                 },
                 {
-                name: "address",
-                alias: "address",
-                type: "string"
+                    name: "address",
+                    alias: "address",
+                    type: "string"
+                },
+                {
+                    name: "employee",
+                    alias: "employee",
+                    type: "string"
+                },
+                {
+                    name: "company",
+                    alias: "company",
+                    type: "string"
                 }
             ]
-            });
+        });
 
-            map.layers.add(featureLayer);
+        map.layers.add(featureLayer);
+        
     });
 </script>

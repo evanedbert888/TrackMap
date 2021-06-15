@@ -222,10 +222,10 @@
                                                         </x-dropdown-link>
                                                     </form>
                                                 </li>
-                                            </ul>
+                                            </ul> 
                                             <div class="relative hidden md:block">
                                                 @if(Auth::user()->image == '/img/Profile.png')
-                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{URL::to(Auth::user()->image)}}" alt="display avatar" role="img" />
+                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{url(Auth::user()->image)}}" alt="display avatar" role="img" />
                                                 @else
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
                                                 @endif
