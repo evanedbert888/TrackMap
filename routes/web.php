@@ -22,6 +22,7 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
+    Alert::info('Hello',"Time to work!");
     return view('auth.login');
 });
 
@@ -123,13 +124,13 @@ Route::prefix('/SalesMap')->group(function() {
 //    });
 
     // Business-categories
-    Route::group(['prefix' => 'business-categories', 'name' => 'businesses.'], function() {
-        Route::get('/', [BusinessCategoryController::class, 'index'])->name('index');
+    Route::prefix('business-categories')->name('business-categories.')->group(function() {
+        Route::get('', [BusinessCategoryController::class, 'index'])->name('index');
         Route::get('/create', [BusinessCategoryController::class, 'create'])->name('create');
-        Route::post('/', [BusinessCategoryController::class, 'store'])->name('store');
-        Route::get('/{business-categories}/edit', [BusinessCategoryController::class, 'edit'])->name('edit');
-        Route::put('/{business-categories}', [BusinessCategoryController::class, 'update'])->name('update');
-        Route::delete('/{business-categories}', [BusinessCategoryController::class, 'destroy'])->name('destroy');
+        Route::post('', [BusinessCategoryController::class, 'store'])->name('store');
+        Route::get('/{businessCategory}/edit', [BusinessCategoryController::class, 'edit'])->name('edit');
+        Route::put('/{businessCategory}', [BusinessCategoryController::class, 'update'])->name('update');
+        Route::delete('/{businessCategory}', [BusinessCategoryController::class, 'destroy'])->name('destroy');
     });
 });
 
@@ -156,3 +157,7 @@ Route::prefix('/SalesMap/Mobile')->group(function () {
     Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('mobile_destination_list');
 });
+
+Route::get('test', function() {
+
+})->name('test.route');

@@ -25,6 +25,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 
         <!-- Scripts -->
         <script src="https://js.arcgis.com/4.19/"></script>
@@ -40,5 +41,6 @@
                 {{ $slot }}
             </main>
         </div>
+        @include('sweetalert::alert')
     </body>
 </html>

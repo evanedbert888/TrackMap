@@ -48,7 +48,7 @@
                             </div>
                             {{$registers->links()}}
                         @else
-                            <p class="font-bold text-lg">Nothing Registerd</p>
+                            <p class="font-bold text-lg">Nothing Registered</p>
                         @endif
                     </div>
                     <div class="flex justify-end my-2">

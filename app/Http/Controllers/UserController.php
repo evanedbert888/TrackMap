@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {

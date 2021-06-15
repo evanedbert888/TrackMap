@@ -75,30 +75,33 @@
 
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
-            const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
-            });
-
-            const view = new MapView({
-                map: map,
-                center: [109.342506,-0.026330], //Longitude, latitude
-                zoom: 12,
-                container: "viewMap"
-            });
-
-            const graphicsLayer = new GraphicsLayer();
-            map.add(graphicsLayer);
-
             function findIDValue(point) {
                 let find = document.getElementById(point)
                 let value = find.attributes.getNamedItem('value').value;
                 return value;
             }
 
+            let lng = findIDValue('longitude');
+            let lat = findIDValue('latitude');
+
+            const map = new Map({
+                basemap: "osm-standard-relief" //Basemap layer service
+            });
+
+            const view = new MapView({
+                map: map,
+                center: [lng,lat], //Longitude, latitude
+                zoom: 18,
+                container: "viewMap"
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
             const point = {
                 type: "point",
-                longitude: findIDValue('longitude'),
-                latitude: findIDValue('latitude'),
+                longitude: lng,
+                latitude: lat,
             };
 
             const pictureMarkerSymbol = {

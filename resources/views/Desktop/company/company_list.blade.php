@@ -39,7 +39,7 @@
                                             <form action="{{route('company_delete',['id'=>$list->id])}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <x-delbutton>Delete</x-delbutton>
+                                                <x-delbutton onsubmit="return confirm('You want to delete this destination ?')">Delete</x-delbutton>
                                             </form>
                                         </div>
                                     </li>

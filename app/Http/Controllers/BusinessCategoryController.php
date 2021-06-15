@@ -7,6 +7,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Bus;
 
 class BusinessCategoryController extends Controller
 {
@@ -25,8 +27,8 @@ class BusinessCategoryController extends Controller
      */
     public function index()
     {
-        $categories = BusinessCategory::query()->paginate(7);
-        return view('desktop.business-categories.index',['categories'=>$categories]);
+        $categories = BusinessCategory::query()->paginate(10);
+        return view('Desktop.business-categories.index',['categories'=>$categories]);
     }
 
     /**
@@ -36,25 +38,32 @@ class BusinessCategoryController extends Controller
      */
     public function create()
     {
-        return view('desktop.business-categories.create');
+        return view('Desktop.business-categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $validateCategory = $request->validate([
+            'name' => 'required|string'
+        ]);
+        $category = new BusinessCategory;
+        $category->name = $validateCategory['name'];
+        $category->save();
+
+        return redirect()->route('business.index')->withMessage('New business category has been added');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -65,11 +74,11 @@ class BusinessCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|Response
      */
-    public function edit($id)
+    public function edit(BusinessCategory $businessCategory)
     {
-        //
+        return view('Desktop.business-categories',['category'=>$businessCategory]);
     }
 
     /**
@@ -77,13 +86,13 @@ class BusinessCategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, BusinessCategory $businessCategory)
     {
         $businessCategory->update($request->all());
 
-        return redirect()->route('desktop.business-categories-categories.edit', $businessCategory)
+        return redirect()->route('Desktop.business-categories.index', $businessCategory)
             ->withMessage('BusinessCategory category updated successfully.');
     }
 
@@ -91,13 +100,14 @@ class BusinessCategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(BusinessCategory $businessCategory)
     {
+
         $businessCategory->delete();
 
-        return redirect()->route('desktop.business-categories-categories.index')
-            ->withMessage('BusinessCategory category deleted successfully.');
+        return redirect()->route('business-categories.index')
+            ->withMessage('A business category has been deleted successfully.');
     }
 }

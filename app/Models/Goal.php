@@ -12,7 +12,7 @@ class Goal extends Model
     protected $table = "goals";
 
     protected $fillable = [
-        'company_id', 'employee_id', 'latitude', 'longitude'
+        'user_id', 'employee_id', 'company_id', 'latitude', 'longitude'
     ];
 
     public function updateById($id, $data = array())

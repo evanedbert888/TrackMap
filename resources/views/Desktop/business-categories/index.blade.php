@@ -30,12 +30,12 @@
                                         <td> {{ $i++ }} </td>
                                         <td class="text-left"> {{$category->name}} </td>
                                         <td>
-                                            <a href="#">
+                                            <a href="{{route('business-categories.edit',[$category->id])}}">
                                                 <x-button type="button"> Edit </x-button>
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="#" method="POST">
+                                            <form action="{{route('business-categories.destroy',['businessCategory'=>$category->id])}}" method="POST">
                                                 @csrf
                                                 @method("DELETE")
                                                     <x-button type="submit"> Delete </x-button>
@@ -49,7 +49,7 @@
                         {{$categories->links()}}
                     </div>
                     <div class="flex justify-end my-2">
-                        <a href="#" class="">
+                        <a href="{{route('business-categories.create')}}">
                             <x-button type="button">Create new category</x-button>
                         </a>
                     </div>

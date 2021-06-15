@@ -15,7 +15,7 @@
                             <input type="hidden" id="latitude" value="{{$goal->latitude}}"/>
                             <input type="hidden" id="longitude" value="{{$goal->longitude}}"/>
                             <input type="hidden" id="employee_name" value="{{$goal->employee->user->name}}"/>
-                            <input type="hidden" id="destination_name" value="{{$goal->company->company_name}}"/>
+{{--                            <input type="hidden" id="destination_name" value="{{$goal->company->company_name}}"/>--}}
                             <input type="hidden" id="user_name" value="{{$goal->user->name}}"/>
                         @endforeach
                     </span>
@@ -97,23 +97,23 @@
             }
         ]
     }
-    
+
     require([
         "esri/config",
         "esri/Map",
         "esri/views/MapView",
-    
+
         "esri/tasks/Locator",
         "esri/Graphic",
         "esri/layers/GraphicsLayer"
-    
-    ], function(esriConfig,Map, MapView, FeatureLayer, Graphic, GraphicsLayer) {                                
+
+    ], function(esriConfig,Map, MapView, FeatureLayer, Graphic, GraphicsLayer) {
         esriConfig.apiKey = "AAPK05b0d7c5ec0d4ae1927e0bbcfd70d2a4gWIVK3qxuiuX3_O59_EWgQA1ztAKxDTETQeKQ7JoLB0XLhlE6uYCfnTLxyHe0XPM";
         const map = new Map({
         basemap: "streets-navigation-vector" //Basemap layer service
         });
-        
-        
+
+
         const view = new MapView({
             container: "map",
             map: map,

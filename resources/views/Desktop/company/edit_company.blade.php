@@ -85,25 +85,12 @@
             "esri/views/MapView",
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
-            "esri/tasks/Locator"
+            "esri/tasks/Locator",
+            "esri/widgets/Search"
 
-        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator) {
+        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Search) {
 
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
-
-            const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
-            });
-
-            const view = new MapView({
-                map: map,
-                center: [109.342506,-0.026330], //Longitude, latitude
-                zoom: 12,
-                container: "viewMap"
-            });
-
-            const graphicsLayer = new GraphicsLayer();
-            map.add(graphicsLayer);
 
             function findIDValue(point) {
                 let find = document.getElementById(point)
@@ -111,13 +98,30 @@
                 return value;
             }
 
+            let lng = findIDValue('longitude');
+            let lat = findIDValue('latitude');
+
+            const map = new Map({
+                basemap: "osm-standard-relief" //Basemap layer service
+            });
+
+            const view = new MapView({
+                map: map,
+                center: [lng,lat], //Longitude, latitude
+                zoom: 14,
+                container: "viewMap"
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
             const point = {
                 type: "point",
-                longitude: findIDValue('longitude'),
-                latitude: findIDValue('latitude'),
+                longitude: lng,
+                latitude: lat,
             };
 
-            const pictureMarkerSymbol = {
+            const mainSymbol = {
                 type: "picture-marker",
                 url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
                 height: "25px",
@@ -126,7 +130,7 @@
 
             const pointGraphic = new Graphic({
                 geometry: point,
-                symbol: pictureMarkerSymbol
+                symbol: mainSymbol
             });
             graphicsLayer.add(pointGraphic);
 
@@ -134,27 +138,11 @@
                 url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             })
 
-            view.on("click", function(evt){
-                const params = {
-                    location: evt.mapPoint
-                };
-
-                locatorTask.locationToAddress(params)
-                    .then(function(response) { // Show the address found
-                        const address = response.address;
-                        showAddress(address, evt.mapPoint);
-                    }, function(err) { // Show no address found
-                        showAddress("No address found.", evt.mapPoint);
-                    });
+            const search = new Search({  //Add Search widget
+                view: view
             });
 
-            function showAddress(address, pt) {
-                view.popup.open({
-                    title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-                    content: address,
-                    location: pt
-                });
-            }
+            view.ui.add(search, "top-right"); //Add to the map
         });
     </script>
 </x-app-layout>

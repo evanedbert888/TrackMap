@@ -82,8 +82,7 @@
                             </td>
                             <td>
                                 <span class="flex container justify-center">
-                                    <div id="findMap">
-                                    </div>
+                                    <div id="findMap"></div>
                                 </span>
                             </td>
                         </tr>
@@ -93,8 +92,7 @@
         </div>
     </div>
 
-    <script>
-        // API Library
+    <script !src="">
         require([
             "esri/config",
             "esri/Map",
@@ -102,87 +100,37 @@
 
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
-            "esri/tasks/Locator",
-            "esri/symbols/PictureMarkerSymbol"
+            "esri/tasks/Locator"
 
-        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, LocatorTask) {
+        ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, Locator) {
 
-            // API Key
-            esriConfig.apiKey = "AAPK3b583452b37548898ee56ef34a6ac70c8D9oQpRakOG5ZEnv5UySaM8NXnJNjuC5TScW4rTgoe-Lxp7ANLXwa0btm44QL0oa";
+            esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
-            // Basemap
             const map = new Map({
-                basemap: "osm-standard-relief"
+                basemap: "osm-standard-relief" //Basemap layer service
             });
 
-            // Url
-            let geocode = "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer";
-
-            // Define the map
             const view = new MapView({
                 map: map,
-                center: [109.342506,-0.026330], //Longitude, latitude
-                zoom: 14,
+                center: [113.921326, -0.789275], //Longitude, latitude
+                zoom: 5,
                 container: "findMap"
             });
 
-            // Add graphics layer to the map
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
 
-            view.popup.actions = [];
-
-            const locatorTask = new LocatorTask ({
-                url: geocode
+            const locatorTask = new Locator ({
+                url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             })
 
-            view.when(()=>{
-                // Search address event
-                var btnSearch = document.querySelector("#search")
-                btnSearch.addEventListener("click", () => {
-                    const params = {
-                        address: {
-                            "address": document.querySelector("#address").value
-                        }
-                    }
-                    console.log(params.address)
-                    locatorTask.addressToLocations(params).then((results) => {
-                        showResult(results);
-                    });
-                })
+            function coordinateFormat(input) {
+                return input.toFixed(5);
+            }
 
-                // The symbol of marker
-                let symbol = {
-                    type: "picture-marker",
-                    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrW1r1C8ccnzU0P5cbXV2JKHu-cqkDK-V_jA&usqp=CAU",
-                    height: "25px",
-                    width: "25px"
-                }
-
-                function showResult(results) {
-                    if (results.length) {
-                        const result = results[0];
-                        console.log(results)
-                        let coordinate = Math.round(result.location.longitude * 100000)/100000 + "," + Math.round(result.location.latitude * 100000)/100000
-                        document.querySelector("#coordinate").value = coordinate;
-
-                        const pointGraphic = new Graphic({
-                            geometry: result.location,
-                            symbol: symbol,
-                            attributes: {
-                                title: "Address",
-                                address: result.address,
-                                score: result.score
-                            },
-                            popupTemplate: {
-                                title: "{title}",
-                                content: "{address}" + "<br><br>" + coordinate
-                            }
-                        })
-                        graphicsLayer.add(pointGraphic);
-                    }
-                }
-            });
+            function enterCoordinateValue(lng,lat) {
+                document.querySelector("#coordinate").value = lng + ',' + lat
+            }
 
             view.on("click", function(evt){
                 const params = {
@@ -192,8 +140,6 @@
                 locatorTask.locationToAddress(params)
                     .then(function(response) { // Show the address found
                         const address = response.address;
-                        console.log("response : " + response);
-                        console.log("address : " +address);
                         showAddress(address, evt.mapPoint);
                     }, function(err) { // Show no address found
                         showAddress("No address found.", evt.mapPoint);
@@ -201,11 +147,65 @@
             });
 
             function showAddress(address, pt) {
+                let lng = coordinateFormat(pt.longitude);
+                let lat = coordinateFormat(pt.latitude);
+                enterCoordinateValue(lng,lat);
                 view.popup.open({
-                    title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+                    title:  lng + ", " + lat,
                     content: address,
                     location: pt
                 });
+                console.log(pt)
+            }
+
+            var btnSearch = document.querySelector("#search")
+            btnSearch.addEventListener("click", () => {
+                var address = document.querySelector("#address").value
+                console.log(address)
+                view.graphics.removeAll();
+
+                const params = {
+                    address: {
+                        "address": address
+                    }
+                }
+
+                locatorTask.addressToLocations(params).then((results) => {
+                    showResult(results);
+                });
+            })
+
+            function showResult(results) {
+                if (results.length) {
+                    const result = results[0];
+                    let lng = coordinateFormat(result.location.longitude);
+                    let lat = coordinateFormat(result.location.latitude);
+                    enterCoordinateValue(lng,lat);
+
+                    view.graphics.add(new Graphic({
+                            symbol: {
+                                type: "picture-marker",
+                                url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                                height: "30px",
+                                width: "30px"
+                            },
+                            geometry: result.location,
+                            attributes: {
+                                title: "Address",
+                                address: result.address,
+                                score: result.score
+                            },
+                            popupTemplate: {
+                                title: "{title}",
+                                content: "{address}" + "<br><br>" + lng + "," + lat
+                            }
+                        }
+                    ));
+                    view.goTo({
+                        target: result.location,
+                        zoom: 16
+                    });
+                }
             }
         });
     </script>
