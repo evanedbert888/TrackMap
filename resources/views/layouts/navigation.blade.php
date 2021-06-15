@@ -224,7 +224,11 @@
                                                 </li>
                                             </ul> 
                                             <div class="relative hidden md:block">
-                                                <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
+                                                @if(Auth::user()->image == '/img/Profile.png')
+                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{url(Auth::user()->image)}}" alt="display avatar" role="img" />
+                                                @else
+                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
+                                                @endif
                                             </div>
                                         </div>
                                         <p class="text-gray-800 text-sm mx-3">{{ Auth::user()->name }}</p>
