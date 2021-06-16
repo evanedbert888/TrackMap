@@ -15,14 +15,28 @@ class UserController extends Controller
 {
     public function dashboard() {
         $user_id = Auth::user()->id;
-        $goals = Goal::query()
-            ->join('employees', 'goals.employee_id', '=', 'employees.id')
-            ->join('users', 'employees.user_id', '=', 'users.id')
-            ->join('companies', 'goals.company_id', '=', 'companies.id')
-            ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
-            ->where('goals.status','=','finished')
-            ->where('goals.user_id','=',$user_id)
-            ->get();
+        $role = Auth::user()->role;
+        if ($role == "admin"){
+            $goals = Goal::query()
+                ->join('employees', 'goals.employee_id', '=', 'employees.id')
+                ->join('users', 'employees.user_id', '=', 'users.id')
+                ->join('companies', 'goals.company_id', '=', 'companies.id')
+                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->where('goals.status','=','finished')
+                ->where('goals.user_id','=',$user_id)
+                ->get();    
+        }
+        else if ($role == "employee"){
+            $employee = Employee::where('user_id', '=', $user_id)->get();
+            $goals = Goal::query()
+                ->join('employees', 'goals.employee_id', '=', 'employees.id')
+                ->join('users', 'employees.user_id', '=', 'users.id')
+                ->join('companies', 'goals.company_id', '=', 'companies.id')
+                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->where('goals.status','=','finished')
+                ->where('goals.employee_id','=', $employee[0]->id)
+                ->get();
+        }
         return response()->json($goals);
     }
 

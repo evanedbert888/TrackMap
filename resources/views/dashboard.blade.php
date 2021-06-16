@@ -48,6 +48,8 @@
             });
         })
 
+        var role = '{{ Auth::user()->role }}';
+
         require([
             "esri/config",
             "esri/Map",
@@ -88,66 +90,120 @@
                 });
             });
 
-            var featureLayer = new FeatureLayer({
-                source: graphics,
-                renderer: {
-                    type: "simple",                    // autocasts as new SimpleRenderer()
-                    symbol: {                          // autocasts as new SimpleMarkerSymbol()
-                        type: "simple-marker",
-                        color: "#102A44",
-                        outline: {                       // autocasts as new SimpleLineSymbol()
-                            color: "#598DD8",
-                            width: 2
-                        }
-                    }
-                },
-                popupTemplate: {                     // autocasts as new PopupTemplate()
-                    title: "Finished Place",    //belum dapat menampilan nama company
-                    content: [{
-                        type: "fields",
-                        fieldInfos: [
-                            {
-                                fieldName: "company",
-                                label: "Company Name",
-                                visible: true
-                            },
-                            {
-                                fieldName: "address",
-                                label: "Company Address",
-                                visible: true
-                            },
-                            {
-                                fieldName: "employee",
-                                label: "Employee Name",
-                                visible: true
+            if (role == 'admin') {
+                var featureLayer = new FeatureLayer({
+                    source: graphics,
+                    renderer: {
+                        type: "simple",                    // autocasts as new SimpleRenderer()
+                        symbol: {                          // autocasts as new SimpleMarkerSymbol()
+                            type: "simple-marker",
+                            color: "#102A44",
+                            outline: {                       // autocasts as new SimpleLineSymbol()
+                                color: "#598DD8",
+                                width: 2
                             }
-                        ]
-                    }]
-                },
-                objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
-                fields: [
-                    {
-                        name: "ObjectID",
-                        alias: "ObjectID",
-                        type: "oid"
+                        }
                     },
-                    {
-                        name: "address",
-                        alias: "address",
-                        type: "string"
+                    popupTemplate: {                     // autocasts as new PopupTemplate()
+                        title: "Finished Place",    //belum dapat menampilan nama company
+                        content: [{
+                            type: "fields",
+                            fieldInfos: [
+                                {
+                                    fieldName: "company",
+                                    label: "Company Name",
+                                    visible: true
+                                },
+                                {
+                                    fieldName: "address",
+                                    label: "Company Address",
+                                    visible: true
+                                },
+                                {
+                                    fieldName: "employee",
+                                    label: "Employee Name",
+                                    visible: true
+                                }
+                            ]
+                        }]
                     },
-                    {
-                        name: "employee",
-                        alias: "employee",
-                        type: "string"
+                    objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
+                    fields: [
+                        {
+                            name: "ObjectID",
+                            alias: "ObjectID",
+                            type: "oid"
+                        },
+                        {
+                            name: "address",
+                            alias: "address",
+                            type: "string"
+                        },
+                        {
+                            name: "employee",
+                            alias: "employee",
+                            type: "string"
+                        },
+                        {
+                            name: "company",
+                            alias: "company",
+                            type: "string"
+                        }
+                    ]
+                });
+            }
+            else if (role == 'employee') {
+                var featureLayer = new FeatureLayer({
+                    source: graphics,
+                    renderer: {
+                        type: "simple",                    // autocasts as new SimpleRenderer()
+                        symbol: {                          // autocasts as new SimpleMarkerSymbol()
+                            type: "simple-marker",
+                            color: "#102A44",
+                            outline: {                       // autocasts as new SimpleLineSymbol()
+                                color: "#598DD8",
+                                width: 2
+                            }
+                        }
                     },
-                    {
-                        name: "company",
-                        alias: "company",
-                        type: "string"
-                    }
-                ]
-            });
+                    popupTemplate: {                     // autocasts as new PopupTemplate()
+                        title: "Finished Place",    //belum dapat menampilan nama company
+                        content: [{
+                            type: "fields",
+                            fieldInfos: [
+                                {
+                                    fieldName: "company",
+                                    label: "Company Name",
+                                    visible: true
+                                },
+                                {
+                                    fieldName: "address",
+                                    label: "Company Address",
+                                    visible: true
+                                }
+                            ]
+                        }]
+                    },
+                    objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
+                    fields: [
+                        {
+                            name: "ObjectID",
+                            alias: "ObjectID",
+                            type: "oid"
+                        },
+                        {
+                            name: "address",
+                            alias: "address",
+                            type: "string"
+                        },
+                        {
+                            name: "company",
+                            alias: "company",
+                            type: "string"
+                        }
+                    ]
+                });
+            }
             map.layers.add(featureLayer); 
         });
     }
