@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                    @if($details->image == '/img/marker_pin.png')
+                    @if($details->image == '/img/company.png')
                         <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{URL::to($details->image)}}">
                     @else
                         <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url('storage/'.$details->image)}}">
@@ -19,12 +19,12 @@
                     @if($count == 0)
 
                     @elseif($count == 1)
-                        <form action="{{route('task_patch')}}" method="POST">
+                        <form action="{{route('goals.update')}}" method="POST">
                             @method('PATCH')
                             @csrf
                             <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
-                            <x-editinput type="hidden" name="latitude" id="latitude" value="{{$details->latitude}}"/>
-                            <x-editinput type="hidden" name="longitude" id="longitude" value="{{$details->longitude}}"/>
+                            <x-editinput type="hidden" name="latitude" id="latitude" value=""/>
+                            <x-editinput type="hidden" name="longitude" id="longitude" value=""/>
                             <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
                                 <x-button type="submit">
                                     Check-In
@@ -64,11 +64,11 @@
                                     <td>{{ $details->description }}</td>
                                 </tr>
                             </table>
+                            <x-editinput type="hidden" name="lat" id="lat" value="{{$details->latitude}}"></x-editinput>
+                            <x-editinput type="hidden" name="lng" id="lng" value="{{$details->longitude}}"></x-editinput>
                         </div>
-                        <div class="mx-2 mt-5 bg-blue-400 h-96 flex flex-wrap content-center md:mx-5">
-                            <div class="w-full">
-                                <p class="text-center">SHOW MAP</p>
-                            </div>
+                        <div class="flex justify-center mt-3">
+                            <div id="mobileMap"></div>
                         </div>
                     </div>
                 </div>
@@ -76,6 +76,89 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    require([
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/Graphic",
+        "esri/layers/GraphicsLayer",
+        "esri/tasks/Locator"
+
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator) {
+
+        esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
+
+        function findIDValue(point) {
+            let find = document.getElementById(point)
+            let value = find.attributes.getNamedItem('value').value;
+            return value;
+        }
+
+        let lng = findIDValue('lng');
+        let lat = findIDValue('lat');
+
+        const map = new Map({
+            basemap: "osm-standard-relief" //Basemap layer service
+        });
+
+        const view = new MapView({
+            map: map,
+            center: [lng,lat], //Longitude, latitude
+            zoom: 18,
+            container: "mobileMap"
+        });
+
+        const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+
+        const point = {
+            type: "point",
+            longitude: lng,
+            latitude: lat,
+        };
+
+        const pictureMarkerSymbol = {
+            type: "picture-marker",
+            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
+            height: "25px",
+            width: "25px"
+        };
+
+        const pointGraphic = new Graphic({
+            geometry: point,
+            symbol: pictureMarkerSymbol
+        });
+        graphicsLayer.add(pointGraphic);
+
+        const locatorTask = new Locator ({
+            url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+        })
+
+        view.on("click", function(evt){
+            const params = {
+                location: evt.mapPoint
+            };
+
+            locatorTask.locationToAddress(params)
+                .then(function(response) { // Show the address found
+                    const address = response.address;
+                    showAddress(address, evt.mapPoint);
+                }, function(err) { // Show no address found
+                    showAddress("No address found.", evt.mapPoint);
+                });
+        });
+
+        function showAddress(address, pt) {
+            view.popup.open({
+                title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+                content: address,
+                location: pt
+            });
+        }
+    });
+</script>
 
 <script>
     function getCoordinate() {

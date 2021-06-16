@@ -53,9 +53,9 @@
                                 </tr>
                             </table>
                         </div>
-                        <span class="flex justify-center mt-3">
+                        <div class="flex justify-center mt-3">
                             <div id="viewMap"></div>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </div>

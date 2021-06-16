@@ -37,8 +37,8 @@
     var places = [];
 
     function pushArray(data) {
-        $.each(data, function(key,value) {    
-            places.push({ 
+        $.each(data, function(key,value) {
+            places.push({
                 id: value.id,
                 address: value.address,
                 company: value.company_name,
@@ -93,14 +93,12 @@
             source: graphics,
             renderer: {
                 type: "simple",                    // autocasts as new SimpleRenderer()
-                symbol: {                          // autocasts as new SimpleMarkerSymbol()
-                    type: "simple-marker",
-                    color: "#102A44",
-                    outline: {                       // autocasts as new SimpleLineSymbol()
-                        color: "#598DD8",
-                        width: 2
-                    }
-                }
+                symbol: {
+                    type: "picture-marker",
+                    url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                    height: "30px",
+                    width: "30px"
+                },
             },
             popupTemplate: {                     // autocasts as new PopupTemplate()
                 title: "Finished Place",    //belum dapat menampilkan nama company dari database
@@ -151,6 +149,6 @@
         });
 
         map.layers.add(featureLayer);
-        
+
     });
 </script>

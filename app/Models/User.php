@@ -53,8 +53,8 @@ class User extends Authenticatable
         return $this->hasMany(Temp::class, 'user_id', 'id');
     }
 
-    public function registers() {
-        return $this->hasMany(Register::class, 'user_id', 'id');
+    public function registeredEmails() {
+        return $this->hasMany(RegisteredEmail::class, 'user_id', 'id');
     }
 
     public function goals() {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\RegisteredEmail;
 use App\Models\User;
 use App\Models\Register;
 use App\Models\Employee;
@@ -31,12 +32,12 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => 'required|string|email|max:255'
         ]);
-        
-        $email = Register::where('email','=',$request->email)
+
+        $email = RegisteredEmail::query()->where('email','=',$request->email)
                             ->where('status','=','available')->get();
 
         if(count($email) == 0){
-            echo "<script language='javascript' type='text/javascript'>alert('Email Tidak Ditemukan');  
+            echo "<script language='javascript' type='text/javascript'>alert('Email Tidak Ditemukan');
                 </script>";
             return view('auth.check-email');
         }
@@ -84,12 +85,12 @@ class RegisteredUserController extends Controller
             'birth_date' => Carbon::create($request->birth_date),
             'address' => $request->address
         ]);
-        
-        $email = Register::where('email', '=',  $request->email)->update(['status' => 'unavailable']);
+
+        $email = RegisteredEmail::query()->where('email', '=',  $request->email)->update(['status' => 'unavailable']);
 
         event(new Registered($user));
 
-        $new_user = User::orderBy('id','desc')->first();
+        $new_user = User::query()->orderBy('id','desc')->first();
         $employee = new Employee();
         $employee->user_id = $new_user->id;
         $employee->save();

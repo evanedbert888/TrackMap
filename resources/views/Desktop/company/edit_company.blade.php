@@ -37,7 +37,7 @@
                                     </select>
                                 </div>
                                 <div class="text-sm mt-1">
-                                    <x-editinput id="image" name="image" type="file"/>
+                                    <x-editinput id="image" name="image" type="file"></x-editinput>
                                 </div>
                             </div>
                             <div class="mx-5 mt-3">
@@ -47,7 +47,10 @@
                                     <tr>
                                         <td>Address</td>
                                         <td>:</td>
-                                        <td><x-editinput name="address" id="address" type="text" value="{{ $details->address }}"/></td>
+                                        <td>
+                                            <x-editinput name="address" id="address" type="text" value="{{ $details->address }}"></x-editinput>
+                                            <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>email</td>
@@ -78,28 +81,19 @@
         </div>
     </div>
 
-    <script>
+    <script !src="">
         require([
             "esri/config",
             "esri/Map",
             "esri/views/MapView",
+
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
-            "esri/tasks/Locator",
-            "esri/widgets/Search"
+            "esri/tasks/Locator"
 
-        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Search) {
+        ], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, Locator) {
 
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
-
-            function findIDValue(point) {
-                let find = document.getElementById(point)
-                let value = find.attributes.getNamedItem('value').value;
-                return value;
-            }
-
-            let lng = findIDValue('longitude');
-            let lat = findIDValue('latitude');
 
             const map = new Map({
                 basemap: "osm-standard-relief" //Basemap layer service
@@ -107,42 +101,101 @@
 
             const view = new MapView({
                 map: map,
-                center: [lng,lat], //Longitude, latitude
-                zoom: 14,
+                center: [113.921326, -0.789275], //Longitude, latitude
+                zoom: 5,
                 container: "viewMap"
             });
 
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
 
-            const point = {
-                type: "point",
-                longitude: lng,
-                latitude: lat,
-            };
-
-            const mainSymbol = {
-                type: "picture-marker",
-                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
-                height: "25px",
-                width: "25px"
-            };
-
-            const pointGraphic = new Graphic({
-                geometry: point,
-                symbol: mainSymbol
-            });
-            graphicsLayer.add(pointGraphic);
-
             const locatorTask = new Locator ({
                 url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
             })
 
-            const search = new Search({  //Add Search widget
-                view: view
+            function coordinateFormat(input) {
+                return input.toFixed(5);
+            }
+
+            function enterCoordinateValue(lng,lat) {
+                document.querySelector("#coordinate").value = lng + ',' + lat
+            }
+
+            view.on("click", function(evt){
+                const params = {
+                    location: evt.mapPoint
+                };
+
+                locatorTask.locationToAddress(params)
+                    .then(function(response) { // Show the address found
+                        const address = response.address;
+                        showAddress(address, evt.mapPoint);
+                    }, function(err) { // Show no address found
+                        showAddress("No address found.", evt.mapPoint);
+                    });
             });
 
-            view.ui.add(search, "top-right"); //Add to the map
+            function showAddress(address, pt) {
+                let lng = coordinateFormat(pt.longitude);
+                let lat = coordinateFormat(pt.latitude);
+                enterCoordinateValue(lng,lat);
+                view.popup.open({
+                    title:  lng + ", " + lat,
+                    content: address,
+                    location: pt
+                });
+                console.log(pt)
+            }
+
+            var btnSearch = document.querySelector("#search")
+            btnSearch.addEventListener("click", () => {
+                var address = document.querySelector("#address").value
+                console.log(address)
+                view.graphics.removeAll();
+
+                const params = {
+                    address: {
+                        "address": address
+                    }
+                }
+
+                locatorTask.addressToLocations(params).then((results) => {
+                    showResult(results);
+                });
+            })
+
+            function showResult(results) {
+                if (results.length) {
+                    const result = results[0];
+                    let lng = coordinateFormat(result.location.longitude);
+                    let lat = coordinateFormat(result.location.latitude);
+                    enterCoordinateValue(lng,lat);
+
+                    view.graphics.add(new Graphic({
+                            symbol: {
+                                type: "picture-marker",
+                                url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                                height: "30px",
+                                width: "30px"
+                            },
+                            geometry: result.location,
+                            attributes: {
+                                title: "Address",
+                                address: result.address,
+                                score: result.score
+                            },
+                            popupTemplate: {
+                                title: "{title}",
+                                content: "{address}" + "<br><br>" + lng + "," + lat
+                            }
+                        }
+                    ));
+                    view.goTo({
+                        target: result.location,
+                        zoom: 16
+                    });
+                }
+            }
         });
     </script>
 </x-app-layout>

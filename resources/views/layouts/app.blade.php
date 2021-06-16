@@ -17,6 +17,11 @@
                 height: 500px;
                 width: 820px;
             }
+
+            #mobileMap{
+                height: 350px;
+                width: 700px;
+            }
         </style>
 
         <!-- Fonts -->

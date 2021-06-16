@@ -55,11 +55,7 @@
                                         <x-dropdown width="48">
                                             <x-slot name="trigger">
                                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                                    @if(Auth::user()->role == 'admin')
-                                                        <div>{{ 'Company' }}</div>
-                                                    @elseif(Auth::user()->role == 'employee')
-                                                        <div>{{ 'Destination' }}</div>
-                                                    @endif
+                                                    <div>{{ 'Destination' }}</div>
                                                     <div class="ml-1">
                                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -70,21 +66,14 @@
 
                                             <x-slot name="content">
                                                 <x-dropdown-link :href="route('company_list')">
-                                                    @if(Auth::user()->role == 'admin')
-                                                        {{ __('Company List') }}
-                                                    @elseif(Auth::user()->role == 'employee')
-                                                        {{ __('Destination List') }}
-                                                    @endif
+                                                    {{ __('Destination List') }}
                                                 </x-dropdown-link>
                                                 @if(Auth::user()->role == 'admin')
-                                                    <x-dropdown-link :href="route('company_form')">
-                                                        {{ __('Add Company') }}
+                                                    <x-dropdown-link href="{{route('business-categories.index')}}">
+                                                        {{ __('Business Categories') }}
                                                     </x-dropdown-link>
-{{--                                                    <x-dropdown-link href="{{route('businesses.index')}}">--}}
-{{--                                                        {{ __('Business Categories') }}--}}
-{{--                                                    </x-dropdown-link>--}}
                                                 @elseif(Auth::user()->role == 'employee')
-                                                    <x-dropdown-link :href="route('task_list')">
+                                                    <x-dropdown-link :href="route('goals.index')">
                                                         {{ __('Task List') }}
                                                     </x-dropdown-link>
                                                 @endif
@@ -115,7 +104,7 @@
                                                     <x-dropdown-link :href="route('employee_list')">
                                                         {{ __('Employee List') }}
                                                     </x-dropdown-link>
-                                                    <x-dropdown-link :href="route('register_list')">
+                                                    <x-dropdown-link :href="route('registered-emails.index')">
                                                         {{ __('Registered Emails') }}
                                                     </x-dropdown-link>
                                                 </x-slot>
@@ -155,7 +144,7 @@
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="space-x-8 sm:-my-px sm:flex">
-                                            <x-nav-link :href="route('history')" :active="request()->routeIs('history')">
+                                            <x-nav-link :href="route('goals.history')" :active="request()->routeIs('goals.history')">
                                                 {{ __('History') }}
                                             </x-nav-link>
                                         </div>
@@ -222,7 +211,7 @@
                                                         </x-dropdown-link>
                                                     </form>
                                                 </li>
-                                            </ul> 
+                                            </ul>
                                             <div class="relative hidden md:block">
                                                 @if(Auth::user()->image == '/img/Profile.png')
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url(Auth::user()->image)}}" alt="display avatar" role="img" />

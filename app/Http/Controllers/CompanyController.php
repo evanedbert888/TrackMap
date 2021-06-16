@@ -14,38 +14,13 @@ use Illuminate\Support\Facades\Http;
 
 class CompanyController extends Controller
 {
-    public function token() {
-        $url = "https://www.arcgis.com/sharing/oauth2/token?client_id=rwIVnWoHseSEee9O&grant_type=client_credentials&client_secret=9e9385f3cb764744bd5f4847b1fba497&f=pjson";
-        $response = Http::get($url);
-
-        return $response["access_token"];
-    }
-
-    public function getAddress($address) {
-        $response = $this->token();
-        $url = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=".$address."&forStorage=true
-        &token=".$response."&f=pjson";
-
-        $response = Http::get($url);
-        $candidates = $response["candidates"];
-        $array = $candidates[0];
-        $location = $array["location"];
-        $x = strval($location["x"]);
-        $y = strval($location["y"]);
-        return [
-            "x"=>$x,
-            "y"=>$y
-        ];
-    }
-
     public function company_list(){
         if (Auth::user()->role == 'admin') {
             $lists = Company::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.company.company_list',['lists'=>$lists]);
         } else {
             $lists = Company::query()->orderBy('id','desc')->paginate(7);
-            return view('Test_Mobile.destination_list',['lists'=>$lists]);
-//            return view('Mobile.company.destination_list',['lists'=>$lists]);
+            return view('Mobile.company.destination_list',['lists'=>$lists]);
         }
     }
 

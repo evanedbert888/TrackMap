@@ -10,8 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
-                        <div class="text-center pb-4 font-semibold text-lg">
-                            <p> List of Destinations </p>
+                        <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
+                            <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>
+                            <a class="justify-self-center" href="{{route('company_form')}}">
+                                <x-button>Add New Destination</x-button>
+                            </a>
                         </div>
                         @foreach($lists as $list)
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">

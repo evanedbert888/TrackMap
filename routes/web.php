@@ -6,8 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RegisteredEmailController;
 use App\Http\Controllers\TaskController;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,13 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', function () {
-    Alert::info('Hello',"Time to work!");
+    Alert()->success('Hello');
     return view('auth.login');
 });
 
 Route::view('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboardgetgoals', [UserController::class,'dashboard'])
+Route::get('/dashboardGetGoals', [UserController::class,'dashboard'])
     ->name('dashboard_goals');
 
 require __DIR__.'/auth.php';
@@ -66,7 +67,6 @@ Route::prefix('/SalesMap')->group(function() {
     // Add New Company
     Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
     Route::post('/AddCompany',[CompanyController::class,'add_company'])->name('add_company');
-    Route::get('/CompanyLocation',[CompanyController::class,'getAddress'])->name('get_address');
 
     // Employee
     Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
@@ -82,13 +82,6 @@ Route::prefix('/SalesMap')->group(function() {
     Route::post('/AddRole',[EmployeeController::class,'add_role'])->name('add_role');
     // Route::delete('/DeleteRole/{id}',[EmployeeController::class,'delete_role'])->name('delete_role');
 
-    // Email Register
-    Route::get('/EmailRegister',[RegisterController::class,"email_register"])->name('email_register');
-    Route::post('/AddEmail',[RegisterController::class,'add_email'])->name('add_email');
-
-    // Register List
-    Route::get('/RegisterList',[RegisterController::class,'register_list'])->name('register_list');
-    // Route::delete('/RegisterDelete',[RegisterController::class,'register_delete'])->name('register_delete');
 
 //    // Users
 //    Route::group(['prefix' => 'users', 'name' => 'users.'], function() {
@@ -97,19 +90,27 @@ Route::prefix('/SalesMap')->group(function() {
 //        Route::patch('/', [UserController::class, 'update'])->name('update');
 //    });
 
+//    // Tasks
+//    Route::prefix('tasks')->name('tasks.')->group(function () {
+//        Route::get('/', [TaskController::class,'index'])->name('index');
+//        Route::get('/create', [TaskController::class,'create'])->name('create');
+//        Route::post('/', [TaskController::class,'store'])->name('store');
+//        Route::delete('/{task}', [TaskController::class,'destroy'])->name('delete');
+//    });
+
 //    // Employees
-//    Route::group(['prefix' => 'employees', 'name' => 'employees.'], function () {
+//    Route::prefix('employees')->name('employees.')->group(function () {
 //       Route::get('/', [EmployeeController::class, 'index'])->name('index');
-//       Route::get('/{employee}', [EmployeeController::class, 'index/employee'])->name('index/employee');
+//       Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
 //       Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
 //       Route::patch('/{employee}', [EmployeeController::class, 'update'])->name('update');
 //       Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
 //    });
 
 //    // Destinations
-//    Route::group(['prefix' => 'destinations', 'name' => 'destinations.'], function (){
+//    Route::prefix('destinations')->name('destinations.')->group(function (){
 //        Route::get('/', [DestinationController::class, 'index'])->name('index');
-//        Route::get('/{destination}', [DestinationController::class, 'index/destination'])->name('index/destination');
+//        Route::get('/{destination}', [DestinationController::class, 'show'])->name('show');
 //        Route::get('/create', [DestinationController::class, 'create'])->name('create');
 //        Route::post('/',[DestinationController::class, 'store'])->name('store');
 //        Route::get('/{destination}/edit', [DestinationController::class, 'edit'])->name('edit');
@@ -117,12 +118,12 @@ Route::prefix('/SalesMap')->group(function() {
 //        Route::delete('/{destination}', [DestinationController::class, 'destroy'])->name('destroy');
 //    });
 
-//    // Registered-emails
-//    Route::group(['prefix' => 'registered-emails', 'name' => 'registers.'], function (){
-//        Route::get('/', [RegisterEmailController::class, 'index'])->name('index');
-//        Route::get('/create', [RegisterEmailController::class, 'create'])->name('create');
-//        Route::post('/', [RegisterEmailController::class, 'store'])->name('store');
-//    });
+    // Registered-emails
+    Route::prefix('registered-emails')->name('registered-emails.')->group(function () {
+        Route::get('', [RegisteredEmailController::class, 'index'])->name('index');
+        Route::get('/create',[RegisteredEmailController::class, 'create'])->name('create');
+        Route::post('',[RegisteredEmailController::class, 'store'])->name('store');
+    });
 
     // Business-categories
     Route::prefix('business-categories')->name('business-categories.')->group(function() {
@@ -140,13 +141,6 @@ Route::prefix('/SalesMap')->group(function (){
     // Destination
     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('destination_list');
     Route::get('/DestinationDetail/{id}',[CompanyController::class,'company_detail'])->name('destination_detail');
-
-    // Task
-    Route::get('/TaskList',[TaskController::class,'task_list'])->name('task_list');
-    Route::patch('/TaskPatch',[TaskController::class,'task_checkIn'])->name('task_patch');
-
-    // History
-    Route::get('/History',[TaskController::class,'history'])->name('history');
 });
 
 // Test_Mobile View
@@ -154,7 +148,14 @@ Route::prefix('/SalesMap/Mobile')->group(function () {
     Route::get('/MobileView',function () {
        return view('layouts.mobile');
     });
-    Route::get('/History',[TaskController::class,'history'])->name('mobile_history');
+
+    // Goals
+    Route::prefix('goals')->name('goals.')->group(function (){
+        Route::get('/', [GoalController::class,'index'])->name('index');
+        Route::patch('/', [GoalController::class,'update'])->name('update');
+        Route::get('/history', [GoalController::class,'history'])->name('history');
+    });
+
     Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
     Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('mobile_destination_list');
 });
