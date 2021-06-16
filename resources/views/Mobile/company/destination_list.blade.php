@@ -1,48 +1,53 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Destination List') }}
+            {{ __('Company List') }}
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-0 md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="container">
-                        <div class="text-center pb-4 font-semibold text-lg">
-                            <p> List of Destinations </p>
-                        </div>
-                        @foreach($lists as $list)
-                            <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
-                                <ul>
-                                    <li class="flex">
-                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg">
-                                        <div class="w-full ml-5 mt-3">
-                                            <div>
-                                                <h6 class="font-bold text-2xl">{{ $list->company_name }}</h6>
-                                            </div>
-                                            <div class="text-sm">
-                                                <h2>{{ $list->business->name }}</h2>
-                                            </div>
-                                            <div class="text-sm">
-                                                <h2>{{ $list->address }}</h2>
-                                            </div>
-                                        </div>
-                                        <div class="mt-6 ml-5">
-                                            <a href="{{route('destination_detail',['id'=>$list->id])}}">
-                                                <x-button>Detail</x-button>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        @endforeach
-                        {{$lists->links()}}
+                    <div class="flex justify-center mb-5">
+                        <p class="text-3xl font-bold">Destinations</p>
                     </div>
+                    <div class="mb-5">
+                        @php
+                            $i=1;
+                        @endphp
+                        @foreach($lists as $list)
+                            <div class="flex w-full items-center px-2">
+                                @if($list->image == '/img/company.png')
+                                    <img class="rounded-full w-16" src="{{URL::to($list->image)}}" alt="image">
+                                @else
+                                    <img class="rounded-full w-16" src="{{url('storage/'.$list->image)}}" alt="image">
+                                @endif
+                                <div class="ml-3 text-sm text-semibold text-gray-800 text-left">
+                                    <p class="font-bold text-lg">{{$list->company_name}}</p>
+                                    <p>{{$list->business->name}}</p>
+                                </div>
+                                <div class="flex items-center ml-auto">
+                                    <a href="{{route('destination_detail',['id'=>$list->id])}}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            @if ($i == count($lists))
+
+                            @else
+                                <div class="border border-black mx-2"></div>
+                            @endif
+                            @php
+                                $i++;
+                            @endphp
+                        @endforeach
+                    </div>
+                    {{$lists->links()}}
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-

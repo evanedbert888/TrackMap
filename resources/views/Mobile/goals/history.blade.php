@@ -13,7 +13,7 @@
                         <p class="text-3xl font-bold">History</p>
                     </div>
                     @if(count($histories) == 0)
-                        <p class="text-center text-lg text-semibold">You don't have any tasks done</p>
+                        <p class="text-center text-lg text-semibold">You don't have any tasks yet</p>
                     @elseif(count($histories)>=1)
                         <div class="mb-5">
                             @php
