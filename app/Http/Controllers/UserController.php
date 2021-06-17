@@ -2,46 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
-use App\Models\Goal;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function dashboard() {
-        $user_id = Auth::user()->id;
-        $role = Auth::user()->role;
-        if ($role == "admin"){
-            $goals = Goal::query()
-                ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
-                ->where('goals.status','=','finished')
-                ->where('goals.user_id','=',$user_id)
-                ->get();    
-        }
-        else if ($role == "employee"){
-            $employee = Employee::where('user_id', '=', $user_id)->get();
-            $goals = Goal::query()
-                ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
-                ->where('goals.status','=','finished')
-                ->where('goals.employee_id','=', $employee[0]->id)
-                ->get();
-        }
-        return response()->json($goals);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function index()
+    {
+        $uvdusers = User::query()->where('status','=','Unverified')->where('role','=','employee')->orderBy('created_at')->get();
+        $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
+        $roles = Role::all();
+        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
 
-    public function profile(){
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Application|Factory|View
+     */
+    public function show()
+    {
         $id = Auth::user()->id;
         $details = User::query()->find($id);
         if (Auth::user()->role == 'admin') {
@@ -51,21 +66,35 @@ class UserController extends Controller
         }
     }
 
-    public function edit_profile($id){
-        $details = User::query()->find($id);
-        return view('Desktop.user.edit_profile',['details'=>$details]);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return Application|Factory|View
+     */
+    public function edit(User $user)
+    {
+        return view('Desktop.user.edit_profile',['details'=>$user]);
     }
 
-    public function profile_update(Request $request) {
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $id = Auth::id();
         $img_name = Auth::User()->image;
         $validateProfile = $request->validate([
-           'name' => 'required|string|max:255',
-           'email' => 'required|string|max:255',
-           'sex' => 'required',
-           'birth_date' => 'required',
-           'address' => 'required|max:300|string',
-           'image' => 'nullable|image|mimes:jpeg,png,jpg'
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'sex' => 'required',
+            'birth_date' => 'required',
+            'address' => 'required|max:300|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg'
         ]);
 
         if ($request->hasFile('image')) {
@@ -84,7 +113,7 @@ class UserController extends Controller
 
         $date = $request->birth_date;
         function formatDate($input,$date) {
-              return date($input,strtotime($date));
+            return date($input,strtotime($date));
         }
 
         $birth_year = formatDate("Y",$date);
@@ -97,29 +126,70 @@ class UserController extends Controller
         $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
         $now_date = strtotime("now");
         if ($now_date < $this_date) {
-           $age = $age - 1;
+            $age = $age - 1;
         }
 
         $user = new User();
         $user->updateById($id, array(
-           "name" => $validateProfile['name'],
-           "email" => $validateProfile['email'],
-           'age' => $age,
-           'sex' => $validateProfile['sex'],
-           'birth_date' => Carbon::create($request->birth_date),
-           'address' => $validateProfile['address'],
-           'image' => $img_name
+            "name" => $validateProfile['name'],
+            "email" => $validateProfile['email'],
+            'age' => $age,
+            'sex' => $validateProfile['sex'],
+            'birth_date' => Carbon::create($request->birth_date),
+            'address' => $validateProfile['address'],
+            'image' => $img_name
         ));
 
-        return redirect()->route('profile');
+        return redirect()->route('users.show');
     }
 
-    // User Manage
-    public function show_user() {
-        $uvdusers = User::query()->where('status','=','Unverified')->where('role','=','employee')->orderBy('created_at')->get();
-        $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
-        $roles = Role::all();
-        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+
+    // temporaary, data tidak akan delete cuma status unavailable aja
+    public function destroy($id,$employee_id)
+    {
+        User::destroy($id);
+        Employee::destroy($employee_id);
+
+        $folder = 'employee'.$employee_id;
+        if(File::exists('storage/employee/'.$folder)){
+            File::cleanDirectory('storage/employee/'.$folder);
+            File::deleteDirectory('storage/employee/'.$folder);
+        }
+        echo "A user has been deleted";
+        return redirect()->route('show_user');
+    }
+
+    public function dashboard() {
+        $user_id = Auth::user()->id;
+        $role = Auth::user()->role;
+        if ($role == "admin"){
+            $goals = Goal::query()
+                ->join('employees', 'goals.employee_id', '=', 'employees.id')
+                ->join('users', 'employees.user_id', '=', 'users.id')
+                ->join('companies', 'goals.company_id', '=', 'companies.id')
+                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->where('goals.status','=','finished')
+                ->where('goals.user_id','=',$user_id)
+                ->get();
+        }
+        else if ($role == "employee"){
+            $employee = Employee::where('user_id', '=', $user_id)->get();
+            $goals = Goal::query()
+                ->join('employees', 'goals.employee_id', '=', 'employees.id')
+                ->join('users', 'employees.user_id', '=', 'users.id')
+                ->join('companies', 'goals.company_id', '=', 'companies.id')
+                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->where('goals.status','=','finished')
+                ->where('goals.employee_id','=', $employee[0]->id)
+                ->get();
+        }
+        return response()->json($goals);
     }
 
     public function update_status_user(Request $request) {
@@ -133,12 +203,5 @@ class UserController extends Controller
             $query = Employee::where('user_id','=',$id)->update(['role_id'=>$role]);
         }
         return response()->json();
-    }
-
-    public function delete_user_manage($id,$employee_id) {
-        User::destroy($id);
-        Employee::destroy($employee_id);
-        echo "A user has been deleted";
-        return redirect()->route('show_user');
     }
 }

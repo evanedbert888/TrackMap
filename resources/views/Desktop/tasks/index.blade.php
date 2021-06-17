@@ -10,11 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     @if (count($goals) > 0)
-                    <h1 class="text-2xl font-bold">Tasked Status</h1>
-                    <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>
-                    <div class="flex mx-auto justify-center">
-                        <table class="w-full table-auto mt-4">
-                            <thead>
+                        <h1 class="text-2xl font-bold">Tasked Status</h1>
+                        <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>
+                        <div class="flex mx-auto justify-center">
+                            <table class="w-full table-auto mt-4">
+                                <thead>
                                 <tr class="text-center text-lg">
                                     <th> No </th>
                                     <th class="text-left"> Employee Name </th>
@@ -24,8 +24,8 @@
                                     <th> Tasked Date </th>
                                     <th> Finished Date </th>
                                 </tr>
-                            </thead>
-                            <tbody class="text-center text-lg">
+                                </thead>
+                                <tbody class="text-center text-lg">
                                 @php
                                     $i = 1;
                                 @endphp
@@ -36,7 +36,7 @@
                                         <td class="text-left"> {{ $goal->company->company_name }} </td>
                                         <td class="text-left"> {{ $goal->user->name }} </td>
                                         <td> {{ $goal->status }} </td>
-                                            <td>{{ $goal->created_at }}</td>
+                                        <td>{{ $goal->created_at }}</td>
                                         @if ($goal->created_at == $goal->updated_at)
                                             <td>{{ __("-") }}</td>
                                         @else
@@ -44,10 +44,10 @@
                                         @endif
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    {{$goals->links()}}
+                                </tbody>
+                            </table>
+                        </div>
+                        {{$goals->links()}}
                     @else
                         <p class="font-bold text-lg">Nothing Tasked</p>
                     @endif
