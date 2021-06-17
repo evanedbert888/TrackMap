@@ -22,12 +22,15 @@
                                         <div>
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>
                                         </div>
+                                        <div class="text-md">
+                                            <h3>{{ $list->role->role_name }}</h3>
+                                        </div>
                                         <div class="text-sm">
                                             <h2>{{ $list->user->address }}</h2>
                                         </div>
                                     </div>
                                     <div class="mt-6 ml-5">
-                                        <a href="{{ route('employee_detail',['id'=>$list->id]) }}">
+                                        <a href="{{ route('employees.show',['employee'=>$list->id]) }}">
                                             <x-button>Detail</x-button>
                                         </a>
                                     </div>

@@ -42,7 +42,7 @@
                                 <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex">
-                                            <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
+                                            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                                                 {{ __('User') }}
                                             </x-nav-link>
                                         </div>
@@ -65,7 +65,7 @@
                                             </x-slot>
 
                                             <x-slot name="content">
-                                                <x-dropdown-link :href="route('company_list')">
+                                                <x-dropdown-link :href="route('destinations.index')">
                                                     {{ __('Destination List') }}
                                                 </x-dropdown-link>
                                                 @if(Auth::user()->role == 'admin')
@@ -101,7 +101,7 @@
                                                 </x-slot>
 
                                                 <x-slot name="content">
-                                                    <x-dropdown-link :href="route('employee_list')">
+                                                    <x-dropdown-link :href="route('employees.index')">
                                                         {{ __('Employee List') }}
                                                     </x-dropdown-link>
                                                     <x-dropdown-link :href="route('registered-emails.index')">
@@ -129,10 +129,10 @@
                                                 </x-slot>
 
                                                 <x-slot name="content">
-                                                    <x-dropdown-link :href="route('task_pairing')">
+                                                    <x-dropdown-link :href="route('tasks.create')">
                                                         {{ __('Task Pairing') }}
                                                     </x-dropdown-link>
-                                                    <x-dropdown-link :href="route('task_view')">
+                                                    <x-dropdown-link :href="route('tasks.index')">
                                                         {{ __('Task List') }}
                                                     </x-dropdown-link>
                                                 </x-slot>
@@ -178,9 +178,9 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden md:mt-14">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    <form method="GET" action="{{ route('profile') }}">
+                                                    <form method="GET" action="{{ route('users.show') }}">
                                                         @csrf
-                                                        <x-dropdown-link :href="route('profile')"
+                                                        <x-dropdown-link :href="route('users.show')"
                                                                 onclick="event.preventDefault();
                                                                             this.closest('form').submit();">
                                                                 <div class="flex items-center">

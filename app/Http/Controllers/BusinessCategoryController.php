@@ -56,7 +56,7 @@ class BusinessCategoryController extends Controller
         $category->name = $validateCategory['name'];
         $category->save();
 
-        return redirect()->route('business.index')->withMessage('New business category has been added');
+        return redirect()->route('business-categories.index')->withMessage('New business category has been added');
     }
 
     /**
@@ -78,7 +78,7 @@ class BusinessCategoryController extends Controller
      */
     public function edit(BusinessCategory $businessCategory)
     {
-        return view('Desktop.business-categories',['category'=>$businessCategory]);
+        return view('Desktop.business-categories.edit',['category'=>$businessCategory]);
     }
 
     /**
@@ -92,7 +92,7 @@ class BusinessCategoryController extends Controller
     {
         $businessCategory->update($request->all());
 
-        return redirect()->route('Desktop.business-categories.index', $businessCategory)
+        return redirect()->route('business-categories.index', $businessCategory)
             ->withMessage('BusinessCategory category updated successfully.');
     }
 

@@ -22,9 +22,9 @@
                         <form action="{{route('goals.update')}}" method="POST">
                             @method('PATCH')
                             @csrf
-                            <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"/>
-                            <x-editinput type="hidden" name="latitude" id="latitude" value=""/>
-                            <x-editinput type="hidden" name="longitude" id="longitude" value=""/>
+                            <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
+                            <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
+                            <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
                             <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
                                 <x-button type="submit">
                                     Check-In

@@ -2,32 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Register;
+use App\Models\Employee;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Models\Employee;
-use App\Models\Role;
 use Illuminate\Support\Facades\File;
 
 class EmployeeController extends Controller
 {
-    public function employee_list(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function index()
+    {
         $lists = Employee::query()->orderBy('id','desc')->paginate(5);
-        return view('Desktop.employee.employee_list',['lists'=>$lists]);
+        return view('Desktop.employees.index',['lists'=>$lists]);
     }
 
-    public function employee_detail($id){
-        $details = Employee::query()->find($id);
-        return view('Desktop.employee.employee_detail',['details'=>$details]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function edit_employee($id){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Application|Factory|View
+     */
+    public function show(Employee $employee)
+    {
+        return view('Desktop.employees.show',['details'=>$employee]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Application|Factory|View
+     */
+    public function edit(Employee $employee)
+    {
         if (Auth::user()->role == 'admin') {
-            $details = Employee::query()->find($id);
-            return view('Desktop.employee.edit_employee',['details'=>$details]);
+            return view('Desktop.employees.edit',['details'=>$employee]);
         } elseif (Auth::user()->role == 'employee') {
             $user_id = Auth::user()->id;
             $details = Employee::query()->where('user_id','=',$user_id)->first();
@@ -35,27 +75,35 @@ class EmployeeController extends Controller
         }
     }
 
-    public function employee_patch($id, Request $request){
-        $user_id = Employee::query()->where('id','=',$id)->pluck('user_id');
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, Employee $employee)
+    {
+        $user_id = Employee::query()->where('id','=',$employee->id)->pluck('user_id');
         $img_name = User::query()->where('id','=',$user_id)->pluck('image');
 
         $validateEmployee = $request->validate([
-           'name' => 'string|required|max:255',
-           'motto' => 'string|required|max:255',
-           'email' => 'string|required|max:255',
-           'birth_date' => 'required',
-           'sex' => 'required',
-           'address' => 'required'
+            'name' => 'string|required|max:255',
+            'motto' => 'string|required|max:255',
+            'email' => 'string|required|max:255',
+            'birth_date' => 'required',
+            'sex' => 'required',
+            'address' => 'required'
         ]);
 
         if ($request->hasFile('image')) {
-            $folder = 'employee'.$id;
+            $folder = 'employee'.$employee->id;
             if(File::exists('storage/employee/'.$folder)){
                 File::cleanDirectory('storage/employee/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
-            $new_image_name = 'employee/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
+            $new_image_name = 'employee/'.$folder.'/'.$employee->id.'-'.time().'-'.$image_name;
             $img_name = $new_image_name;
 
             $request->image->storeAs('public',$img_name);
@@ -91,31 +139,28 @@ class EmployeeController extends Controller
             'image' => $img_name
         ));
 
-        $employee = new Employee();
-        $employee->updateById($id, array(
+        $worker = new Employee();
+        $worker->updateById($employee->id, array(
             "motto" => $validateEmployee['motto'],
         ));
 
         if (Auth::user()->role == 'admin') {
-            return redirect()->route('employee_detail',['id'=>$id]);
+            return redirect()->route('employees.show',['employee'=>$employee]);
         } elseif (Auth::user()->role == 'employee') {
-            return redirect()->route('profile');
+            return redirect()->route('users.show');
         }
+
     }
 
-    public function employee_delete($id){
-        $employee = DB::table('employees')->where('id','=',$id)->get();
-        $user_id = $employee[0]->user_id;
-        DB::table('employees')->where('id','=',$id)->delete();
-        DB::table('users')->where('id','=',$user_id)->delete();
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
 
-        $folder = 'employee'.$id;
-        if(File::exists('storage/employee/'.$folder)){
-            File::cleanDirectory('storage/employee/'.$folder);
-            File::deleteDirectory('storage/employee/'.$folder);
-        }
-
-        return redirect()->route('show_user');
     }
 
     public function add_role(Request $request) {
@@ -126,7 +171,7 @@ class EmployeeController extends Controller
         return redirect()->route('show_user');
     }
 
-    public function delete_role($id) {
-
-    }
+//    public function delete_role($id) {
+//
+//    }
 }

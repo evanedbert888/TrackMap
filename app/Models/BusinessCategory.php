@@ -14,7 +14,7 @@ class BusinessCategory extends Model
         'name'
     ];
 
-    public function company() {
-        return $this->belongsTo(Company::class,'id','business_id');
+    public function destination() {
+        return $this->belongsTo(Destination::class,'id','business_id');
     }
 }

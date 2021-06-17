@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$details->company_name}}
+            {{$details->destination_name}}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
-                    <form method="POST" action="{{ route('company_patch',['id'=>$details->id]) }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('destinations.update',['destination'=>$details->id]) }}"  enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="float-right mr-5">
@@ -27,7 +27,7 @@
                         <div>
                             <div class="ml-60 mx-5">
                                 <div>
-                                    <x-editinput name="company_name" id="company_name" class="font-bold text-2xl" type="text" value="{{ $details->company_name }}"/>
+                                    <x-editinput name="destination_name" id="destination_name" class="font-bold text-2xl" type="text" value="{{ $details->destination_name }}"></x-editinput>
                                 </div>
                                 <div class="text-sm mt-1">
                                     <select class="rounded-lg" name="business" id="business">
@@ -55,25 +55,31 @@
                                     <tr>
                                         <td>email</td>
                                         <td>:</td>
-                                        <td><x-editinput name="email" id="email" type="text" value="{{ $details->email }}"/></td>
+                                        <td>
+                                            <x-editinput name="email" id="email" type="text" value="{{ $details->email }}"></x-editinput>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Coordinate</td>
                                         <td>:</td>
-                                        <td><x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->latitude }},{{ $details->longitude }}"/></td>
-                                        <span class="hidden" id="latitude" value="{{$details->latitude}}"></span>
-                                        <span class="hidden" id="longitude" value="{{$details->longitude}}"></span>
+                                        <td>
+                                            <x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->latitude }},{{ $details->longitude }}"></x-editinput>
+                                        </td>
+                                        <x-input class="hidden" id="latitude" value="{{$details->latitude}}"></x-input>
+                                        <x-input class="hidden" id="longitude" value="{{$details->longitude}}"></x-input>
                                     </tr>
                                     <tr>
                                         <td>Description</td>
                                         <td>:</td>
-                                        <td><x-editinput name="description" id="description" type="text" value="{{ $details->description }}"/></td>
+                                        <td>
+                                            <x-editinput name="description" id="description" type="text" value="{{ $details->description }}"></x-editinput>
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
-                            <span class="flex justify-center mt-3">
+                            <div class="flex justify-center mt-3">
                                 <div id="viewMap"></div>
-                            </span>
+                            </div>
                         </div>
                     </form>
                 </div>

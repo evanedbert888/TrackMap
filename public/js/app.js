@@ -6403,7 +6403,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * or `customizer` functions.
      *
      * @private
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {Object} source The source object.
      * @returns {Object} Returns `object`.
      */
@@ -6416,7 +6416,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * or `customizer` functions.
      *
      * @private
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {Object} source The source object.
      * @returns {Object} Returns `object`.
      */
@@ -7472,7 +7472,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.merge` without support for multiple sources.
      *
      * @private
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {Object} source The source object.
      * @param {number} srcIndex The index of `source`.
      * @param {Function} [customizer] The function to customize merged values.
@@ -7507,7 +7507,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * references to be merged.
      *
      * @private
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {Object} source The source object.
      * @param {string} key The key of the value to merge.
      * @param {number} srcIndex The index of `source`.
@@ -9448,11 +9448,11 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Used by `_.defaults` to customize its `_.assignIn` use to assign properties
-     * of source objects to the destination object for all destination properties
+     * of source objects to the destinations object for all destinations properties
      * that resolve to `undefined`.
      *
      * @private
-     * @param {*} objValue The destination value.
+     * @param {*} objValue The destinations value.
      * @param {*} srcValue The source value.
      * @param {string} key The key of the property to assign.
      * @param {Object} object The parent object of `objValue`.
@@ -9468,10 +9468,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Used by `_.defaultsDeep` to customize its `_.merge` use to merge source
-     * objects into destination objects that are passed thru.
+     * objects into destinations objects that are passed thru.
      *
      * @private
-     * @param {*} objValue The destination value.
+     * @param {*} objValue The destinations value.
      * @param {*} srcValue The source value.
      * @param {string} key The key of the property to merge.
      * @param {Object} object The parent object of `objValue`.
@@ -10353,7 +10353,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * and or `_.rearg` applied.
      *
      * @private
-     * @param {Array} data The destination metadata.
+     * @param {Array} data The destinations metadata.
      * @param {Array} source The source metadata.
      * @returns {Array} Returns `data`.
      */
@@ -16474,7 +16474,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Assigns own enumerable string keyed properties of source objects to the
-     * destination object. Source objects are applied from left to right.
+     * destinations object. Source objects are applied from left to right.
      * Subsequent sources overwrite property assignments of previous sources.
      *
      * **Note:** This method mutates `object` and is loosely based on
@@ -16484,7 +16484,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.10.0
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
      * @see _.assignIn
@@ -16527,7 +16527,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 4.0.0
      * @alias extend
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
      * @see _.assign
@@ -16564,7 +16564,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 4.0.0
      * @alias extendWith
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} sources The source objects.
      * @param {Function} [customizer] The function to customize assigned values.
      * @returns {Object} Returns `object`.
@@ -16596,7 +16596,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} sources The source objects.
      * @param {Function} [customizer] The function to customize assigned values.
      * @returns {Object} Returns `object`.
@@ -16676,7 +16676,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Assigns own and inherited enumerable string keyed properties of source
-     * objects to the destination object for all destination properties that
+     * objects to the destinations object for all destinations properties that
      * resolve to `undefined`. Source objects are applied from left to right.
      * Once a property is set, additional values of the same property are ignored.
      *
@@ -16686,7 +16686,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
      * @see _.defaultsDeep
@@ -16736,7 +16736,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.10.0
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
      * @see _.defaults
@@ -17318,8 +17318,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     /**
      * This method is like `_.assign` except that it recursively merges own and
      * inherited enumerable string keyed properties of source objects into the
-     * destination object. Source properties that resolve to `undefined` are
-     * skipped if a destination value exists. Array and plain object properties
+     * destinations object. Source properties that resolve to `undefined` are
+     * skipped if a destinations value exists. Array and plain object properties
      * are merged recursively. Other objects and value types are overridden by
      * assignment. Source objects are applied from left to right. Subsequent
      * sources overwrite property assignments of previous sources.
@@ -17330,7 +17330,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.5.0
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} [sources] The source objects.
      * @returns {Object} Returns `object`.
      * @example
@@ -17352,7 +17352,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * This method is like `_.merge` except that it accepts `customizer` which
-     * is invoked to produce the merged values of the destination and source
+     * is invoked to produce the merged values of the destinations and source
      * properties. If `customizer` returns `undefined`, merging is handled by the
      * method instead. The `customizer` is invoked with six arguments:
      * (objValue, srcValue, key, object, source, stack).
@@ -17363,7 +17363,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @category Object
-     * @param {Object} object The destination object.
+     * @param {Object} object The destinations object.
      * @param {...Object} sources The source objects.
      * @param {Function} customizer The function to customize assigned values.
      * @returns {Object} Returns `object`.
@@ -19585,7 +19585,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
     /**
      * Adds all own enumerable string keyed function properties of a source
-     * object to the destination object. If `object` is a function, then methods
+     * object to the destinations object. If `object` is a function, then methods
      * are added to its prototype as well.
      *
      * **Note:** Use `_.runInContext` to create a pristine `lodash` function to
@@ -19595,7 +19595,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Util
-     * @param {Function|Object} [object=lodash] The destination object.
+     * @param {Function|Object} [object=lodash] The destinations object.
      * @param {Object} source The object of functions to add.
      * @param {Object} [options={}] The options object.
      * @param {boolean} [options.chain=true] Specify whether mixins are chainable.
@@ -21258,7 +21258,7 @@ process.umask = function() { return 0; };
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -21272,20 +21272,20 @@ process.umask = function() { return 0; };
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
@@ -21317,7 +21317,7 @@ process.umask = function() { return 0; };
 /******/ 			return result;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -21329,12 +21329,12 @@ process.umask = function() { return 0; };
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -21345,7 +21345,7 @@ process.umask = function() { return 0; };
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -21354,11 +21354,11 @@ process.umask = function() { return 0; };
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/ 		
+/******/
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
@@ -21366,19 +21366,19 @@ process.umask = function() { return 0; };
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0
 /******/ 		};
-/******/ 		
+/******/
 /******/ 		// no chunk on demand loading
-/******/ 		
+/******/
 /******/ 		// no prefetching
-/******/ 		
+/******/
 /******/ 		// no preloaded
-/******/ 		
+/******/
 /******/ 		// no HMR
-/******/ 		
+/******/
 /******/ 		// no HMR manifest
-/******/ 		
+/******/
 /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
+/******/
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime] = data;
@@ -21401,20 +21401,20 @@ process.umask = function() { return 0; };
 /******/ 			}
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
-/******/ 		
+/******/
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+/******/
 /******/ })()
 ;

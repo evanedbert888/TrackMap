@@ -4,7 +4,7 @@ use App\Http\Controllers\BusinessCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoalController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisteredEmailController;
 use App\Http\Controllers\TaskController;
@@ -22,7 +22,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
-    Alert()->success('Hello');
     return view('auth.login');
 });
 
@@ -35,88 +34,55 @@ require __DIR__.'/auth.php';
 
 // Desktop
 Route::prefix('/SalesMap')->group(function() {
-    Route::get('/Profile',[UserController::class,'profile'])->name('profile');
-    Route::get('/EditProfile/{id}',[UserController::class,'edit_profile'])->name('edit_profile');
-    Route::patch('/ProfileUpdate',[UserController::class,'profile_update'])->name('profile_update');
-
-    // User
-    Route::get('/User', [UserController::class, 'show_user'])->name('show_user');
-    // Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
-    Route::post('/UpdateStatusUser', [UserController::class, 'update_status_user'])->name('update_status_user');
-    Route::delete('/DeleteUser', [UserController::class, 'delete_user_manage'])->name('delete_user_manage');
-
-    // Task Pairing
-    Route::get('/TaskPairing',[TaskController::class, 'task_pairing'])->name('task_pairing');
-    Route::get('/TaskPairingShowEmployees/{id?}',[TaskController::class,'show_employee_by_role'])->name('show_employees');
-    Route::get('/TaskPairingShowCompanies/{id?}',[TaskController::class,'show_company_by_business'])->name('show_companies');
-    Route::get('/StoreTask/{employee?}/{company?}',[TaskController::class,'store_task'])->name('store_task');
-    Route::get('/ShowTask',[TaskController::class,'show_task'])->name('show_task');
-    Route::get('TaskDelete/{id?}',[TaskController::class,'temp_delete'])->name('temp_delete');
-    Route::post('/TaskInsert',[TaskController::class,'goals_insert'])->name('task_insert');
-    Route::get('/TaskView',[TaskController::class, 'task_view'])->name('task_view');
-
-    // Company
-    Route::get('/CompanyList',[CompanyController::class,'company_list'])->name('company_list');
-    Route::get('/CompanyDetail/{id}',[CompanyController::class,'company_detail'])->name('company_detail');
-    Route::delete('/CompanyDelete/{id}',[CompanyController::class,'company_delete'])->name('company_delete');
-
-    // Update Company
-    Route::get('/EditCompany/{id}',[CompanyController::class,'edit_company'])->name('edit_company');
-    Route::patch('/CompanyPatch/{id}',[CompanyController::class,'company_patch'])->name('company_patch');
-
-    // Add New Company
-    Route::get('/CompanyForm',[CompanyController::class,'company_form'])->name('company_form');
-    Route::post('/AddCompany',[CompanyController::class,'add_company'])->name('add_company');
-
-    // Employee
-    Route::get('/EmployeeList',[EmployeeController::class,'employee_list'])->name('employee_list');
-    Route::get('/EmployeeDetail/{id}',[EmployeeController::class,'employee_detail'])->name('employee_detail');
-    Route::delete('/EmployeeDelete/{id}',[EmployeeController::class,'employee_delete'])->name('employee_delete');
-
-    // Update Employee
-    Route::get('/EditEmployee/{id}',[EmployeeController::class,'edit_employee'])->name('edit_employee');
-    Route::patch('/EmployeePatch/{id}',[EmployeeController::class,'employee_patch'])->name('employee_patch');
-
-    // Role
+    // Role CRUD without edit & update
     Route::get('/RoleList',[EmployeeController::class,'role_list'])->name('role_list');
     Route::post('/AddRole',[EmployeeController::class,'add_role'])->name('add_role');
     // Route::delete('/DeleteRole/{id}',[EmployeeController::class,'delete_role'])->name('delete_role');
 
+    // User
+    // Route::get('/UserVerify', [UserController::class, 'user_verify'])->name('user_verify');
+    Route::post('/UpdateStatusUser', [UserController::class, 'update_status_user'])->name('update_status_user');
 
-//    // Users
-//    Route::group(['prefix' => 'users', 'name' => 'users.'], function() {
-//        Route::get('/', [UserController::class, 'index'])->name('index');
-//        Route::get('/edit', [UserController::class, 'edit'])->name('edit');
-//        Route::patch('/', [UserController::class, 'update'])->name('update');
-//    });
+    // Users
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('/profile', [UserController::class, 'show'])->name('show');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::patch('/', [UserController::class, 'update'])->name('update');
+        Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
+    });
 
-//    // Tasks
-//    Route::prefix('tasks')->name('tasks.')->group(function () {
-//        Route::get('/', [TaskController::class,'index'])->name('index');
-//        Route::get('/create', [TaskController::class,'create'])->name('create');
-//        Route::post('/', [TaskController::class,'store'])->name('store');
-//        Route::delete('/{task}', [TaskController::class,'destroy'])->name('delete');
-//    });
+    // Tasks
+    Route::prefix('tasks')->name('tasks.')->group(function () {
+        Route::get('/', [TaskController::class,'index'])->name('index');
+        Route::get('/create', [TaskController::class,'create'])->name('create');
+        Route::post('/', [TaskController::class,'store'])->name('store');
+        Route::delete('/{temp}', [TaskController::class,'destroy'])->name('destroy');
 
-//    // Employees
-//    Route::prefix('employees')->name('employees.')->group(function () {
-//       Route::get('/', [EmployeeController::class, 'index'])->name('index');
-//       Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
-//       Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
-//       Route::patch('/{employee}', [EmployeeController::class, 'update'])->name('update');
-//       Route::delete('/{employee}', [EmployeeController::class, 'destroy'])->name('destroy');
-//    });
+        Route::get('/TaskPairingShowEmployees/{id?}',[TaskController::class,'show_employee_by_role'])->name('show_employees');
+        Route::get('/TaskPairingShowDestinations/{id?}',[TaskController::class,'show_destination_by_business'])->name('show_destinations');
+        Route::get('/StoreTask/{employee?}/{destination?}',[TaskController::class,'store_task'])->name('store_task');
+        Route::get('/ShowTask',[TaskController::class,'show_task'])->name('show_task');
+    });
 
-//    // Destinations
-//    Route::prefix('destinations')->name('destinations.')->group(function (){
-//        Route::get('/', [DestinationController::class, 'index'])->name('index');
-//        Route::get('/{destination}', [DestinationController::class, 'show'])->name('show');
-//        Route::get('/create', [DestinationController::class, 'create'])->name('create');
-//        Route::post('/',[DestinationController::class, 'store'])->name('store');
-//        Route::get('/{destination}/edit', [DestinationController::class, 'edit'])->name('edit');
-//        Route::patch('/{destination}', [DestinationController::class, 'update'])->name('update');
-//        Route::delete('/{destination}', [DestinationController::class, 'destroy'])->name('destroy');
-//    });
+    // Employees
+    Route::prefix('employees')->name('employees.')->group(function () {
+       Route::get('/', [EmployeeController::class, 'index'])->name('index');
+       Route::get('/{employee}', [EmployeeController::class, 'show'])->name('show');
+       Route::get('/{employee}/edit', [EmployeeController::class, 'edit'])->name('edit');
+       Route::patch('/{employee}', [EmployeeController::class, 'update'])->name('update');
+    });
+
+    // Destinations
+    Route::prefix('destinations')->name('destinations.')->group(function (){
+        Route::get('', [DestinationController::class, 'index'])->name('index');
+        Route::get('/create', [DestinationController::class, 'create'])->name('create');
+        Route::post('',[DestinationController::class, 'store'])->name('store');
+        Route::get('/{destination}', [DestinationController::class, 'show'])->name('show');
+        Route::get('/{destination}/edit', [DestinationController::class, 'edit'])->name('edit');
+        Route::patch('/{destination}', [DestinationController::class, 'update'])->name('update');
+        Route::delete('/{destination}', [DestinationController::class, 'destroy'])->name('destroy');
+    });
 
     // Registered-emails
     Route::prefix('registered-emails')->name('registered-emails.')->group(function () {
@@ -131,16 +97,16 @@ Route::prefix('/SalesMap')->group(function() {
         Route::get('/create', [BusinessCategoryController::class, 'create'])->name('create');
         Route::post('', [BusinessCategoryController::class, 'store'])->name('store');
         Route::get('/{businessCategory}/edit', [BusinessCategoryController::class, 'edit'])->name('edit');
-        Route::put('/{businessCategory}', [BusinessCategoryController::class, 'update'])->name('update');
+        Route::patch('/{businessCategory}', [BusinessCategoryController::class, 'update'])->name('update');
         Route::delete('/{businessCategory}', [BusinessCategoryController::class, 'destroy'])->name('destroy');
     });
 });
 
 // Mobile
 Route::prefix('/SalesMap')->group(function (){
-    // Destination
-    Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('destination_list');
-    Route::get('/DestinationDetail/{id}',[CompanyController::class,'company_detail'])->name('destination_detail');
+//    // Destination
+//    Route::get('/',[DestinationController::class,'index'])->name('index');
+//    Route::get('/{destinations}',[DestinationController::class,'show'])->name('show');
 });
 
 // Test_Mobile View
@@ -156,8 +122,8 @@ Route::prefix('/SalesMap/Mobile')->group(function () {
         Route::get('/history', [GoalController::class,'history'])->name('history');
     });
 
-    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
-    Route::get('/DestinationList',[CompanyController::class,'company_list'])->name('mobile_destination_list');
+//    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
+//    Route::get('/',[DestinationController::class,'index'])->name('mobile.index');
 });
 
 Route::get('test', function() {

@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
-                    <form method="POST" action="{{ route('employee_patch',['id'=>$details->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('employees.update',['employee'=>$details->id]) }}" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="float-right mr-5">

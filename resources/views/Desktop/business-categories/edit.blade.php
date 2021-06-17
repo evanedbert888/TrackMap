@@ -11,7 +11,7 @@
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
                         <div class="items-center">
-                            <form action="{{route('business-categories.store')}}" method="POST">
+                            <form action="{{route('business-categories.update',['businessCategory'=>$category->id])}}" method="POST">
                                 @method('PATCH')
                                 @csrf
                                 <div class="pt-2 justify-center">

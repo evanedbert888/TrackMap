@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
-                    <form method="POST" action="{{ route('profile_update') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="float-right mr-5 mt-5">

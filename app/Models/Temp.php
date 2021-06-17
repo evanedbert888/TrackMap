@@ -9,11 +9,11 @@ class Temp extends Model
 {
     use HasFactory;
     protected $fillable = [
-      'user_id', 'employee_id', 'company_id', 'created_at', 'updated_at'
+      'user_id', 'employee_id', 'destination_id', 'created_at', 'updated_at'
     ];
 
-    public function company() {
-        return $this->belongsTo(Company::class,'company_id','id');
+    public function destination() {
+        return $this->belongsTo(Destination::class,'destination_id','id');
     }
 
     public function employee() {

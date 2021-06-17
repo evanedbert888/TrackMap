@@ -17,7 +17,7 @@ class CreateGoalsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('destination_id');
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('status')->default('unfinished');

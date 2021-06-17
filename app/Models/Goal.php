@@ -12,7 +12,7 @@ class Goal extends Model
     protected $table = "goals";
 
     protected $fillable = [
-        'user_id', 'employee_id', 'company_id', 'latitude', 'longitude'
+        'user_id', 'employee_id', 'destination_id', 'latitude', 'longitude'
     ];
 
     public function updateById($id, $data = array())
@@ -20,8 +20,8 @@ class Goal extends Model
         return DB::table('goals')->where('id', '=', $id)->update($data);
     }
 
-    public function company() {
-        return $this->belongsTo(Company::class,'company_id','id');
+    public function destination() {
+        return $this->belongsTo(Destination::class,'destination_id','id');
     }
 
     public function employee() {

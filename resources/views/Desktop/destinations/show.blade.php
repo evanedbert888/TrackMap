@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$details->company_name}}
+            {{$details->destination_name}}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-3 bg-white border-b border-gray-200 md:p-6">
-                    <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('edit_company',['id'=>$details->id]) }}">
+                    <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('destinations.edit',['destination'=>$details->id]) }}">
                         <x-button type="submit">
                             edit
                         </x-button>
@@ -24,7 +24,7 @@
                     <div>
                         <div class="mx-2 mt-16 md:ml-60 md:mx-5 md:mt-0">
                             <div>
-                                <h6 class="font-bold text-2xl">{{ $details->company_name }}</h6>
+                                <h6 class="font-bold text-2xl">{{ $details->destination_name }}</h6>
                             </div>
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
@@ -44,7 +44,7 @@
                                 <tr class="align-top">
                                     <td>Business</td>
                                     <td>:</td>
-                                    <td>{{ $details->business->name }}</td>
+                                    <td>{{ $details->businessCategories->name }}</td>
                                 </tr>
                                 <tr class="align-top">
                                     <td>Description</td>

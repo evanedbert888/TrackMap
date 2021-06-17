@@ -13,14 +13,14 @@
                         <tr>
                             <td>
                                 <span class="flex container justify-end">
-                                    <form action="{{route('add_company')}}" method="POST">
+                                    <form action="{{route('destinations.store')}}" method="POST">
                                     @csrf
-                                    <!-- Company Name -->
+                                    <!-- destinations Name -->
                                         <div class="my-3 space-y-0">
-                                            <x-label for="company_name" :value="__('Company Name')"></x-label>
+                                            <x-label for="_name" :value="__('Destination Name')"></x-label>
 
-                                            <x-input id="company_name" class="block mt-1 w-96" type="text"
-                                                     name="company_name" :value="old('company_name')" required
+                                            <x-input id="destination_name" class="block mt-1 w-96" type="text"
+                                                     name="destination_name" :value="old('destination_name')" required
                                                      autofocus></x-input>
                                         </div>
 

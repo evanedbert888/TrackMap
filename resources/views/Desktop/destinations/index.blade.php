@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Company List') }}
+            {{ __('Destination List') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <div class="container">
                         <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
                             <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>
-                            <a class="justify-self-center" href="{{route('company_form')}}">
+                            <a class="justify-self-end" href="{{route('destinations.create')}}">
                                 <x-button>Add New Destination</x-button>
                             </a>
                         </div>
@@ -27,22 +27,22 @@
                                         @endif
                                         <div class="w-full ml-5 mt-3">
                                             <div>
-                                                <h6 class="font-bold text-2xl">{{ $list->company_name }}</h6>
+                                                <h6 class="font-bold text-2xl">{{ $list->destination_name }}</h6>
                                             </div>
                                             <div class="text-sm">
                                                 <h2>{{ $list->address }}</h2>
                                             </div>
                                         </div>
                                         <div class="mt-6 ml-5">
-                                            <a href="{{route('company_detail',['id'=>$list->id])}}">
+                                            <a href="{{route('destinations.show',['destination'=>$list->id])}}">
                                                 <x-button>Detail</x-button>
                                             </a>
                                         </div>
                                         <div class="mt-6 ml-5">
-                                            <form action="{{route('company_delete',['id'=>$list->id])}}" method="POST">
+                                            <form action="{{route('destinations.destroy',['destination'=>$list->id])}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <x-delbutton onsubmit="return confirm('You want to delete this destination ?')">Delete</x-delbutton>
+                                                <x-delbutton>Delete</x-delbutton>
                                             </form>
                                         </div>
                                     </li>

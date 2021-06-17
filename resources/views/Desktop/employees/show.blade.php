@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
-                    <a class="float-right mr-5" href="{{route('edit_employee',['id'=>$details->id])}}">
+                    <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->id])}}">
                         <x-button type="submit">
                             edit
                         </x-button>

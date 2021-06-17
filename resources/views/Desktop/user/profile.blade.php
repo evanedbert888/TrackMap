@@ -16,7 +16,7 @@
                     @endif
                 </div>
                 <div class="p-3 bg-white border-b border-gray-200 md:p-6">
-                    <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('edit_profile',['id'=>$details->id]) }}">
+                    <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('users.edit',['user'=>$details->id]) }}">
                         <x-button type="submit">
                             edit
                         </x-button>

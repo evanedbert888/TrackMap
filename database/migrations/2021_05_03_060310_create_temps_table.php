@@ -16,7 +16,7 @@ class CreateTempsTable extends Migration
         Schema::create('temps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('destination_id');
             $table->timestamps();
         });
     }
