@@ -41,7 +41,7 @@
             places.push({ 
                 id: value.id,
                 address: value.address,
-                company: value.company_name,
+                company: value.destination_name,
                 employee: value.employee_name,
                 longitude: value.longitude,
                 latitude: value.latitude

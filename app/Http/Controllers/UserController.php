@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Goal;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
@@ -172,8 +173,8 @@ class UserController extends Controller
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
                 ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
+                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
                 ->where('goals.status','=','finished')
                 ->where('goals.user_id','=',$user_id)
                 ->get();
@@ -183,8 +184,8 @@ class UserController extends Controller
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
                 ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
+                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
                 ->where('goals.status','=','finished')
                 ->where('goals.employee_id','=', $employee[0]->id)
                 ->get();
