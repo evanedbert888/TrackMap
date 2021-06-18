@@ -65,6 +65,8 @@ Route::prefix('/SalesMap')->group(function() {
         Route::get('/ShowTask',[TaskController::class,'show_task'])->name('show_task');
     });
 
+    Route::get('/employees/map/{employee}', [EmployeeController::class, 'map'])->name('map');
+
     // Employees
     Route::prefix('employees')->name('employees.')->group(function () {
        Route::get('/', [EmployeeController::class, 'index'])->name('index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Goal;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -174,4 +175,17 @@ class EmployeeController extends Controller
 //    public function delete_role($id) {
 //
 //    }
+
+    public function map(Request $request) {
+        $employee_id = $request->employee;
+        $goals = Goal::query()
+                ->join('employees', 'goals.employee_id', '=', 'employees.id')
+                ->join('users', 'employees.user_id', '=', 'users.id')
+                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
+                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
+                ->where('goals.status','=','finished')
+                ->where('goals.employee_id','=', $employee_id)
+                ->get();
+        return response()->json($goals);
+    }
 }

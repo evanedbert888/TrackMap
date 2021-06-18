@@ -5,6 +5,23 @@
         </h2>
     </x-slot>
 
+    <script>
+        var url = '{{ route("map", ["employee"=>$details->id]) }}'
+        $(document).ready(function() {
+            $.ajax({
+                url : url,
+                type : 'GET',
+                success:function(data){
+                    pushArray(data);
+                },
+                error:function(err){
+                    console.log(err);
+                }
+            });
+        })
+    </script>
+
+
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -51,10 +68,10 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
-                            <div class="w-full">
-                                <p class="text-center">SHOW MAP</p>
-                            </div>
+                        <div class="mx-5 mt-5">
+                            <span class="flex container justify-center">
+                                <div id="viewMap"></div>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -62,3 +79,115 @@
         </div>
     </div>
 </x-app-layout>
+
+<link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+<script>
+    var places = [];
+
+    function pushArray(data) {
+        $.each(data, function(key,value) {
+            places.push({
+                id: value.id,
+                address: value.address,
+                company: value.destination_name,
+                employee: value.employee_name,
+                longitude: value.longitude,
+                latitude: value.latitude
+            });
+        })
+
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+
+            "esri/Graphic",
+            "esri/layers/GraphicsLayer",
+            "esri/tasks/Locator",
+            "esri/layers/FeatureLayer",
+
+
+        ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, FeatureLayer, ) {
+            esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
+            const map = new Map({
+                basemap: "streets-navigation-vector" //Basemap layer service
+            });
+
+            const view = new MapView({
+                map: map,
+                center: [ 109.3425,  -0.0383],
+                zoom: 12,
+                container: "viewMap"
+            });
+
+            var graphics = places.map(function (place) {
+                return new Graphic({
+                    attributes: {
+                        ObjectId: place.id,
+                        address: place.address,
+                        company: place.company,
+                        employee: place.employee
+                    },
+                    geometry: {
+                        longitude: place.longitude,
+                        latitude: place.latitude,
+                        type : "point"
+                    }
+                });
+            });
+
+            var featureLayer = new FeatureLayer({
+                source: graphics,
+                renderer: {
+                    type: "simple",                    // autocasts as new SimpleRenderer()
+                    symbol: {                          // autocasts as new SimpleMarkerSymbol()
+                        type: "simple-marker",
+                        color: "#102A44",
+                        outline: {                       // autocasts as new SimpleLineSymbol()
+                            color: "#598DD8",
+                            width: 2
+                        }
+                    }
+                },
+                popupTemplate: {                     // autocasts as new PopupTemplate()
+                    title: "Finished Place",    //belum dapat menampilan nama company
+                    content: [{
+                        type: "fields",
+                        fieldInfos: [
+                            {
+                                fieldName: "company",
+                                label: "Company Name",
+                                visible: true
+                            },
+                            {
+                                fieldName: "address",
+                                label: "Company Address",
+                                visible: true
+                            }
+                        ]
+                    }]
+                },
+                objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
+                fields: [
+                    {
+                        name: "ObjectID",
+                        alias: "ObjectID",
+                        type: "oid"
+                    },
+                    {
+                        name: "address",
+                        alias: "address",
+                        type: "string"
+                    },
+                    {
+                        name: "company",
+                        alias: "company",
+                        type: "string"
+                    }
+                ]
+            });
+
+            map.layers.add(featureLayer);
+        });
+    }
+</script>
