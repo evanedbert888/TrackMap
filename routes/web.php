@@ -104,15 +104,16 @@ Route::prefix('/SalesMap')->group(function() {
 
 // Mobile
 Route::prefix('/SalesMap')->group(function (){
-//    // Destination
-//    Route::get('/',[DestinationController::class,'index'])->name('index');
-//    Route::get('/{destinations}',[DestinationController::class,'show'])->name('show');
-});
+    // Users
+    Route::prefix('mobile.users')->name('mobile.users.')->group(function (){
+        Route::get('/profile', [UserController::class,'show'])->name('show');
+        Route::get('/{employee}/edit', [EmployeeController::class,'edit'])->name('edit');
+    });
 
-// Test_Mobile View
-Route::prefix('/SalesMap/Mobile')->group(function () {
-    Route::get('/MobileView',function () {
-       return view('layouts.mobile');
+    // Destinations
+    Route::prefix('mobile.destinations')->name('mobile.destinations.')->group(function (){
+        Route::get('',[DestinationController::class,'index'])->name('index');
+        Route::get('/{destination}', [DestinationController::class, 'show'])->name('show');
     });
 
     // Goals
@@ -121,11 +122,4 @@ Route::prefix('/SalesMap/Mobile')->group(function () {
         Route::patch('/', [GoalController::class,'update'])->name('update');
         Route::get('/history', [GoalController::class,'history'])->name('history');
     });
-
-//    Route::get('/Employee_Profile',[UserController::class,'profile'])->name('mobile_employee_profile');
-//    Route::get('/',[DestinationController::class,'index'])->name('mobile.index');
 });
-
-Route::get('test', function() {
-
-})->name('test.route');

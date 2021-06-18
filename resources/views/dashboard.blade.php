@@ -37,12 +37,12 @@
     var places = [];
 
     function pushArray(data) {
-        $.each(data, function(key,value) {    
-            places.push({ 
+        $.each(data, function(key,value) {
+            places.push({
                 id: value.id,
                 address: value.address,
-                company: value.company_name,
-                employee: value.employee_name,
+                company: value.destination_name,
+                employee: value.destination_name,
                 longitude: value.longitude,
                 latitude: value.latitude
             });
@@ -79,7 +79,7 @@
                     attributes: {
                         ObjectId: place.id,
                         address: place.address,
-                        company: place.company,
+                        destination: place.destination,
                         employee: place.employee
                     },
                     geometry: {
@@ -111,12 +111,12 @@
                             fieldInfos: [
                                 {
                                     fieldName: "company",
-                                    label: "Company Name",
+                                    label: "Destination Name",
                                     visible: true
                                 },
                                 {
                                     fieldName: "address",
-                                    label: "Company Address",
+                                    label: "Destination Address",
                                     visible: true
                                 },
                                 {
@@ -145,8 +145,8 @@
                             type: "string"
                         },
                         {
-                            name: "company",
-                            alias: "company",
+                            name: "destination",
+                            alias: "destination",
                             type: "string"
                         }
                     ]
@@ -172,13 +172,13 @@
                             type: "fields",
                             fieldInfos: [
                                 {
-                                    fieldName: "company",
-                                    label: "Company Name",
+                                    fieldName: "destination",
+                                    label: "Destination Name",
                                     visible: true
                                 },
                                 {
                                     fieldName: "address",
-                                    label: "Company Address",
+                                    label: "Destination Address",
                                     visible: true
                                 }
                             ]
@@ -197,14 +197,14 @@
                             type: "string"
                         },
                         {
-                            name: "company",
-                            alias: "company",
+                            name: "destination",
+                            alias: "destination",
                             type: "string"
                         }
                     ]
                 });
             }
-            map.layers.add(featureLayer); 
+            map.layers.add(featureLayer);
         });
     }
 </script>

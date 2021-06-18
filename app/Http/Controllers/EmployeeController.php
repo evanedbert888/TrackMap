@@ -71,7 +71,7 @@ class EmployeeController extends Controller
         } elseif (Auth::user()->role == 'employee') {
             $user_id = Auth::user()->id;
             $details = Employee::query()->where('user_id','=',$user_id)->first();
-            return view('Mobile.employee.edit_employee_profile',['details'=>$details]);
+            return view('Mobile.employees.edit',['details'=>$details]);
         }
     }
 
@@ -147,7 +147,7 @@ class EmployeeController extends Controller
         if (Auth::user()->role == 'admin') {
             return redirect()->route('employees.show',['employee'=>$employee]);
         } elseif (Auth::user()->role == 'employee') {
-            return redirect()->route('users.show');
+            return redirect()->route('mobile.users.show');
         }
 
     }

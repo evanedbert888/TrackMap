@@ -29,9 +29,9 @@ class DestinationController extends Controller
         if (Auth::user()->role == 'admin') {
             $lists = Destination::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.destinations.index',['lists'=>$lists]);
-        } else {
+        } else if (Auth::user()->role == 'employee') {
             $lists = Destination::query()->orderBy('id','desc')->paginate(7);
-            return view('Mobile.destinations.destination_list',['lists'=>$lists]);
+            return view('Mobile.destinations.index',['lists'=>$lists]);
         }
     }
 
@@ -64,8 +64,8 @@ class DestinationController extends Controller
         ]);
 
         $split = explode(",", $request->coordinate);
-        $latitude = $split[0];
-        $longitude = $split[1];
+        $longitude = $split[0];
+        $latitude = $split[1];
 
         $destination = new Destination();
         $destination->destination_name = $validateDestination['destination_name'];
@@ -97,7 +97,7 @@ class DestinationController extends Controller
                 ->where('destination_id','=',$destination->id)
                 ->where('status','=','unfinished')
                 ->count();
-            return view('Mobile.destinations.destination_detail',['details'=>$destination,'count'=>$count]);
+            return view('Mobile.destinations.show',['details'=>$destination,'count'=>$count]);
             // return $count;
         }
     }

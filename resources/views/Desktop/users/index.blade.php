@@ -189,12 +189,12 @@
                                                 <td>{{ $user->birth_date }}</td>
                                                 <td>{{ $user->sex }}</td>
                                                 <td>
-                                                    <a href="{{route('edit_employee',['id'=>$user->employee->id])}}">
+                                                    <a href="{{route('employees.edit',['employee'=>$user->employee->id])}}">
                                                         <x-button>Edit</x-button>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{route('employee_delete',['id'=>$user->employee->id])}}" method="POST">
+                                                    <form action="{{route('users.destroy',['user'=>$user->employee->id])}}" method="POST">
                                                         @csrf
                                                         @method("DELETE")
                                                         <x-delbutton type="submit">Delete</x-delbutton>

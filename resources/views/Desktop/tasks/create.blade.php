@@ -105,7 +105,7 @@
 
         function deleteTask(temp){
             $.ajax({
-                url:'{{ route('tasks.destroy') }}'+"/"+{temp},
+                {{--url:'{{ route('tasks.destroy') }}'+"/"+{temp},--}}
                 method:"get",
                 success:function(data){
                     check();
@@ -234,7 +234,7 @@
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showEmployee">
                                     <div class="flex justify-center items-center p-0">
-                                        <img class="inline-block h-16 w-16" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                        <img class="inline-block h-16 w-16" src="{{URL::to('/img/Profile.png')}}" alt="">
                                         <div>
                                             <p class="ml-4" id="employeeName"></p>
                                         </div>
@@ -244,7 +244,7 @@
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showDestination">
                                     <div class="flex justify-center items-center p-0">
-                                        <img class="inline-block h-16 w-16" src="http://localhost/Project/TrackMap/resources/views/components/img/jasa_pembuatan_desain_logo_perusahaan_murah_tidak_murahan_1157447_1429123045.jpg" alt="">
+                                        <img class="inline-block h-16 w-16" src="{{URL::to('/img/company.png')}}" alt="">
                                         <div>
                                             <p class="ml-4" id="destinationName"></p>
                                         </div>

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use App\Models\Goal;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
@@ -25,7 +29,7 @@ class UserController extends Controller
         $uvdusers = User::query()->where('status','=','Unverified')->where('role','=','employee')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
         $roles = Role::all();
-        return view('Desktop.user_manage', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
+        return view('Desktop.users.index', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
     }
 
     /**
@@ -60,9 +64,9 @@ class UserController extends Controller
         $id = Auth::user()->id;
         $details = User::query()->find($id);
         if (Auth::user()->role == 'admin') {
-            return view('Desktop.user.profile',['details'=>$details]);
+            return view('Desktop.users.show',['details'=>$details]);
         } elseif (Auth::user()->role == 'employee') {
-            return view('Mobile.employee.employee_profile',['details'=>$details]);
+            return view('Mobile.employees.show',['details'=>$details]);
         }
     }
 
@@ -74,7 +78,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('Desktop.user.edit_profile',['details'=>$user]);
+        return view('Desktop.users.edit',['details'=>$user]);
     }
 
     /**
@@ -82,9 +86,9 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(Request $request): \Illuminate\Http\RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
         $id = Auth::id();
         $img_name = Auth::User()->image;
@@ -147,7 +151,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
 
     // temporaary, data tidak akan delete cuma status unavailable aja
@@ -172,19 +176,19 @@ class UserController extends Controller
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
                 ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
+                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
                 ->where('goals.status','=','finished')
                 ->where('goals.user_id','=',$user_id)
                 ->get();
         }
         else if ($role == "employee"){
-            $employee = Employee::where('user_id', '=', $user_id)->get();
+            $employee = Employee::query()->where('user_id', '=', $user_id)->get();
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
                 ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('companies', 'goals.company_id', '=', 'companies.id')
-                ->select('goals.*', 'users.name as employee_name', 'companies.company_name', 'companies.address')
+                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
+                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
                 ->where('goals.status','=','finished')
                 ->where('goals.employee_id','=', $employee[0]->id)
                 ->get();
@@ -192,15 +196,16 @@ class UserController extends Controller
         return response()->json($goals);
     }
 
-    public function update_status_user(Request $request) {
+    public function update_status_user(Request $request): JsonResponse
+    {
         $ids = $request->ids;
         $roles = $request->roles;
 
-        User::whereIn('id',$ids)->update(['status'=>'Verified']);
+        User::query()->whereIn('id',$ids)->update(['status'=>'Verified']);
         for ($i=0; $i < count($roles); $i++) {
             $id = $ids[$i];
             $role = $roles[$i];
-            $query = Employee::where('user_id','=',$id)->update(['role_id'=>$role]);
+            $query = Employee::query()->where('user_id','=',$id)->update(['role_id'=>$role]);
         }
         return response()->json();
     }

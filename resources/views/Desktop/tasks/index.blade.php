@@ -18,7 +18,7 @@
                                 <tr class="text-center text-lg">
                                     <th> No </th>
                                     <th class="text-left"> Employee Name </th>
-                                    <th class="text-left"> Company Name </th>
+                                    <th class="text-left"> Destination Name </th>
                                     <th class="text-left"> Tasked By </th>
                                     <th> Status </th>
                                     <th> Tasked Date </th>
@@ -33,7 +33,7 @@
                                     <tr class="bg-red-100 border border-white border-b-4 border-t-0 border-r-0 border-l-0">
                                         <td> {{ $i++ }} </td>
                                         <td class="text-left"> {{ $goal->employee->user->name }} </td>
-                                        <td class="text-left"> {{ $goal->company->company_name }} </td>
+                                        <td class="text-left"> {{ $goal->destination->destination_name }} </td>
                                         <td class="text-left"> {{ $goal->user->name }} </td>
                                         <td> {{ $goal->status }} </td>
                                         <td>{{ $goal->created_at }}</td>

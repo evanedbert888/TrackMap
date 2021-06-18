@@ -20,36 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new commit">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BusinessCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Company.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Goal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Goal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Temp.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Temp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_28_033239_create_companies_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_28_033256_create_goals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_28_033256_create_goals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_03_060310_create_temps_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_03_060310_create_temps_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CompanySeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_detail.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_form.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/company_list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/company/edit_company.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/edit_employee.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_detail.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employee/employee_list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/edit_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user/edit_profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/user/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/edit_profile.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/profile.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/employee_profile.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/edit_employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/task_list.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/mobile.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -191,11 +186,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Mobile\employees" />
       <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Desktop\employees" />
       <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Mobile" />
       <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Mobile\company" />
       <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Test_Mobile\goals" />
-      <recent name="D:\Programs\PHPStorm\TrackMap\resources\views\Desktop\user" />
     </key>
   </component>
   <component name="RunManager">
@@ -308,7 +303,8 @@
       <workItem from="1623813896777" duration="7807000" />
       <workItem from="1623824029605" duration="16200000" />
       <workItem from="1623898192589" duration="3631000" />
-      <workItem from="1623903542528" duration="8550000" />
+      <workItem from="1623903542528" duration="15573000" />
+      <workItem from="1623986785673" duration="7947000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -436,7 +432,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623834521625</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="new commit">
+      <created>1623913847576</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1623913847576</updated>
+    </task>
+    <task id="LOCAL-00020" summary="new commit">
+      <created>1623913854767</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1623913854767</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

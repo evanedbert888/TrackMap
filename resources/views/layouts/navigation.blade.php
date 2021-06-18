@@ -65,14 +65,17 @@
                                             </x-slot>
 
                                             <x-slot name="content">
-                                                <x-dropdown-link :href="route('destinations.index')">
-                                                    {{ __('Destination List') }}
-                                                </x-dropdown-link>
                                                 @if(Auth::user()->role == 'admin')
+                                                    <x-dropdown-link :href="route('destinations.index')">
+                                                        {{ __('Destination List') }}
+                                                    </x-dropdown-link>
                                                     <x-dropdown-link href="{{route('business-categories.index')}}">
                                                         {{ __('Business Categories') }}
                                                     </x-dropdown-link>
                                                 @elseif(Auth::user()->role == 'employee')
+                                                    <x-dropdown-link :href="route('mobile.destinations.index')">
+                                                        {{ __('Destination List') }}
+                                                    </x-dropdown-link>
                                                     <x-dropdown-link :href="route('goals.index')">
                                                         {{ __('Task List') }}
                                                     </x-dropdown-link>

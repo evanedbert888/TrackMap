@@ -61,8 +61,6 @@ class TaskController extends Controller
             $goal->user_id = Auth::user()->id;
             $goal->destination_id = $tasks->destination_id;
             $goal->employee_id = $tasks->employee_id;
-            $goal->latitude = $destinations->latitude;
-            $goal->longitude = $destinations->longitude;
             $goal->save();
 
             Temp::destroy($tasks->id);

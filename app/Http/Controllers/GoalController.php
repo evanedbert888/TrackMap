@@ -29,7 +29,7 @@ class GoalController extends Controller
         $count = Goal::query()->where('employee_id','=',$employee_id)
             ->where('status','=','unfinished')
             ->count();
-        return view('Mobile.goals.task_list',['goals'=>$goals,'count'=>$count]);
+        return view('Mobile.goals.index',['goals'=>$goals,'count'=>$count]);
     }
 
     /**
@@ -87,7 +87,7 @@ class GoalController extends Controller
         $user_id = Auth::user()->id;
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goal_id = Goal::query()->where('employee_id','=',$employee_id)
-            ->where('company_id','=',$request->id)
+            ->where('destination_id','=',$request->id)
             ->where('status','=','unfinished')
             ->pluck('id');
 
