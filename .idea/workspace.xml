@@ -19,35 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new commit">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/task_pairing.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/edit_profile.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user/profile.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/user_manage.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_detail.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/destination_list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/company/employee_profile.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/edit_employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employee/employee_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/task_list.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/mobile.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="mobile view update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -304,7 +276,7 @@
       <workItem from="1623824029605" duration="16200000" />
       <workItem from="1623898192589" duration="3631000" />
       <workItem from="1623903542528" duration="15573000" />
-      <workItem from="1623986785673" duration="7947000" />
+      <workItem from="1623986785673" duration="8569000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -446,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623913854767</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="mobile view update">
+      <created>1623997339636</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1623997339636</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,6 +449,7 @@
     <MESSAGE value="commit updates" />
     <MESSAGE value="new updates" />
     <MESSAGE value="new commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
+    <MESSAGE value="mobile view update" />
+    <option name="LAST_COMMIT_MESSAGE" value="mobile view update" />
   </component>
 </project>
