@@ -159,9 +159,9 @@
                 </div>
                 <!-- Sidebar ends -->
                 <div class="w-full">
-                    <div class="bg-gray-800 opacity-50 w-full h-full absolute hidden" id="closeSideBar" onclick="sidebarHandler(false)"></div>
+                    <div class="bg-gray-800 opacity-50 w-full h-full absolute hidden z-20" id="closeSideBar" onclick="sidebarHandler(false)"></div>
                     <!-- Navigation starts -->
-                    <nav class="h-16 flex items-center items-stretch justify-end justify-between bg-white shadow relative z-0">
+                    <nav class="h-16 flex items-center items-stretch justify-end justify-between bg-white shadow relative z-10">
                         <div class="flex w-full">
                             <div class="text-gray-600 visible ml-4 sm:ml-8 mr-4 mt-4" onclick="sidebarHandler(true)" id="menu">
                                 <svg aria-label="Main Menu" aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu cursor-pointer" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
