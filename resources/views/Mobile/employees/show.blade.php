@@ -17,7 +17,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="px-6 p-5 bg-white border-b border-gray-200 mt-24">
+                <div class="px-6 pt-3 bg-white border-b border-gray-200 mt-24">
                     <div class="flex container items-center justify-between">
                         <div class="mx-5">
                             <div>
@@ -30,13 +30,13 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
-                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->employee->id])}}">
+                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->id])}}">
                             <x-button type="submit">
                                 Edit
                             </x-button>
                         </a>
                     </div>
-                    <div class="mx-5 mt-3">
+                    <div class="mx-5 mt-3 pb-10 pt-2">
                         <p class="font-bold text-xl">Detail</p>
                         <hr class="border border-5 border-black border-solid">
                         <table class="mt-3">
@@ -53,11 +53,6 @@
                                 <td>{{ __(": ").$details->address }}</td>
                             </tr>
                         </table>
-                    </div>
-                    <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
-                        <div class="w-full">
-                            <p class="text-center">SHOW MAP</p>
-                        </div>
                     </div>
                 </div>
             </div>

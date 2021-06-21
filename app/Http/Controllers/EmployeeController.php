@@ -71,7 +71,7 @@ class EmployeeController extends Controller
             return view('Desktop.employees.edit',['details'=>$employee]);
         } elseif (Auth::user()->role == 'employee') {
             $user_id = Auth::user()->id;
-            $details = Employee::query()->where('user_id','=',$user_id)->first();
+            $details = Employee::query()->where('id','=',$employee->id)->first();
             return view('Mobile.employees.edit',['details'=>$details]);
         }
     }
