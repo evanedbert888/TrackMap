@@ -33,6 +33,8 @@ class Employee extends Model
     public function goals() {
         return $this->hasMany(Goal::class, 'employee_id', 'id');
     }
-
-
+    
+    public function schedule() {
+        return $this->hasMany(Goal::class, 'employee_id', 'id');
+    }
 }

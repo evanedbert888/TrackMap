@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
 use App\Models\Schedule;
+use App\Models\Temp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PHPUnit\Util\Json;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ScheduleController extends Controller
 {
@@ -12,9 +17,17 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $id = Auth::user()->id;
+        $schedules = Schedule::query()
+            ->join('employees','schedules.employee_id','=','employees.id')
+            ->join('users','employees.user_id','=','users.id')
+            ->join('destinations','schedules.destination_id','=','destinations.id')
+            ->select('schedules.id','users.name as employee_name','destinations.destination_name')
+            ->where('schedules.user_id', '=', $id)
+            ->get();
+        return response()->json($schedules);
     }
 
     /**
@@ -33,9 +46,15 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($salesman, $destination)
     {
-        //
+        $schedule = new Schedule;
+        $schedule->user_id  = Auth::user()->id;
+        $schedule->employee_id = $salesman;
+        $schedule->destination_id = $destination;
+        $schedule->save();
+
+        return response()->json(['success'=>'Added new records.']);
     }
 
     /**
@@ -81,5 +100,33 @@ class ScheduleController extends Controller
     public function destroy(Schedule $schedule)
     {
         //
+    }
+
+    public function search(Request $request): JsonResponse
+    {
+        $destinations = Destination::query()
+            ->where('destination_name','like','%'.$request->search.'%')
+            ->orWhere('address','like','%'.$request->search.'%')
+            ->select('id','destination_name')
+            ->get();
+        return response()->json($destinations);
+    }
+
+    public function use(): JsonResponse
+    {
+        $aschedules = Schedule::all()->toArray();
+        $n = count($aschedules);
+        
+
+        for($i=0; $i<$n; $i++) {
+            $schedules = json_decode(json_encode(array_shift($aschedules)));
+            
+            $temp = new Temp;
+            $temp->employee_id = $schedules->employee_id;
+            $temp->destination_id = $schedules->destination_id;
+            $temp->save();
+        }
+
+        return response()->json($schedules);
     }
 }

@@ -7,7 +7,9 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisteredEmailController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TaskController;
+use App\Models\Schedule;
 use RealRashid\SweetAlert\Facades\Alert;
 
 /*
@@ -57,7 +59,7 @@ Route::prefix('/SalesMap')->group(function() {
         Route::get('/', [TaskController::class,'index'])->name('index');
         Route::get('/create', [TaskController::class,'create'])->name('create');
         Route::post('/', [TaskController::class,'store'])->name('store');
-        Route::delete('/{temp}', [TaskController::class,'destroy'])->name('destroy');
+        Route::delete('/{temp?}', [TaskController::class,'destroy'])->name('destroy');
 
         Route::get('/TaskPairingShowEmployees/{id?}',[TaskController::class,'show_employee_by_role'])->name('show_employees');
         Route::get('/TaskPairingShowDestinations/{id?}',[TaskController::class,'show_destination_by_business'])->name('show_destinations');
@@ -101,6 +103,16 @@ Route::prefix('/SalesMap')->group(function() {
         Route::get('/{businessCategory}/edit', [BusinessCategoryController::class, 'edit'])->name('edit');
         Route::patch('/{businessCategory}', [BusinessCategoryController::class, 'update'])->name('update');
         Route::delete('/{businessCategory}', [BusinessCategoryController::class, 'destroy'])->name('destroy');
+    });
+
+    // Schedule
+    Route::prefix('schedule')->name('schedule.')->group(function() {
+        Route::get('', [ScheduleController::class, 'index'])->name('index');
+        Route::post('/{salesman?}/{destination?}', [ScheduleController::class, 'store'])->name('store');
+        Route::get('/SearchDestination',[ScheduleController::class, 'search'])->name('search');
+        Route::delete('/{schedule?}', [ScheduleController::class,'destroy'])->name('destroy');
+
+        Route::get('/UseSchedule', [ScheduleController::class, 'use'])->name('use');
     });
 });
 

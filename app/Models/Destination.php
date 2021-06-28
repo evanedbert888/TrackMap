@@ -26,6 +26,10 @@ class Destination extends Model
         return $this->hasMany(Goal::class,'destination_id','id');
     }
 
+    public function schedule() {
+        return $this->hasMany(Goal::class,'destination_id','id');
+    }
+
     public function temps() {
         return $this->hasMany(Temp::class,'destination_id','id');
     }

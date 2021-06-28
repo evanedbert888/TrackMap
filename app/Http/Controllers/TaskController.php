@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\BusinessCategory;
 use App\Models\Destination;
+use App\Models\Employee;
 use App\Models\Goal;
 use App\Models\Role;
+use App\Models\Schedule;
 use App\Models\Temp;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -39,8 +41,16 @@ class TaskController extends Controller
     {
         $roles = Role::query()->orderBy('role_name')->get();
         $businesses = BusinessCategory::query()->orderBy('name')->get();
+        $salesmans = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
+            ->select('employees.id','users.name')
+            ->where('employees.role_id','=', 1)->orderBy('name')->get();
         $temps = Temp::all();
-        return view('Desktop.tasks.create',["roles"=>$roles,"businesses"=>$businesses,"temps"=>$temps]);
+        return view('Desktop.tasks.create',[
+            "roles"=>$roles,
+            "businesses"=>$businesses,
+            "temps"=>$temps,
+            "salesmans"=>$salesmans
+        ]);
     }
 
     /**
