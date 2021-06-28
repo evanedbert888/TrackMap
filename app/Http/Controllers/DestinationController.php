@@ -118,8 +118,8 @@ class DestinationController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
-     * @return RedirectResponse
+     * @param Destination $destination
+     * @return void
      */
     public function update(Request $request, Destination $destination)
     {
@@ -147,6 +147,8 @@ class DestinationController extends Controller
 
             $request->image->storeAs('public',$img_name);
             asset('public/'.$new_image_name);
+        } else {
+            $img_name = null;
         }
 
         $split = explode(",", $request->coordinate);
@@ -171,7 +173,7 @@ class DestinationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Destination $destination
      * @return RedirectResponse
      */
     public function destroy(Destination $destination): RedirectResponse

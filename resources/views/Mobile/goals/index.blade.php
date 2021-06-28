@@ -21,8 +21,8 @@
                             @endphp
                             @foreach($goals as $goal)
                                 <div class="flex w-full items-center px-2">
-                                    @if($goal->image == '/img/company.png')
-                                        <img class="rounded-full w-16" src="{{URL::to($goal->destination->image)}}" alt="image">
+                                    @if($goal->image == null)
+                                        <img class="rounded-full w-16" src="{{URL::to('/img/company.png')}}" alt="image">
                                     @else
                                         <img class="rounded-full w-16" src="{{url('storage/'.$goal->destination->image)}}" alt="image">
                                     @endif

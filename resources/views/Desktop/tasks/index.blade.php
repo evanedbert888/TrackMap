@@ -49,7 +49,7 @@
                         </div>
                         {{$goals->links()}}
                     @else
-                        <p class="font-bold text-lg">Nothing Tasked</p>
+                        <p class="font-bold text-center text-2xl">Nothing Tasked</p>
                     @endif
                 </div>
             </div>

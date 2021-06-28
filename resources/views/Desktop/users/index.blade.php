@@ -212,6 +212,7 @@
                         @else
 
                         @endif
+                       </div>
                     </div>
                 </div>
             </div>

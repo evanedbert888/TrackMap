@@ -9,8 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                    @if($details->image == '/img/company.png')
-                        <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{URL::to($details->image)}}">
+                    @if($details->image == null)
+                        <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{URL::to('/img/company.png')}}">
                     @else
                         <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url('storage/'.$details->image)}}">
                     @endif
@@ -69,7 +69,8 @@
             "esri/views/MapView",
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
-            "esri/tasks/Locator"
+            "esri/tasks/Locator",
+            // "esri/geometry/Circle"
 
         ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator) {
 
@@ -116,6 +117,17 @@
                 symbol: pictureMarkerSymbol
             });
             graphicsLayer.add(pointGraphic);
+
+            // const circle = new Graphic({
+            //     geometry: new Circle({
+            //         center: [lng,lat],
+            //         radius: 60
+            //     }),
+            //     symbol: {//circle design
+            //         type: "simple-fill"
+            //     }
+            // })
+            // graphicsLayer.add(circle);
 
             const locatorTask = new Locator ({
                 url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"

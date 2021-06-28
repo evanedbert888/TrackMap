@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
@@ -40,7 +41,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -70,7 +71,6 @@ class EmployeeController extends Controller
         if (Auth::user()->role == 'admin') {
             return view('Desktop.employees.edit',['details'=>$employee]);
         } elseif (Auth::user()->role == 'employee') {
-            $user_id = Auth::user()->id;
             $details = Employee::query()->where('id','=',$employee->id)->first();
             return view('Mobile.employees.edit',['details'=>$details]);
         }
@@ -79,11 +79,11 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param Employee $employee
+     * @return RedirectResponse
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Employee $employee): RedirectResponse
     {
         $user_id = Employee::query()->where('id','=',$employee->id)->pluck('user_id');
         $img_name = User::query()->where('id','=',$user_id)->pluck('image');
@@ -109,6 +109,8 @@ class EmployeeController extends Controller
 
             $request->image->storeAs('public',$img_name);
             asset('public/'.$new_image_name);
+        } else {
+            $img_name = null;
         }
 
         $date = $request->birth_date;

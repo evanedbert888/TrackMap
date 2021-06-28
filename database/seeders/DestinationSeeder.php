@@ -66,7 +66,7 @@ class DestinationSeeder extends Seeder
                 'address'=>'Jl. Imam Bonjol No.111, Benua Melayu Laut, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78243',
                 'email'=>'merpatihotel@merpati.co.id',
                 'latitude'=>'-0.04629945926496524',
-                'longitude'=>',109.35517009007846',
+                'longitude'=>'109.35517009007846',
                 'description'=>'Hotel Merpati'
             ],
             [

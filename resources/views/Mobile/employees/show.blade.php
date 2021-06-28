@@ -10,8 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-60 w-full object-top bg-no-repeat" style="background-image: url('{{ URL::to('/img/blue-copy-space-digital-background_23-2148821698.jpg') }}')">
                     <div class="flex container justify-center items-start">
-                        @if($details->image == '/img/Profile.png')
-                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{URL::to($details->image)}}">
+                        @if($details->image == null)
+                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{URL::to('/img/Profile.png')}}">
                         @else
                             <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{url('storage/'.$details->image)}}">
                         @endif
@@ -30,7 +30,7 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
-                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->id])}}">
+                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->employee->id])}}">
                             <x-button type="submit">
                                 Edit
                             </x-button>

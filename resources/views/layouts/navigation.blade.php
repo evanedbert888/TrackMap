@@ -216,8 +216,8 @@
                                                 </li>
                                             </ul>
                                             <div class="relative hidden md:block">
-                                                @if(Auth::user()->image == '/img/Profile.png')
-                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{url(Auth::user()->image)}}" alt="display avatar" role="img" />
+                                                @if(Auth::user()->image == null)
+                                                    <img class="rounded-full h-10 w-10 object-cover" src="{{url('/img/Profile.png')}}" alt="display avatar" role="img" />
                                                 @else
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
                                                 @endif

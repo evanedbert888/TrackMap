@@ -9,8 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                    @if($details->image == '/img/company.png')
-                        <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{URL::to($details->image)}}">
+                    @if($details->image == null)
+                        <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{URL::to('/img/company.png')}}">
                     @else
                         <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url('storage/'.$details->image)}}">
                     @endif
@@ -25,6 +25,7 @@
                             <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
                             <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
                             <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
+                            <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
                             <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
                                 <x-button type="submit">
                                     Check-In
@@ -39,9 +40,6 @@
                             </div>
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
-                            </div>
-                            <div class="text-sm">
-                                {{--                                <h2>Last Check-In : {{ $details->goals->employee->goals->created_at }}</h2>--}}
                             </div>
                         </div>
                         <div class="mx-2 mt-3 md:mt-8 md:mx-5">
@@ -84,9 +82,10 @@
         "esri/views/MapView",
         "esri/Graphic",
         "esri/layers/GraphicsLayer",
-        "esri/tasks/Locator"
+        "esri/tasks/Locator",
+        "esri/geometry/Circle"
 
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator) {
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Circle) {
 
         esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
@@ -106,7 +105,7 @@
         const view = new MapView({
             map: map,
             center: [lng,lat], //Longitude, latitude
-            zoom: 18,
+            zoom: 17,
             container: "mobileMap"
         });
 
@@ -132,6 +131,20 @@
         });
         graphicsLayer.add(pointGraphic);
 
+        const THRESHOLD_DISTANCE = 300;
+
+        let circlePoint = new Graphic({
+            geometry: new Circle({
+                center: [lng,lat],
+                radius: THRESHOLD_DISTANCE,
+                radiusUnit: "meters"
+            }),
+            symbol: {//circle design
+                type: "simple-fill"
+            }
+        })
+        graphicsLayer.graphics.add(circlePoint);
+
         const locatorTask = new Locator ({
             url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
         })
@@ -152,8 +165,8 @@
 
         function showAddress(address, pt) {
             view.popup.open({
-                title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-                content: address,
+                title: address,
+                content: Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
                 location: pt
             });
         }
@@ -161,23 +174,67 @@
 </script>
 
 <script>
-    function getCoordinate() {
-        navigator.geolocation.getCurrentPosition(getCoordinateSuccess)
-    }
+    require([
+        "esri/config",
+        "esri/geometry/Point",
+        "esri/geometry/support/geodesicUtils",
+    ],function (esriConfig,Point,geodesicUtils) {
 
-    function getCoordinateSuccess(geoLocationPosition) {
-        console.log(geoLocationPosition)
-        setCoordinateToFormField(geoLocationPosition.coords)
-    }
+        esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
-    function setCoordinateToFormField(coordinate) {
-        document.querySelector('#latitude').setAttribute('value',coordinate.latitude)
-        document.querySelector('#longitude').setAttribute('value',coordinate.longitude)
-    }
+        function findIDValue(point) {
+            let find = document.getElementById(point)
+            return find.attributes.getNamedItem('value').value;
+        }
 
-    function onload() {
-        getCoordinate()
-    }
+        let circle_lng = findIDValue('lng');
+        let circle_lat = findIDValue('lat');
 
-    onload()
+        function getCoordinate() {
+            navigator.geolocation.getCurrentPosition(getCoordinateSuccess)
+        }
+
+        function getCoordinateSuccess(geoLocationPosition) {
+            console.log(geoLocationPosition)
+            setCoordinateToFormField(geoLocationPosition.coords)
+        }
+
+        function setCoordinateToFormField(coordinate) {
+            let long = coordinate.longitude;
+            let lat = coordinate.latitude;
+            document.querySelector('#latitude').setAttribute('value',lat)
+            document.querySelector('#longitude').setAttribute('value',long)
+            calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat)
+        }
+
+        function calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat) {
+            const THRESHOLD_DISTANCE = 300;
+            let check;
+            const pt1 = new Point({ x: circle_lng, y: circle_lat });
+            const pt2 = new Point({ x: long, y: lat});
+
+            const result = geodesicUtils.geodesicDistance(
+                pt1,
+                pt2,
+                "meters"
+            );
+
+            console.log(result.distance);
+
+            if (result.distance > THRESHOLD_DISTANCE) {
+                check = false
+                console.log("Outside the point");
+            } else {
+                check = true
+                console.log("Inside the point");
+            }
+            document.querySelector('#check').setAttribute('value',check)
+        }
+
+        function onload() {
+            getCoordinate()
+        }
+
+        onload()
+    })
 </script>

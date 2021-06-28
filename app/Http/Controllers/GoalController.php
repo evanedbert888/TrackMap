@@ -7,10 +7,12 @@ use App\Models\Goal;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class GoalController extends Controller
 {
@@ -79,27 +81,32 @@ class GoalController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
      * @return RedirectResponse
      */
     public function update(Request $request)
     {
         $user_id = Auth::user()->id;
+        $value = $request->input('check');
+
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goal_id = Goal::query()->where('employee_id','=',$employee_id)
             ->where('destination_id','=',$request->id)
             ->where('status','=','unfinished')
             ->pluck('id');
 
-        $goal = new Goal();
-        $goal->updateById($goal_id, array(
-            "latitude" => $request->latitude,
-            "longitude" => $request->longitude,
-            "status" => 'finished',
-            "updated_at" => date(now()),
-        ));
+        if ($value === true) {
+            $goal = new Goal();
+            $goal->updateById($goal_id, array(
+                "latitude" => $request->latitude,
+                "longitude" => $request->longitude,
+                "status" => 'finished',
+                "updated_at" => date(now()),
+            ));
 
-        return redirect()->route('goals.index');
+            return redirect()->route('goals.index');
+        } else {
+            return redirect()->route('destinations.show',['destination'=>$request->id]);
+        }
     }
 
     /**

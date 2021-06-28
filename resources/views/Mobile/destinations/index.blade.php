@@ -18,8 +18,8 @@
                         @endphp
                         @foreach($lists as $list)
                             <div class="flex w-full items-center px-2">
-                                @if($list->image == '/img/company.png')
-                                    <img class="rounded-full w-16" src="{{URL::to($list->image)}}" alt="image">
+                                @if($list->image == null)
+                                    <img class="rounded-full w-16" src="{{URL::to('/img/company.png')}}" alt="image">
                                 @else
                                     <img class="rounded-full w-16" src="{{url('storage/'.$list->image)}}" alt="image">
                                 @endif

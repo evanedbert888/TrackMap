@@ -21,7 +21,7 @@ class CreateDestinationsTable extends Migration
             $table->string('email')->default('email');
             $table->string('latitude');
             $table->string('longitude');
-            $table->string('image')->default('/img/company.png');
+            $table->string('image')->nullable();
             $table->longText('description');
             $table->timestamps();
         });

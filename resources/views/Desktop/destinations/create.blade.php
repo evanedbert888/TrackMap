@@ -20,7 +20,7 @@
                                             <x-label for="_name" :value="__('Destination Name')"></x-label>
 
                                             <x-input id="destination_name" class="block mt-1 w-96" type="text"
-                                                     name="destination_name" :value="old('destination_name')" required
+                                                     name="destination_name" :value="old('destination_name')" placeholder="Enter the destination name" required
                                                      autofocus></x-input>
                                         </div>
 
@@ -42,7 +42,7 @@
                                                 <x-label for="address" :value="__('Address')"></x-label>
 
                                                 <x-input class="block mt-1 w-96" type="text"
-                                                         name="address" id="address" placeholder="min 100 characters" required
+                                                         name="address" id="address" placeholder="min 100 characters" placeholder="Street name, City, Country" required
                                                          autofocus></x-input>
                                             </div>
                                             <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
@@ -52,7 +52,7 @@
                                         <div class="my-3 space-y-0">
                                             <x-label for="email" :value="__('Email')"></x-label>
 
-                                            <x-input id="email" class="block mt-1 w-96" type="text" name="email" :value="old('email')" required></x-input>
+                                            <x-input id="email" class="block mt-1 w-96" type="text" name="email" :value="old('email')" placeholder="Enter the email" required></x-input>
                                         </div>
 
                                         <!-- Coordinate -->
