@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new policies are added" />
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new changes are made">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,7 +156,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XAMPP/htdocs/Heroines" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XAMPP/htdocs/GateAndPolicy" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -291,7 +294,8 @@
       <workItem from="1624682599816" duration="12666000" />
       <workItem from="1624801383655" duration="23000" />
       <workItem from="1624802220224" duration="18000" />
-      <workItem from="1624851645933" duration="15565000" />
+      <workItem from="1624851645933" duration="16000000" />
+      <workItem from="1624938355793" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -475,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624878653051</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="new changes are made">
+      <created>1624878748447</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1624878748447</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,6 +515,7 @@
     <MESSAGE value="fix routes &amp; new schedule table" />
     <MESSAGE value="make modal for confirmation and fix routes" />
     <MESSAGE value="new policies are added" />
-    <option name="LAST_COMMIT_MESSAGE" value="new policies are added" />
+    <MESSAGE value="new changes are made" />
+    <option name="LAST_COMMIT_MESSAGE" value="new changes are made" />
   </component>
 </project>
