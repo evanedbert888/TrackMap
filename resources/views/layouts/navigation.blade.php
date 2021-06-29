@@ -217,7 +217,7 @@
                                                     </form>
                                                 </li>
                                             </ul>
-                                            <div class="relative hidden md:block">
+                                            <div class="relative md:block">
                                                 @if(Auth::user()->image == null)
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url('/img/Profile.png')}}" alt="display avatar" role="img" />
                                                 @else

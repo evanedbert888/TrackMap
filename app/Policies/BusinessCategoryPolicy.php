@@ -18,7 +18,7 @@ class BusinessCategoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->isAdmin;
+        return $user->isAdmin();
     }
 
     /**
@@ -41,7 +41,7 @@ class BusinessCategoryPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdmin;
+        return $user->isAdmin();
     }
 
     /**
@@ -53,7 +53,7 @@ class BusinessCategoryPolicy
      */
     public function update(User $user, BusinessCategory $businessCategory)
     {
-        return $user->isAdmin;
+        return $user->isAdmin();
     }
 
     /**
@@ -65,7 +65,7 @@ class BusinessCategoryPolicy
      */
     public function delete(User $user, BusinessCategory $businessCategory)
     {
-        return $user->isAdmin;
+        return $user->isAdmin();
     }
 
     /**

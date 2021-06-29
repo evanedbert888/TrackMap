@@ -137,3 +137,4 @@ Route::prefix('/SalesMap')->group(function (){
         Route::get('/history', [GoalController::class,'history'])->name('history');
     });
 });
+

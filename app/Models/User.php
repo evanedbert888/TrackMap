@@ -40,6 +40,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function isAdmin(): bool
+    {
+        return $this->role == 'admin';
+    }
+
     public function updateById($id, $data = array())
     {
         return DB::table('users')->where('id', '=', $id)->update($data);
