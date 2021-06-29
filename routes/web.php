@@ -51,7 +51,7 @@ Route::prefix('/SalesMap')->group(function() {
         Route::get('/profile', [UserController::class, 'show'])->name('show');
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
         Route::patch('/', [UserController::class, 'update'])->name('update');
-        Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
+        Route::delete('/{user}/{employee?}', [UserController::class, 'destroy'])->name('destroy');
     });
 
     // Tasks
