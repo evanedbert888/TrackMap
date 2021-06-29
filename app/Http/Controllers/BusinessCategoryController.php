@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessCategory;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -13,25 +14,16 @@ use Illuminate\Support\Facades\Bus;
 
 class BusinessCategoryController extends Controller
 {
-    public function __constructor()
-    {
-        $this->middleware('auth');
-        $this->middleware('can:business-categories.index')->only('index');
-        $this->middleware('can:business-categories.show')->only('show');
-        $this->middleware('can:business-categories.create')->only('create');
-        $this->middleware('can:business-categories.store')->only('store');
-        $this->middleware('can:business-categories.edit')->only('edit');
-        $this->middleware('can:business-categories.update')->only('update');
-        $this->middleware('can:business-categories.destroy')->only('destroy');
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function index()
     {
+        $this->authorize('viewAny', BusinessCategory::class);
+
         $categories = BusinessCategory::query()->paginate(10);
         return view('Desktop.business-categories.index',['categories'=>$categories]);
     }
@@ -40,20 +32,26 @@ class BusinessCategoryController extends Controller
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function create()
     {
+        $this->authorize('create',BusinessCategory::class);
+
         return view('Desktop.business-categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
+        $this->authorize('create',BusinessCategory::class);
+
         $validateCategory = $request->validate([
             'name' => 'required|string'
         ]);
@@ -78,23 +76,29 @@ class BusinessCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Application|Factory|View|Response
+     * @param BusinessCategory $businessCategory
+     * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function edit(BusinessCategory $businessCategory)
     {
+        $this->authorize('update',BusinessCategory::class);
+
         return view('Desktop.business-categories.edit',['category'=>$businessCategory]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Request $request
+     * @param BusinessCategory $businessCategory
      * @return Response
+     * @throws AuthorizationException
      */
-    public function update(Request $request, BusinessCategory $businessCategory)
+    public function update(Request $request, BusinessCategory $businessCategory): Response
     {
+        $this->authorize('update',BusinessCategory::class);
+
         $businessCategory->update($request->all());
 
         return redirect()->route('business-categories.index', $businessCategory)
@@ -106,9 +110,12 @@ class BusinessCategoryController extends Controller
      *
      * @param BusinessCategory $businessCategory
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(BusinessCategory $businessCategory): RedirectResponse
     {
+        $this->authorize('delete',BusinessCategory::class);
+
         $businessCategory->delete();
 
         return redirect()->route('business-categories.index');

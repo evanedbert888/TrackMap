@@ -69,9 +69,11 @@
                                                     <x-dropdown-link :href="route('destinations.index')">
                                                         {{ __('Destination List') }}
                                                     </x-dropdown-link>
-                                                    <x-dropdown-link href="{{route('business-categories.index')}}">
-                                                        {{ __('Business Categories') }}
-                                                    </x-dropdown-link>
+                                                    @can('viewAny',\App\Models\BusinessCategory::class)
+                                                        <x-dropdown-link href="{{route('business-categories.index')}}">
+                                                            {{ __('Business Categories') }}
+                                                        </x-dropdown-link>
+                                                    @endcan
                                                 @elseif(Auth::user()->role == 'employee')
                                                     <x-dropdown-link :href="route('mobile.destinations.index')">
                                                         {{ __('Destination List') }}

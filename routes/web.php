@@ -35,7 +35,7 @@ Route::get('/dashboardGetGoals', [UserController::class,'dashboard'])
 require __DIR__.'/auth.php';
 
 // Desktop
-Route::prefix('/SalesMap')->group(function() {
+Route::prefix('/SalesMap')->middleware('isAdmin')->group(function() {
     // Role CRUD without edit & update
     Route::get('/RoleList',[EmployeeController::class,'role_list'])->name('role_list');
     Route::post('/AddRole',[EmployeeController::class,'add_role'])->name('add_role');

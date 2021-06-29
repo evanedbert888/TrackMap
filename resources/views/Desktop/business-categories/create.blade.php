@@ -22,11 +22,13 @@
                                              autofocus></x-input>
                                 </div>
 
-                                <div class="my-4 flex items-center justify-end">
-                                    <x-button>
-                                        {{ __('Submit') }}
-                                    </x-button>
-                                </div>
+                                @can('create',\App\Models\BusinessCategory::class)
+                                    <div class="my-4 flex items-center justify-end">
+                                        <x-button>
+                                            {{ __('Submit') }}
+                                        </x-button>
+                                    </div>
+                                @endcan
                             </form>
                         </div>
                     </div>

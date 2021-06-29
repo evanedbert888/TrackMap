@@ -171,7 +171,8 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function dashboard() {
+    public function dashboard(): JsonResponse
+    {
         $user_id = Auth::user()->id;
         $role = Auth::user()->role;
         if ($role == "admin"){
