@@ -2,11 +2,9 @@
     const sidebarHandler = (check) => {
         if (check) {
             document.getElementById("slidebar").style.transform = "translateX(0px)";
-            document.getElementById("menu").classList.add("mr-48");
             document.getElementById("closeSideBar").classList.remove("hidden");
         } else {
             document.getElementById("slidebar").style.transform = "translateX(-100%)";
-            document.getElementById("menu").classList.remove("mr-48");
             document.getElementById("closeSideBar").classList.add("hidden");
         }
     };
@@ -165,7 +163,7 @@
                     <!-- Navigation starts -->
                     <nav class="h-16 flex items-center items-stretch justify-end justify-between bg-white shadow relative z-10">
                         <div class="flex w-full">
-                            <div class="text-gray-600 visible ml-4 sm:ml-8 mr-4 mt-4" onclick="sidebarHandler(true)" id="menu">
+                            <div class="text-gray-600 visible ml-4 mr-4 mt-4 sm:ml-8 " onclick="sidebarHandler(true)" id="menu">
                                 <svg aria-label="Main Menu" aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu cursor-pointer" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" />
                                     <line x1="4" y1="6" x2="20" y2="6" />
@@ -173,7 +171,7 @@
                                     <line x1="4" y1="18" x2="20" y2="18" />
                                 </svg>
                             </div>
-                            <div class="w-1/2 h-full flex items-center px-8 invisible md:visible">
+                            <div class="w-1/2 h-full items-center flex invisible pl-0 sm:pl-1 md:pl-2 md:visible lg:pl-4 xl:pl-8">
                                 <!-- Page Header -->
                                 {{ $header }}
                             </div>
