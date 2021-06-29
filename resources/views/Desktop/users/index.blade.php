@@ -194,7 +194,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{route('users.destroy',['user'=>$user->employee->id])}}" method="POST">
+                                                    <form action="{{route('users.destroy',['user'=>$user->id,'employee'=>$user->employee->id])}}" method="POST">
                                                         @csrf
                                                         @method("DELETE")
                                                         <x-delbutton type="submit">Delete</x-delbutton>

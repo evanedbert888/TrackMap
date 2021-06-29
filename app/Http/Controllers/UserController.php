@@ -156,7 +156,7 @@ class UserController extends Controller
      * @return RedirectResponse
      */
 
-    // temporaary, data tidak akan delete cuma status unavailable aja
+    // temporary, data tidak akan delete cuma status unavailable aja
     public function destroy($id,$employee_id)
     {
         User::destroy($id);
@@ -168,7 +168,7 @@ class UserController extends Controller
             File::deleteDirectory('storage/employee/'.$folder);
         }
         echo "A user has been deleted";
-        return redirect()->route('users.show');
+        return redirect()->route('users.index');
     }
 
     public function dashboard() {
