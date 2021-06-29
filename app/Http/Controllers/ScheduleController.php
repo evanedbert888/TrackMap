@@ -97,9 +97,10 @@ class ScheduleController extends Controller
      * @param  \App\Models\Schedule  $schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy($schedule): JsonResponse
     {
-        //
+        Schedule::destroy($schedule);
+        return response()->json(['success'=>'deleted record.']);
     }
 
     public function search(Request $request): JsonResponse

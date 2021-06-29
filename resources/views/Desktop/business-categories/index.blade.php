@@ -30,48 +30,50 @@
                                         <td> {{ $i++ }} </td>
                                         <td class="text-left"> {{$category->name}} </td>
                                         <td>
-                                            @can('update',\App\Models\BusinessCategory::class)
-                                                <a href="{{route('business-categories.edit',[$category->id])}}">
-                                                    <x-button type="button"> Edit </x-button>
-                                                </a>
-                                            @endcan
+                                            <a href="{{route('business-categories.edit',[$category->id])}}">
+                                                <x-button type="button"> Edit </x-button>
+                                            </a>
                                         </td>
                                         <td>
-                                            @can('delete',$businessCategory)
-                                                <form action="{{route('business-categories.destroy',['businessCategory'=>$category->id])}}" method="POST">
-                                                    @csrf
-                                                    @method("DELETE")
-                                                    <div>
-                                                        <x-button onclick="showModal()"> Delete </x-button>
-                                                    </div>
-                                                    <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
-                                                        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                                            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>
+                                            <form action="{{route('business-categories.destroy',['businessCategory'=>$category->id])}}" method="POST">
+                                                @csrf
+                                                @method("DELETE")
+                                                <div>
+                                                    <x-delbutton onclick="showModal()"> Delete </x-delbutton>
+                                                </div>
+                                                <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
+                                                    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>
 
-                                                            <!-- This element is to trick the browser into centering the modal contents. -->
-                                                            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                                                        <!-- This element is to trick the browser into centering the modal contents. -->
+                                                        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-                                                            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                                                                <div class="sm:flex sm:items-start">
-                                                                    <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">
-                                                                        <h3 class="text-xl leading-6 font-semibold text-gray-900" id="modal-title">
-                                                                            Do you want to delete this category ?
-                                                                        </h3>
-                                                                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                                                                            <button type="submit" onclick="deleteThisCategory" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm">
-                                                                                Yes
-                                                                            </button>
-                                                                            <button type="button" onclick="hiddenModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                                                                                No
-                                                                            </button>
+                                                        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                                                            <div class="sm:flex sm:items-start">
+                                                                <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">
+                                                                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                                                        <div class="sm:flex sm:items-start">
+                                                                            <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">
+                                                                                <h3 class="text-xl leading-6 font-semibold text-gray-900" id="modal-title">
+                                                                                    Do you want to delete this category ?
+                                                                                </h3>
+                                                                            </div>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                                                        <button type="submit" onclick="deleteThisCategory" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                                                            Yes
+                                                                        </button>
+                                                                        <button type="button" onclick="hiddenModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                                                            No
+                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
-                                            @endcan
+                                                </div>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -80,13 +82,11 @@
                         </div>
                         {{$categories->links()}}
                     </div>
-                    @can('create',\App\Models\BusinessCategory::class)
-                        <div class="flex justify-end my-2">
-                            <a href="{{route('business-categories.create')}}">
-                                <x-button type="button">Create new category</x-button>
-                            </a>
-                        </div>
-                    @endcan
+                    <div class="flex justify-end my-2">
+                        <a href="{{route('business-categories.create')}}">
+                            <x-button type="button">Create new category</x-button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

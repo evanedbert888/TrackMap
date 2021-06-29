@@ -107,13 +107,15 @@
         }
 
         function deleteTask(temp){
+            var url = '{{ route('tasks.destroy') }}'+'/'+temp;
             $.ajax({
-                url:'{{ route('tasks.destroy') }}'+'/'+{temp},
+                url:url,
                 method:"delete",
-                data : {
+                data:{
                     "_token": "{{ csrf_token() }}"
                 },
                 success:function(data){
+                    console.log(data.success);
                     check();
                     showTask();
                 },
@@ -312,14 +314,15 @@
             })
         }
 
-        function deleteSchedule(schedule) {
+        function deleteSchedule(id) {
             $.ajax({
-                {{--url:'{{ route('schedule.destroy') }}'+"/"+{schedule},--}}
+                url:'{{ route('schedule.destroy') }}'+"/"+id,
                 method:"delete",
                 data : {
                     "_token": "{{ csrf_token() }}"
                 },
                 success:function(data){
+                    console.log(data.success);
                     schedule();
                 },
                 error:function(err){
