@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Goal;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -168,10 +169,10 @@ class EmployeeController extends Controller
 
     public function add_role(Request $request) {
         $new_role = $request->newRole;
-        $role = new Role();
+        $role = new Role;
         $role->role_name = $new_role;
         $role->save();
-        return redirect()->route('show_user');
+        return redirect()->route('users.index');
     }
 
 //    public function delete_role($id) {

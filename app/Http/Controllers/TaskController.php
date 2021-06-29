@@ -9,6 +9,7 @@ use App\Models\Goal;
 use App\Models\Role;
 use App\Models\Schedule;
 use App\Models\Temp;
+use Hamcrest\Core\HasToString;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -118,9 +119,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return JsonResponse
      */
-    public function destroy(Temp $temp): JsonResponse
+    public function destroy($temp): JsonResponse
     {
-        $temp->delete();
+        Temp::destroy($temp);
         return response()->json(['success'=>'deleted record.']);
     }
 

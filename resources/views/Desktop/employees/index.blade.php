@@ -12,13 +12,13 @@
                     @foreach ($lists as $list)
                         <div class="p-5 bg-blue-300 border border-white-200 mb-5 sm:rounded-lg">
                             <ul>
-                                <li class="flex">
+                                <li class="flex items-center">
                                     @if($list->user->image == null)
                                         <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{URL::to('/img/Profile.png')}}">
                                     @else
                                         <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{url('storage/'.$list->user->image)}}">
                                     @endif
-                                    <div class="w-full ml-5 mt-3">
+                                    <div class="w-full ml-5">
                                         <div>
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>
                                         </div>
@@ -29,7 +29,7 @@
                                             <h2>{{ $list->user->address }}</h2>
                                         </div>
                                     </div>
-                                    <div class="mt-6 ml-5">
+                                    <div class="ml-5">
                                         <a href="{{ route('employees.show',['employee'=>$list->id]) }}">
                                             <x-button>Detail</x-button>
                                         </a>

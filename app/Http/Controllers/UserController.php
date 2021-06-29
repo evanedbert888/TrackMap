@@ -168,7 +168,7 @@ class UserController extends Controller
             File::deleteDirectory('storage/employee/'.$folder);
         }
         echo "A user has been deleted";
-        return redirect()->route('show_user');
+        return redirect()->route('users.show');
     }
 
     public function dashboard() {
