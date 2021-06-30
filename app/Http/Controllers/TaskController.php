@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\Goal;
 use App\Models\Role;
 use App\Models\Schedule;
+use App\Models\Section;
 use App\Models\Temp;
 use Hamcrest\Core\HasToString;
 use Illuminate\Contracts\Foundation\Application;
@@ -40,14 +41,14 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $roles = Role::query()->orderBy('role_name')->get();
+        $sections = Section::query()->orderBy('section_name')->get();
         $businesses = BusinessCategory::query()->orderBy('name')->get();
         $salesmans = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
             ->select('employees.id','users.name')
-            ->where('employees.role_id','=', 1)->orderBy('name')->get();
+            ->where('employees.section_id','=', 1)->orderBy('name')->get();
         $temps = Temp::all();
         return view('Desktop.tasks.create',[
-            "roles"=>$roles,
+            "sections"=>$sections,
             "businesses"=>$businesses,
             "temps"=>$temps,
             "salesmans"=>$salesmans
@@ -128,8 +129,8 @@ class TaskController extends Controller
     public function show_employee_by_role($id): JsonResponse
     {
         $data = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
-            ->select('employees.id','users.name','users.image','employees.role_id')
-            ->where('employees.role_id','=',$id)->orderBy('name')->get();
+            ->select('employees.id','users.name','users.image','employees.section_id')
+            ->where('employees.section_id','=',$id)->orderBy('name')->get();
         return response()->json($data);
     }
 

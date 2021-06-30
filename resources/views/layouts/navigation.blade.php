@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                             </li>
-                            @if(Auth::user()->role == 'admin')
+                            @if(Auth::user()->job == 'admin')
                                 <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex">
@@ -63,7 +63,7 @@
                                             </x-slot>
 
                                             <x-slot name="content">
-                                                @if(Auth::user()->role == 'admin')
+                                                @if(Auth::user()->job == 'admin')
                                                     <x-dropdown-link :href="route('destinations.index')">
                                                         {{ __('Destination List') }}
                                                     </x-dropdown-link>
@@ -72,7 +72,7 @@
                                                             {{ __('Business Categories') }}
                                                         </x-dropdown-link>
                                                     @endcan
-                                                @elseif(Auth::user()->role == 'employee')
+                                                @elseif(Auth::user()->job == 'employee')
                                                     <x-dropdown-link :href="route('mobile.destinations.index')">
                                                         {{ __('Destination List') }}
                                                     </x-dropdown-link>
@@ -86,7 +86,7 @@
                                 </div>
                             </li>
 
-                            @if(Auth::user()->role == 'admin')
+                            @if(Auth::user()->job == 'admin')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex sm:items-center">
@@ -143,7 +143,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            @elseif(Auth::user()->role == 'employee')
+                            @elseif(Auth::user()->job == 'employee')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="space-x-8 sm:-my-px sm:flex">

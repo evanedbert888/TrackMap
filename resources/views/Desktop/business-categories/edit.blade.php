@@ -21,14 +21,11 @@
                                              name="name" placeholder="Update The Category" value="{{$category->name}}" required
                                              autofocus></x-input>
                                 </div>
-
-                                @can('update',\App\Models\BusinessCategory::class)
-                                    <div class="my-4 flex items-center justify-end">
-                                        <x-button type="button" onclick="showModal()">
-                                            {{ __('Update') }}
-                                        </x-button>
-                                    </div>
-                                @endcan
+                                <div class="my-4 flex items-center justify-end">
+                                    <x-button type="button" onclick="showModal()">
+                                        {{ __('Update') }}
+                                    </x-button>
+                                </div>
                                 <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
                                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>

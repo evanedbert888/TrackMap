@@ -367,8 +367,8 @@
                                     <p class="text-lg"> Employee's Role </p>
                                     <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
                                         <option class="hidden"></option>
-                                        @foreach ($roles as $role)
-                                            <option class="bg-gray-200" value="{{ $role->id }}">{{ $role->role_name }}</option>
+                                        @foreach ($sections as $section)
+                                            <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
                                         @endforeach
                                     </select>
                                 </form>

@@ -35,7 +35,7 @@ Route::get('/dashboardGetGoals', [UserController::class,'dashboard'])
 require __DIR__.'/auth.php';
 
 // Desktop
-Route::prefix('/SalesMap')->middleware('isAdmin')->group(function() {
+Route::prefix('/SalesMap')->group(function() {
     // Role CRUD without edit & update
     Route::get('/RoleList',[EmployeeController::class,'role_list'])->name('role_list');
     Route::post('/AddRole',[EmployeeController::class,'add_role'])->name('add_role');
@@ -117,7 +117,7 @@ Route::prefix('/SalesMap')->middleware('isAdmin')->group(function() {
 });
 
 // Mobile
-Route::prefix('/SalesMap')->middleware('isEmployee')->group(function (){
+Route::prefix('/SalesMap')->group(function (){
     // Users
     Route::prefix('mobile.users')->name('mobile.users.')->group(function (){
         Route::get('/profile', [UserController::class,'show'])->name('show');

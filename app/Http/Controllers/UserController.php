@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Goal;
 use App\Models\Role;
+use App\Models\Section;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -26,10 +27,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $uvdusers = User::query()->where('status','=','Unverified')->where('role','=','employee')->orderBy('created_at')->get();
+        // $uvdusers = User::query()->where('status','=','Unverified')->where('role','=',2)->orderBy('created_at')->get();
+        $uvdusers = User::query()->where('status','=','Unverified')->where('job','=','employee')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
-        $roles = Role::all();
-        return view('Desktop.users.index', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'roles'=>$roles]);
+        $sections = Section::all();
+        return view('Desktop.users.index', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'sections'=>$sections]);
     }
 
     /**
@@ -63,11 +65,16 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $details = User::query()->find($id);
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->job == 'admin') {
             return view('Desktop.users.show',['details'=>$details]);
-        } elseif (Auth::user()->role == 'employee') {
+        } elseif (Auth::user()->job == 'employee') {
             return view('Mobile.employees.show',['details'=>$details]);
         }
+        // if (Auth::user()->role == 1) {
+        //     return view('Desktop.users.show',['details'=>$details]);
+        // } elseif (Auth::user()->role == 2) {
+        //     return view('Mobile.employees.show',['details'=>$details]);
+        // }
     }
 
     /**
@@ -174,8 +181,8 @@ class UserController extends Controller
     public function dashboard(): JsonResponse
     {
         $user_id = Auth::user()->id;
-        $role = Auth::user()->role;
-        if ($role == "admin"){
+        $job = Auth::user()->job;
+        if ($job == "admin"){
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
                 ->join('users', 'employees.user_id', '=', 'users.id')
@@ -185,7 +192,7 @@ class UserController extends Controller
                 ->where('goals.user_id','=',$user_id)
                 ->get();
         }
-        else if ($role == "employee"){
+        else if ($job == "employee"){
             $employee = Employee::query()->where('user_id', '=', $user_id)->get();
             $goals = Goal::query()
                 ->join('employees', 'goals.employee_id', '=', 'employees.id')
@@ -202,13 +209,13 @@ class UserController extends Controller
     public function update_status_user(Request $request): JsonResponse
     {
         $ids = $request->ids;
-        $roles = $request->roles;
+        $jobs = $request->roles;
 
         User::query()->whereIn('id',$ids)->update(['status'=>'Verified']);
-        for ($i=0; $i < count($roles); $i++) {
+        for ($i=0; $i < count($jobs); $i++) {
             $id = $ids[$i];
-            $role = $roles[$i];
-            $query = Employee::query()->where('user_id','=',$id)->update(['role_id'=>$role]);
+            $job = $jobs[$i];
+            $query = Employee::query()->where('user_id','=',$id)->update(['section_id'=>$job]);
         }
         return response()->json();
     }

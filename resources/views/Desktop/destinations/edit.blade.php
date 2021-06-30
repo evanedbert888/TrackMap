@@ -40,7 +40,7 @@
                                     <x-editinput id="image" name="image" type="file"></x-editinput>
                                 </div>
                             </div>
-                            <div class="mx-5 mt-3">
+                            <div class="mx-5 mt-5">
                                 <p class="font-bold text-xl">Detail</p>
                                 <hr class="border border-5 border-black border-solid">
                                 <table class="mt-3">

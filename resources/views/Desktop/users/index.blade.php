@@ -142,8 +142,8 @@
                                                 <td>
                                                     <select name="role" id="role{{$user->id}}" class="rounded-md role" disabled>
                                                         <option class="hidden"></option>
-                                                        @foreach ($roles as $role)
-                                                            <option value="{{ $role->id }}">{{ $role->role_name }}</option>
+                                                        @foreach ($sections as $section)
+                                                            <option value="{{ $section->id }}">{{ $section->section_name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>

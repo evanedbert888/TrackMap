@@ -30,7 +30,7 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
-                        <div class="mx-2 mt-16 md:ml-60 md:mx-5 md:mt-0">
+                        <div class="mx-2 mt-12">
                             <p class="font-bold text-xl">Detail</p>
                             <hr class="border border-5 border-black border-solid">
                             <table class="mt-3">

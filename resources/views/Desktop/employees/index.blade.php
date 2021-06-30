@@ -23,7 +23,7 @@
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>
                                         </div>
                                         <div class="text-md">
-                                            <h3>{{ $list->role->role_name }}</h3>
+                                            <h3>{{ $list->section->section_name }}</h3>
                                         </div>
                                         <div class="text-sm">
                                             <h2>{{ $list->user->address }}</h2>

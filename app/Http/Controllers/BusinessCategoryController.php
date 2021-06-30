@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Bus;
 
 class BusinessCategoryController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +22,6 @@ class BusinessCategoryController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', BusinessCategory::class);
-
         $categories = BusinessCategory::query()->paginate(10);
         return view('Desktop.business-categories.index',['categories'=>$categories]);
     }
@@ -42,8 +34,6 @@ class BusinessCategoryController extends Controller
      */
     public function create()
     {
-        $this->authorize('create',BusinessCategory::class);
-
         return view('Desktop.business-categories.create');
     }
 
@@ -56,8 +46,6 @@ class BusinessCategoryController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->authorize('create',BusinessCategory::class);
-
         $validateCategory = $request->validate([
             'name' => 'required|string'
         ]);
@@ -88,8 +76,6 @@ class BusinessCategoryController extends Controller
      */
     public function edit(BusinessCategory $businessCategory)
     {
-        $this->authorize('update',BusinessCategory::class);
-
         return view('Desktop.business-categories.edit',['category'=>$businessCategory]);
     }
 
@@ -101,14 +87,11 @@ class BusinessCategoryController extends Controller
      * @return Response
      * @throws AuthorizationException
      */
-    public function update(Request $request, BusinessCategory $businessCategory): Response
+    public function update(Request $request, BusinessCategory $businessCategory): RedirectResponse
     {
-        $this->authorize('update',$businessCategory);
-
         $businessCategory->update($request->all());
 
-        return redirect()->route('business-categories.index', $businessCategory)
-            ->withMessage('BusinessCategory category updated successfully.');
+        return redirect()->route('business-categories.index');
     }
 
     /**
@@ -120,8 +103,6 @@ class BusinessCategoryController extends Controller
      */
     public function destroy(BusinessCategory $businessCategory): RedirectResponse
     {
-        $this->authorize('delete',$businessCategory);
-
         $businessCategory->delete();
 
         return redirect()->route('business-categories.index');

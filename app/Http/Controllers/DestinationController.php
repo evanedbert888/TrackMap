@@ -32,14 +32,20 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', Destination::class);
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->job == 'admin') {
             $lists = Destination::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.destinations.index',['lists'=>$lists]);
-        } else if (Auth::user()->role == 'employee') {
+        } else if (Auth::user()->job == 'employee') {
             $lists = Destination::query()->orderBy('id','desc')->paginate(7);
             return view('Mobile.destinations.index',['lists'=>$lists]);
         }
+        // if (Auth::user()->role == 1) {
+        //     $lists = Destination::query()->orderBy('id','desc')->paginate(5);
+        //     return view('Desktop.destinations.index',['lists'=>$lists]);
+        // } else if (Auth::user()->role == 2) {
+        //     $lists = Destination::query()->orderBy('id','desc')->paginate(7);
+        //     return view('Mobile.destinations.index',['lists'=>$lists]);
+        // }
     }
 
     /**
@@ -50,8 +56,6 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        $this->authorize('create',Destination::class);
-
         $businesses = BusinessCategory::all();
         return view('Desktop.destinations.create',['businesses'=>$businesses]);
     }
@@ -65,8 +69,6 @@ class DestinationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->authorize('create',Destination::class);
-
         $validateDestination = $request->validate([
             'destination_name' => 'required|string|max:255',
             'business' => 'required',
@@ -101,7 +103,9 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        if (Auth::user()->role == 'admin') {
+        // if (Auth::user()->job == 1) {
+        //     return view('Desktop.destinations.show',['details'=>$destination]);
+        if (Auth::user()->job == 'admin') {
             return view('Desktop.destinations.show',['details'=>$destination]);
         } else {
             $user_id = Auth::user()->id;
@@ -124,8 +128,6 @@ class DestinationController extends Controller
      */
     public function edit(Destination $destination)
     {
-        $this->authorize('update',Destination::class);
-
         $businesses = BusinessCategory::all();
         return view('Desktop.destinations.edit',['details'=>$destination,'businesses'=>$businesses]);
     }
@@ -140,8 +142,6 @@ class DestinationController extends Controller
      */
     public function update(Request $request, Destination $destination): RedirectResponse
     {
-        $this->authorize('update',$destination);
-
         $validateDestination = $request->validate([
             'destination_name' => 'required|string|max:255',
             'business' => 'required',
@@ -198,8 +198,6 @@ class DestinationController extends Controller
      */
     public function destroy(Destination $destination): RedirectResponse
     {
-        $this->authorize('delete',$destination);
-
         $destination->delete();
         return redirect()->route('destinations.index');
     }
