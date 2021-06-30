@@ -30,7 +30,7 @@
             var data = ""
             data = data + "<option class='hidden'></option>";
             $.each(employees, function(key, value){
-                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.name+"'>"+value.name+"</option>"
+                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.name+","+value.image+"'>"+value.name+"</option>"
             })
             $('#employee').html(data);
         }
@@ -59,7 +59,7 @@
             var data = ""
             data = data + "<option class='hidden'></option>";
             $.each(destination, function(key, value){
-                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.destination_name+"'>"+value.destination_name+"</option>"
+                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.destination_name+","+value.image+"'>"+value.destination_name+"</option>"
             })
             $('#destination').html(data);
         }
@@ -75,6 +75,7 @@
             var employee = document.getElementById('employee').value;
             var splitedEmployee = employee.split(",");
             document.getElementById('employeeName').textContent = splitedEmployee[1];
+            document.getElementById("employeeImage").src = 'http://trackmap.com.dv/storage/'+splitedEmployee[2];
             checkToEnableAddButton();
         }
 
@@ -83,6 +84,7 @@
             var destination = document.getElementById('destination').value;
             var splitedDestination = destination.split(",");
             document.getElementById('destinationName').textContent = splitedDestination[1];
+            document.getElementById("destinationImage").src = 'http://trackmap.com.dv/storage/'+splitedDestination[2];
             checkToEnableAddButton();
         }
 
@@ -356,6 +358,7 @@
                         </div>
                         <h1 class="text-2xl font-bold">Employee & Destination</h1>
                         <div class="border border-black border-5 border-b rounded rounded-full h-1 bg-black"></div>
+                        <!-- Category -->
                         <div class="flex mx-auto justify-center mt-5">
                             <div class="mx-auto mb-2 font-bold">
                                 <form>
@@ -378,6 +381,7 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- Employee's and Destination's Name -->
                         <div class="flex w-full">
                             <div class="flex w-1/2 justify-center">
                                 <div class="mx-auto mb-2 font-bold hidden" id="divEmployee">
@@ -392,11 +396,12 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Data -->
                         <div class="w-full flex">
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showEmployee">
                                     <div class="flex justify-center items-center p-0">
-                                        <img class="inline-block h-16 w-16" src="{{URL::to('/img/Profile.png')}}" alt="">
+                                        <img id="employeeImage" class="inline-block h-16 w-16" src="{{URL::to('/img/Profile.png')}}" alt="">
                                         <div>
                                             <p class="ml-4" id="employeeName"></p>
                                         </div>
@@ -406,7 +411,7 @@
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showDestination">
                                     <div class="flex justify-center items-center p-0">
-                                        <img class="inline-block h-16 w-16" src="{{URL::to('/img/company.png')}}" alt="">
+                                        <img id="destinationImage" class="inline-block h-16 w-16" src="{{URL::to('/img/company.png')}}" alt="">
                                         <div>
                                             <p class="ml-4" id="destinationName"></p>
                                         </div>
@@ -414,6 +419,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Button Add Task to Temp -->
                         <div class="flex mx-32 px-1.5 justify-end mt-2">
                             <x-savebutton onclick="" class="mr-5" onclick="useSchedule()">Use Schedule</x-savebutton>
                             <x-button onclick="addTask()" id="butadd" name="butadd" disabled>
