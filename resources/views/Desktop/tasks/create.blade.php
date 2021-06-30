@@ -74,21 +74,19 @@
             document.getElementById('showEmployee').classList.remove("hidden");
             var employee = document.getElementById('employee').value;
             var splitedEmployee = employee.split(",");
-            var temp = "{{ asset('storage') }}" + "/" +splitedEmployee[2];
-            console.log(temp);
+            var url = '{{ asset("/storage") }}'+'/'+splitedEmployee[2];
             document.getElementById('employeeName').textContent = splitedEmployee[1];
-            document.getElementById("employeeImage").src = temp;
+            document.getElementById("employeeImage").src = url;
             checkToEnableAddButton();
         }
 
         function selectedDestination() {
-
             document.getElementById('showDestination').classList.remove("hidden");
             var destination = document.getElementById('destination').value;
             var splitedDestination = destination.split(",");
-
+            var url = '{{ asset("/storage") }}'+'/'+splitedDestination[2];
             document.getElementById('destinationName').textContent = splitedDestination[1];
-            document.getElementById("destinationImage").src = 'http://trackmap.com.dv/storage/'+splitedDestination[2];
+            document.getElementById("destinationImage").src = url;
             checkToEnableAddButton();
         }
 
@@ -198,7 +196,7 @@
             check();
             showTask();
         })
-
+    
         function showModal() {
             schedule();
             searchDestination(' ');
@@ -292,7 +290,7 @@
         function salesman() {
             checkschedule();
         }
-
+        
         function destination() {
             checkschedule();
         }
