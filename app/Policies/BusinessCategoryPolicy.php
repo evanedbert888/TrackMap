@@ -51,9 +51,9 @@ class BusinessCategoryPolicy
      * @param BusinessCategory $businessCategory
      * @return mixed
      */
-    public function update(User $user, BusinessCategory $businessCategory)
+    public function update(User $user, $businessCategory)
     {
-        return $user->isAdmin();
+        return compact($user->isAdmin(),$businessCategory);
     }
 
     /**

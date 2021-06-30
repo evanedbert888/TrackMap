@@ -103,7 +103,7 @@ class BusinessCategoryController extends Controller
      */
     public function update(Request $request, BusinessCategory $businessCategory): Response
     {
-        $this->authorize('update',BusinessCategory::class);
+        $this->authorize('update',$businessCategory);
 
         $businessCategory->update($request->all());
 
@@ -120,7 +120,7 @@ class BusinessCategoryController extends Controller
      */
     public function destroy(BusinessCategory $businessCategory): RedirectResponse
     {
-        $this->authorize('delete',BusinessCategory::class);
+        $this->authorize('delete',$businessCategory);
 
         $businessCategory->delete();
 

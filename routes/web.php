@@ -117,7 +117,7 @@ Route::prefix('/SalesMap')->middleware('isAdmin')->group(function() {
 });
 
 // Mobile
-Route::prefix('/SalesMap')->group(function (){
+Route::prefix('/SalesMap')->middleware('isEmployee')->group(function (){
     // Users
     Route::prefix('mobile.users')->name('mobile.users.')->group(function (){
         Route::get('/profile', [UserController::class,'show'])->name('show');

@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'age', 'sex', 'birth_date', 'address', 'image'
+        'name', 'email', 'password', 'age', 'sex', 'role', 'birth_date', 'address', 'image'
     ];
 
     /**
@@ -43,6 +43,11 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role == 'admin';
+    }
+
+    public function isEmployee(): bool
+    {
+        return $this->role == 'employee';
     }
 
     public function updateById($id, $data = array())

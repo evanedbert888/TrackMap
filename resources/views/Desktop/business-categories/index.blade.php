@@ -29,16 +29,15 @@
                                     <tr class="bg-red-100 border border-white border-b-4 border-t-0 border-r-0 border-l-0">
                                         <td> {{ $i++ }} </td>
                                         <td class="text-left"> {{$category->name}} </td>
-                                        @can('update',[$category->id])
-                                            <td>
+                                        <td>
+                                            @can('update',['businessCategory' => $category->id])
                                                 <a href="{{route('business-categories.edit',[$category->id])}}">
                                                     <x-button type="button"> Edit </x-button>
                                                 </a>
-                                            </td>
-                                        @endcan
-
-                                        @can('delete',[$category->id])
-                                            <td>
+                                            @endcan
+                                        </td>
+                                        <td>
+                                            @can('delete',$businessCategory)
                                                 <form action="{{route('business-categories.destroy',['businessCategory'=>$category->id])}}" method="POST">
                                                     @csrf
                                                     @method("DELETE")
@@ -78,8 +77,8 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                            </td>
-                                        @endcan
+                                            @endcan
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

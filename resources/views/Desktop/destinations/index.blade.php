@@ -12,9 +12,9 @@
                     <div class="container">
                         <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
                             <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>
-                            <a class="justify-self-end" href="{{route('destinations.create')}}">
-                                <x-button>Add New Destination</x-button>
-                            </a>
+                                <a class="justify-self-end" href="{{route('destinations.create')}}">
+                                    <x-button>Add New Destination</x-button>
+                                </a>
                         </div>
                         @foreach($lists as $list)
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
@@ -43,14 +43,14 @@
                                                 @method('DELETE')
                                                 @csrf
                                                 <x-delbutton type="button" onclick="showModal()">Delete</x-delbutton>
-    
+
                                                 <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
                                                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                                         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>
-                                            
+
                                                         <!-- This element is to trick the browser into centering the modal contents. -->
                                                         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                                            
+
                                                         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                                                             <div class="sm:flex sm:items-start">
                                                                 <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">

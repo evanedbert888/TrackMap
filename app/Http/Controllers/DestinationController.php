@@ -6,6 +6,7 @@ use App\Models\BusinessCategory;
 use App\Models\Destination;
 use App\Models\Employee;
 use App\Models\Goal;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,13 +20,19 @@ use Illuminate\Support\Facades\File;
 
 class DestinationController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function index()
     {
+        $this->authorize('viewAny', Destination::class);
         if (Auth::user()->role == 'admin') {
             $lists = Destination::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.destinations.index',['lists'=>$lists]);
@@ -39,9 +46,12 @@ class DestinationController extends Controller
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function create()
     {
+        $this->authorize('create',Destination::class);
+
         $businesses = BusinessCategory::all();
         return view('Desktop.destinations.create',['businesses'=>$businesses]);
     }
@@ -51,9 +61,12 @@ class DestinationController extends Controller
      *
      * @param Request $request
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function store(Request $request): RedirectResponse
     {
+        $this->authorize('create',Destination::class);
+
         $validateDestination = $request->validate([
             'destination_name' => 'required|string|max:255',
             'business' => 'required',
@@ -83,7 +96,7 @@ class DestinationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Destination $destination
      * @return Application|Factory|View
      */
     public function show(Destination $destination)
@@ -105,11 +118,14 @@ class DestinationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function edit(Destination $destination)
     {
+        $this->authorize('update',Destination::class);
+
         $businesses = BusinessCategory::all();
         return view('Desktop.destinations.edit',['details'=>$destination,'businesses'=>$businesses]);
     }
@@ -119,10 +135,13 @@ class DestinationController extends Controller
      *
      * @param Request $request
      * @param Destination $destination
-     * @return void
+     * @return RedirectResponse
+     * @throws AuthorizationException
      */
-    public function update(Request $request, Destination $destination)
+    public function update(Request $request, Destination $destination): RedirectResponse
     {
+        $this->authorize('update',$destination);
+
         $validateDestination = $request->validate([
             'destination_name' => 'required|string|max:255',
             'business' => 'required',
@@ -175,9 +194,12 @@ class DestinationController extends Controller
      *
      * @param Destination $destination
      * @return RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Destination $destination): RedirectResponse
     {
+        $this->authorize('delete',$destination);
+
         $destination->delete();
         return redirect()->route('destinations.index');
     }
