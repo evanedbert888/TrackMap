@@ -10,7 +10,7 @@ class Employee extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id', 'role_id', 'motto'
+        'user_id', 'section_id', 'motto'
     ];
 
     public function updateById($id, $data = array())
@@ -18,8 +18,8 @@ class Employee extends Model
         return DB::table('employees')->where('id', '=', $id)->update($data);
     }
 
-    public function role() {
-        return $this->hasOne(Role::class,'id','role_id');
+    public function section() {
+        return $this->hasOne(Section::class,'id','section_id');
     }
 
     public function user() {
@@ -33,7 +33,7 @@ class Employee extends Model
     public function goals() {
         return $this->hasMany(Goal::class, 'employee_id', 'id');
     }
-    
+
     public function schedule() {
         return $this->hasMany(Goal::class, 'employee_id', 'id');
     }

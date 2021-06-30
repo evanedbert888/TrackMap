@@ -53,7 +53,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Employee $employee
      * @return Application|Factory|View
      */
     public function show(Employee $employee)
@@ -64,14 +64,14 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Employee $employee
      * @return Application|Factory|View
      */
     public function edit(Employee $employee)
     {
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->job == 'admin') {
             return view('Desktop.employees.edit',['details'=>$employee]);
-        } elseif (Auth::user()->role == 'employee') {
+        } elseif (Auth::user()->job == 'employee') {
             $details = Employee::query()->where('id','=',$employee->id)->first();
             return view('Mobile.employees.edit',['details'=>$details]);
         }
@@ -148,9 +148,9 @@ class EmployeeController extends Controller
             "motto" => $validateEmployee['motto'],
         ));
 
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->job == 'admin') {
             return redirect()->route('employees.show',['employee'=>$employee]);
-        } elseif (Auth::user()->role == 'employee') {
+        } elseif (Auth::user()->job == 'employee') {
             return redirect()->route('mobile.users.show');
         }
 

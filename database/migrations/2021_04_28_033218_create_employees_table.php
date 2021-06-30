@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('role_id')->nullable();
+            $table->unsignedBigInteger('section_id')->nullable();
             $table->string('motto')->default("Your Motto");
             $table->timestamps();
         });
