@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware([
+           'role:admin|employee',
+           'permission:user index|show user|edit user|update user|destroy user|mobile profile'
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +33,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->name;
-        $user->hasPermissionTo('user index');
-
         // $uvdusers = User::query()->where('status','=','Unverified')->where('role','=',2)->orderBy('created_at')->get();
         $uvdusers = User::query()->where('status','=','Unverified')->where('job','=','employee')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
@@ -67,9 +71,9 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
         $details = User::query()->find($id);
-        if (Auth::user()->job == 'admin') {
+        if (Auth::user()->hasPermissionTo('show user')) {
             return view('Desktop.users.show',['details'=>$details]);
-        } elseif (Auth::user()->job == 'employee') {
+        } elseif (Auth::user()->hasPermissionTo('mobile profile')) {
             return view('Mobile.employees.show',['details'=>$details]);
         }
         // if (Auth::user()->role == 1) {
@@ -161,12 +165,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
 
     // temporary, data tidak akan delete cuma status unavailable aja
-    public function destroy($id,$employee_id)
+    public function destroy(int $id, $employee_id): RedirectResponse
     {
         User::destroy($id);
         Employee::destroy($employee_id);

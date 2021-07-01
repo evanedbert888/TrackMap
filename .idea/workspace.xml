@@ -22,24 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="several role directives are added to blade">
-      <change beforePath="$PROJECT_DIR$/.idea/Testrun.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Testrun.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="accept team's update and modal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +323,7 @@
       <workItem from="1625025660745" duration="1436000" />
       <workItem from="1625041212125" duration="4846000" />
       <workItem from="1625058030630" duration="8645000" />
-      <workItem from="1625109884504" duration="8826000" />
+      <workItem from="1625109884504" duration="14710000" />
     </task>
     <task id="LOCAL-00001" summary="new updates">
       <created>1621331100593</created>
@@ -626,7 +619,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625118038678</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="fix several errors and apply spatie permissions">
+      <created>1625119178320</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1625119178320</updated>
+    </task>
+    <task id="LOCAL-00044" summary="accept team's update and modal">
+      <created>1625119263007</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1625119263007</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,6 +675,8 @@
     <MESSAGE value="previous policies and middlewares have been deleted" />
     <MESSAGE value="the seeders have been modified to co-exist with spatie permissions" />
     <MESSAGE value="several role directives are added to blade" />
-    <option name="LAST_COMMIT_MESSAGE" value="several role directives are added to blade" />
+    <MESSAGE value="fix several errors and apply spatie permissions" />
+    <MESSAGE value="accept team's update and modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="accept team's update and modal" />
   </component>
 </project>

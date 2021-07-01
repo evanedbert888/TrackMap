@@ -6,16 +6,25 @@ use App\Models\Destination;
 use App\Models\Schedule;
 use App\Models\Temp;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use PHPUnit\Util\Json;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware([
+           'role:admin',
+           'permission:schedule index|store schedule|destroy schedule'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -33,7 +42,7 @@ class ScheduleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -43,10 +52,11 @@ class ScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $salesman
+     * @param $destination
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store($salesman, $destination)
+    public function store($salesman, $destination): \Illuminate\Http\JsonResponse
     {
         $schedule = new Schedule;
         $schedule->user_id  = Auth::user()->id;
@@ -60,8 +70,8 @@ class ScheduleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
     public function show(Schedule $schedule)
     {
@@ -71,8 +81,8 @@ class ScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return Response
      */
     public function edit(Schedule $schedule)
     {
@@ -82,9 +92,9 @@ class ScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Schedule $schedule
+     * @return Response
      */
     public function update(Request $request, Schedule $schedule)
     {
@@ -94,8 +104,8 @@ class ScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @param Schedule $schedule
+     * @return JsonResponse
      */
     public function destroy($schedule): JsonResponse
     {
@@ -117,11 +127,11 @@ class ScheduleController extends Controller
     {
         $aschedules = Schedule::all()->toArray();
         $n = count($aschedules);
-        
+
 
         for($i=0; $i<$n; $i++) {
             $schedules = json_decode(json_encode(array_shift($aschedules)));
-            
+
             $temp = new Temp;
             $temp->employee_id = $schedules->employee_id;
             $temp->destination_id = $schedules->destination_id;

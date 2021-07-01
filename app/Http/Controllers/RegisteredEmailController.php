@@ -10,10 +10,17 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisteredEmailController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware([
+           'role:admin',
+           'permission:registered-email index|create registered-email|store registered-email'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +48,7 @@ class RegisteredEmailController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $id = Auth::id();
         $validateRegister = $request->validate([

@@ -23,6 +23,14 @@ use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware([
+            'role:admin',
+            'permission:task index|create index|store index|destroy task'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -59,14 +67,13 @@ class TaskController extends Controller
      *
      * Store a newly created resource in storage.
      *
-     * @param Request $request
      * @return RedirectResponse
      */
     public function store(): RedirectResponse
     {
         $count = Temp::all()->count();
         for ($id = 1; $id <= $count; $id++) {
-            $tasks = Temp::first();
+            $tasks = Temp::query()->first();
             $destinations = Destination::query()->firstwhere('id',$tasks->destination_id);
 
             $goal = new Goal();
@@ -117,7 +124,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param $temp
      * @return JsonResponse
      */
     public function destroy($temp): JsonResponse

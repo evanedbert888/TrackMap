@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessCategory;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -14,12 +13,11 @@ use Illuminate\Http\Response;
 class BusinessCategoryController extends Controller
 {
     public function __construct() {
-        $this->middleware(
-            [
-                'role:admin',
-                'permission:business-category index|create business-category|store business-category|edit business-category|update business-category|destroy business-category'
-            ]
-        );
+        $this->middleware('auth');
+        $this->middleware([
+            'role:admin',
+            'permission:business-category index|create business-category|store business-category|edit business-category|update business-category|destroy business-category'
+        ]);
     }
 
     /**

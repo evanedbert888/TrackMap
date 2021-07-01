@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Goal;
-use App\Models\Role;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,6 +18,14 @@ use Illuminate\Support\Facades\File;
 
 class EmployeeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware([
+           'role:admin|employee',
+           'permission:employee index|show employee|edit employee|update employee|mobile edit profile|mobile update profile'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -70,9 +77,9 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        if (Auth::user()->job == 'admin') {
+        if (Auth::user()->hasPermissionTo('edit employee')) {
             return view('Desktop.employees.edit',['details'=>$employee]);
-        } elseif (Auth::user()->job == 'employee') {
+        } elseif (Auth::user()->hasPermissionTo('mobile edit profile')) {
             $details = Employee::query()->where('id','=',$employee->id)->first();
             return view('Mobile.employees.edit',['details'=>$details]);
         }
@@ -149,9 +156,9 @@ class EmployeeController extends Controller
             "motto" => $validateEmployee['motto'],
         ));
 
-        if (Auth::user()->job == 'admin') {
+        if (Auth::user()->hasPermissionTo('show employee')) {
             return redirect()->route('employees.show',['employee'=>$employee]);
-        } elseif (Auth::user()->job == 'employee') {
+        } elseif (Auth::user()->hasPermissionTo('mobile profile')) {
             return redirect()->route('mobile.users.show');
         }
 

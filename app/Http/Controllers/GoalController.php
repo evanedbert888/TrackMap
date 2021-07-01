@@ -16,6 +16,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class GoalController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+        $this->middleware([
+           'role:employee',
+           'permission:mobile goal index|mobile update goal|mobile goal history'
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -83,7 +91,7 @@ class GoalController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $user_id = Auth::user()->id;
         $value = $request->input('check');
@@ -102,10 +110,9 @@ class GoalController extends Controller
                 "status" => 'finished',
                 "updated_at" => date(now()),
             ));
-
             return redirect()->route('goals.index');
         } else {
-            return redirect()->route('destinations.show',['destination'=>$request->id]);
+            return redirect()->route('mobile.destinations.show',['destination'=>$request->id]);
         }
     }
 

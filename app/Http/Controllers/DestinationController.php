@@ -6,53 +6,45 @@ use App\Models\BusinessCategory;
 use App\Models\Destination;
 use App\Models\Employee;
 use App\Models\Goal;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class DestinationController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
+        $this->middleware([
+           'role:admin|employee',
+           'permission:destination index|create destination|store destination|show destination|edit destination|update destination|destroy destination
+           |mobile destination index|mobile show destination'
+        ]);
     }
 
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function index()
     {
-        if (Auth::user()->job == 'admin') {
+        if (Auth::user()->hasPermissionTo('destination index')) {
             $lists = Destination::query()->orderBy('id','desc')->paginate(5);
             return view('Desktop.destinations.index',['lists'=>$lists]);
-        } else if (Auth::user()->job == 'employee') {
+        } else if (Auth::user()->hasPermissionTo('mobile destination index')) {
             $lists = Destination::query()->orderBy('id','desc')->paginate(7);
             return view('Mobile.destinations.index',['lists'=>$lists]);
         }
-        // if (Auth::user()->role == 1) {
-        //     $lists = Destination::query()->orderBy('id','desc')->paginate(5);
-        //     return view('Desktop.destinations.index',['lists'=>$lists]);
-        // } else if (Auth::user()->role == 2) {
-        //     $lists = Destination::query()->orderBy('id','desc')->paginate(7);
-        //     return view('Mobile.destinations.index',['lists'=>$lists]);
-        // }
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function create()
     {
@@ -65,7 +57,6 @@ class DestinationController extends Controller
      *
      * @param Request $request
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -105,9 +96,9 @@ class DestinationController extends Controller
     {
         // if (Auth::user()->job == 1) {
         //     return view('Desktop.destinations.show',['details'=>$destination]);
-        if (Auth::user()->job == 'admin') {
+        if (Auth::user()->hasPermissionTo('show destination')) {
             return view('Desktop.destinations.show',['details'=>$destination]);
-        } else {
+        } elseif (Auth::user()->hasPermissionTo('mobile show destination')) {
             $user_id = Auth::user()->id;
             $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
             $count = Goal::query()->where('employee_id','=',$employee_id)
@@ -122,9 +113,8 @@ class DestinationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Destination $destination
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function edit(Destination $destination)
     {
@@ -138,7 +128,6 @@ class DestinationController extends Controller
      * @param Request $request
      * @param Destination $destination
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function update(Request $request, Destination $destination): RedirectResponse
     {
@@ -194,7 +183,6 @@ class DestinationController extends Controller
      *
      * @param Destination $destination
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function destroy(Destination $destination): RedirectResponse
     {
