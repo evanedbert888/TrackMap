@@ -5,6 +5,22 @@
         </h2>
     </x-slot>
 
+    <script>
+        function showModal(id) {
+            document.getElementById('modal'+id).classList.remove('invisible');
+            document.getElementById('modal'+id).classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modal'+id).style.transitionTimingFunction = "ease-out";
+            document.getElementById('modal'+id).style.transitionDuration = "300ms";
+            document.getElementById('modal'+id).classList.add('opacity-100','translate-y-0','sm:scale-100');
+        }
+        function hiddenModal(id) {
+            document.getElementById('modal'+id).classList.remove('opacity-100','translate-y-0','sm:scale-100');
+            document.getElementById('modal'+id).style.transitionTimingFunction = "ease-in";
+            document.getElementById('modal'+id).style.transitionDuration = "200ms";
+            document.getElementById('modal'+id).classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modal'+id).classList.add('invisible');
+        }
+    </script>
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -12,9 +28,9 @@
                     <div class="container">
                         <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
                             <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>
-                                <a class="justify-self-end" href="{{route('destinations.create')}}">
-                                    <x-button>Add New Destination</x-button>
-                                </a>
+                            <a class="justify-self-end" href="{{route('destinations.create')}}">
+                                <x-button>Add New Destination</x-button>
+                            </a>
                         </div>
                         @foreach($lists as $list)
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
@@ -42,11 +58,11 @@
                                             <form action="{{route('destinations.destroy',['destination'=>$list->id])}}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <x-delbutton type="button" onclick="showModal()">Delete</x-delbutton>
+                                                <x-delbutton value="{{ $list->id }}" type="button" onclick="showModal(this.value)">Delete</x-delbutton>
 
-                                                <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
+                                                <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal{{ $list->id }}">
                                                     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal()"></div>
+                                                        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddenModal('{{ $list->id }}')"></div>
 
                                                         <!-- This element is to trick the browser into centering the modal contents. -->
                                                         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -67,7 +83,7 @@
                                                                         <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm">
                                                                             Yes
                                                                         </button>
-                                                                        <button type="button" onclick="hiddenModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                                                        <button type="button" onclick="hiddenModal('{{ $list->id }}')" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                                                             No
                                                                         </button>
                                                                     </div>
@@ -89,21 +105,3 @@
         </div>
     </div>
 </x-app-layout>
-
-<script>
-    function showModal() {
-        document.getElementById('modal').classList.remove('invisible');
-        document.getElementById('modal').classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
-        document.getElementById('modal').style.transitionTimingFunction = "ease-out";
-        document.getElementById('modal').style.transitionDuration = "300ms";
-        document.getElementById('modal').classList.add('opacity-100','translate-y-0','sm:scale-100');
-    }
-    function hiddenModal() {
-        document.getElementById('modal').classList.remove('opacity-100','translate-y-0','sm:scale-100');
-        document.getElementById('modal').style.transitionTimingFunction = "ease-in";
-        document.getElementById('modal').style.transitionDuration = "200ms";
-        document.getElementById('modal').classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
-        document.getElementById('modal').classList.add('invisible');
-    }
-</script>
-
