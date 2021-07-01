@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                             </li>
-                            @role('admin')
+                            @can('user index')
                                 <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex">
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            @endrole
+                            @endcan
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
                                     <div class="sm:flex sm:items-center">
@@ -181,7 +181,7 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden md:mt-14">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    @role('admin')
+                                                    @can('show user')
                                                         <form method="GET" action="{{ route('users.show') }}">
                                                             @csrf
                                                             <x-dropdown-link :href="route('users.show')"
@@ -197,8 +197,8 @@
                                                                     </div>
                                                             </x-dropdown-link>
                                                         </form>
-                                                    @endrole
-                                                    @role('employee')
+                                                    @endcan
+                                                    @can('mobile profile')
                                                         <form method="GET" action="{{ route('mobile.users.show') }}">
                                                             @csrf
                                                             <x-dropdown-link :href="route('mobile.users.show')"
@@ -214,7 +214,7 @@
                                                                 </div>
                                                             </x-dropdown-link>
                                                         </form>
-                                                    @endrole
+                                                    @endcan
                                                 </li>
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mt-2">
                                                     <form method="POST" action="{{ route('logout') }}">

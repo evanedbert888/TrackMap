@@ -12,73 +12,75 @@
                     <table class="w-full">
                         <tr>
                             <td>
-                                <span class="flex container justify-end">
-                                    <form action="{{route('destinations.store')}}" method="POST">
-                                    @csrf
-                                    <!-- destinations Name -->
-                                        <div class="my-3 space-y-0">
-                                            <x-label for="_name" :value="__('Destination Name')"></x-label>
+                                @can('store destination')
+                                    <span class="flex container justify-end">
+                                        <form action="{{route('destinations.store')}}" method="POST">
+                                        @csrf
+                                        <!-- destinations Name -->
+                                            <div class="my-3 space-y-0">
+                                                <x-label for="_name" :value="__('Destination Name')"></x-label>
 
-                                            <x-input id="destination_name" class="block mt-1 w-96" type="text"
-                                                     name="destination_name" :value="old('destination_name')" placeholder="Enter the destination name" required
-                                                     autofocus></x-input>
-                                        </div>
-
-                                        <!-- BusinessCategory -->
-                                        <div class="my-3 space-y-0">
-                                            <x-label for="business" :value="__('Business')"></x-label>
-
-                                            <select name="business" id="business" class="block mt-1 w-96 rounded-md">
-                                                <option class="hidden"></option>
-                                                @foreach($businesses as $business)
-                                                    <option class="bg-gray-200 hover:bg-gray-400" value="{{$business->id}}">{{$business->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <!-- Address -->
-                                        <div class="my-3">
-                                            <div class="space-y-0">
-                                                <x-label for="address" :value="__('Address')"></x-label>
-
-                                                <x-input class="block mt-1 w-96" type="text"
-                                                         name="address" id="address" placeholder="min 100 characters" placeholder="Street name, City, Country" required
+                                                <x-input id="destination_name" class="block mt-1 w-96" type="text"
+                                                         name="destination_name" :value="old('destination_name')" placeholder="Enter the destination name" required
                                                          autofocus></x-input>
                                             </div>
-                                            <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
-                                        </div>
 
-                                        <!-- Email -->
-                                        <div class="my-3 space-y-0">
-                                            <x-label for="email" :value="__('Email')"></x-label>
+                                            <!-- BusinessCategory -->
+                                            <div class="my-3 space-y-0">
+                                                <x-label for="business" :value="__('Business')"></x-label>
 
-                                            <x-input id="email" class="block mt-1 w-96" type="text" name="email" :value="old('email')" placeholder="Enter the email" required></x-input>
-                                        </div>
-
-                                        <!-- Coordinate -->
-                                        <div class="my-3 space-y-0">
-                                            <div>
-                                                <x-label for="coordinate" :value="__('Coordinate')"></x-label>
-
-                                                <x-input id="coordinate" class="block mt-1 w-96" type="text" name="coordinate" :value="old('coordinate')" required></x-input>
+                                                <select name="business" id="business" class="block mt-1 w-96 rounded-md">
+                                                    <option class="hidden"></option>
+                                                    @foreach($businesses as $business)
+                                                        <option class="bg-gray-200 hover:bg-gray-400" value="{{$business->id}}">{{$business->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                        </div>
 
-                                        <!-- Description -->
-                                        <div class="my-3 space-y-0">
-                                            <x-label for="description" :value="__('Description')"></x-label>
+                                            <!-- Address -->
+                                            <div class="my-3">
+                                                <div class="space-y-0">
+                                                    <x-label for="address" :value="__('Address')"></x-label>
 
-                                            <textarea class="block mt-1 rounded-md " name="description" id="description"
-                                                      cols="40" rows="3"></textarea>
-                                        </div>
+                                                    <x-input class="block mt-1 w-96" type="text"
+                                                             name="address" id="address" placeholder="min 100 characters" placeholder="Street name, City, Country" required
+                                                             autofocus></x-input>
+                                                </div>
+                                                <x-button id="search" type="button" name="search" class="mt-2">search</x-button>
+                                            </div>
 
-                                        <div class="mb-3 mt-0 float-right">
-                                           <x-button>
-                                                {{ __('Submit') }}
-                                            </x-button>
-                                        </div>
-                                    </form>
-                                </span>
+                                            <!-- Email -->
+                                            <div class="my-3 space-y-0">
+                                                <x-label for="email" :value="__('Email')"></x-label>
+
+                                                <x-input id="email" class="block mt-1 w-96" type="text" name="email" :value="old('email')" placeholder="Enter the email" required></x-input>
+                                            </div>
+
+                                            <!-- Coordinate -->
+                                            <div class="my-3 space-y-0">
+                                                <div>
+                                                    <x-label for="coordinate" :value="__('Coordinate')"></x-label>
+
+                                                    <x-input id="coordinate" class="block mt-1 w-96" type="text" name="coordinate" :value="old('coordinate')" required></x-input>
+                                                </div>
+                                            </div>
+
+                                            <!-- Description -->
+                                            <div class="my-3 space-y-0">
+                                                <x-label for="description" :value="__('Description')"></x-label>
+
+                                                <textarea class="block mt-1 rounded-md " name="description" id="description"
+                                                          cols="40" rows="3"></textarea>
+                                            </div>
+
+                                            <div class="mb-3 mt-0 float-right">
+                                               <x-button>
+                                                    {{ __('Submit') }}
+                                                </x-button>
+                                            </div>
+                                        </form>
+                                    </span>
+                                @endcan
                             </td>
                             <td>
                                 <span class="flex container justify-center">

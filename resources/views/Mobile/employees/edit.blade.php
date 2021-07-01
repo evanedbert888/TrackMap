@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="px-6 pt-5 bg-white border-b border-gray-200 mt-20">
-                    @can('mobile edit profile')
+                    @can('mobile update profile')
                         <form method="POST" action="{{ route('mobile.users.update',['employee'=>$details->id]) }}" enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf

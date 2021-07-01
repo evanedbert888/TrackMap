@@ -16,11 +16,13 @@
                     @endif
                 </div>
                 <div class="p-3 bg-white border-b border-gray-200 md:p-6">
-                    <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('users.edit',['user'=>$details->id]) }}">
-                        <x-button type="submit">
-                            edit
-                        </x-button>
-                    </a>
+                    @can('edit user')
+                        <a class="float-right mr-2 mt-2 md:mt-0 md:mr-5" href="{{ route('users.edit',['user'=>$details->id]) }}">
+                            <x-button type="submit">
+                                edit
+                            </x-button>
+                        </a>
+                    @endcan
                     <div>
                         <div class="mx-2 mt-16 md:ml-60 md:mx-5 md:mt-0">
                             <div>

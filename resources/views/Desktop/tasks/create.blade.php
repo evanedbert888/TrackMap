@@ -225,7 +225,7 @@
             check();
             showTask();
         })
-    
+
         function showModal() {
             schedule();
             searchDestination(' ');
@@ -347,7 +347,7 @@
         function salesman() {
             checkschedule();
         }
-        
+
         function destination() {
             checkschedule();
         }
@@ -405,7 +405,7 @@
                 }
             })
         }
-        
+
         function showTaskModal(id) {
             document.getElementById('modaltask'+id).classList.remove('invisible');
             document.getElementById('modaltask'+id).classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
@@ -534,14 +534,16 @@
                                 <tbody class="text-center" id="tableTask"></tbody>
                             </table>
                         </div>
-                        <div class="mt-2 flex justify-end">
-                            <form action="{{route('tasks.store')}}" method="POST">
-                                @csrf
-                                <x-button id="save" disabled>
-                                    {{__("Save")}}
-                                </x-button>
-                            </form>
-                        </div>
+                        @can('store task')
+                            <div class="mt-2 flex justify-end">
+                                <form action="{{route('tasks.store')}}" method="POST">
+                                    @csrf
+                                    <x-button id="save" disabled>
+                                        {{__("Save")}}
+                                    </x-button>
+                                </form>
+                            </div>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -581,11 +583,13 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="flex justify-end w-full">
                         <x-button id="addSchedule" name="addSchedule" onclick="addSchedule()" disabled>
                             {{__("Add")}}
                         </x-button>
                     </div>
+
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex">
                     <table class="w-full table-auto text-center">

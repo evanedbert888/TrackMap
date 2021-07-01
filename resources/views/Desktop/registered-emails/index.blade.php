@@ -51,11 +51,13 @@
                             <p class="font-bold text-center text-2xl">Nothing Registered</p>
                         @endif
                     </div>
-                    <div class="flex justify-end my-2">
-                        <a href="{{route('registered-emails.create')}}" class="">
-                            <x-button type="button">Register new Email</x-button>
-                        </a>
-                    </div>
+                    @can('create registered-email')
+                        <div class="flex justify-end my-2">
+                            <a href="{{route('registered-emails.create')}}" class="">
+                                <x-button type="button">Register new Email</x-button>
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>

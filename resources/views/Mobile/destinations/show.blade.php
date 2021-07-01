@@ -19,19 +19,21 @@
                     @if($count == 0)
 
                     @elseif($count == 1)
-                        <form action="{{route('goals.update')}}" method="POST">
-                            @method('PATCH')
-                            @csrf
-                            <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
-                            <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
-                            <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
-                            <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
-                            <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
-                                <x-button type="submit">
-                                    Check-In
-                                </x-button>
-                            </div>
-                        </form>
+                        @can('mobile update goal')
+                            <form action="{{route('goals.update')}}" method="POST">
+                                @method('PATCH')
+                                @csrf
+                                <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
+                                <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
+                                <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
+                                <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
+                                <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
+                                    <x-button type="submit">
+                                        Check-In
+                                    </x-button>
+                                </div>
+                            </form>
+                        @endcan
                     @endif
                     <div>
                         <div class="mx-2 mt-16 md:ml-60 md:mx-5 md:mt-0">

@@ -30,11 +30,13 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
-                        <a class="float-right mr-5" href="{{route('mobile.users.edit',['employee'=>$details->employee->id])}}">
-                            <x-button type="submit">
-                                Edit
-                            </x-button>
-                        </a>
+                        @can('mobile edit profile')
+                            <a class="float-right mr-5" href="{{route('mobile.users.edit',['employee'=>$details->employee->id])}}">
+                                <x-button type="submit">
+                                    Edit
+                                </x-button>
+                            </a>
+                        @endcan
                     </div>
                     <div class="mx-5 mt-3 pb-10 pt-2">
                         <p class="font-bold text-xl">Detail</p>

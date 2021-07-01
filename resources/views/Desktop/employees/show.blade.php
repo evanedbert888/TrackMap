@@ -33,11 +33,13 @@
                     @endif
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200 ">
-                    <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->id])}}">
-                        <x-button type="submit">
-                            edit
-                        </x-button>
-                    </a>
+                    @can('edit employee')
+                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->id])}}">
+                            <x-button type="submit">
+                                edit
+                            </x-button>
+                        </a>
+                    @endcan
                     <div>
                         <div class="ml-60 mx-5">
                             <div>
