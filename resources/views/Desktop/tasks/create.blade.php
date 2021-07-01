@@ -138,7 +138,36 @@
                 data = data + "<td class='text-left'>"+value.employee_name+"</td>";
                 data = data + "<td class='text-left'>"+value.destination_name+"</td>";
                 data = data + "<td>";
-                data = data + "<button type='submit' value='"+value.id+"' onclick='deleteTask(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
+                data = data + "<button type='submit' value='"+value.id+"' onclick='showTaskModal(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
+                data = data + "<div class='fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modaltask"+value.id+"'>";
+                data = data + "<div class='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>";
+                data = data + "<div class='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' aria-hidden='true' onclick='hiddenTaskModal("+value.id+")'></div>";
+                data = data + "<span class='hidden sm:inline-block sm:align-middle sm:h-screen' aria-hidden='true'>&#8203;</span>";
+                data = data + "<div class='inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full'>";
+                data = data + "<div class='sm:flex sm:items-start'>";
+                data = data + "<div class='mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left'>";
+                data = data + "<div class='bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>";
+                data = data + "<div class='sm:flex sm:items-start'>";
+                data = data + "<div class='mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left'>";
+                data = data + "<h3 class='text-xl leading-6 font-semibold text-gray-900' id='modal-title'>";
+                data = data + "Do you want to delete this task ?";
+                data = data + "</h3>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "<div class='bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>";
+                data = data + "<button type='submit' onclick='deleteTask("+value.id+")' class='w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm'>";
+                data = data + "Yes";
+                data = data + "</button>";
+                data = data + "<button type='button' onclick='hiddenTaskModal("+value.id+")' class='mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'>";
+                data = data + "No";
+                data = data + "</button>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
                 data = data + "</td>";
                 data = data + "</tr>";
                 i++;
@@ -240,7 +269,36 @@
                 data = data + "<td class='text-left'>"+value.employee_name+"</td>";
                 data = data + "<td class='text-left'>"+value.destination_name+"</td>";
                 data = data + "<td>";
-                data = data + "<button type='submit' value='"+value.id+"' onclick='deleteSchedule(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
+                data = data + "<button type='button' value='"+value.id+"' onclick='showScheduleModal(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
+                data = data + "<div class='fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modalSchedule"+value.id+"'>";
+                data = data + "<div class='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>";
+                data = data + "<div class='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' aria-hidden='true' onclick='hiddenScheduleModal("+value.id+")'></div>";
+                data = data + "<span class='hidden sm:inline-block sm:align-middle sm:h-screen' aria-hidden='true'>&#8203;</span>";
+                data = data + "<div class='inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full'>";
+                data = data + "<div class='sm:flex sm:items-start'>";
+                data = data + "<div class='mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left'>";
+                data = data + "<div class='bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4'>";
+                data = data + "<div class='sm:flex sm:items-start'>";
+                data = data + "<div class='mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left'>";
+                data = data + "<h3 class='text-xl leading-6 font-semibold text-gray-900' id='modal-title'>";
+                data = data + "Do you want to delete this schedule ?";
+                data = data + "</h3>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "<div class='bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse'>";
+                data = data + "<button type='submit' onclick='deleteSchedule("+value.id+")' class='w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-400 text-base font-medium text-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:ml-3 sm:w-auto sm:text-sm'>";
+                data = data + "Yes";
+                data = data + "</button>";
+                data = data + "<button type='button' onclick='hiddenScheduleModal("+value.id+")' class='mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm'>";
+                data = data + "No";
+                data = data + "</button>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
+                data = data + "</div>";
                 data = data + "</td>";
                 data = data + "</tr>";
                 i++;
@@ -347,6 +405,38 @@
                     console.log(err);
                 }
             })
+        }
+        
+        function showTaskModal(id) {
+            document.getElementById('modaltask'+id).classList.remove('invisible');
+            document.getElementById('modaltask'+id).classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modaltask'+id).style.transitionTimingFunction = "ease-out";
+            document.getElementById('modaltask'+id).style.transitionDuration = "300ms";
+            document.getElementById('modaltask'+id).classList.add('opacity-100','translate-y-0','sm:scale-100');
+        }
+
+        function hiddenTaskModal(id) {
+            document.getElementById('modaltask'+id).classList.remove('opacity-100','translate-y-0','sm:scale-100');
+            document.getElementById('modaltask'+id).style.transitionTimingFunction = "ease-in";
+            document.getElementById('modaltask'+id).style.transitionDuration = "200ms";
+            document.getElementById('modaltask'+id).classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modaltask'+id).classList.add('invisible');
+        }
+
+        function showScheduleModal(id) {
+            document.getElementById('modalSchedule'+id).classList.remove('invisible');
+            document.getElementById('modalSchedule'+id).classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modalSchedule'+id).style.transitionTimingFunction = "ease-out";
+            document.getElementById('modalSchedule'+id).style.transitionDuration = "300ms";
+            document.getElementById('modalSchedule'+id).classList.add('opacity-100','translate-y-0','sm:scale-100');
+        }
+
+        function hiddenScheduleModal(id) {
+            document.getElementById('modalSchedule'+id).classList.remove('opacity-100','translate-y-0','sm:scale-100');
+            document.getElementById('modalSchedule'+id).style.transitionTimingFunction = "ease-in";
+            document.getElementById('modalSchedule'+id).style.transitionDuration = "200ms";
+            document.getElementById('modalSchedule'+id).classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
+            document.getElementById('modalSchedule'+id).classList.add('invisible');
         }
     </script>
 
