@@ -10,15 +10,22 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Bus;
 
 class BusinessCategoryController extends Controller
 {
+    public function __construct() {
+        $this->middleware(
+            [
+                'role:admin',
+                'permission:business-category index|create business-category|store business-category|edit business-category|update business-category|destroy business-category'
+            ]
+        );
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function index()
     {
@@ -30,7 +37,6 @@ class BusinessCategoryController extends Controller
      * Show the form for creating a new resource.
      *
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function create()
     {
@@ -42,7 +48,6 @@ class BusinessCategoryController extends Controller
      *
      * @param Request $request
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -72,7 +77,6 @@ class BusinessCategoryController extends Controller
      *
      * @param BusinessCategory $businessCategory
      * @return Application|Factory|View
-     * @throws AuthorizationException
      */
     public function edit(BusinessCategory $businessCategory)
     {
@@ -84,8 +88,7 @@ class BusinessCategoryController extends Controller
      *
      * @param Request $request
      * @param BusinessCategory $businessCategory
-     * @return Response
-     * @throws AuthorizationException
+     * @return RedirectResponse
      */
     public function update(Request $request, BusinessCategory $businessCategory): RedirectResponse
     {
@@ -99,7 +102,6 @@ class BusinessCategoryController extends Controller
      *
      * @param BusinessCategory $businessCategory
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function destroy(BusinessCategory $businessCategory): RedirectResponse
     {

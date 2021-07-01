@@ -11,25 +11,25 @@
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
                         <div class="items-center">
-                            <form action="{{route('business-categories.store')}}" method="POST">
-                                @method('POST')
-                                @csrf
-                                <div class="pt-2 justify-center">
-                                    <x-label class="font-semibold text-xl w-full" for="email" :value="__('Enter New Business Category')"></x-label>
+                            @can('store business-category')
+                                <form action="{{route('business-categories.store')}}" method="POST">
+                                    @method('POST')
+                                    @csrf
+                                    <div class="pt-2 justify-center">
+                                        <x-label class="font-semibold text-xl w-full" for="email" :value="__('Enter New Business Category')"></x-label>
 
-                                    <x-input id="name" class="w-full" type="text"
-                                             name="name" placeholder="Input New Category" required
-                                             autofocus></x-input>
-                                </div>
+                                        <x-input id="name" class="w-full" type="text"
+                                                 name="name" placeholder="Input New Category" required
+                                                 autofocus></x-input>
+                                    </div>
 
-                                @can('create',\App\Models\BusinessCategory::class)
                                     <div class="my-4 flex items-center justify-end">
                                         <x-button>
                                             {{ __('Submit') }}
                                         </x-button>
                                     </div>
-                                @endcan
-                            </form>
+                                </form>
+                            @endcan
                         </div>
                     </div>
                 </div>

@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                             </li>
-                            @if(Auth::user()->job == 'admin')
+                            @role('admin')
                                 <li class="flex w-full justify-between text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex">
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            @endif
+                            @endrole
                             <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                 <div class="flex items-center">
                                     <div class="sm:flex sm:items-center">
@@ -63,30 +63,29 @@
                                             </x-slot>
 
                                             <x-slot name="content">
-                                                @if(Auth::user()->job == 'admin')
+                                                @role('admin')
                                                     <x-dropdown-link :href="route('destinations.index')">
                                                         {{ __('Destination List') }}
                                                     </x-dropdown-link>
-                                                    @can('viewAny',\App\Models\BusinessCategory::class)
-                                                        <x-dropdown-link href="{{route('business-categories.index')}}">
-                                                            {{ __('Business Categories') }}
-                                                        </x-dropdown-link>
-                                                    @endcan
-                                                @elseif(Auth::user()->job == 'employee')
+                                                    <x-dropdown-link href="{{route('business-categories.index')}}">
+                                                        {{ __('Business Categories') }}
+                                                    </x-dropdown-link>
+                                                @endrole
+                                                @role('employee')
                                                     <x-dropdown-link :href="route('mobile.destinations.index')">
                                                         {{ __('Destination List') }}
                                                     </x-dropdown-link>
                                                     <x-dropdown-link :href="route('goals.index')">
                                                         {{ __('Task List') }}
                                                     </x-dropdown-link>
-                                                @endif
+                                                @endrole
                                             </x-slot>
                                         </x-dropdown>
                                     </div>
                                 </div>
                             </li>
 
-                            @if(Auth::user()->job == 'admin')
+                            @role('admin')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="sm:flex sm:items-center">
@@ -143,7 +142,8 @@
                                         </div>
                                     </div>
                                 </li>
-                            @elseif(Auth::user()->job == 'employee')
+                            @endrole
+                            @can('mobile goal history')
                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mb-6">
                                     <div class="flex items-center">
                                         <div class="space-x-8 sm:-my-px sm:flex">
@@ -153,7 +153,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            @endif
+                            @endcan
                         </ul>
                     </div>
                 </div>
@@ -181,11 +181,29 @@
                                         <div class="rounded-full">
                                             <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden md:mt-14">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
-                                                    <form method="GET" action="{{ route('users.show') }}">
-                                                        @csrf
-                                                        <x-dropdown-link :href="route('users.show')"
-                                                                onclick="event.preventDefault();
-                                                                            this.closest('form').submit();">
+                                                    @role('admin')
+                                                        <form method="GET" action="{{ route('users.show') }}">
+                                                            @csrf
+                                                            <x-dropdown-link :href="route('users.show')"
+                                                                    onclick="event.preventDefault();
+                                                                                this.closest('form').submit();">
+                                                                    <div class="flex items-center">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                            <path stroke="none" d="M0 0h24v24H0z" />
+                                                                            <circle cx="12" cy="7" r="4" />
+                                                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                                        </svg>
+                                                                        <span class="text-sm ml-2">My Profile</span>
+                                                                    </div>
+                                                            </x-dropdown-link>
+                                                        </form>
+                                                    @endrole
+                                                    @role('employee')
+                                                        <form method="GET" action="{{ route('mobile.users.show') }}">
+                                                            @csrf
+                                                            <x-dropdown-link :href="route('mobile.users.show')"
+                                                                             onclick="event.preventDefault();
+                                                                                    this.closest('form').submit();">
                                                                 <div class="flex items-center">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                                         <path stroke="none" d="M0 0h24v24H0z" />
@@ -194,8 +212,9 @@
                                                                     </svg>
                                                                     <span class="text-sm ml-2">My Profile</span>
                                                                 </div>
-                                                        </x-dropdown-link>
-                                                    </form>
+                                                            </x-dropdown-link>
+                                                        </form>
+                                                    @endrole
                                                 </li>
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center mt-2">
                                                     <form method="POST" action="{{ route('logout') }}">
@@ -216,7 +235,7 @@
                                                 </li>
                                             </ul>
                                             <div class="relative md:block">
-                                                @if(Auth::user()->image == null)
+                                                @if(is_null(Auth::user()->image))
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url('/img/Profile.png')}}" alt="display avatar" role="img" />
                                                 @else
                                                     <img class="rounded-full h-10 w-10 object-cover" src="{{url('storage/'.Auth::user()->image)}}" alt="display avatar" role="img" />
@@ -235,3 +254,8 @@
                             </div>
                         </div>
                     </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

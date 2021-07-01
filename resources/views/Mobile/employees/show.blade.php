@@ -30,7 +30,7 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                         </div>
-                        <a class="float-right mr-5" href="{{route('employees.edit',['employee'=>$details->employee->id])}}">
+                        <a class="float-right mr-5" href="{{route('mobile.users.edit',['employee'=>$details->employee->id])}}">
                             <x-button type="submit">
                                 Edit
                             </x-button>

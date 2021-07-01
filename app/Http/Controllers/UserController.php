@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Goal;
-use App\Models\Role;
 use App\Models\Section;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
@@ -27,6 +26,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = Auth::user()->name;
+        $user->hasPermissionTo('user index');
+
         // $uvdusers = User::query()->where('status','=','Unverified')->where('role','=',2)->orderBy('created_at')->get();
         $uvdusers = User::query()->where('status','=','Unverified')->where('job','=','employee')->orderBy('created_at')->get();
         $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();

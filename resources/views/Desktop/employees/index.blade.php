@@ -23,17 +23,24 @@
                                             <h6 class="font-bold text-2xl">{{ $list->user->name }}</h6>
                                         </div>
                                         <div class="text-md">
-                                            <h3>{{ $list->section->section_name }}</h3>
+                                            @if($list->section_id == null)
+                                                <h3>employee</h3>
+                                            @else
+                                                <h3>{{ $list->section->section_name }}</h3>
+                                            @endif
                                         </div>
                                         <div class="text-sm">
                                             <h2>{{ $list->user->address }}</h2>
                                         </div>
                                     </div>
-                                    <div class="ml-5">
-                                        <a href="{{ route('employees.show',['employee'=>$list->id]) }}">
-                                            <x-button>Detail</x-button>
-                                        </a>
-                                    </div>
+
+                                    @can('show employee')
+                                        <div class="ml-5">
+                                            <a href="{{ route('employees.show',['employee'=>$list->id]) }}">
+                                                <x-button>Detail</x-button>
+                                            </a>
+                                        </div>
+                                    @endcan
                                 </li>
                             </ul>
                         </div>
