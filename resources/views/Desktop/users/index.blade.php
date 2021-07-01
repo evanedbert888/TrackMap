@@ -160,6 +160,7 @@
                                                 <td>
                                                     <select name="role" id="role{{$user->id}}" class="rounded-md role" disabled>
                                                         <option class="hidden"></option>
+                                                        <option value="admin">admin</option>
                                                         @foreach ($sections as $section)
                                                             <option value="{{ $section->id }}">{{ $section->section_name }}</option>
                                                         @endforeach
@@ -176,6 +177,9 @@
                             </div>
                         @else
 
+                        @endif
+                        @if (count($vdusers) == 0 && count($uvdusers) == 0)
+                            <p class="font-bold text-center text-2xl">Employees are empty</p>
                         @endif
                         @if (count($vdusers) > 0)
                             <div class="verified">

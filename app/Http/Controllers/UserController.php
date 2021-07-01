@@ -27,9 +27,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $uvdusers = User::query()->where('status','=','Unverified')->where('role','=',2)->orderBy('created_at')->get();
-        $uvdusers = User::query()->where('status','=','Unverified')->where('job','=','employee')->orderBy('created_at')->get();
-        $vdusers = User::query()->where('status','=','Verified')->orderBy('updated_at')->get();
+        // $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
+        $uvdusers = User::query()->where('status','=','Unverified')->orderBy('created_at')->get();
+        $vdusers = User::query()->where('status','=','Verified')->where('job','=','employee')->orderBy('updated_at')->get();
         $sections = Section::all();
         return view('Desktop.users.index', ['uvdusers'=>$uvdusers, 'vdusers'=>$vdusers, 'sections'=>$sections]);
     }
@@ -215,7 +215,13 @@ class UserController extends Controller
         for ($i=0; $i < count($jobs); $i++) {
             $id = $ids[$i];
             $job = $jobs[$i];
-            $query = Employee::query()->where('user_id','=',$id)->update(['section_id'=>$job]);
+            if ($job == "admin"){
+                User::query()->where('id','=',$id)->update(['job'=>'admin']);
+                Employee::where('user_id','=',$id)->delete();
+            }
+            else {
+                Employee::query()->where('user_id','=',$id)->update(['section_id'=>$job]);
+            }
         }
         return response()->json();
     }

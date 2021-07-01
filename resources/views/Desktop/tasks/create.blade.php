@@ -270,10 +270,9 @@
                 data = data + "<td class='text-left'>"+value.destination_name+"</td>";
                 data = data + "<td>";
                 data = data + "<button type='button' value='"+value.id+"' onclick='showScheduleModal(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
-                data = data + "<div class='fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modalSchedule"+value.id+"'>";
+                data = data + "<div class='fixed z-30 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modalSchedule"+value.id+"'>";
                 data = data + "<div class='flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>";
                 data = data + "<div class='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' aria-hidden='true' onclick='hiddenScheduleModal("+value.id+")'></div>";
-                data = data + "<span class='hidden sm:inline-block sm:align-middle sm:h-screen' aria-hidden='true'>&#8203;</span>";
                 data = data + "<div class='inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full'>";
                 data = data + "<div class='sm:flex sm:items-start'>";
                 data = data + "<div class='mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left'>";
@@ -555,7 +554,7 @@
             <!-- This element is to trick the browser into centering the modal contents. -->
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-y shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pt-0 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">
