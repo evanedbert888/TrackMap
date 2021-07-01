@@ -16,6 +16,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -224,6 +225,8 @@ class UserController extends Controller
             if ($job == "admin"){
                 User::query()->where('id','=',$id)->update(['job'=>'admin']);
                 Employee::where('user_id','=',$id)->delete();
+                user::query()->find($id)->removeRole('employee');
+                user::query()->find($id)->assignRole('admin');
             }
             else {
                 Employee::query()->where('user_id','=',$id)->update(['section_id'=>$job]);

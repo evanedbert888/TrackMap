@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
-use phpDocumentor\Reflection\Types\Null_;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -94,6 +94,8 @@ class RegisteredUserController extends Controller
         $employee = new Employee();
         $employee->user_id = $new_user->id;
         $employee->save();
+
+        $user->assignRole('employee');
 
         Auth::login($user);
 
