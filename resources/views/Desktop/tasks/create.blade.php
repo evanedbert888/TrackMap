@@ -74,7 +74,7 @@
             document.getElementById('showEmployee').classList.remove("hidden");
             var employee = document.getElementById('employee').value;
             var splitedEmployee = employee.split(",");
-            var url = '{{ asset("/storage") }}'+'/'+splitedEmployee[2];
+            var url = '{{asset('')}}' + splitedEmployee[2];
             document.getElementById('employeeName').textContent = splitedEmployee[1];
             document.getElementById("employeeImage").src = url;
             checkToEnableAddButton();
@@ -84,7 +84,7 @@
             document.getElementById('showDestination').classList.remove("hidden");
             var destination = document.getElementById('destination').value;
             var splitedDestination = destination.split(",");
-            var url = '{{ asset("/storage") }}'+'/'+splitedDestination[2];
+            var url = '{{ asset("") }}' + splitedDestination[2];
             document.getElementById('destinationName').textContent = splitedDestination[1];
             document.getElementById("destinationImage").src = url;
             checkToEnableAddButton();
@@ -498,7 +498,7 @@
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showEmployee">
                                     <div class="flex justify-center items-center p-0">
-                                        <img id="employeeImage" class="inline-block h-16 w-16" src="{{URL::to('/img/Profile.png')}}" alt="">
+                                        <img id="employeeImage" class="inline-block h-16 w-16" alt="">
                                         <div>
                                             <p class="ml-4" id="employeeName"></p>
                                         </div>
@@ -508,7 +508,7 @@
                             <div class="flex w-1/2 justify-center">
                                 <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showDestination">
                                     <div class="flex justify-center items-center p-0">
-                                        <img id="destinationImage" class="inline-block h-16 w-16" src="{{URL::to('/img/company.png')}}" alt="">
+                                        <img id="destinationImage" class="inline-block h-16 w-16" alt="">
                                         <div>
                                             <p class="ml-4" id="destinationName"></p>
                                         </div>
@@ -530,12 +530,12 @@
                         <div class="flex mx-auto justify-center mt-5">
                             <table class="w-full table-auto">
                                 <thead>
-                                <tr class="text-center text-lg">
-                                    <th> No </th>
-                                    <th class="text-left"> Employee Name </th>
-                                    <th class="text-left"> Destination Name </th>
-                                    <th> Action </th>
-                                </tr>
+                                    <tr class="text-center text-lg">
+                                        <th> No </th>
+                                        <th class="text-left"> Employee Name </th>
+                                        <th class="text-left"> Destination Name </th>
+                                        <th> Action </th>
+                                    </tr>
                                 </thead>
                                 <tbody class="text-center" id="tableTask"></tbody>
                             </table>
@@ -571,7 +571,7 @@
                                     Schedule
                                 </h3>
                                 <div class="w-full flex justify-end">
-                                    <x-input-search id="search" onkeyup="searchDestination(this.value)" class="search block w-1/2" name="search"/>
+                                    <x-input-search id="search" onkeyup="searchDestination(this.value)" class="search block w-1/2" name="search"></x-input-search>
                                 </div>
                             </div>
                             <div class="mt-3 w-full inline-flex items-center">
