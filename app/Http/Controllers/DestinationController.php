@@ -149,7 +149,7 @@ class DestinationController extends Controller
 
             $image_name = $request->file('image')->getClientOriginalName();
             $new_image_name = 'destination/'.$folder.'/'.$destination->id.'-'.time().'-'.$image_name;
-            $img_name = $new_image_name;
+            $img_name = 'storage/'.$new_image_name;
 
             $request->image->storeAs('public',$img_name);
             asset('public/'.$new_image_name);
