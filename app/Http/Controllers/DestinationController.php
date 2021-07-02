@@ -94,8 +94,6 @@ class DestinationController extends Controller
      */
     public function show(Destination $destination)
     {
-        // if (Auth::user()->job == 1) {
-        //     return view('Desktop.destinations.show',['details'=>$destination]);
         if (Auth::user()->hasPermissionTo('show destination')) {
             return view('Desktop.destinations.show',['details'=>$destination]);
         } elseif (Auth::user()->hasPermissionTo('mobile show destination')) {
@@ -144,19 +142,19 @@ class DestinationController extends Controller
         $img_name = Destination::query()->where('id','=',$destination->id)->pluck('image');
 
         if ($request->hasFile('image')) {
-            $folder = 'destinations'.$destination->id;
-            if(File::exists('storage/destinations/'.$folder)){
-                File::cleanDirectory('storage/destinations/'.$folder);
+            $folder = 'destination'.$destination->id;
+            if(File::exists('storage/destination/'.$folder)){
+                File::cleanDirectory('storage/destination/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
-            $new_image_name = 'destinations/'.$folder.'/'.$destination->id.'-'.time().'-'.$image_name;
+            $new_image_name = 'destination/'.$folder.'/'.$destination->id.'-'.time().'-'.$image_name;
             $img_name = $new_image_name;
 
             $request->image->storeAs('public',$img_name);
             asset('public/'.$new_image_name);
         } else {
-            $img_name = null;
+            $img_name = '/img/company.png';
         }
 
         $split = explode(",", $request->coordinate);
@@ -187,6 +185,11 @@ class DestinationController extends Controller
     public function destroy(Destination $destination): RedirectResponse
     {
         $destination->delete();
+        $folder = 'destinations'.$destination->id;
+        if(File::exists('storage/destination/'.$folder)){
+            File::cleanDirectory('storage/destination/'.$folder);
+            File::deleteDirectory('storage/destination/'.$folder);
+        }
         return redirect()->route('destinations.index');
     }
 }

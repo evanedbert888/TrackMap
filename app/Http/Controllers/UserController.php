@@ -128,7 +128,7 @@ class UserController extends Controller
             $request->image->storeAs('public',$img_name);
             asset('public/'.$new_image_name);
         } else {
-            $img_name = null;
+            $img_name = '/img/Profile.png';
         }
 
         $date = $request->birth_date;
