@@ -30,12 +30,13 @@ class RolesAndPermissionsSeeder extends Seeder
         // List of Permissions
         $permissionsForAdmin = [
             'user index', 'show user', 'edit user', 'update user', 'destroy user', // users
-            'task index', 'create task', 'store task', 'destroy task', // tasks
+            'task index', 'create task', 'store task', 'destroy task', 'show employee role', 'show destination business-category', // tasks
             'employee index', 'show employee', 'edit employee', 'update employee', // employees
             'destination index', 'create destination', 'store destination', 'show destination', 'edit destination', 'update destination', 'destroy destination', // destinations
             'registered-email index', 'create registered-email', 'store registered-email', // registered-emails
             'business-category index', 'create business-category', 'store business-category', 'edit business-category', 'update business-category', 'destroy business-category', // business-categories
-            'schedule index', 'store schedule', 'destroy schedule' // schedules
+            'schedule index', 'store schedule', 'destroy schedule', // schedules
+
         ];
 
         $permissionsForEmployee = [

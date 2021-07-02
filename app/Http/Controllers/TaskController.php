@@ -27,7 +27,7 @@ class TaskController extends Controller
         $this->middleware('auth');
         $this->middleware([
             'role:admin',
-            'permission:task index|create task|store task|destroy task'
+            'permission:task index|create task|store task|destroy task|show employee role|show destination business-category'
         ]);
     }
 
