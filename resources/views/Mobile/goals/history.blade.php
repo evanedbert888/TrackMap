@@ -21,7 +21,7 @@
                             @endphp
                             @foreach($histories as $history)
                                 <div class="flex w-full items-center px-2">
-                                    <img class="rounded-full w-16" src="https://cdn.iconscout.com/icon/free/png-256/people-1659484-1410006.png" alt="image">
+                                    <img class="rounded-full w-16" src="{{url($history->destination->image)}}" alt="image">
                                     <div class="ml-3 text-sm text-semibold text-gray-800 text-left">
                                         <p class="font-bold text-base">{{$history->destination->destination_name}}</p>
                                         <p>{{$history->destination->businessCategories->name}}</p>

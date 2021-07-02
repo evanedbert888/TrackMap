@@ -10,10 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-60 w-full object-top bg-no-repeat" style="background-image: url('{{ URL::to('/img/blue-copy-space-digital-background_23-2148821698.jpg') }}')">
                     <div class="flex container justify-center items-start">
-                        @if($details->image == null)
-                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{URL::to('/img/Profile.png')}}">
-                        @else
-                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{url('storage/'.$details->image)}}">
+                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{url($details->image)}}">
                         @endif
                     </div>
                 </div>

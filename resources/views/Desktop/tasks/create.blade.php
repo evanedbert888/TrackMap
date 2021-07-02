@@ -444,33 +444,39 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
-                        <div class="w-full flex justify-end">
-                            <x-editbutton onclick="showModal()">Schedule</x-editbutton>
-                        </div>
+                        @can('schedule index')
+                            <div class="w-full flex justify-end">
+                                <x-editbutton onclick="showModal()">Schedule</x-editbutton>
+                            </div>
+                        @endcan
                         <h1 class="text-2xl font-bold">Employee & Destination</h1>
                         <div class="border border-black border-5 border-b rounded rounded-full h-1 bg-black"></div>
                         <!-- Category -->
                         <div class="flex mx-auto justify-center mt-5">
-                            <div class="mx-auto mb-2 font-bold">
-                                <form>
-                                    <p class="text-lg"> Employee's Role </p>
-                                    <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
+                            @can('show employee role')
+                                <div class="mx-auto mb-2 font-bold">
+                                    <form>
+                                        <p class="text-lg"> Employee's Role </p>
+                                        <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
+                                            <option class="hidden"></option>
+                                            @foreach ($sections as $section)
+                                                <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
+                            @endcan
+                            @can('show destination business-category')
+                                <div class="mx-auto mb-2 font-bold">
+                                    <p class="text-lg"> Destination's Business </p>
+                                    <select name="business" id="business" class="w-80 block mt-1 rounded-md" onchange="showDestinations()">
                                         <option class="hidden"></option>
-                                        @foreach ($sections as $section)
-                                            <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                        @foreach ($businesses as $business)
+                                            <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
                                         @endforeach
                                     </select>
-                                </form>
-                            </div>
-                            <div class="mx-auto mb-2 font-bold">
-                                <p class="text-lg"> Destination's Business </p>
-                                <select name="business" id="business" class="w-80 block mt-1 rounded-md" onchange="showDestinations()">
-                                    <option class="hidden"></option>
-                                    @foreach ($businesses as $business)
-                                        <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                </div>
+                            @endcan
                         </div>
                         <!-- Employee's and Destination's Name -->
                         <div class="flex w-full">

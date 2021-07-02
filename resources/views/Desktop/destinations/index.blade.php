@@ -38,11 +38,7 @@
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
                                 <ul>
                                     <li class="flex">
-                                        @if($list->image == null)
-                                            <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{URL::to('/img/company.png')}}">
-                                        @else
-                                            <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{url('storage/'.$list->image)}}">
-                                        @endif
+                                        <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{url($list->image)}}">
                                         <div class="w-full ml-5 mt-3">
                                             <div>
                                                 <h6 class="font-bold text-2xl">{{ $list->destination_name }}</h6>

@@ -10,11 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-60 w-full object-top bg-no-repeat" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
                     <div class="flex container justify-center items-start">
-                        @if($details->user->image == null)
-                            <img class="inline-block h-48 w-48 rounded-full ring-2 ring white object-cover mt-32" src="{{URL::to('/img/Profile.png')}}">
-                        @else
-                            <img class="inline-block h-48 w-48 rounded-full ring-2 ring white object-cover mt-32" src="{{url('storage/'.$details->user->image)}}">
-                        @endif
+                        <img class="inline-block h-48 w-48 rounded-full ring-2 ring white object-cover mt-32" src="{{url($details->user->image)}}">
                     </div>
                 </div>
                 <div class="px-6 pt-5 bg-white border-b border-gray-200 mt-20">
