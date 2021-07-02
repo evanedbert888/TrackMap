@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('status')->default('Unverified');
             $table->date('birth_date');
             $table->string('address');
-            $table->string('image')->nullable();
+            $table->string('image')->default('/img/Profile.png');
             $table->timestamps();
         });
     }
