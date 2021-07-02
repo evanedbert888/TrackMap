@@ -143,18 +143,17 @@ class DestinationController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'destination'.$destination->id;
-            if(File::exists('storage/destination/'.$folder)){
-                File::cleanDirectory('storage/destination/'.$folder);
+            if(File::exists('destination/'.$folder)){
+                File::cleanDirectory('destination/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
             $new_image_name = 'destination/'.$folder.'/'.$destination->id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public',$img_name);
-            asset('public/'.$new_image_name);
+            $request->image->storeAs('public',$new_image_name);
         } else {
-            $img_name = '/img/company.png';
+            $img_name = $destination->image;
         }
 
         $split = explode(",", $request->coordinate);
@@ -185,10 +184,10 @@ class DestinationController extends Controller
     public function destroy(Destination $destination): RedirectResponse
     {
         $destination->delete();
-        $folder = 'destinations'.$destination->id;
-        if(File::exists('storage/destination/'.$folder)){
-            File::cleanDirectory('storage/destination/'.$folder);
-            File::deleteDirectory('storage/destination/'.$folder);
+        $folder = 'destination'.$destination->id;
+        if(File::exists('destination/'.$folder)){
+            File::cleanDirectory('destination/'.$folder);
+            File::deleteDirectory('destination/'.$folder);
         }
         return redirect()->route('destinations.index');
     }

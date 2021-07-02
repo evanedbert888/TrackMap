@@ -22,26 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix delete schedule and users">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="modify default value for image column">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisteredUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisteredUserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,56 +320,8 @@
       <workItem from="1625025660745" duration="1436000" />
       <workItem from="1625041212125" duration="4846000" />
       <workItem from="1625058030630" duration="8645000" />
-      <workItem from="1625109884504" duration="18577000" />
-    </task>
-    <task id="LOCAL-00001" summary="new updates">
-      <created>1621331100593</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1621331100593</updated>
-    </task>
-    <task id="LOCAL-00002" summary="merge conflicts">
-      <created>1621412830078</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1621412830078</updated>
-    </task>
-    <task id="LOCAL-00003" summary="new updates">
-      <created>1621503201230</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1621503201230</updated>
-    </task>
-    <task id="LOCAL-00004" summary="new updates">
-      <created>1621659918374</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1621659918374</updated>
-    </task>
-    <task id="LOCAL-00005" summary="new updates on mobile">
-      <created>1622203065180</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1622203065180</updated>
-    </task>
-    <task id="LOCAL-00006" summary="new updates on mobile">
-      <created>1622203111861</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1622203111861</updated>
-    </task>
-    <task id="LOCAL-00007" summary="commit updates">
-      <created>1622444125953</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1622444125953</updated>
+      <workItem from="1625109884504" duration="19841000" />
+      <workItem from="1625198291962" duration="9690000" />
     </task>
     <task id="LOCAL-00008" summary="new updates">
       <created>1622788812884</created>
@@ -656,7 +596,77 @@
       <option name="project" value="LOCAL" />
       <updated>1625125319647</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="add assign role to users">
+      <created>1625129562250</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1625129562250</updated>
+    </task>
+    <task id="LOCAL-00048" summary="add can directives to view blade">
+      <created>1625129596115</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1625129596115</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fix error in construct function">
+      <created>1625129616287</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1625129616287</updated>
+    </task>
+    <task id="LOCAL-00050" summary="set default image in migration tables">
+      <created>1625204818359</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1625204818359</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fix image name in update function">
+      <created>1625205225714</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1625205225714</updated>
+    </task>
+    <task id="LOCAL-00052" summary="add new permissions">
+      <created>1625205240197</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1625205240197</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fix image name in update function">
+      <created>1625205416195</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1625205416195</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fix image routes">
+      <created>1625207788109</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1625207788109</updated>
+    </task>
+    <task id="LOCAL-00055" summary="fix image routes for task pairing">
+      <created>1625209965088</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1625209965088</updated>
+    </task>
+    <task id="LOCAL-00056" summary="modify default value for image column">
+      <created>1625209993316</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1625209993316</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,15 +685,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit updates" />
-    <MESSAGE value="new updates" />
-    <MESSAGE value="new commit" />
-    <MESSAGE value="mobile view update" />
-    <MESSAGE value="new changes" />
-    <MESSAGE value="fix routes &amp; new schedule table" />
-    <MESSAGE value="make modal for confirmation and fix routes" />
-    <MESSAGE value="new policies are added" />
-    <MESSAGE value="new changes are made" />
     <MESSAGE value="fix delete route in users.index" />
     <MESSAGE value="modify new policy of business category" />
     <MESSAGE value="add new middleware for admin" />
@@ -700,6 +701,15 @@
     <MESSAGE value="accept team's update and modal" />
     <MESSAGE value="apply construct function for spatie permission" />
     <MESSAGE value="fix delete schedule and users" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix delete schedule and users" />
+    <MESSAGE value="add assign role to users" />
+    <MESSAGE value="add can directives to view blade" />
+    <MESSAGE value="fix error in construct function" />
+    <MESSAGE value="set default image in migration tables" />
+    <MESSAGE value="add new permissions" />
+    <MESSAGE value="fix image name in update function" />
+    <MESSAGE value="fix image routes" />
+    <MESSAGE value="fix image routes for task pairing" />
+    <MESSAGE value="modify default value for image column" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify default value for image column" />
   </component>
 </project>

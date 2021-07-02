@@ -108,18 +108,17 @@ class EmployeeController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'employee'.$employee->id;
-            if(File::exists('storage/employee/'.$folder)){
-                File::cleanDirectory('storage/employee/'.$folder);
+            if(File::exists('employee/'.$folder)){
+                File::cleanDirectory('employee/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
             $new_image_name = 'employee/'.$folder.'/'.$employee->id.'-'.time().'-'.$image_name;
-            $img_name = $new_image_name;
+            $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public',$img_name);
-            asset('public/'.$new_image_name);
+            $request->image->storeAs('public/',$new_image_name);
         } else {
-            $img_name = null;
+            $img_name = $employee->image;
         }
 
         $date = $request->birth_date;

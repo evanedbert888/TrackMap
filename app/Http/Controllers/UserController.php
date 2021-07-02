@@ -117,18 +117,17 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'admin'.$id;
-            if(File::exists('storage/admin/'.$folder)){
-                File::cleanDirectory('storage/admin/'.$folder);
+            if(File::exists('admin/'.$folder)){
+                File::cleanDirectory('admin/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
             $new_image_name = 'admin/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public',$img_name);
-            asset('public/'.$new_image_name);
+            $request->image->storeAs('public/',$new_image_name);
         } else {
-            $img_name = '/img/Profile.png';
+            $img_name = Auth::User()->image;
         }
 
         $date = $request->birth_date;
@@ -177,9 +176,9 @@ class UserController extends Controller
         Employee::destroy($employee_id);
 
         $folder = 'employee'.$employee_id;
-        if(File::exists('storage/employee/'.$folder)){
-            File::cleanDirectory('storage/employee/'.$folder);
-            File::deleteDirectory('storage/employee/'.$folder);
+        if(File::exists('employee/'.$folder)){
+            File::cleanDirectory('employee/'.$folder);
+            File::deleteDirectory('employee/'.$folder);
         }
         echo "A user has been deleted";
         return redirect()->route('users.index');
