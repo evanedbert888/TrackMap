@@ -37,8 +37,8 @@
     var places = [];
 
     function pushArray(data) {
-        $.each(data, function(key,value) {    
-            places.push({ 
+        $.each(data, function(key,value) {
+            places.push({
                 id: value.id,
                 address: value.address,
                 company: value.destination_name,
@@ -48,7 +48,7 @@
             });
         })
 
-        var role = '{{ Auth::user()->role }}';
+        var role = '{{ Auth::user()->job }}';
 
         require([
             "esri/config",
@@ -204,7 +204,7 @@
                     ]
                 });
             }
-            map.layers.add(featureLayer); 
+            map.layers.add(featureLayer);
         });
     }
 </script>
