@@ -102,18 +102,14 @@ class GoalController extends Controller
             ->where('status','=','unfinished')
             ->pluck('id');
 
-        if ($value === true) {
-            $goal = new Goal();
-            $goal->updateById($goal_id, array(
-                "latitude" => $request->latitude,
-                "longitude" => $request->longitude,
-                "status" => 'finished',
-                "updated_at" => date(now()),
-            ));
-            return redirect()->route('goals.index');
-        } else {
-            return redirect()->route('mobile.destinations.show',['destination'=>$request->id]);
-        }
+        $goal = new Goal();
+        $goal->updateById($goal_id, array(
+            "latitude" => $request->latitude,
+            "longitude" => $request->longitude,
+            "status" => 'finished',
+            "updated_at" => date(now()),
+        ));
+        return redirect()->route('goals.index');
     }
 
     /**

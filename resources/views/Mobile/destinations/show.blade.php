@@ -28,7 +28,7 @@
                                 <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
                                 <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
                                 <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
-                                    <x-button type="submit">
+                                    <x-button id="checkin" type="submit" disabled>
                                         Check-In
                                     </x-button>
                                 </div>
@@ -226,9 +226,11 @@
             if (result.distance > THRESHOLD_DISTANCE) {
                 check = false
                 console.log("Outside the point");
+                document.getElementById('checkin').disabled = true;
             } else {
                 check = true
                 console.log("Inside the point");
+                document.getElementById('checkin').disabled = false;
             }
             document.querySelector('#check').setAttribute('value',check)
         }

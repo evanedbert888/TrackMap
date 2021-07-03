@@ -65,11 +65,6 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="mx-5 mt-5 bg-blue-400 h-96 flex flex-wrap content-center">
-                                    <div class="w-full">
-                                        <p class="text-center">SHOW MAP</p>
-                                    </div>
-                                </div>
                             </div>
                             <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
                                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

@@ -48,7 +48,7 @@
             });
         })
 
-        var role = '{{ Auth::user()->role }}';
+        var role = '{{ Auth::user()->job }}';
 
         require([
             "esri/config",
