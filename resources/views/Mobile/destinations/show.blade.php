@@ -20,6 +20,7 @@
                                 @method('PATCH')
                                 @csrf
                                 <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
+                                <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
                                 <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
                                 <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
                                 <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
@@ -39,6 +40,11 @@
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
                             </div>
+
+                            @if(session('fail'))
+                                <x-div-session class="bg-red-400">{{session('fail')}}</x-div-session>
+                            @endif
+
                         </div>
                         <div class="mx-2 mt-3 md:mt-8 md:mx-5">
                             <p class="font-bold text-xl">Detail</p>

@@ -102,7 +102,7 @@ class GoalController extends Controller
             ->where('status','=','unfinished')
             ->pluck('id');
 
-        if ($value === true) {
+        if ($value == true) {
             $goal = new Goal();
             $goal->updateById($goal_id, array(
                 "latitude" => $request->latitude,
@@ -110,9 +110,9 @@ class GoalController extends Controller
                 "status" => 'finished',
                 "updated_at" => date(now()),
             ));
-            return redirect()->route('goals.index');
-        } else {
-            return redirect()->route('mobile.destinations.show',['destination'=>$request->id]);
+            return redirect()->route('goals.index')->with('success',"Your task [$request->name] is completed");
+        } elseif($value == false) {
+            return redirect()->route('mobile.destinations.show',['destination'=>$request->id])->with('fail','Out of range,try to get closer!');
         }
     }
 
