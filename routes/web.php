@@ -142,4 +142,3 @@ Route::group(['middleware' => ['role:employee']], function () {
         });
     });
 });
-

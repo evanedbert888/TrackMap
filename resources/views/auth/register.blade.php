@@ -67,8 +67,10 @@
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation" oninput="checkPassword()" required />
             </div>
+
+            <p id="message" class="text-md font-medium"></p>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
@@ -81,4 +83,21 @@
             </div>
         </form>
     </x-auth-card>
+
+    <script>
+        function checkPassword() {
+            let password = document.getElementById('password').value;
+            let confirmPassword = document.getElementById('password_confirmation').value;
+            let result = 0;
+
+            if (password === confirmPassword && confirmPassword.length > 0) {
+                document.getElementById("message").innerHTML = "Ok! You are good to go";
+                result += 1;
+            } else {
+                document.getElementById("message").innerHTML = "Info! Your password doesn't match";
+            }
+
+
+        }
+    </script>
 </x-guest-layout>

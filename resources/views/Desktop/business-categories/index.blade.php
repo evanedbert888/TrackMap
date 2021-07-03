@@ -9,6 +9,15 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
+
+                    @if(session('create'))
+                        <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                    @elseif(session('delete'))
+                        <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
+                    @elseif(session('update'))
+                        <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                    @endif
+
                     <div class="w-full">
                         <h1 class="text-2xl font-bold">Business Categories</h1>
                         <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>

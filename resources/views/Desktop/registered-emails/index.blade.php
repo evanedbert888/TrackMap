@@ -10,6 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
+
+                        @if(session('create'))
+                            <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                        @endif
+
                         @if (count($registers) > 0)
                             <h1 class="text-2xl font-bold">List of Registers</h1>
                             <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>

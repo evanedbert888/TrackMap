@@ -151,7 +151,7 @@
             })
 
             function coordinateFormat(input) {
-                return input.toFixed(5);
+                return input.toFixed(9);
             }
 
             function enterCoordinateValue(lng,lat) {

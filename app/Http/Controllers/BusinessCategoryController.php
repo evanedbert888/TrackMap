@@ -50,13 +50,13 @@ class BusinessCategoryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validateCategory = $request->validate([
-            'name' => 'required|string'
+            'name' => 'required|string|unique:business_categories'
         ]);
         $category = new BusinessCategory;
         $category->name = $validateCategory['name'];
         $category->save();
 
-        return redirect()->route('business-categories.index')->withMessage('New business category has been added');
+        return redirect()->route('business-categories.index')->with('create',"New business category [$category->name] has been added");
     }
 
     /**
@@ -90,9 +90,10 @@ class BusinessCategoryController extends Controller
      */
     public function update(Request $request, BusinessCategory $businessCategory): RedirectResponse
     {
+        $updatedName = $businessCategory->name;
         $businessCategory->update($request->all());
 
-        return redirect()->route('business-categories.index');
+        return redirect()->route('business-categories.index')->with('update',"The business category [$updatedName] has been updated into [$request->name]");
     }
 
     /**
@@ -105,6 +106,6 @@ class BusinessCategoryController extends Controller
     {
         $businessCategory->delete();
 
-        return redirect()->route('business-categories.index');
+        return redirect()->route('business-categories.index')->with('delete',"The business category [$businessCategory->name] has been deleted!");
     }
 }

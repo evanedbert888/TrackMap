@@ -26,6 +26,15 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
+
+                        @if(session('create'))
+                            <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                        @elseif(session('delete'))
+                            <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
+                        @elseif(session('update'))
+                            <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                        @endif
+
                         @can('create destination')
                             <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
                                 <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>

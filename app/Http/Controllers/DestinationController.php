@@ -83,7 +83,7 @@ class DestinationController extends Controller
         $destination->description = $validateDestination['description'];
         $destination->save();
 
-        return redirect()->route('destinations.index');
+        return redirect()->route('destinations.index')->with('create',"New destination [$request->destination_name] has been added!");
     }
 
     /**
@@ -157,8 +157,8 @@ class DestinationController extends Controller
         }
 
         $split = explode(",", $request->coordinate);
-        $latitude = $split[0];
-        $longitude = $split[1];
+        $longitude = $split[0];
+        $latitude = $split[1];
 
         $place = new Destination;
         $place->updateById($destination->id, array(
@@ -172,7 +172,7 @@ class DestinationController extends Controller
                 'description' => $validateDestination['description']
             )
         );
-        return redirect()->route('destinations.show',['destination'=>$destination]);
+        return redirect()->route('destinations.show',['destination'=>$destination])->with('This destination has been updated!');
     }
 
     /**
@@ -189,6 +189,6 @@ class DestinationController extends Controller
             File::cleanDirectory('destination/'.$folder);
             File::deleteDirectory('destination/'.$folder);
         }
-        return redirect()->route('destinations.index');
+        return redirect()->route('destinations.index')->with('delete',"The destination [$destination->destination_name] has deleted!");
     }
 }
