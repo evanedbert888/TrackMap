@@ -11,8 +11,8 @@
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
 
-                        @if(session('create'))
-                            <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                        @if(session('success'))
+                            <x-div-session class="bg-green-200">{{session('success')}}</x-div-session>
                         @endif
 
                         @if (count($registers) > 0)

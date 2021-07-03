@@ -109,7 +109,7 @@ class GoalController extends Controller
             "status" => 'finished',
             "updated_at" => date(now()),
         ));
-        return redirect()->route('goals.index');
+        return redirect()->route('goals.index')->with('success','You have finished a task!');
     }
 
     /**

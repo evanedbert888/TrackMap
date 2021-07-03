@@ -60,7 +60,7 @@ class RegisteredEmailController extends Controller
         $register->user_id = $id;
         $register->save();
 
-        return redirect()->route('registered-emails.index')->with('Success','A New Email Has Been Registered');
+        return redirect()->route('registered-emails.index')->with('success','A New Email Has Been Registered');
     }
 
     /**
