@@ -23,7 +23,6 @@
                                 <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
                                 <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
                                 <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
-                                <x-editinput type="hidden" name="check" id="check" value=""></x-editinput>
                                 <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
                                     <x-button id="checkin" type="submit" disabled>
                                         Check-In
@@ -213,7 +212,6 @@
 
         function calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat) {
             const THRESHOLD_DISTANCE = 300;
-            let check;
             const pt1 = new Point({ x: circle_lng, y: circle_lat });
             const pt2 = new Point({ x: long, y: lat});
 
@@ -226,15 +224,12 @@
             console.log(result.distance);
 
             if (result.distance > THRESHOLD_DISTANCE) {
-                check = false
                 console.log("Outside the point");
                 document.getElementById('checkin').disabled = true;
             } else {
-                check = true
                 console.log("Inside the point");
                 document.getElementById('checkin').disabled = false;
             }
-            document.querySelector('#check').setAttribute('value',check)
         }
 
         function onload() {

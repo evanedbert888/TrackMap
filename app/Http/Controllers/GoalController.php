@@ -94,7 +94,6 @@ class GoalController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $user_id = Auth::user()->id;
-        $value = $request->input('check');
 
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goal_id = Goal::query()->where('employee_id','=',$employee_id)

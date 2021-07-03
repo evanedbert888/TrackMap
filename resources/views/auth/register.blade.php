@@ -37,7 +37,7 @@
             <div class="mt-4">
                 <x-label for="sex" :value="__('Sex')" />
 
-                <select name="sex" id="sex" class="block mt-1 w-full rounded-md">
+                <select name="sex" id="sex" class="block mt-1 w-full rounded-md" required>
                     <option class="hidden"></option>
                     <option class="bg-gray-200" value="male">Male</option>
                     <option class="bg-gray-200" value="female">Female</option>
@@ -48,7 +48,7 @@
             <div class="mt-4">
                 <x-label for="address" :value="__('Address')" />
 
-                <textarea class="block mt-1 rounded-md" name="address" id="address" cols="42" rows="4"></textarea>
+                <textarea class="block mt-1 rounded-md" name="address" id="address" cols="43" rows="3" required></textarea>
             </div>
 
             <!-- Password -->
@@ -77,7 +77,7 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-button id="registerButton" type="submit" class="ml-4" disabled>
                     {{ __('Register') }}
                 </x-button>
             </div>
@@ -88,16 +88,13 @@
         function checkPassword() {
             let password = document.getElementById('password').value;
             let confirmPassword = document.getElementById('password_confirmation').value;
-            let result = 0;
 
             if (password === confirmPassword && confirmPassword.length > 0) {
                 document.getElementById("message").innerHTML = "Ok! You are good to go";
-                result += 1;
+                document.getElementById('registerButton').disabled = false;
             } else {
                 document.getElementById("message").innerHTML = "Info! Your password doesn't match";
             }
-
-
         }
     </script>
 </x-guest-layout>
