@@ -94,13 +94,14 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee): RedirectResponse
     {
-        $user_id = Employee::query()->where('id','=',$employee->id)->pluck('user_id');
-        $img_name = User::query()->where('id','=',$user_id)->pluck('image');
+        $user_id = Employee::query()->where('id','=',$employee->id)->value('user_id');
+        $img_name = User::query()->where('id','=',$user_id)->value('image');
 
         $validateEmployee = $request->validate([
             'name' => 'string|required|max:255',
             'motto' => 'string|required|max:255',
             'email' => 'string|required|max:255',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'birth_date' => 'required',
             'sex' => 'required',
             'address' => 'required'
@@ -108,8 +109,8 @@ class EmployeeController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'employee'.$employee->id;
-            if(File::exists('employee/'.$folder)){
-                File::cleanDirectory('employee/'.$folder);
+            if(File::exists('storage/employee/'.$folder)){
+                File::cleanDirectory('storage/employee/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
@@ -117,8 +118,6 @@ class EmployeeController extends Controller
             $img_name = 'storage/'.$new_image_name;
 
             $request->image->storeAs('public/',$new_image_name);
-        } else {
-            $img_name = $employee->image;
         }
 
         $date = $request->birth_date;
@@ -156,11 +155,10 @@ class EmployeeController extends Controller
         ));
 
         if (Auth::user()->hasPermissionTo('show employee')) {
-            return redirect()->route('employees.show',['employee'=>$employee]);
+            return redirect()->route('employees.show',['employee'=>$employee])->with('update','This employee detail has been updated!');
         } elseif (Auth::user()->hasPermissionTo('mobile profile')) {
-            return redirect()->route('mobile.users.show');
+            return redirect()->route('mobile.users.show')->with('update','Your profile update is success!');
         }
-
     }
 
     /**

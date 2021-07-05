@@ -54,7 +54,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -65,7 +65,6 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return Application|Factory|View
      */
     public function show()
@@ -77,17 +76,12 @@ class UserController extends Controller
         } elseif (Auth::user()->hasPermissionTo('mobile profile')) {
             return view('Mobile.employees.show',['details'=>$details]);
         }
-        // if (Auth::user()->role == 1) {
-        //     return view('Desktop.users.show',['details'=>$details]);
-        // } elseif (Auth::user()->role == 2) {
-        //     return view('Mobile.employees.show',['details'=>$details]);
-        // }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param User $user
      * @return Application|Factory|View
      */
     public function edit(User $user)
@@ -98,8 +92,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Request $request
      * @return RedirectResponse
      */
     public function update(Request $request): RedirectResponse
@@ -117,8 +110,8 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
             $folder = 'admin'.$id;
-            if(File::exists('admin/'.$folder)){
-                File::cleanDirectory('admin/'.$folder);
+            if(File::exists('storage/admin/'.$folder)){
+                File::cleanDirectory('storage/admin/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
@@ -126,8 +119,6 @@ class UserController extends Controller
             $img_name = 'storage/'.$new_image_name;
 
             $request->image->storeAs('public/',$new_image_name);
-        } else {
-            $img_name = Auth::User()->image;
         }
 
         $date = $request->birth_date;
@@ -159,7 +150,7 @@ class UserController extends Controller
             'image' => $img_name
         ));
 
-        return redirect()->route('users.show');
+        return redirect()->route('users.show')->with('update','Your profile update is success!');
     }
 
     /**
@@ -176,12 +167,11 @@ class UserController extends Controller
         Employee::destroy($employee_id);
 
         $folder = 'employee'.$employee_id;
-        if(File::exists('employee/'.$folder)){
-            File::cleanDirectory('employee/'.$folder);
-            File::deleteDirectory('employee/'.$folder);
+        if(File::exists('storage/employee/'.$folder)){
+            File::cleanDirectory('storage/employee/'.$folder);
+            File::deleteDirectory('storage/employee/'.$folder);
         }
-        echo "A user has been deleted";
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('delete',"A user has been deleted!");
     }
 
     public function dashboard(): JsonResponse

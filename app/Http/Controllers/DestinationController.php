@@ -139,12 +139,12 @@ class DestinationController extends Controller
             'description' => 'required|max:300'
         ]);
 
-        $img_name = Destination::query()->where('id','=',$destination->id)->pluck('image');
+        $img_name = Destination::query()->where('id','=',$destination->id)->value('image');
 
         if ($request->hasFile('image')) {
             $folder = 'destination'.$destination->id;
-            if(File::exists('destination/'.$folder)){
-                File::cleanDirectory('destination/'.$folder);
+            if(File::exists('storage/destination/'.$folder)){
+                File::cleanDirectory('storage/destination/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
@@ -152,8 +152,6 @@ class DestinationController extends Controller
             $img_name = 'storage/'.$new_image_name;
 
             $request->image->storeAs('public',$new_image_name);
-        } else {
-            $img_name = $destination->image;
         }
 
         $split = explode(",", $request->coordinate);
@@ -172,7 +170,7 @@ class DestinationController extends Controller
                 'description' => $validateDestination['description']
             )
         );
-        return redirect()->route('destinations.show',['destination'=>$destination])->with('This destination has been updated!');
+        return redirect()->route('destinations.show',['destination'=>$destination])->with('update','This destination has been updated!');
     }
 
     /**
@@ -185,9 +183,9 @@ class DestinationController extends Controller
     {
         $destination->delete();
         $folder = 'destination'.$destination->id;
-        if(File::exists('destination/'.$folder)){
-            File::cleanDirectory('destination/'.$folder);
-            File::deleteDirectory('destination/'.$folder);
+        if(File::exists('storage/destination/'.$folder)){
+            File::cleanDirectory('storage/destination/'.$folder);
+            File::deleteDirectory('storage/destination/'.$folder);
         }
         return redirect()->route('destinations.index')->with('delete',"The destination [$destination->destination_name] has deleted!");
     }
