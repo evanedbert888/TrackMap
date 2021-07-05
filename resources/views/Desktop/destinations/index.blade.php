@@ -31,8 +31,6 @@
                             <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
                         @elseif(session('delete'))
                             <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
-                        @elseif(session('update'))
-                            <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
                         @endif
 
                         @can('create destination')

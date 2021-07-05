@@ -22,9 +22,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="apply session flash messages">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix register and checkin disabled button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -320,14 +335,8 @@
       <workItem from="1625231352333" duration="8000" />
       <workItem from="1625281519697" duration="2036000" />
       <workItem from="1625287034437" duration="3455000" />
-      <workItem from="1625297819147" duration="6952000" />
-    </task>
-    <task id="LOCAL-00015" summary="new commit">
-      <created>1623743693018</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1623743693018</updated>
+      <workItem from="1625297819147" duration="8316000" />
+      <workItem from="1625456353967" duration="6095000" />
     </task>
     <task id="LOCAL-00016" summary="new commit">
       <created>1623743742319</created>
@@ -665,7 +674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625306787688</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="fix register and checkin disabled button">
+      <created>1625307836972</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1625307836972</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -684,7 +700,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="insert photo" />
     <MESSAGE value="change role table into section table and modify them" />
     <MESSAGE value="previous policies and middlewares have been deleted" />
     <MESSAGE value="the seeders have been modified to co-exist with spatie permissions" />
@@ -709,6 +724,7 @@
     <MESSAGE value="change role into job" />
     <MESSAGE value="update check-in feature" />
     <MESSAGE value="apply session flash messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="apply session flash messages" />
+    <MESSAGE value="fix register and checkin disabled button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix register and checkin disabled button" />
   </component>
 </project>

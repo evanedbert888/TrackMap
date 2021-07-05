@@ -27,6 +27,9 @@
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
                             </div>
+                            @if(session('update'))
+                                <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                            @endif
                         </div>
                         <div class="mx-2 mt-12">
                             <p class="font-bold text-xl">Detail</p>
@@ -52,7 +55,7 @@
                             </table>
                         </div>
                         <div class="flex justify-center mt-3">
-                            <div id="viewMap"></div>
+                            <div id="viewMap" style="height: 420px"></div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +87,7 @@
             let lat = findIDValue('latitude');
 
             const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
+                basemap: "streets-navigation-vector" //Basemap layer service
             });
 
             const view = new MapView({

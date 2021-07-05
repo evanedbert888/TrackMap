@@ -47,6 +47,11 @@
                             <div class="text-sm">
                                 <h2>{{ $details->user->email }}</h2>
                             </div>
+
+                            @if(session('update'))
+                                <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                            @endif
+
                         </div>
                         <div class="mx-5 mt-3">
                             <p class="font-bold text-xl">Detail</p>
@@ -68,7 +73,7 @@
                         </div>
                         <div class="mx-5 mt-5">
                             <span class="flex container justify-center">
-                                <div id="viewMap"></div>
+                                <div id="viewMap" style="height: 420px"></div>
                             </span>
                         </div>
                     </div>

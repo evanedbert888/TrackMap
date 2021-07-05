@@ -56,7 +56,7 @@ class BusinessCategoryController extends Controller
         $category->name = $validateCategory['name'];
         $category->save();
 
-        return redirect()->route('business-categories.index')->with('create',"New business category [$category->name] has been added");
+        return redirect()->route('business-categories.index')->with('create',"New business category [$category->name] has been added!");
     }
 
     /**
@@ -93,7 +93,7 @@ class BusinessCategoryController extends Controller
         $updatedName = $businessCategory->name;
         $businessCategory->update($request->all());
 
-        return redirect()->route('business-categories.index')->with('update',"The business category [$updatedName] has been updated into [$request->name]");
+        return redirect()->route('business-categories.index')->with('update',"The business category [$updatedName] has been updated into [$request->name]!");
     }
 
     /**

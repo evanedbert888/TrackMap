@@ -118,7 +118,7 @@
             document.getElementById('modal'+id).classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
             document.getElementById('modal'+id).classList.add('invisible');
         }
-        
+
     </script>
 
     <div class="py-8">
@@ -126,6 +126,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
+
+                        @if(session('delete'))
+                            <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
+                        @endif
+
                         @if (count($uvdusers) > 0)
                             <div class="unverify mb-8">
                                 <div class="flex justify-end">
@@ -223,10 +228,10 @@
                                                         <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal{{ $user->id }}">
                                                             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                                                 <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="hiddendelModal('{{$user->id}}')"></div>
-        
+
                                                                 <!-- This element is to trick the browser into centering the modal contents. -->
                                                                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        
+
                                                                 <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                                                                     <div class="sm:flex sm:items-start">
                                                                         <div class="mt-3 text-center w-full sm:mt-0 sm:my-4 sm:text-left">

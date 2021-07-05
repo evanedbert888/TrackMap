@@ -9,13 +9,13 @@
 
         <style>
             #viewMap{
-                height:420px;
-                width:1100px;
+                height:570px;
+                width:1200px;
             }
 
             #findMap{
                 height: 500px;
-                width: 820px;
+                width: 900px;
             }
 
             #mobileMap{

@@ -75,7 +75,7 @@
                                     </table>
                                 </div>
                                 <div class="flex justify-center mt-3">
-                                    <div id="viewMap"></div>
+                                    <div id="viewMap" style="height: 420px"></div>
                                 </div>
 
                                 <div class="fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="modal">
@@ -133,7 +133,7 @@
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
             const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
+                basemap: "streets-navigation-vector" //Basemap layer service
             });
 
             const view = new MapView({

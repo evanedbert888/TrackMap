@@ -134,7 +134,7 @@
         });
         graphicsLayer.add(pointGraphic);
 
-        const THRESHOLD_DISTANCE = 300;
+        const THRESHOLD_DISTANCE = 30;
 
         let circlePoint = new Graphic({
             geometry: new Circle({
@@ -211,7 +211,7 @@
         }
 
         function calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat) {
-            const THRESHOLD_DISTANCE = 300;
+            const THRESHOLD_DISTANCE = 30;
             const pt1 = new Point({ x: circle_lng, y: circle_lat });
             const pt2 = new Point({ x: long, y: lat});
 

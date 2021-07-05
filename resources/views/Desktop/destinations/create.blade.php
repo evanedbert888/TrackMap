@@ -109,7 +109,7 @@
             esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
             const map = new Map({
-                basemap: "osm-standard-relief" //Basemap layer service
+                basemap: "streets-navigation-vector" //Basemap layer service
             });
 
             const view = new MapView({

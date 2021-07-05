@@ -10,8 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="object-cover bg-cover h-60 w-full object-top bg-no-repeat" style="background-image: url('{{ URL::to('/img/blue-copy-space-digital-background_23-2148821698.jpg') }}')">
                     <div class="flex container justify-center items-start">
-                            <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{url($details->image)}}">
-                        @endif
+                        <img class="inline-block h-52 w-52 rounded-full ring-2 ring white object-cover mt-32" src="{{url($details->image)}}">
                     </div>
                 </div>
                 <div class="px-6 pt-3 bg-white border-b border-gray-200 mt-24">
@@ -26,6 +25,11 @@
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
                             </div>
+
+                            @if(session('update'))
+                                <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                            @endif
+
                         </div>
                         @can('mobile edit profile')
                             <a class="float-right mr-5" href="{{route('mobile.users.edit',['employee'=>$details->employee->id])}}">
