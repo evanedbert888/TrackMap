@@ -38,6 +38,8 @@
 
     function pushArray(data) {
         $.each(data, function(key,value) {
+            var time = value.updated_at.split('.');
+            var updated_at = time[0].split('T');
             places.push({
                 id: value.id,
                 address: value.address,
@@ -45,7 +47,7 @@
                 employee: value.employee_name,
                 longitude: value.longitude,
                 latitude: value.latitude,
-                updated_at: value.updated_at
+                updated_at: updated_at[1]+" "+updated_at[0]
             });
         })
         console.log(places);
