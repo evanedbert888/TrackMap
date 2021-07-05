@@ -193,6 +193,7 @@
                     content: address,
                     location: pt
                 });
+
                 console.log(pt)
             }
 
