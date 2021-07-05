@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     @if (count($lists) == 0)
-                        <p class="font-bold text-center text-2xl">Employees are empty</p>
+                        <p class="font-bold text-center text-2xl">There are no employees listed</p>
                     @endif
                     @foreach ($lists as $list)
                         <div class="p-5 bg-blue-300 border border-white-200 mb-5 sm:rounded-lg">

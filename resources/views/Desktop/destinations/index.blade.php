@@ -26,7 +26,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     @if (count($lists) == 0)
-                        <p class="font-bold text-center text-2xl">Destinations are empty</p>
+                        <p class="font-bold text-center text-2xl">There are no destinations listed</p>
                     @endif
                     <div class="container">
 
@@ -37,7 +37,7 @@
                         @endif
 
                         @can('create destination')
-                            <div class="flex justify-end font-semibold text-lg">
+                            <div class="flex justify-end font-semibold text-lg mb-4">
                                 <a class="justify-self-end" href="{{route('destinations.create')}}">
                                     <x-button>Add New Destination</x-button>
                                 </a>

@@ -16,9 +16,9 @@
                     <div class="flex justify-center mb-5">
                         <p class="text-3xl font-bold">Tasks</p>
                     </div>
-                    @if($count == 0)
+                    @if(count($goals) == 0)
                         <p class="text-center text-lg text-semibold">You don't have any available tasks</p>
-                    @elseif($count>=1)
+                    @endif
                         <div class="mb-5">
                             @php
                                 $i=1;
@@ -51,7 +51,6 @@
                             @endforeach
                         </div>
                         {{$goals->links()}}
-                    @endif
                 </div>
             </div>
         </div>
