@@ -22,12 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="modify the page when there are no contents">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="modify index view blades when there are no data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/goals/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,14 +325,7 @@
       <workItem from="1625281519697" duration="2036000" />
       <workItem from="1625287034437" duration="3455000" />
       <workItem from="1625297819147" duration="8316000" />
-      <workItem from="1625456353967" duration="9024000" />
-    </task>
-    <task id="LOCAL-00020" summary="new commit">
-      <created>1623913854767</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1623913854767</updated>
+      <workItem from="1625456353967" duration="11315000" />
     </task>
     <task id="LOCAL-00021" summary="mobile view update">
       <created>1623997339636</created>
@@ -669,7 +663,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625468082363</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="modify index view blades when there are no data">
+      <created>1625468819722</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1625468819722</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +689,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix several errors and apply spatie permissions" />
     <MESSAGE value="accept team's update and modal" />
     <MESSAGE value="apply construct function for spatie permission" />
     <MESSAGE value="fix delete schedule and users" />
@@ -713,6 +713,7 @@
     <MESSAGE value="review the map size and session flash message" />
     <MESSAGE value="add session message to task pairing" />
     <MESSAGE value="modify the page when there are no contents" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify the page when there are no contents" />
+    <MESSAGE value="modify index view blades when there are no data" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify index view blades when there are no data" />
   </component>
 </project>

@@ -44,9 +44,11 @@
                 company: value.destination_name,
                 employee: value.employee_name,
                 longitude: value.longitude,
-                latitude: value.latitude
+                latitude: value.latitude,
+                updated_at: value.updated_at
             });
         })
+        console.log(places);
 
         var role = '{{ Auth::user()->job }}';
 
@@ -80,7 +82,8 @@
                         ObjectId: place.id,
                         address: place.address,
                         company: place.company,
-                        employee: place.employee
+                        employee: place.employee,
+                        finished: place.updated_at
                     },
                     geometry: {
                         longitude: place.longitude,
@@ -95,13 +98,11 @@
                     source: graphics,
                     renderer: {
                         type: "simple",                    // autocasts as new SimpleRenderer()
-                        symbol: {                          // autocasts as new SimpleMarkerSymbol()
-                            type: "simple-marker",
-                            color: "#102A44",
-                            outline: {                       // autocasts as new SimpleLineSymbol()
-                                color: "#598DD8",
-                                width: 2
-                            }
+                        symbol: {
+                            type: "picture-marker",
+                            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                            height: "30px",
+                            width: "30px"
                         }
                     },
                     popupTemplate: {                     // autocasts as new PopupTemplate()
@@ -122,6 +123,11 @@
                                 {
                                     fieldName: "employee",
                                     label: "Employee Name",
+                                    visible: true
+                                },
+                                {
+                                    fieldName: "finished",
+                                    label: "Finished At",
                                     visible: true
                                 }
                             ]
@@ -148,6 +154,11 @@
                             name: "company",
                             alias: "company",
                             type: "string"
+                        },
+                        {
+                            name: "finished",
+                            alias: "finished",
+                            type: "string"
                         }
                     ]
                 });
@@ -157,13 +168,11 @@
                     source: graphics,
                     renderer: {
                         type: "simple",                    // autocasts as new SimpleRenderer()
-                        symbol: {                          // autocasts as new SimpleMarkerSymbol()
-                            type: "simple-marker",
-                            color: "#102A44",
-                            outline: {                       // autocasts as new SimpleLineSymbol()
-                                color: "#598DD8",
-                                width: 2
-                            }
+                        symbol: {
+                            type: "picture-marker",
+                            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                            height: "30px",
+                            width: "30px"
                         }
                     },
                     popupTemplate: {                     // autocasts as new PopupTemplate()

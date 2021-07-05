@@ -123,7 +123,7 @@
 
         const pictureMarkerSymbol = {
             type: "picture-marker",
-            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
+            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
             height: "25px",
             width: "25px"
         };

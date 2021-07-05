@@ -108,7 +108,7 @@
 
             const pictureMarkerSymbol = {
                 type: "picture-marker",
-                url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgAqzIE8fVWHiYVlAaMleG3Qw3OtuAP0IeTA&usqp=CAU",
+                url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
                 height: "25px",
                 width: "25px"
             };
@@ -118,17 +118,6 @@
                 symbol: pictureMarkerSymbol
             });
             graphicsLayer.add(pointGraphic);
-
-            // const circle = new Graphic({
-            //     geometry: new Circle({
-            //         center: [lng,lat],
-            //         radius: 60
-            //     }),
-            //     symbol: {//circle design
-            //         type: "simple-fill"
-            //     }
-            // })
-            // graphicsLayer.add(circle);
 
             const locatorTask = new Locator ({
                 url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
