@@ -22,24 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix register and checkin disabled button">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="review the map size and session flash message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,21 +322,7 @@
       <workItem from="1625281519697" duration="2036000" />
       <workItem from="1625287034437" duration="3455000" />
       <workItem from="1625297819147" duration="8316000" />
-      <workItem from="1625456353967" duration="6095000" />
-    </task>
-    <task id="LOCAL-00016" summary="new commit">
-      <created>1623743742319</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1623743742319</updated>
-    </task>
-    <task id="LOCAL-00017" summary="new commit">
-      <created>1623834472033</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1623834472033</updated>
+      <workItem from="1625456353967" duration="7802000" />
     </task>
     <task id="LOCAL-00018" summary="new commit">
       <created>1623834521625</created>
@@ -681,7 +653,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625307836972</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="fix update and delete route for image">
+      <created>1625462744831</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1625462744831</updated>
+    </task>
+    <task id="LOCAL-00066" summary="review the map size and session flash message">
+      <created>1625462773264</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1625462773264</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -700,8 +686,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change role table into section table and modify them" />
-    <MESSAGE value="previous policies and middlewares have been deleted" />
     <MESSAGE value="the seeders have been modified to co-exist with spatie permissions" />
     <MESSAGE value="several role directives are added to blade" />
     <MESSAGE value="fix several errors and apply spatie permissions" />
@@ -725,6 +709,8 @@
     <MESSAGE value="update check-in feature" />
     <MESSAGE value="apply session flash messages" />
     <MESSAGE value="fix register and checkin disabled button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix register and checkin disabled button" />
+    <MESSAGE value="fix update and delete route for image" />
+    <MESSAGE value="review the map size and session flash message" />
+    <option name="LAST_COMMIT_MESSAGE" value="review the map size and session flash message" />
   </component>
 </project>

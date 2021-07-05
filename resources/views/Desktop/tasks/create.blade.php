@@ -449,6 +449,11 @@
                                 <x-editbutton onclick="showModal()">Schedule</x-editbutton>
                             </div>
                         @endcan
+
+                        @if(session('success'))
+                            <x-div-session class="bg-green-200 mt-3">{{session('success')}}</x-div-session>
+                        @endif
+
                         <h1 class="text-2xl font-bold">Employee & Destination</h1>
                         <div class="border border-black border-5 border-b rounded rounded-full h-1 bg-black"></div>
                         <!-- Category -->

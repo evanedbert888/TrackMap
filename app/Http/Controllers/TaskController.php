@@ -84,7 +84,7 @@ class TaskController extends Controller
 
             Temp::destroy($tasks->id);
         }
-        return redirect()->route('tasks.create');
+        return redirect()->route('tasks.create')->with('success','Tasks has been successfully sent!');
     }
 
     /**
