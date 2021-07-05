@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix map icon based on click">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/div-session.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/div-session.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -321,21 +318,7 @@
       <workItem from="1625281519697" duration="2036000" />
       <workItem from="1625287034437" duration="3455000" />
       <workItem from="1625297819147" duration="8316000" />
-      <workItem from="1625456353967" duration="12907000" />
-    </task>
-    <task id="LOCAL-00024" summary="fix routes &amp; new schedule table">
-      <created>1624249634122</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1624249634122</updated>
-    </task>
-    <task id="LOCAL-00025" summary="make modal for confirmation and fix routes">
-      <created>1624878631157</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1624878631157</updated>
+      <workItem from="1625456353967" duration="13767000" />
     </task>
     <task id="LOCAL-00026" summary="new policies are added">
       <created>1624878653051</created>
@@ -666,7 +649,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625472357204</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="modify the div body for session flash messages">
+      <created>1625472869630</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1625472869630</updated>
+    </task>
+    <task id="LOCAL-00074" summary="new update">
+      <created>1625472885087</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1625472885087</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,8 +682,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix delete schedule and users" />
-    <MESSAGE value="add assign role to users" />
     <MESSAGE value="add can directives to view blade" />
     <MESSAGE value="fix error in construct function" />
     <MESSAGE value="set default image in migration tables" />
@@ -710,6 +705,8 @@
     <MESSAGE value="modify index view blades when there are no data" />
     <MESSAGE value="fix map icon" />
     <MESSAGE value="fix map icon based on click" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix map icon based on click" />
+    <MESSAGE value="modify the div body for session flash messages" />
+    <MESSAGE value="new update" />
+    <option name="LAST_COMMIT_MESSAGE" value="new update" />
   </component>
 </project>
