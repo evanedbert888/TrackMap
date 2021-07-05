@@ -28,10 +28,15 @@
 
         function setEmployeeDataToEmployeeOptions(employees) {
             var data = ""
-            data = data + "<option class='hidden'></option>";
-            $.each(employees, function(key, value){
-                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.name+","+value.image+"'>"+value.name+"</option>"
-            })
+            if(employees.length == 0) {
+                data = data + "<option hidden>Employee's Empty</option>";
+            }
+            else {
+                data = data + "<option class='hidden'></option>";
+                $.each(employees, function(key, value){
+                    data = data + "<option class='bg-gray-200' value='"+value.id+","+value.name+","+value.image+"'>"+value.name+"</option>"
+                })
+            }
             $('#employee').html(data);
         }
 
@@ -57,10 +62,15 @@
 
         function setDestinationDataToDestinationOptions(destination) {
             var data = ""
-            data = data + "<option class='hidden'></option>";
-            $.each(destination, function(key, value){
-                data = data + "<option class='bg-gray-200' value='"+value.id+","+value.destination_name+","+value.image+"'>"+value.destination_name+"</option>"
-            })
+            if(destination.length == 0) {
+                data = data + "<option hidden>Destination's Empty</option>";
+            }
+            else {
+                data = data + "<option class='hidden'></option>";
+                $.each(destination, function(key, value){
+                    data = data + "<option class='bg-gray-200' value='"+value.id+","+value.destination_name+","+value.image+"'>"+value.destination_name+"</option>"
+                })
+            }
             $('#destination').html(data);
         }
 
@@ -230,7 +240,6 @@
             schedule();
             searchDestination(' ');
             document.getElementById('search').value = "";
-            document.getElementById('scheduleSalesman').value = "";
             document.getElementById('addSchedule').disabled = true;
             document.getElementById('modal').classList.remove('invisible');
             document.getElementById('modal').classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
@@ -264,6 +273,14 @@
             var i = 0;
             var data = ""
             $.each(schedule, function(key, value){
+                data = data + "<table class='w-full table-auto text-center'>";
+                data = data + "<thead>";
+                data = data + "<th>No</th>";
+                data = data + "<th class='text-left'>Salesman</th>";
+                data = data + "<th class='text-left'>Destination</th>";
+                data = data + "<th>Action</th>";
+                data = data + "</thead>";
+                data = data + "<tbody>";
                 data = data + "<tr class='border border-white border-b-4 border-t-0 border-r-0 border-l-0'>";
                 data = data + "<td>"+(i+1)+"</td>";
                 data = data + "<td class='text-left'>"+value.employee_name+"</td>";
@@ -300,6 +317,8 @@
                 data = data + "</div>";
                 data = data + "</td>";
                 data = data + "</tr>";
+                data = data + "</tbody>";
+                data = data + "</table>";
                 i++;
             })
             $('#tablesearch').html(data);
@@ -323,7 +342,7 @@
             var data = ""
             if(destination.length <= 0) {
                 document.getElementById('scheduleDestination').disabled = true;
-                data = data + "<option hidden>Destination Not Found</option>";
+                data = data + "<option hidden>Destination's Empty</option>";
             }
             else {
                 data = data + "<option hidden></option>";
@@ -463,6 +482,9 @@
                                     <form>
                                         <p class="text-lg"> Employee's Role </p>
                                         <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
+                                            @if (count($sections) == 0)
+                                                <option class="hidden">Role's Empty</option>
+                                            @endif
                                             <option class="hidden"></option>
                                             @foreach ($sections as $section)
                                                 <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
@@ -475,6 +497,9 @@
                                 <div class="mx-auto mb-2 font-bold">
                                     <p class="text-lg"> Destination's Business </p>
                                     <select name="business" id="business" class="w-80 block mt-1 rounded-md" onchange="showDestinations()">
+                                        @if (count($sections) == 0)
+                                            <option class="hidden">Business's Empty</option>
+                                        @endif
                                         <option class="hidden"></option>
                                         @foreach ($businesses as $business)
                                             <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
@@ -581,7 +606,10 @@
                             </div>
                             <div class="mt-3 w-full inline-flex items-center">
                                 <div class="w-full mr-1">
-                                    <select name="scheduleSalesman" id="scheduleSalesman" onchange="salesman()" class="w-full block rounded-md">
+                                    <select id="scheduleSalesman" onchange="salesman()" class="w-full block rounded-md">
+                                        @if (count($salesmans) == 0)
+                                            <option class="hidden">Salesman's Empty</option>
+                                        @endif
                                         <option class="hidden" value=""></option>
                                         @foreach ($salesmans as $salesman)
                                             <option value="{{ $salesman->id }}">{{ $salesman->name }}</option>
@@ -602,17 +630,7 @@
                     </div>
 
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex">
-                    <table class="w-full table-auto text-center">
-                        <thead>
-                            <th>No</th>
-                            <th class="text-left">Salesman</th>
-                            <th class="text-left">Destination</th>
-                            <th>Action</th>
-                        </thead>
-                        <tbody id="tablesearch">
-                        </tbody>
-                    </table>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex" id="tablesearch">
                 </div>
             </div>
         </div>

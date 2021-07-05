@@ -24,7 +24,10 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-5 bg-white border-b border-gray-200">
+                    @if (count($lists) == 0)
+                        <p class="font-bold text-center text-2xl">Destinations are empty</p>
+                    @endif
                     <div class="container">
 
                         @if(session('create'))
@@ -34,8 +37,7 @@
                         @endif
 
                         @can('create destination')
-                            <div class="grid grid-cols-3 text-center pb-4 font-semibold text-lg">
-                                <p class="col-start-2 col-end-3 justify-self-center self-center"> List of Destinations </p>
+                            <div class="flex justify-end font-semibold text-lg">
                                 <a class="justify-self-end" href="{{route('destinations.create')}}">
                                     <x-button>Add New Destination</x-button>
                                 </a>
