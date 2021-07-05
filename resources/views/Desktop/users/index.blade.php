@@ -126,11 +126,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
                     <div class="w-full">
+                        @if (count($vdusers) == 0 && count($uvdusers) == 0)
+                            <p class="font-bold text-center text-2xl">Employees are empty</p>
+                        @endif
+                        <div class="flex justify-end">
+                            <x-button onclick="showModal()">Add Role</x-button>
+                        </div>
                         @if (count($uvdusers) > 0)
                             <div class="unverify mb-8">
-                                <div class="flex justify-end">
-                                    <x-button onclick="showModal()">Add Role</x-button>
-                                </div>
                                 <h1 class="text-2xl font-bold">Unverified</h1>
                                 <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>
                                 <div class="flex mx-auto justify-center">
@@ -177,9 +180,6 @@
                             </div>
                         @else
 
-                        @endif
-                        @if (count($vdusers) == 0 && count($uvdusers) == 0)
-                            <p class="font-bold text-center text-2xl">Employees are empty</p>
                         @endif
                         @if (count($vdusers) > 0)
                             <div class="verified">
