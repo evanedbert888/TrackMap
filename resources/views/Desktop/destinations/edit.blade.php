@@ -176,6 +176,18 @@
                 let lng = coordinateFormat(pt.longitude);
                 let lat = coordinateFormat(pt.latitude);
                 enterCoordinateValue(lng,lat);
+                view.graphics.removeAll();
+
+                view.graphics.add(new Graphic({
+                    symbol: {
+                        type: "picture-marker",
+                        url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                        height: "30px",
+                        width: "30px"
+                    },
+                    geometry: pt,
+                }));
+
                 view.popup.open({
                     title:  lng + ", " + lat,
                     content: address,
