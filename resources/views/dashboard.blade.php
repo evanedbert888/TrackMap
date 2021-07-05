@@ -50,7 +50,6 @@
                 updated_at: updated_at[1]+" "+updated_at[0]
             });
         })
-        console.log(places);
 
         var role = '{{ Auth::user()->job }}';
 
