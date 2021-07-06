@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new update" />
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="update time on dashboard">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -318,14 +320,8 @@
       <workItem from="1625281519697" duration="2036000" />
       <workItem from="1625287034437" duration="3455000" />
       <workItem from="1625297819147" duration="8316000" />
-      <workItem from="1625456353967" duration="13767000" />
-    </task>
-    <task id="LOCAL-00026" summary="new policies are added">
-      <created>1624878653051</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1624878653051</updated>
+      <workItem from="1625456353967" duration="15024000" />
+      <workItem from="1625542330842" duration="577000" />
     </task>
     <task id="LOCAL-00027" summary="new changes are made">
       <created>1624878748447</created>
@@ -663,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625472885087</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="update time on dashboard">
+      <created>1625473968248</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1625473968248</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +685,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add can directives to view blade" />
     <MESSAGE value="fix error in construct function" />
     <MESSAGE value="set default image in migration tables" />
     <MESSAGE value="add new permissions" />
@@ -707,6 +709,7 @@
     <MESSAGE value="fix map icon based on click" />
     <MESSAGE value="modify the div body for session flash messages" />
     <MESSAGE value="new update" />
-    <option name="LAST_COMMIT_MESSAGE" value="new update" />
+    <MESSAGE value="update time on dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="update time on dashboard" />
   </component>
 </project>
