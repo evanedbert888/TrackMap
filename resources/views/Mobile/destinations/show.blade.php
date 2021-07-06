@@ -86,9 +86,10 @@
         "esri/Graphic",
         "esri/layers/GraphicsLayer",
         "esri/tasks/Locator",
-        "esri/geometry/Circle"
+        "esri/geometry/Circle",
+        "esri/widgets/Locate",
 
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Circle) {
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Circle, Locate) {
 
         esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
@@ -127,6 +128,16 @@
             height: "25px",
             width: "25px"
         };
+
+        const locate = new Locate({
+            view: view,
+            useHeadingEnabled: false,
+            goToOverride: function(view, options) {
+                options.target.scale = 1500;
+                return view.goTo(options.target);
+            }
+        });
+        view.ui.add(locate, "top-left");
 
         const pointGraphic = new Graphic({
             geometry: point,

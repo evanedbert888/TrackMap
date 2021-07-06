@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="update time on dashboard">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +168,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XAMPP/htdocs/spatieTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../XAMPP/htdocs/dormitory" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Configurable.PHP.Blade" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -321,21 +322,11 @@
       <workItem from="1625287034437" duration="3455000" />
       <workItem from="1625297819147" duration="8316000" />
       <workItem from="1625456353967" duration="15024000" />
-      <workItem from="1625542330842" duration="577000" />
-    </task>
-    <task id="LOCAL-00027" summary="new changes are made">
-      <created>1624878748447</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1624878748447</updated>
-    </task>
-    <task id="LOCAL-00028" summary="new changes are made">
-      <created>1624938469443</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1624938469443</updated>
+      <workItem from="1625542330842" duration="2161000" />
+      <workItem from="1625547866654" duration="11000" />
+      <workItem from="1625550091568" duration="950000" />
+      <workItem from="1625551453605" duration="651000" />
+      <workItem from="1625561296104" duration="2677000" />
     </task>
     <task id="LOCAL-00029" summary="fix delete route in users.index">
       <created>1624942933064</created>
@@ -666,7 +657,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625473968248</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="no update for now">
+      <created>1625542972268</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1625542972269</updated>
+    </task>
+    <task id="LOCAL-00077" summary="fix the dashboard">
+      <created>1625543030718</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1625543030718</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -685,8 +690,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix error in construct function" />
-    <MESSAGE value="set default image in migration tables" />
     <MESSAGE value="add new permissions" />
     <MESSAGE value="fix image name in update function" />
     <MESSAGE value="fix image routes" />
@@ -710,6 +713,8 @@
     <MESSAGE value="modify the div body for session flash messages" />
     <MESSAGE value="new update" />
     <MESSAGE value="update time on dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="update time on dashboard" />
+    <MESSAGE value="no update for now" />
+    <MESSAGE value="fix the dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the dashboard" />
   </component>
 </project>
