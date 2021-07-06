@@ -61,7 +61,7 @@
             "esri/Graphic",
             "esri/layers/GraphicsLayer",
             "esri/tasks/Locator",
-            "esri/layers/FeatureLayer",
+            "esri/layers/FeatureLayer"
 
 
         ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, FeatureLayer, ) {
@@ -75,6 +75,48 @@
                 center: [ 109.3425,  -0.0383],
                 zoom: 12,
                 container: "viewMap"
+            });
+
+            
+            // Create a UI with the filter expressions
+            const sqlExpressions = ["All", "Today", "This Week", "This Month", "This Year"];
+
+            // UI
+            const selectFilter = document.createElement("select");
+            selectFilter.setAttribute("class", "esri-widget esri-select");
+            selectFilter.setAttribute("style", "width: 275px; font-family: Avenir Next W00; font-size: 1em;");
+
+            sqlExpressions.forEach(function(sql){
+                let option = document.createElement("option");
+                option.value = sql;
+                option.innerHTML = sql;
+                selectFilter.appendChild(option);
+            });
+
+            view.ui.add(selectFilter, "top-right");
+
+            // Server-side filter
+            function setFeatureLayerFilter(expression) {
+                console.log(expression);
+                // $.ajax({
+                //     url : '{{ route('dashboard_goals') }}',
+                //     type : 'GET',
+                //     data : expression,
+                //     success:function(data){
+                //         console.log(data);
+                //         // pushArray(data);
+                //     },
+                //     error:function(err){
+                //         console.log(err);
+                //     }
+                // });
+            }
+
+            // Event listener
+            selectFilter.addEventListener('change', function (event) {
+                setFeatureLayerFilter(event.target.value);
+                view.popup.close();
+                view.graphics.removeAll();
             });
 
             var graphics = places.map(function (place) {
