@@ -8,7 +8,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class BusinessCategoryController extends Controller
 {
@@ -60,17 +59,6 @@ class BusinessCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param BusinessCategory $businessCategory
@@ -90,7 +78,7 @@ class BusinessCategoryController extends Controller
      */
     public function update(Request $request, BusinessCategory $businessCategory): RedirectResponse
     {
-        $updatedName = $businessCategory->name;
+        $updatedName = $businessCategory->getAttributeValue('name');
         $businessCategory->update($request->all());
 
         return redirect()->route('business-categories.index')->with('update',"The business category [$updatedName] has been updated into [$request->name]!");
@@ -104,8 +92,9 @@ class BusinessCategoryController extends Controller
      */
     public function destroy(BusinessCategory $businessCategory): RedirectResponse
     {
+        $category_name = $businessCategory->getAttributeValue('name');
         $businessCategory->delete();
 
-        return redirect()->route('business-categories.index')->with('delete',"The business category [$businessCategory->name] has been deleted!");
+        return redirect()->route('business-categories.index')->with('delete',"The business category [$category_name] has been deleted!");
     }
 }

@@ -69,7 +69,7 @@ class DestinationController extends Controller
             'description' => 'required|max:300'
         ]);
 
-        $split = explode(",", $request->coordinate);
+        $split = explode(",", $request->input('coordinate'));
         $longitude = $split[0];
         $latitude = $split[1];
 
@@ -97,10 +97,10 @@ class DestinationController extends Controller
         if (Auth::user()->hasPermissionTo('show destination')) {
             return view('Desktop.destinations.show',['details'=>$destination]);
         } elseif (Auth::user()->hasPermissionTo('mobile show destination')) {
-            $user_id = Auth::user()->id;
-            $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+            $user_id = Auth::user()->getAuthIdentifier();
+            $employee_id = Employee::query()->where('user_id','=',$user_id)->value('id');
             $count = Goal::query()->where('employee_id','=',$employee_id)
-                ->where('destination_id','=',$destination->id)
+                ->where('destination_id','=',$destination->getAttributeValue('id'))
                 ->where('status','=','unfinished')
                 ->count();
             return view('Mobile.destinations.show',['details'=>$destination,'count'=>$count]);
@@ -139,27 +139,28 @@ class DestinationController extends Controller
             'description' => 'required|max:300'
         ]);
 
-        $img_name = Destination::query()->where('id','=',$destination->id)->value('image');
+        $destination_id = $destination->getAttributeValue('id');
+        $img_name = Destination::query()->where('id','=',$destination_id)->value('image');
 
         if ($request->hasFile('image')) {
-            $folder = 'destination'.$destination->id;
+            $folder = 'destination'.$destination_id;
             if(File::exists('storage/destination/'.$folder)){
                 File::cleanDirectory('storage/destination/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
-            $new_image_name = 'destination/'.$folder.'/'.$destination->id.'-'.time().'-'.$image_name;
+            $new_image_name = 'destination/'.$folder.'/'.$destination_id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public',$new_image_name);
+            $validateDestination['image']->storeAs('public',$new_image_name);
         }
 
-        $split = explode(",", $request->coordinate);
+        $split = explode(",", $request->input('coordinate'));
         $longitude = $split[0];
         $latitude = $split[1];
 
         $place = new Destination;
-        $place->updateById($destination->id, array(
+        $place->updateById($destination->getAttributeValue('id'), array(
                 "destination_name" => $validateDestination['destination_name'],
                 "business_id" => $validateDestination['business'],
                 "address" => $validateDestination['address'],
@@ -182,11 +183,12 @@ class DestinationController extends Controller
     public function destroy(Destination $destination): RedirectResponse
     {
         $destination->delete();
-        $folder = 'destination'.$destination->id;
+        $folder = 'destination'.$destination->getAttributeValue('id');
+        $destination_name = $destination->getAttributeValue('destination_name');
         if(File::exists('storage/destination/'.$folder)){
             File::cleanDirectory('storage/destination/'.$folder);
             File::deleteDirectory('storage/destination/'.$folder);
         }
-        return redirect()->route('destinations.index')->with('delete',"The destination [$destination->destination_name] has deleted!");
+        return redirect()->route('destinations.index')->with('delete',"The destination [$destination_name] has deleted!");
     }
 }

@@ -50,7 +50,7 @@ class RegisteredEmailController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $id = Auth::id();
+        $id = Auth::user()->getAuthIdentifier();
         $validateRegister = $request->validate([
             'email' => 'required|string|max:255'
         ]);
@@ -61,17 +61,6 @@ class RegisteredEmailController extends Controller
         $register->save();
 
         return redirect()->route('registered-emails.index')->with('success','A New Email Has Been Registered');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

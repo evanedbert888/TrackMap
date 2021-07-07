@@ -77,7 +77,7 @@ class TaskController extends Controller
             $destinations = Destination::query()->firstwhere('id',$tasks->destination_id);
 
             $goal = new Goal();
-            $goal->user_id = Auth::user()->id;
+            $goal->user_id = Auth::user()->getAuthIdentifier();
             $goal->destination_id = $tasks->destination_id;
             $goal->employee_id = $tasks->employee_id;
             $goal->save();

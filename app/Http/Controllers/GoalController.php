@@ -29,7 +29,7 @@ class GoalController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
+        $user_id = Auth::user()->getAuthIdentifier();
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goals = Goal::query()->where('employee_id','=',$employee_id)
             ->where('status','=','unfinished')
@@ -41,49 +41,6 @@ class GoalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param Request $request
@@ -91,18 +48,18 @@ class GoalController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $user_id = Auth::user()->id;
+        $user_id = Auth::user()->getAuthIdentifier();
 
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $goal_id = Goal::query()->where('employee_id','=',$employee_id)
-            ->where('destination_id','=',$request->id)
+            ->where('destination_id','=',$request->input('id'))
             ->where('status','=','unfinished')
             ->pluck('id');
 
         $goal = new Goal();
         $goal->updateById($goal_id, array(
-            "latitude" => $request->latitude,
-            "longitude" => $request->longitude,
+            "latitude" => $request->input('latitude'),
+            "longitude" => $request->input('longitude'),
             "status" => 'finished',
             "updated_at" => date(now()),
         ));
@@ -122,7 +79,7 @@ class GoalController extends Controller
 
     public function history()
     {
-        $user_id = Auth::user()->id;
+        $user_id = Auth::user()->getAuthIdentifier();
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
         $histories = Goal::query()->where('status','=','finished')
             ->where('employee_id','=',$employee_id)
