@@ -33,7 +33,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $lists = Employee::query()->orderBy('id','desc')->paginate(5);
+        $lists = Employee::with(['user','section'])->orderBy('id','desc')->paginate(5);
         return view('Desktop.employees.index',['lists'=>$lists]);
     }
 

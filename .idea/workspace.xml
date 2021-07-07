@@ -22,8 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new updates">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="adjust tailwind to desktop blades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,21 +331,8 @@
       <workItem from="1625550091568" duration="950000" />
       <workItem from="1625551453605" duration="651000" />
       <workItem from="1625561296104" duration="5407000" />
-      <workItem from="1625631657905" duration="18599000" />
-    </task>
-    <task id="LOCAL-00041" summary="the seeders have been modified to co-exist with spatie permissions">
-      <created>1625117992960</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1625117992960</updated>
-    </task>
-    <task id="LOCAL-00042" summary="several role directives are added to blade">
-      <created>1625118038678</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1625118038678</updated>
+      <workItem from="1625631657905" duration="19426000" />
+      <workItem from="1625664675388" duration="3975000" />
     </task>
     <task id="LOCAL-00043" summary="fix several errors and apply spatie permissions">
       <created>1625119178320</created>
@@ -671,7 +663,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625653058515</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="adjust mobile scalability">
+      <created>1625653759825</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1625653759825</updated>
+    </task>
+    <task id="LOCAL-00091" summary="adjust tailwind to desktop blades">
+      <created>1625653845528</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1625653845528</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,8 +696,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix register and checkin disabled button" />
-    <MESSAGE value="fix update and delete route for image" />
     <MESSAGE value="review the map size and session flash message" />
     <MESSAGE value="add session message to task pairing" />
     <MESSAGE value="modify the page when there are no contents" />
@@ -715,6 +719,8 @@
     <MESSAGE value="show employee position in the map" />
     <MESSAGE value="add script for close button" />
     <MESSAGE value="new updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="new updates" />
+    <MESSAGE value="adjust mobile scalability" />
+    <MESSAGE value="adjust tailwind to desktop blades" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust tailwind to desktop blades" />
   </component>
 </project>

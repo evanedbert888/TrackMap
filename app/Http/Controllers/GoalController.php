@@ -30,14 +30,11 @@ class GoalController extends Controller
     public function index()
     {
         $user_id = Auth::user()->getAuthIdentifier();
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $goals = Goal::query()->where('employee_id','=',$employee_id)
+        $employee_id = Employee::query()->where('user_id','=',$user_id)->value('id');
+        $goals = Goal::with(['destination'])->where('employee_id','=',$employee_id)
             ->where('status','=','unfinished')
             ->paginate(5);
-        $count = Goal::query()->where('employee_id','=',$employee_id)
-            ->where('status','=','unfinished')
-            ->count();
-        return view('Mobile.goals.index',['goals'=>$goals,'count'=>$count]);
+        return view('Mobile.goals.index',['goals'=>$goals]);
     }
 
     /**
@@ -81,7 +78,7 @@ class GoalController extends Controller
     {
         $user_id = Auth::user()->getAuthIdentifier();
         $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
-        $histories = Goal::query()->where('status','=','finished')
+        $histories = Goal::with(['destination'])->where('status','=','finished')
             ->where('employee_id','=',$employee_id)
             ->paginate(5);
         return view('Mobile.goals.history',['histories'=>$histories]);

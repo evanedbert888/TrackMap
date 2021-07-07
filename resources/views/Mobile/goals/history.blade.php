@@ -14,7 +14,7 @@
                     </div>
                     @if(count($histories) == 0)
                         <p class="text-center text-lg text-semibold">You don't have any tasks yet</p>
-                    @elseif(count($histories)>=1)
+                    @endif
                         <div class="mb-5">
                             @php
                                 $i=1;
@@ -30,18 +30,12 @@
                                         <p class="text-sm text-semibold text-gray-800 text-left w-20 mr-2">{{$history->updated_at}}</p>
                                     </div>
                                 </div>
-                                @if ($i == count($histories))
-
-                                @else
-                                    <div class="border border-black mx-2"></div>
-                                @endif
                                 @php
                                     $i++;
                                 @endphp
                             @endforeach
                         </div>
-                        {{$histories->links()}}
-                    @endif
+                    {{$histories->links()}}
                 </div>
             </div>
         </div>

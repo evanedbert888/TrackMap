@@ -28,7 +28,7 @@ class RegisteredEmailController extends Controller
      */
     public function index()
     {
-        $registers = RegisteredEmail::query()->paginate('10');
+        $registers = RegisteredEmail::with(['user'])->paginate('10');
         return view('Desktop.registered-emails.index',['registers'=>$registers]);
     }
 
