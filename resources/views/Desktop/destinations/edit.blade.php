@@ -60,7 +60,7 @@
                                             <td>Coordinate</td>
                                             <td>:</td>
                                             <td>
-                                                <x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->latitude }},{{ $details->longitude }}"></x-editinput>
+                                                <x-editinput name="coordinate" id="coordinate" type="text" value="{{ $details->longitude }},{{ $details->latitude }}"></x-editinput>
                                             </td>
                                             <x-input class="hidden" id="latitude" value="{{$details->latitude}}"></x-input>
                                             <x-input class="hidden" id="longitude" value="{{$details->longitude}}"></x-input>
