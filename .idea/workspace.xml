@@ -22,9 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the dashboard">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="simplify controller">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BusinessCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Destination.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Destination.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Goal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Goal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/RegisteredEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/RegisteredEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Section.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Section.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,56 +336,8 @@
       <workItem from="1625547866654" duration="11000" />
       <workItem from="1625550091568" duration="950000" />
       <workItem from="1625551453605" duration="651000" />
-      <workItem from="1625561296104" duration="2677000" />
-    </task>
-    <task id="LOCAL-00029" summary="fix delete route in users.index">
-      <created>1624942933064</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1624942933064</updated>
-    </task>
-    <task id="LOCAL-00030" summary="modify new policy of business category">
-      <created>1624955087331</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1624955087331</updated>
-    </task>
-    <task id="LOCAL-00031" summary="add new middleware for admin">
-      <created>1624955105713</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1624955105713</updated>
-    </task>
-    <task id="LOCAL-00032" summary="new commit incoming">
-      <created>1624955167104</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1624955167104</updated>
-    </task>
-    <task id="LOCAL-00033" summary="middleware fix">
-      <created>1624958472180</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1624958472180</updated>
-    </task>
-    <task id="LOCAL-00034" summary="working on middleware">
-      <created>1625025784728</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1625025784728</updated>
-    </task>
-    <task id="LOCAL-00035" summary="new middleware for employee">
-      <created>1625025808833</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1625025808833</updated>
+      <workItem from="1625561296104" duration="5407000" />
+      <workItem from="1625631657905" duration="17080000" />
     </task>
     <task id="LOCAL-00036" summary="insert photo">
       <created>1625025882304</created>
@@ -671,7 +633,56 @@
       <option name="project" value="LOCAL" />
       <updated>1625543030718</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="add locate widget">
+      <created>1625564277557</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1625564277558</updated>
+    </task>
+    <task id="LOCAL-00079" summary="new update on dashboard">
+      <created>1625564336862</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1625564336862</updated>
+    </task>
+    <task id="LOCAL-00080" summary="fix coordinate input">
+      <created>1625639422218</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1625639422218</updated>
+    </task>
+    <task id="LOCAL-00081" summary="simplify calculating user age">
+      <created>1625639460697</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1625639460697</updated>
+    </task>
+    <task id="LOCAL-00082" summary="session flash messages are equipped with close button">
+      <created>1625645585919</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1625645585919</updated>
+    </task>
+    <task id="LOCAL-00083" summary="modify the div-session and create close-button component for session message">
+      <created>1625645620077</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1625645620077</updated>
+    </task>
+    <task id="LOCAL-00084" summary="simplify controller">
+      <created>1625646126282</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1625646126282</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,13 +701,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add new permissions" />
-    <MESSAGE value="fix image name in update function" />
-    <MESSAGE value="fix image routes" />
-    <MESSAGE value="fix image routes for task pairing" />
-    <MESSAGE value="modify default value for image column" />
-    <MESSAGE value="the route for image cache has been fixed" />
-    <MESSAGE value="new component for flash session message" />
     <MESSAGE value="add new session message for edit, update and delete" />
     <MESSAGE value="fix the check-in problem" />
     <MESSAGE value="change role into job" />
@@ -715,6 +719,13 @@
     <MESSAGE value="update time on dashboard" />
     <MESSAGE value="no update for now" />
     <MESSAGE value="fix the dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the dashboard" />
+    <MESSAGE value="add locate widget" />
+    <MESSAGE value="new update on dashboard" />
+    <MESSAGE value="fix coordinate input" />
+    <MESSAGE value="simplify calculating user age" />
+    <MESSAGE value="session flash messages are equipped with close button" />
+    <MESSAGE value="modify the div-session and create close-button component for session message" />
+    <MESSAGE value="simplify controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="simplify controller" />
   </component>
 </project>
