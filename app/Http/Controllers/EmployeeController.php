@@ -59,7 +59,7 @@ class EmployeeController extends Controller
         if (Auth::user()->hasPermissionTo('edit employee')) {
             return view('Desktop.employees.edit',['details'=>$employee]);
         } elseif (Auth::user()->hasPermissionTo('mobile edit profile')) {
-            $details = Employee::query()->where('id','=',$employee->id)->first();
+            $details = Employee::query()->where('id','=',$employee->getAttributeValue('id'))->first();
             return view('Mobile.employees.edit',['details'=>$details]);
         }
     }
