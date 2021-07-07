@@ -21,14 +21,14 @@
             document.getElementById('modal'+id).classList.add('invisible');
         }
     </script>
-    <div class="py-8">
+    <div class="py-0 md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-5 bg-white border-b border-gray-200">
+                <div class="py-5 bg-white border-b border-gray-200">
                     @if (count($lists) == 0)
                         <p class="font-bold text-center text-2xl">There are no destinations listed</p>
                     @endif
-                    <div class="container">
+                    <div class="px-0 md:px-5">
 
                         @if(session('create'))
                             <x-div-session class="bg-green-200" id="div-session">
@@ -52,25 +52,25 @@
                         @foreach($lists as $list)
                             <div class="p-5 bg-green-300 border border-white-200 mb-5 sm:rounded-lg">
                                 <ul>
-                                    <li class="flex">
+                                    <li class="flex items-center">
                                         <img class="inline-block h-20 w-20 rounded-full ring-2 ring white object-cover" src="{{url($list->image)}}">
                                         <div class="w-full ml-5 mt-3">
                                             <div>
-                                                <h6 class="font-bold text-2xl">{{ $list->destination_name }}</h6>
+                                                <h6 class="font-bold text-base md:text-2xl">{{ $list->destination_name }}</h6>
                                             </div>
-                                            <div class="text-sm">
+                                            <div class="text-sm hidden md:block">
                                                 <h2>{{ $list->address }}</h2>
                                             </div>
                                         </div>
                                         @can('show destination')
-                                            <div class="mt-6 ml-5">
+                                            <div class="ml-5">
                                                 <a href="{{route('destinations.show',['destination'=>$list->id])}}">
                                                     <x-button>Detail</x-button>
                                                 </a>
                                             </div>
                                         @endcan
                                         @can('destroy destination')
-                                            <div class="mt-6 ml-5">
+                                            <div class="ml-5">
                                                 <form action="{{route('destinations.destroy',['destination'=>$list->id])}}" method="POST">
                                                     @method('DELETE')
                                                     @csrf

@@ -10,6 +10,7 @@
             $.ajax({
                 url : '{{ route('dashboard_goals') }}',
                 type : 'GET',
+                data : {select: 'Today'},
                 success:function(data){
                     pushArray(data);
                 },
@@ -79,7 +80,7 @@
 
             
             // Create a UI with the filter expressions
-            const sqlExpressions = ["All", "Today", "This Week", "This Month", "This Year"];
+            const sqlExpressions = ["Today", "This Week", "This Month", "This Year", "All"];
 
             // UI
             const selectFilter = document.createElement("select");
@@ -97,26 +98,24 @@
 
             // Server-side filter
             function setFeatureLayerFilter(expression) {
-                console.log(expression);
-                // $.ajax({
-                //     url : '{{ route('dashboard_goals') }}',
-                //     type : 'GET',
-                //     data : expression,
-                //     success:function(data){
-                //         console.log(data);
-                //         // pushArray(data);
-                //     },
-                //     error:function(err){
-                //         console.log(err);
-                //     }
-                // });
+                $.ajax({
+                    url : '{{ route('dashboard_goals') }}',
+                    type : 'GET',
+                    data : {select: expression},
+                    success:function(data){
+                        pushArray(data);
+                    },
+                    error:function(err){
+                        console.log(err);
+                    }
+                });
             }
 
             // Event listener
             selectFilter.addEventListener('change', function (event) {
-                setFeatureLayerFilter(event.target.value);
                 view.popup.close();
                 view.graphics.removeAll();
+                setFeatureLayerFilter(event.target.value);
             });
 
             var graphics = places.map(function (place) {

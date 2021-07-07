@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List of Destinations') }}
+            {{ __('List of Task') }}
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                         </x-div-session>
                     @endif
 
-                    <div class="flex justify-center mb-5">
+                    <div class="flex justify-center mb-5 md:hidden">
                         <p class="text-3xl font-bold">Tasks</p>
                     </div>
                     @if(count($goals) == 0)

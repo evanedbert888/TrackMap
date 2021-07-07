@@ -100,7 +100,7 @@
             checkToEnableAddButton();
         }
 
-        function check() {
+        function checkTask() {
             $.ajax({
                 url:'{{ route('tasks.show_task') }}',
                 method:'get',
@@ -130,7 +130,7 @@
                 },
                 success:function(data){
                     console.log(data.success);
-                    check();
+                    checkTask();
                     showTask();
                 },
                 error:function(err){
@@ -203,7 +203,7 @@
                 url:'{{ route('tasks.store_task') }}'+'/'+employee+'/'+destination,
                 method:"get",
                 success:function(data){
-                    check();
+                    checkTask();
                     showTask();
                 },
                 error:function(err){
@@ -232,7 +232,7 @@
         }
 
         $(document).ready(function() {
-            check();
+            checkTask();
             showTask();
         })
 
@@ -261,7 +261,13 @@
                 url:'{{ route('schedule.index') }}',
                 method:'get',
                 success:function(data){
-                    scheduletable(data);
+                    if(data.length > 0) {
+                        document.getElementById('tableSchedule').classList.remove('hidden');
+                        scheduletable(data);
+                    }
+                    else {
+                        document.getElementById('tableSchedule').classList.add('hidden');
+                    }
                 },
                 error:function(err){
                     console.log(err);
@@ -273,15 +279,7 @@
             var i = 0;
             var data = ""
             $.each(schedule, function(key, value){
-                data = data + "<table class='w-full table-auto text-center'>";
-                data = data + "<thead>";
-                data = data + "<th>No</th>";
-                data = data + "<th class='text-left'>Salesman</th>";
-                data = data + "<th class='text-left'>Destination</th>";
-                data = data + "<th>Action</th>";
-                data = data + "</thead>";
-                data = data + "<tbody>";
-                data = data + "<tr class='border border-white border-b-4 border-t-0 border-r-0 border-l-0'>";
+                data = data + "<tr class='border border-gray-50 border-b-4 border-t-0 border-r-0 border-l-0'>";
                 data = data + "<td>"+(i+1)+"</td>";
                 data = data + "<td class='text-left'>"+value.employee_name+"</td>";
                 data = data + "<td class='text-left'>"+value.destination_name+"</td>";
@@ -317,8 +315,6 @@
                 data = data + "</div>";
                 data = data + "</td>";
                 data = data + "</tr>";
-                data = data + "</tbody>";
-                data = data + "</table>";
                 i++;
             })
             $('#tablesearch').html(data);
@@ -416,7 +412,7 @@
                 url:'{{ route('schedule.use') }}',
                 method:'get',
                 success:function(data){
-                    check();
+                    checkTask();
                     showTask();
                 },
                 error:function(err){
@@ -464,7 +460,7 @@
         });
     </script>
 
-    <div class="py-8">
+    <div class="md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
@@ -484,79 +480,71 @@
 
                         <h1 class="text-2xl font-bold">Employee & Destination</h1>
                         <div class="border border-black border-5 border-b rounded rounded-full h-1 bg-black"></div>
-                        <!-- Category -->
-                        <div class="flex mx-auto justify-center mt-5">
-                            @can('show employee role')
-                                <div class="mx-auto mb-2 font-bold">
-                                    <form>
-                                        <p class="text-lg"> Employee's Role </p>
-                                        <select name="role" id="role" class="w-80 block mt-1 rounded-md" onchange="showEmployees()">
+                        <div class="block mt-5 md:flex">
+                            <!-- Employee -->
+                            <div class="w-full md:w-1/2">
+                                @can('show employee role')
+                                    <div class="mb-2 font-bold">
+                                        <form>
+                                            <p class="w-80 text-lg mx-auto"> Employee's Role </p>
+                                            <select name="role" id="role" class="w-80 block mt-1 rounded-md mx-auto" onchange="showEmployees()">
+                                                @if (count($sections) == 0)
+                                                    <option class="hidden">Role's Empty</option>
+                                                @endif
+                                                <option class="hidden"></option>
+                                                @foreach ($sections as $section)
+                                                    <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <div class="mb-2 font-bold hidden" id="divEmployee">
+                                        <p class="w-80 text-lg mx-auto"> Employee's Name </p>
+                                        <select name="employee" id="employee" class="w-80 block mt-1 rounded-md mx-auto" onchange="selectedEmployee()"></select>
+                                    </div>
+                                    <div class="container p-3 w-80 hidden rounded-md bg-blue-50 mx-auto" id="showEmployee">
+                                        <div class="flex justify-center items-center p-0 ">
+                                            <img id="employeeImage" class="inline-block h-16 w-16" alt="">
+                                            <div>
+                                                <p class="ml-4" id="employeeName"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endcan
+                            </div>
+                            <div class="mx-auto w-96 border border-black border-5 border-b rounded rounded-full h-1 bg-black my-5 md:hidden"></div>
+                            <!-- Destination -->
+                            <div class="w-full md:w-1/2">
+                                @can('show destination business-category')
+                                    <div class="mb-2 font-bold">
+                                        <p class="w-80 mx-auto text-lg"> Destination's Business </p>
+                                        <select name="business" id="business" class="w-80 block mt-1 rounded-md mx-auto" onchange="showDestinations()">
                                             @if (count($sections) == 0)
-                                                <option class="hidden">Role's Empty</option>
+                                                <option class="hidden">Business's Empty</option>
                                             @endif
                                             <option class="hidden"></option>
-                                            @foreach ($sections as $section)
-                                                <option class="bg-gray-200" value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                            @foreach ($businesses as $business)
+                                                <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
                                             @endforeach
                                         </select>
-                                    </form>
-                                </div>
-                            @endcan
-                            @can('show destination business-category')
-                                <div class="mx-auto mb-2 font-bold">
-                                    <p class="text-lg"> Destination's Business </p>
-                                    <select name="business" id="business" class="w-80 block mt-1 rounded-md" onchange="showDestinations()">
-                                        @if (count($sections) == 0)
-                                            <option class="hidden">Business's Empty</option>
-                                        @endif
-                                        <option class="hidden"></option>
-                                        @foreach ($businesses as $business)
-                                            <option class="bg-gray-200" value="{{ $business->id }}">{{ $business->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            @endcan
-                        </div>
-                        <!-- Employee's and Destination's Name -->
-                        <div class="flex w-full">
-                            <div class="flex w-1/2 justify-center">
-                                <div class="mx-auto mb-2 font-bold hidden" id="divEmployee">
-                                    <p class="text-lg"> Employee's Name </p>
-                                    <select name="employee" id="employee" class="w-80 block mt-1 rounded-md" onchange="selectedEmployee()"></select>
-                                </div>
-                            </div>
-                            <div class="flex w-1/2 justify-center">
-                                <div class="mx-auto mb-2 font-bold hidden" id="divDestination">
-                                    <p class="text-lg"> Destination's Name </p>
-                                    <select name="destination" id="destination" class="w-80 block mt-1 rounded-md" onchange="selectedDestination()"></select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Data -->
-                        <div class="w-full flex">
-                            <div class="flex w-1/2 justify-center">
-                                <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showEmployee">
-                                    <div class="flex justify-center items-center p-0">
-                                        <img id="employeeImage" class="inline-block h-16 w-16" alt="">
-                                        <div>
-                                            <p class="ml-4" id="employeeName"></p>
+                                    </div>
+                                    <div class="mx-auto mb-2 font-bold hidden" id="divDestination">
+                                        <p class="w-80 mx-auto text-lg"> Destination's Name </p>
+                                        <select name="destination" id="destination" class="w-80 block mt-1 rounded-md mx-auto" onchange="selectedDestination()"></select>
+                                    </div>
+                                    <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showDestination">
+                                        <div class="flex justify-center items-center p-0 mx-auto">
+                                            <img id="destinationImage" class="inline-block h-16 w-16" alt="">
+                                            <div>
+                                                <p class="ml-4" id="destinationName"></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="flex w-1/2 justify-center">
-                                <div class="container p-3 mx-auto w-80 hidden rounded-md bg-blue-50" id="showDestination">
-                                    <div class="flex justify-center items-center p-0">
-                                        <img id="destinationImage" class="inline-block h-16 w-16" alt="">
-                                        <div>
-                                            <p class="ml-4" id="destinationName"></p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endcan
                             </div>
                         </div>
                         <!-- Button Add Task to Temp -->
-                        <div class="flex mx-32 px-1.5 justify-end mt-2">
+                        <div class="mt-2 flex justify-center md:mx-32 md:px-1.5 md:justify-end">
                             <x-savebutton onclick="" class="mr-5" onclick="useSchedule()">Use Schedule</x-savebutton>
                             <x-button onclick="addTask()" id="butadd" name="butadd" disabled>
                                 {{__("Add")}}
@@ -631,15 +619,22 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="flex justify-end w-full">
                         <x-button id="addSchedule" name="addSchedule" onclick="addSchedule()" disabled>
                             {{__("Add")}}
                         </x-button>
                     </div>
-
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex" id="tablesearch">
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 hidden" id="tableSchedule">
+                    <table class='w-full table-auto text-center'>
+                        <thead>
+                            <th>No</th>
+                            <th class='text-left'>Salesman</th>
+                            <th class='text-left'>Destination</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody id='tablesearch'></tbody>
+                    </table>
                 </div>
             </div>
         </div>

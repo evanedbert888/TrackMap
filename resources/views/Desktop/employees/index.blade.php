@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-5 bg-white border-b border-gray-200">
+                <div class="bg-white md:p-5">
                     @if (count($lists) == 0)
                         <p class="font-bold text-center text-2xl">There are no employees listed</p>
                     @endif
