@@ -28,7 +28,10 @@
                                 <h2>{{ $details->email }}</h2>
                             </div>
                             @if(session('update'))
-                                <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                                <x-div-session class="bg-green-200" id="div-session">
+                                    {{session('update')}}
+                                    <x-close-button id="hideModal"></x-close-button>
+                                </x-div-session>
                             @endif
                         </div>
                         <div class="mx-2 mt-12">
@@ -144,6 +147,14 @@
                     location: pt
                 });
             }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#hideModal").click(function(){
+                $("#div-session").hide();
+            });
         });
     </script>
 </x-app-layout>

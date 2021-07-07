@@ -31,9 +31,15 @@
                     <div class="container">
 
                         @if(session('create'))
-                            <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                            <x-div-session class="bg-green-200" id="div-session">
+                                <p>{{session('create')}}</p>
+                                <x-close-button id="hideModal"></x-close-button>
+                            </x-div-session>
                         @elseif(session('delete'))
-                            <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
+                            <x-div-session class="bg-green-200" id="div-session">
+                                <p>{{session('delete')}}</p>
+                                <x-close-button id="hideModal"></x-close-button>
+                            </x-div-session>
                         @endif
 
                         @can('create destination')
@@ -116,3 +122,11 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
+</script>

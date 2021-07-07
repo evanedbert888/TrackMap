@@ -10,7 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if(session('success'))
-                        <x-div-session class="bg-green-200">{{session('success')}}</x-div-session>
+                        <x-div-session class="bg-green-200" id="div-session">
+                            {{session('success')}}
+                            <x-close-button id="hideModal"></x-close-button>
+                        </x-div-session>
                     @endif
 
                     <div class="flex justify-center mb-5">
@@ -56,3 +59,11 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
+</script>

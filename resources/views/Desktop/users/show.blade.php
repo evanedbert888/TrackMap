@@ -27,9 +27,12 @@
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
                             </div>
-                            {{-- <div class="text-sm">
-                                <h2>{{ $details[0]->motto }}</h2>
-                            </div> --}}
+                            @if(session('update'))
+                                <x-div-session class="bg-green-200" id="div-session">
+                                    {{session('update')}}
+                                    <x-close-button id="hideModal"></x-close-button>
+                                </x-div-session>
+                            @endif
                         </div>
                         <div class="mx-2 mt-3 md:mt-8 md:mx-5">
                             <p class="font-bold text-xl">Detail</p>
@@ -66,3 +69,12 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
+</script>
+

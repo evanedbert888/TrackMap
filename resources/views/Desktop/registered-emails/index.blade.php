@@ -12,7 +12,10 @@
                     <div class="w-full">
 
                         @if(session('success'))
-                            <x-div-session class="bg-green-200">{{session('success')}}</x-div-session>
+                            <x-div-session class="bg-green-200" id="div-session">
+                                {{session('success')}}
+                                <x-close-button id="hideModal"></x-close-button>
+                            </x-div-session>
                         @endif
 
                         @if (count($registers) > 0)
@@ -68,4 +71,12 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
+</script>
 

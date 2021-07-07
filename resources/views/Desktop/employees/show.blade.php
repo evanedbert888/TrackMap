@@ -49,7 +49,10 @@
                             </div>
 
                             @if(session('update'))
-                                <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                                <x-div-session class="bg-green-200" id="div-session">
+                                    {{session('update')}}
+                                    <x-close-button id="hideModal"></x-close-button>
+                                </x-div-session>
                             @endif
 
                         </div>
@@ -191,4 +194,12 @@
             map.layers.add(featureLayer);
         });
     }
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
 </script>

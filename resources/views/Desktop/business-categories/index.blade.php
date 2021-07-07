@@ -11,11 +11,20 @@
                 <div class="p-5 bg-white border-b border-gray-200">
 
                     @if(session('create'))
-                        <x-div-session class="bg-green-200">{{session('create')}}</x-div-session>
+                        <x-div-session class="bg-green-200" id="div-session">
+                            <p>{{session('create')}}</p>
+                            <x-close-button id="hideModal"></x-close-button>
+                        </x-div-session>
                     @elseif(session('delete'))
-                        <x-div-session class="bg-green-200">{{session('delete')}}</x-div-session>
+                        <x-div-session class="bg-green-200" id="div-session">
+                            {{session('delete')}}
+                            <x-close-button id="hideModal"></x-close-button>
+                        </x-div-session>
                     @elseif(session('update'))
-                        <x-div-session class="bg-green-200">{{session('update')}}</x-div-session>
+                        <x-div-session class="bg-green-200" id="div-session">
+                            {{session('update')}}
+                            <x-close-button id="hideModal"></x-close-button>
+                        </x-div-session>
                     @endif
 
                     <div class="w-full">
@@ -123,4 +132,10 @@
         document.getElementById('modal'+id).classList.add('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
         document.getElementById('modal'+id).classList.add('invisible');
     }
+
+    $(document).ready(function(){
+        $("#hideModal").click(function(){
+            $("#div-session").hide();
+        });
+    });
 </script>
