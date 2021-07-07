@@ -85,30 +85,34 @@
         "esri/views/MapView",
         "esri/Graphic",
         "esri/layers/GraphicsLayer",
-        "esri/tasks/Locator",
         "esri/geometry/Circle",
-        "esri/widgets/Locate",
+        "esri/geometry/Point",
+        "esri/geometry/support/geodesicUtils",
 
-    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Locator, Circle, Locate) {
+    ], function(esriConfig, Map, MapView, Graphic, GraphicsLayer, Circle, Point, geodesicUtils) {
 
+        // the API key
         esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
 
+        // find the value of input through ID
         function findIDValue(point) {
             let find = document.getElementById(point)
-            let value = find.attributes.getNamedItem('value').value;
-            return value;
+            return find.attributes.getNamedItem('value').value;
         }
 
-        let lng = findIDValue('lng');
-        let lat = findIDValue('lat');
+        // find long lat value
+        let circle_lng = findIDValue('lng');
+        let circle_lat = findIDValue('lat');
 
+        // define the basemap used
         const map = new Map({
             basemap: "osm-standard-relief" //Basemap layer service
         });
 
+        // display the map within the html
         const view = new MapView({
             map: map,
-            center: [lng,lat], //Longitude, latitude
+            center: [circle_lng,circle_lat], //Longitude, latitude
             zoom: 17,
             container: "mobileMap"
         });
@@ -116,40 +120,39 @@
         const graphicsLayer = new GraphicsLayer();
         map.add(graphicsLayer);
 
-        const point = {
-            type: "point",
-            longitude: lng,
-            latitude: lat,
-        };
+        // function to define the point in the map
+        function makePoint(long,lat,url,size) {
+            const pointGraphic = new Graphic({
+                geometry: {
+                    type: "point",
+                    longitude: long,
+                    latitude: lat,
+                },
+                symbol: {
+                    type: "picture-marker",
+                    url: url,
+                    height: "25px",
+                    width: "25px"
+                }
+            });
 
-        const pictureMarkerSymbol = {
-            type: "picture-marker",
-            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
-            height: "25px",
-            width: "25px"
-        };
+            graphicsLayer.add(pointGraphic);
+        }
 
-        const locate = new Locate({
-            view: view,
-            useHeadingEnabled: false,
-            goToOverride: function(view, options) {
-                options.target.scale = 1500;
-                return view.goTo(options.target);
-            }
-        });
-        view.ui.add(locate, "top-left");
+        // define the point of destination in the map
+        makePoint(
+            circle_lng,
+            circle_lat,
+            "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png"
+        )
 
-        const pointGraphic = new Graphic({
-            geometry: point,
-            symbol: pictureMarkerSymbol
-        });
-        graphicsLayer.add(pointGraphic);
-
+        // the radius of circle
         const THRESHOLD_DISTANCE = 30;
 
+        // defining the circle in the map
         let circlePoint = new Graphic({
             geometry: new Circle({
-                center: [lng,lat],
+                center: [circle_lng,circle_lat],
                 radius: THRESHOLD_DISTANCE,
                 radiusUnit: "meters"
             }),
@@ -159,51 +162,7 @@
         })
         graphicsLayer.graphics.add(circlePoint);
 
-        const locatorTask = new Locator ({
-            url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-        })
-
-        view.on("click", function(evt){
-            const params = {
-                location: evt.mapPoint
-            };
-
-            locatorTask.locationToAddress(params)
-                .then(function(response) { // Show the address found
-                    const address = response.address;
-                    showAddress(address, evt.mapPoint);
-                }, function(err) { // Show no address found
-                    showAddress("No address found.", evt.mapPoint);
-                });
-        });
-
-        function showAddress(address, pt) {
-            view.popup.open({
-                title: address,
-                content: Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-                location: pt
-            });
-        }
-    });
-</script>
-
-<script>
-    require([
-        "esri/config",
-        "esri/geometry/Point",
-        "esri/geometry/support/geodesicUtils",
-    ],function (esriConfig,Point,geodesicUtils) {
-
-        esriConfig.apiKey = "AAPKd14f6a7025a441bca958cfe373e9a0708Me2zOHz9-4bPzujZd2ZZkQ6W4n-UL8AB29QcugYNzzOh82WKuWHo1_Znivm110D";
-
-        function findIDValue(point) {
-            let find = document.getElementById(point)
-            return find.attributes.getNamedItem('value').value;
-        }
-
-        let circle_lng = findIDValue('lng');
-        let circle_lat = findIDValue('lat');
-
+        // get current coordinate based on employee's position
         function getCoordinate() {
             navigator.geolocation.getCurrentPosition(getCoordinateSuccess)
         }
@@ -213,18 +172,25 @@
             setCoordinateToFormField(geoLocationPosition.coords)
         }
 
+        // set the coordinate found into the inputs, makePoint and distance calculation
         function setCoordinateToFormField(coordinate) {
-            let long = coordinate.longitude;
-            let lat = coordinate.latitude;
-            document.querySelector('#latitude').setAttribute('value',lat)
-            document.querySelector('#longitude').setAttribute('value',long)
-            calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat)
+            let curr_long = coordinate.longitude;
+            let curr_lat = coordinate.latitude;
+            document.querySelector('#latitude').setAttribute('value',curr_lat)
+            document.querySelector('#longitude').setAttribute('value',curr_long)
+            calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,curr_long,curr_lat)
+
+            makePoint(
+                curr_long,
+                curr_lat,
+                "https://image.flaticon.com/icons/png/128/484/484150.png"
+            )
         }
 
-        function calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,long,lat) {
-            const THRESHOLD_DISTANCE = 30;
+        // calculate distance between two points
+        function calculateDistanceBetweenTwoPoints(circle_lng,circle_lat,curr_long,curr_lat) {
             const pt1 = new Point({ x: circle_lng, y: circle_lat });
-            const pt2 = new Point({ x: long, y: lat});
+            const pt2 = new Point({ x: curr_long, y: curr_lat});
 
             const result = geodesicUtils.geodesicDistance(
                 pt1,
@@ -243,10 +209,12 @@
             }
         }
 
+        // get the coordinate
         function onload() {
             getCoordinate()
         }
 
+        // automatically run the script to find employee's current position
         onload()
-    })
+    });
 </script>
