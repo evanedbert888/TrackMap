@@ -38,27 +38,6 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param Employee $employee
@@ -94,7 +73,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee): RedirectResponse
     {
-        $user_id = Employee::query()->where('id','=',$employee->id)->value('user_id');
+        $employee_id = $employee->getAttributeValue('id');
+        $user_id = Employee::query()->where('id','=',$employee_id)->value('user_id');
         $img_name = User::query()->where('id','=',$user_id)->value('image');
 
         $validateEmployee = $request->validate([
@@ -108,49 +88,33 @@ class EmployeeController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $folder = 'employee'.$employee->id;
+            $folder = 'employee'.$employee_id;
             if(File::exists('storage/employee/'.$folder)){
                 File::cleanDirectory('storage/employee/'.$folder);
             }
 
             $image_name = $request->file('image')->getClientOriginalName();
-            $new_image_name = 'employee/'.$folder.'/'.$employee->id.'-'.time().'-'.$image_name;
+            $new_image_name = 'employee/'.$folder.'/'.$employee_id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public/',$new_image_name);
-        }
-
-        $date = $request->birth_date;
-        function formatDate($input,$date) {
-            return date($input,strtotime($date));
-        }
-
-        $birth_year = formatDate("Y",$date);
-        $curr_year = formatDate("Y","now");
-        $age = $curr_year - $birth_year;
-
-        $birth_month = formatDate("M",$date);
-        $birth_day = formatDate("D",$date);
-
-        $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
-        $now_date = strtotime("now");
-        if ($now_date < $this_date) {
-            $age = $age - 1;
+            $validateEmployee['image']->storeAs('public/',$new_image_name);
         }
 
         $user = new User();
+        $age = $user->findUserAge($request->input('birth_date'));
+
         $user->updateById($user_id, array(
             "name" => $validateEmployee['name'],
             "email" => $validateEmployee['email'],
             'age' => $age,
             'sex' => $validateEmployee['sex'],
-            'birth_date' => Carbon::create($request->birth_date),
+            'birth_date' => Carbon::create($request->input('birth_date')),
             'address' => $validateEmployee['address'],
             'image' => $img_name
         ));
 
         $worker = new Employee();
-        $worker->updateById($employee->id, array(
+        $worker->updateById($employee_id, array(
             "motto" => $validateEmployee['motto'],
         ));
 
@@ -159,17 +123,6 @@ class EmployeeController extends Controller
         } elseif (Auth::user()->hasPermissionTo('mobile profile')) {
             return redirect()->route('mobile.users.show')->with('update','Your profile update is success!');
         }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-
     }
 
     public function add_role(Request $request) {

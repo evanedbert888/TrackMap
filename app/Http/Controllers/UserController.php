@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -42,34 +43,13 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @return Application|Factory|View
      */
     public function show()
     {
-        $id = Auth::user()->id;
+        $id = Auth::user()->getAuthIdentifier();
         $details = User::query()->find($id);
         if (Auth::user()->hasPermissionTo('show user')) {
             return view('Desktop.users.show',['details'=>$details]);
@@ -97,8 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $id = Auth::id();
-        $img_name = Auth::User()->image;
+        $id = Auth::user()->getAuthIdentifier();
+        $img_name = User::query()->where('id','=',$id)->value('image');
         $validateProfile = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
@@ -118,34 +98,18 @@ class UserController extends Controller
             $new_image_name = 'admin/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $request->image->storeAs('public/',$new_image_name);
-        }
-
-        $date = $request->birth_date;
-        function formatDate($input,$date) {
-            return date($input,strtotime($date));
-        }
-
-        $birth_year = formatDate("Y",$date);
-        $curr_year = formatDate("Y","now");
-        $age = $curr_year - $birth_year;
-
-        $birth_month = formatDate("M",$date);
-        $birth_day = formatDate("D",$date);
-
-        $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
-        $now_date = strtotime("now");
-        if ($now_date < $this_date) {
-            $age = $age - 1;
+            $validateProfile['image']->storeAs('public/',$new_image_name);
         }
 
         $user = new User();
+        $age = $user->findUserAge($request->input('birth_date'));
+
         $user->updateById($id, array(
             "name" => $validateProfile['name'],
             "email" => $validateProfile['email'],
             'age' => $age,
             'sex' => $validateProfile['sex'],
-            'birth_date' => Carbon::create($request->birth_date),
+            'birth_date' => Carbon::create($request->input('birth_date')),
             'address' => $validateProfile['address'],
             'image' => $img_name
         ));
@@ -157,6 +121,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
+     * @param $employee_id
      * @return RedirectResponse
      */
 
@@ -213,7 +178,7 @@ class UserController extends Controller
             $job = $jobs[$i];
             if ($job == "admin"){
                 User::query()->where('id','=',$id)->update(['job'=>'admin']);
-                Employee::where('user_id','=',$id)->delete();
+                Employee::query()->where('user_id','=',$id)->delete();
                 user::query()->find($id)->removeRole('employee');
                 user::query()->find($id)->assignRole('admin');
             }
