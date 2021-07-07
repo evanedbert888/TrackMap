@@ -22,19 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="simplify controller">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="new updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BusinessCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BusinessCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Destination.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Destination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Goal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Goal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/RegisteredEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/RegisteredEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Section.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Section.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,42 +326,7 @@
       <workItem from="1625550091568" duration="950000" />
       <workItem from="1625551453605" duration="651000" />
       <workItem from="1625561296104" duration="5407000" />
-      <workItem from="1625631657905" duration="17080000" />
-    </task>
-    <task id="LOCAL-00036" summary="insert photo">
-      <created>1625025882304</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1625025882304</updated>
-    </task>
-    <task id="LOCAL-00037" summary="change role table into section table and modify them">
-      <created>1625043446013</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1625043446014</updated>
-    </task>
-    <task id="LOCAL-00038" summary="change role table into section table and modify them">
-      <created>1625043451311</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1625043451311</updated>
-    </task>
-    <task id="LOCAL-00039" summary="change role table into section table and modify them">
-      <created>1625043498948</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1625043498948</updated>
-    </task>
-    <task id="LOCAL-00040" summary="previous policies and middlewares have been deleted">
-      <created>1625117938193</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1625117938193</updated>
+      <workItem from="1625631657905" duration="18599000" />
     </task>
     <task id="LOCAL-00041" summary="the seeders have been modified to co-exist with spatie permissions">
       <created>1625117992960</created>
@@ -682,7 +636,42 @@
       <option name="project" value="LOCAL" />
       <updated>1625646126282</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="add protected table to models">
+      <created>1625651561194</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1625651561194</updated>
+    </task>
+    <task id="LOCAL-00086" summary="erase sweet alert">
+      <created>1625651579225</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1625651579225</updated>
+    </task>
+    <task id="LOCAL-00087" summary="show employee position in the map">
+      <created>1625651602204</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1625651602204</updated>
+    </task>
+    <task id="LOCAL-00088" summary="add script for close button">
+      <created>1625651624955</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1625651624955</updated>
+    </task>
+    <task id="LOCAL-00089" summary="new updates">
+      <created>1625653058514</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1625653058515</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -701,11 +690,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add new session message for edit, update and delete" />
-    <MESSAGE value="fix the check-in problem" />
-    <MESSAGE value="change role into job" />
-    <MESSAGE value="update check-in feature" />
-    <MESSAGE value="apply session flash messages" />
     <MESSAGE value="fix register and checkin disabled button" />
     <MESSAGE value="fix update and delete route for image" />
     <MESSAGE value="review the map size and session flash message" />
@@ -726,6 +710,11 @@
     <MESSAGE value="session flash messages are equipped with close button" />
     <MESSAGE value="modify the div-session and create close-button component for session message" />
     <MESSAGE value="simplify controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="simplify controller" />
+    <MESSAGE value="add protected table to models" />
+    <MESSAGE value="erase sweet alert" />
+    <MESSAGE value="show employee position in the map" />
+    <MESSAGE value="add script for close button" />
+    <MESSAGE value="new updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="new updates" />
   </component>
 </project>
