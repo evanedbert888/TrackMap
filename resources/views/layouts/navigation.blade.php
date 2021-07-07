@@ -179,7 +179,7 @@
                                 <div class="w-full flex items-center justify-end">
                                     <div class="flex items-center relative cursor-pointer" onclick="dropdownHandler(this)">
                                         <div class="rounded-full">
-                                            <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-8 hidden md:mt-14">
+                                            <ul class="p-2 w-36 border-r bg-white absolute rounded right-0 shadow mt-12 hidden md:mt-14">
                                                 <li class="flex w-full justify-between text-gray-600 hover:text-indigo-700 cursor-pointer items-center">
                                                     @can('show user')
                                                         <form method="GET" action="{{ route('users.show') }}">

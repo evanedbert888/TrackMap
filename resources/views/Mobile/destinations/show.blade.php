@@ -8,31 +8,31 @@
     <div class="py-0 md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                    <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url($details->image)}}">
+                <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat flex md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
+                    <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 mx-auto md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url($details->image)}}">
                 </div>
                 <div class="p-3 bg-white border-b border-gray-200 md:p-6">
-                    @if($count == 0)
+                    <div class="mx-2 md:mx-0">
+                        <div class="mt-16 md:ml-60 md:mt-0">
+                            @if($count == 0)
 
-                    @elseif($count == 1)
-                        @can('mobile update goal')
-                            <form action="{{route('goals.update')}}" method="POST">
-                                @method('PATCH')
-                                @csrf
-                                <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
-                                <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
-                                <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
-                                <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
-                                <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
-                                    <x-button id="checkin" type="submit" disabled>
-                                        Check-In
-                                    </x-button>
-                                </div>
-                            </form>
-                        @endcan
-                    @endif
-                    <div>
-                        <div class="mx-2 mt-16 md:ml-60 md:mx-5 md:mt-0">
+                            @elseif($count == 1)
+                                @can('mobile update goal')
+                                    <form action="{{route('goals.update')}}" method="POST">
+                                        @method('PATCH')
+                                        @csrf
+                                        <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
+                                        <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
+                                        <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
+                                        <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
+                                        <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
+                                            <x-button id="checkin" type="submit" disabled>
+                                                Check-In
+                                            </x-button>
+                                        </div>
+                                    </form>
+                                @endcan
+                            @endif
                             <div>
                                 <h6 class="font-bold text-2xl">{{ $details->destination_name }}</h6>
                             </div>
@@ -45,7 +45,7 @@
                             @endif
 
                         </div>
-                        <div class="mx-2 mt-3 md:mt-8 md:mx-5">
+                        <div class="mt-3 md:mt-8">
                             <p class="font-bold text-xl">Detail</p>
                             <hr class="border border-5 border-black border-solid">
                             <table class="mt-3">

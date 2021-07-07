@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
@@ -22,9 +22,9 @@
                                     <th> No </th>
                                     <th class="text-left"> Employee Name </th>
                                     <th class="text-left"> Destination Name </th>
-                                    <th class="text-left"> Tasked By </th>
+                                    <th class="text-left hidden md:table"> Tasked By </th>
                                     <th> Status </th>
-                                    <th> Tasked Date </th>
+                                    <th class="hidden md:table"> Tasked Date </th>
                                     <th> Finished Date </th>
                                 </tr>
                                 </thead>
@@ -37,9 +37,9 @@
                                         <td> {{ $i++ }} </td>
                                         <td class="text-left"> {{ $goal->employee->user->name }} </td>
                                         <td class="text-left"> {{ $goal->destination->destination_name }} </td>
-                                        <td class="text-left"> {{ $goal->user->name }} </td>
+                                        <td class="text-left hidden md:table"> {{ $goal->user->name }} </td>
                                         <td> {{ $goal->status }} </td>
-                                        <td>{{ $goal->created_at }}</td>
+                                        <td class="hidden md:table">{{ $goal->created_at }}</td>
                                         @if ($goal->created_at == $goal->updated_at)
                                             <td>{{ __("-") }}</td>
                                         @else

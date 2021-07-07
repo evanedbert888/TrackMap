@@ -5,24 +5,24 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-0 md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="object-cover bg-cover h-60 w-full object-top bg-no-repeat" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
-                <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 ml-6 md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{url($details->image)}}">
+                <div class="object-cover bg-cover h-40 w-full object-top bg-no-repeat flex md:h-60" style="background-image: url('https://statik.tempo.co/data/2020/12/04/id_985339/985339_720.jpg')">
+                    <img class="inline-block h-32 w-32 rounded-full ring-2 ring white object-cover mt-24 mx-auto md:h-52 md:w-52 md:mt-32 md:ml-10" src="{{asset($details->image)}}">
                 </div>
-                <div class="p-6 pt-1 bg-white border-b border-gray-200 ">
+                <div class="p-3 bg-white border-b border-gray-200 md:p-6">
                     @can('update destination')
                         <form method="POST" action="{{ route('destinations.update',['destination'=>$details->id]) }}"  enctype="multipart/form-data">
                             @method('PATCH')
                             @csrf
-                            <div class="float-right mr-5">
-                                <x-savebutton type="button" onclick="showModal()" class="mt-5">
-                                    update
-                                </x-savebutton>
-                            </div>
-                            <div>
-                                <div class="ml-60 mx-5">
+                            <div class="mx-2">
+                                <div class="md:mx-0">
+                                    <div class="mt-16 md:ml-60 md:mt-0">
+                                        <x-savebutton type="button" onclick="showModal()" class="float-right mt-2 md:mt-0">
+                                            update
+                                        </x-savebutton>
+                                    </div>
                                     <div>
                                         <x-editinput name="destination_name" id="destination_name" class="font-bold text-2xl" type="text" value="{{ $details->destination_name }}"></x-editinput>
                                     </div>
@@ -37,7 +37,7 @@
                                         <x-editinput id="image" name="image" type="file"></x-editinput>
                                     </div>
                                 </div>
-                                <div class="mx-5 mt-5">
+                                <div class="mt-5">
                                     <p class="font-bold text-xl">Detail</p>
                                     <hr class="border border-5 border-black border-solid">
                                     <table class="mt-3">

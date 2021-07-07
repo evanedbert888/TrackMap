@@ -121,7 +121,7 @@
         
     </script>
 
-    <div class="py-8">
+    <div class="md:py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
@@ -142,9 +142,9 @@
                                         <tr class="text-center text-lg">
                                             <th><input type="checkbox" id="chkbxAll" class="rounded border-black text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></th>
                                             <th class="text-left"> Name </th>
-                                            <th class="text-left"> Address </th>
+                                            <th class="text-left hidden md:table"> Address </th>
                                             <th class="text-left"> Email </th>
-                                            <th> Birth Date </th>
+                                            <th class="hidden md:table"> Birth Date </th>
                                             <th> Sex </th>
                                             <th> Role </th>
                                         </tr>
@@ -156,9 +156,9 @@
                                                     <input value="{{ $user->id }}" type="checkbox" name="ids" id="chkbx{{ $user->id }}" class="chkbx rounded border-black text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                                 </td>
                                                 <td class="text-left">{{ $user->name }}</td>
-                                                <td class="text-left">{{ $user->address }}</td>
+                                                <td class="text-left hidden md:table">{{ $user->address }}</td>
                                                 <td class="text-left">{{ $user->email }}</td>
-                                                <td>{{ $user->birth_date }}</td>
+                                                <td class="hidden md:table">{{ $user->birth_date }}</td>
                                                 <td>{{ $user->sex }}</td>
                                                 <td>
                                                     <select name="role" id="role{{$user->id}}" class="rounded-md role" disabled>
@@ -191,9 +191,9 @@
                                         <tr class="text-center text-lg">
                                             <th> No </th>
                                             <th class="text-left"> Name </th>
-                                            <th class="text-left"> Address </th>
+                                            <th class="text-left hidden md:table"> Address </th>
                                             <th class="text-left"> Email </th>
-                                            <th> Birth Date </th>
+                                            <th class="text-left hidden md:table"> Birth Date </th>
                                             <th> Sex </th>
                                             <th colspan="2"> Action </th>
                                         </tr>
@@ -206,9 +206,9 @@
                                             <tr class="bg-yellow-100 text-lg border border-white border-b-4 border-t-0 border-r-0 border-l-0">
                                                 <td>{{ $i }}</td>
                                                 <td class="text-left">{{ $user->name }}</td>
-                                                <td class="text-left">{{ $user->address }}</td>
+                                                <td class="text-left hidden md:table">{{ $user->address }}</td>
                                                 <td class="text-left">{{ $user->email }}</td>
-                                                <td>{{ $user->birth_date }}</td>
+                                                <td class="text-left hidden md:table">{{ $user->birth_date }}</td>
                                                 <td>{{ $user->sex }}</td>
                                                 <td>
                                                     <a href="{{route('employees.edit',['employee'=>$user->employee->id])}}">
