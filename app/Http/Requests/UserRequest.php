@@ -15,8 +15,13 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $user = User::query()->find(Auth::id());
-        return $user->hasAnyRole('admin','employee');
+        if ($this->getMethod() == 'PATCH') {
+            $user = User::query()->find(Auth::id());
+            return $user->hasAnyRole('admin','employee');
+        } elseif ($this->getMethod() == 'POST') {
+            return true;
+        }
+
     }
 
     /**
