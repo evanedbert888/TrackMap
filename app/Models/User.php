@@ -43,6 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public const UserRule = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
+        'sex' => 'required',
+        'birth_date' => 'required',
+        'address' => 'required|max:300|string'
+    ];
+
     public function findUserAge($date) {
         function formatDate($input,$date) {
             return date($input,strtotime($date));
@@ -66,7 +74,7 @@ class User extends Authenticatable
 
     public function updateById($id, $data = array()): int
     {
-        return DB::table('users')->where('id', '=', $id)->update($data);
+        return User::query()->where('id', '=', $id)->update($data);
     }
 
     public function employee(): HasOne

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\RegisteredEmail;
 use App\Models\User;
 use App\Models\Register;
@@ -35,7 +36,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|email|max:255'
         ]);
 
-        $email = RegisteredEmail::query()->where('email','=',$request->email)
+        $email = RegisteredEmail::query()->where('email','=',$request->input('email'))
                             ->where('status','=','available')->get();
 
         if(count($email) == 0){
@@ -46,48 +47,29 @@ class RegisteredUserController extends Controller
         else
             return view('auth.register', ['email'=>$email]);
     }
+
     /**
      * Handle an incoming registration request.
      *
-     * @param Request $request
+     * @param UserRequest $request
      * @return RedirectResponse
-     *
      */
-    public function store(Request $request): RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'sex' => 'required',
-            'birth_date' => 'required',
-            'address' => 'required|max:255',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
+        $user = new User();
+        $age = $user->findUserAge($request->input('birth_date'));
 
-        $birth_year = date("Y",strtotime($request->birth_date));
-        $curr_year = date("Y",strtotime("now"));
-        $age = $curr_year - $birth_year;
-
-        $birth_month = date("M",strtotime($request->birth_date));
-        $birth_day = date("D",strtotime($request->birth_date));
-
-        $this_date = strtotime($birth_day.'-'.$birth_month.'-'.$curr_year);
-        $now_date = strtotime("now");
-        if ($now_date < $this_date) {
-            $age = $age - 1;
-        }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        $user = User::query()->create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
             'age' => $age,
-            'sex' => $request->sex,
-            'birth_date' => Carbon::create($request->birth_date),
-            'address' => $request->address
+            'sex' => $request->input('sex'),
+            'birth_date' => Carbon::create($request->input('birth_date')),
+            'address' => $request->input('address')
         ]);
 
-        $email = RegisteredEmail::query()->where('email', '=',  $request->email)->update(['status' => 'unavailable']);
+        $email = RegisteredEmail::query()->where('email', '=',  $request->input('email'))->update(['status' => 'unavailable']);
 
         event(new Registered($user));
 

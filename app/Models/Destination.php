@@ -16,6 +16,15 @@ class Destination extends Model
         'destination_name', 'business_id', 'address', 'latitude', 'longitude', 'description'
     ];
 
+    public const DestinationRule = [
+        'destination_name' => 'required|string|max:255',
+        'business' => 'required',
+        'address' => 'required|string|max:300',
+        'email' => 'required|string|max:255',
+        'coordinate' => 'required',
+        'description' => 'required|max:300'
+    ];
+
     public function updateById($id, $data = array()): int
     {
         return DB::table('destinations')->where('id', '=', $id)->update($data);

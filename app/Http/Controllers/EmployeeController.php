@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Employee;
 use App\Models\Goal;
 use App\Models\Section;
@@ -67,25 +68,15 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UserRequest $request
      * @param Employee $employee
      * @return RedirectResponse
      */
-    public function update(Request $request, Employee $employee): RedirectResponse
+    public function update(UserRequest $request, Employee $employee): RedirectResponse
     {
         $employee_id = $employee->getAttributeValue('id');
         $user_id = Employee::query()->where('id','=',$employee_id)->value('user_id');
         $img_name = User::query()->where('id','=',$user_id)->value('image');
-
-        $validateEmployee = $request->validate([
-            'name' => 'string|required|max:255',
-            'motto' => 'string|required|max:255',
-            'email' => 'string|required|max:255',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png',
-            'birth_date' => 'required',
-            'sex' => 'required',
-            'address' => 'required'
-        ]);
 
         if ($request->hasFile('image')) {
             $folder = 'employee'.$employee_id;
@@ -97,25 +88,25 @@ class EmployeeController extends Controller
             $new_image_name = 'employee/'.$folder.'/'.$employee_id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $validateEmployee['image']->storeAs('public/',$new_image_name);
+            $request->file('image')->storeAs('public/',$new_image_name);
         }
 
         $user = new User();
         $age = $user->findUserAge($request->input('birth_date'));
 
         $user->updateById($user_id, array(
-            "name" => $validateEmployee['name'],
-            "email" => $validateEmployee['email'],
+            "name" => $request->input('name'),
+            "email" => $request->input('email'),
             'age' => $age,
-            'sex' => $validateEmployee['sex'],
+            'sex' => $request->input('sex'),
             'birth_date' => Carbon::create($request->input('birth_date')),
-            'address' => $validateEmployee['address'],
+            'address' => $request->input('address'),
             'image' => $img_name
         ));
 
         $worker = new Employee();
         $worker->updateById($employee_id, array(
-            "motto" => $validateEmployee['motto'],
+            "motto" => $request->input('motto'),
         ));
 
         if (Auth::user()->hasPermissionTo('show employee')) {

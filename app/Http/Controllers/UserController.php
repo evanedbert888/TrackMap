@@ -49,7 +49,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $id = Auth::user()->getAuthIdentifier();
+        $id = Auth::id();
         $details = User::query()->find($id);
         if (Auth::user()->hasPermissionTo('show user')) {
             return view('Desktop.users.show',['details'=>$details]);
@@ -77,16 +77,8 @@ class UserController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $id = Auth::user()->getAuthIdentifier();
+        $id = Auth::id();
         $img_name = User::query()->where('id','=',$id)->value('image');
-        $validateProfile = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'sex' => 'required',
-            'birth_date' => 'required',
-            'address' => 'required|max:300|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg'
-        ]);
 
         if ($request->hasFile('image')) {
             $folder = 'admin'.$id;
@@ -98,19 +90,19 @@ class UserController extends Controller
             $new_image_name = 'admin/'.$folder.'/'.$id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $validateProfile['image']->storeAs('public/',$new_image_name);
+            $request->file('image')->storeAs('public/',$new_image_name);
         }
 
         $user = new User();
         $age = $user->findUserAge($request->input('birth_date'));
 
         $user->updateById($id, array(
-            "name" => $validateProfile['name'],
-            "email" => $validateProfile['email'],
+            "name" => $request->input('name'),
+            "email" => $request->input('email'),
             'age' => $age,
-            'sex' => $validateProfile['sex'],
+            'sex' => $request->input('sex'),
             'birth_date' => Carbon::create($request->input('birth_date')),
-            'address' => $validateProfile['address'],
+            'address' => $request->input('address'),
             'image' => $img_name
         ));
 
@@ -142,7 +134,7 @@ class UserController extends Controller
     public function dashboard(Request $request): JsonResponse
     {
         $select = $request->select;
-        $user_id = Auth::user()->id;
+        $user_id = Auth::id();
         $job = Auth::user()->job;
         $time = strval(now());
         $date = explode(" ", $time);

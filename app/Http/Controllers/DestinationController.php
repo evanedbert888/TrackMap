@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DestinationRequest;
 use App\Models\BusinessCategory;
 use App\Models\Destination;
 use App\Models\Employee;
@@ -10,7 +11,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -55,32 +55,23 @@ class DestinationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param DestinationRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(DestinationRequest $request): RedirectResponse
     {
-        $validateDestination = $request->validate([
-            'destination_name' => 'required|string|max:255',
-            'business' => 'required',
-            'address' => 'required|string|max:300',
-            'email' => 'required|string|max:255',
-            'coordinate' => 'required',
-            'description' => 'required|max:300'
-        ]);
-
         $split = explode(",", $request->input('coordinate'));
         $longitude = $split[0];
         $latitude = $split[1];
 
         $destination = new Destination();
-        $destination->destination_name = $validateDestination['destination_name'];
-        $destination->business_id = $validateDestination['business'];
-        $destination->address = $validateDestination['address'];
-        $destination->email = $validateDestination['email'];
+        $destination->destination_name = $request->input('destination_name');
+        $destination->business_id = $request->input('business');
+        $destination->address = $request->input('address');
+        $destination->email = $request->input('email');
         $destination->latitude = $latitude;
         $destination->longitude = $longitude;
-        $destination->description = $validateDestination['description'];
+        $destination->description = $request->input('description');
         $destination->save();
 
         return redirect()->route('destinations.index')->with('create',"New destination [$request->destination_name] has been added!");
@@ -123,22 +114,12 @@ class DestinationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param DestinationRequest $request
      * @param Destination $destination
      * @return RedirectResponse
      */
-    public function update(Request $request, Destination $destination): RedirectResponse
+    public function update(DestinationRequest $request, Destination $destination): RedirectResponse
     {
-        $validateDestination = $request->validate([
-            'destination_name' => 'required|string|max:255',
-            'business' => 'required',
-            'address' => 'required|string|max:300',
-            'email' => 'required|string|max:255',
-            'coordinate' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png',
-            'description' => 'required|max:300'
-        ]);
-
         $destination_id = $destination->getAttributeValue('id');
         $img_name = Destination::query()->where('id','=',$destination_id)->value('image');
 
@@ -152,7 +133,7 @@ class DestinationController extends Controller
             $new_image_name = 'destination/'.$folder.'/'.$destination_id.'-'.time().'-'.$image_name;
             $img_name = 'storage/'.$new_image_name;
 
-            $validateDestination['image']->storeAs('public',$new_image_name);
+            $request->file('image')->storeAs('public',$new_image_name);
         }
 
         $split = explode(",", $request->input('coordinate'));
@@ -161,14 +142,14 @@ class DestinationController extends Controller
 
         $place = new Destination;
         $place->updateById($destination->getAttributeValue('id'), array(
-                "destination_name" => $validateDestination['destination_name'],
-                "business_id" => $validateDestination['business'],
-                "address" => $validateDestination['address'],
-                "email" => $validateDestination['email'],
+                "destination_name" => $request->input('destination_name'),
+                "business_id" => $request->input('business'),
+                "address" => $request->input('address'),
+                "email" => $request->input('email'),
                 "latitude" => $latitude,
                 "longitude" => $longitude,
                 "image" => $img_name,
-                'description' => $validateDestination['description']
+                'description' => $request->input('description')
             )
         );
         return redirect()->route('destinations.show',['destination'=>$destination])->with('update','This destination has been updated!');
@@ -191,4 +172,6 @@ class DestinationController extends Controller
         }
         return redirect()->route('destinations.index')->with('delete',"The destination [$destination_name] has deleted!");
     }
+
+
 }
