@@ -48,7 +48,7 @@
             <div class="mt-4">
                 <x-label for="address" :value="__('Address')" />
 
-                <textarea class="block mt-1 rounded-md" name="address" id="address" cols="41" rows="3" required></textarea>
+                <textarea class="block mt-1 rounded-md" name="address" id="address" cols="38" rows="3" required></textarea>
             </div>
 
             <!-- Password -->
