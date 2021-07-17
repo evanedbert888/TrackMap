@@ -21,7 +21,6 @@ class UserRequest extends FormRequest
         } elseif ($this->getMethod() == 'POST') {
             return true;
         }
-
     }
 
     /**

@@ -22,13 +22,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="adjust tailwind to desktop blades">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="modify the store and update method with validation request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegisteredEmailController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/registered-emails/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/goals/history.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,49 +340,21 @@
       <workItem from="1625551453605" duration="651000" />
       <workItem from="1625561296104" duration="5407000" />
       <workItem from="1625631657905" duration="19426000" />
-      <workItem from="1625664675388" duration="3975000" />
-    </task>
-    <task id="LOCAL-00043" summary="fix several errors and apply spatie permissions">
-      <created>1625119178320</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1625119178320</updated>
-    </task>
-    <task id="LOCAL-00044" summary="accept team's update and modal">
-      <created>1625119263007</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1625119263007</updated>
-    </task>
-    <task id="LOCAL-00045" summary="apply construct function for spatie permission">
-      <created>1625125262599</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1625125262599</updated>
-    </task>
-    <task id="LOCAL-00046" summary="fix delete schedule and users">
-      <created>1625125319647</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1625125319647</updated>
-    </task>
-    <task id="LOCAL-00047" summary="add assign role to users">
-      <created>1625129562250</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1625129562250</updated>
-    </task>
-    <task id="LOCAL-00048" summary="add can directives to view blade">
-      <created>1625129596115</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1625129596115</updated>
+      <workItem from="1625664675388" duration="4810000" />
+      <workItem from="1625723441723" duration="1959000" />
+      <workItem from="1625744757199" duration="1602000" />
+      <workItem from="1625804167032" duration="2009000" />
+      <workItem from="1625807743775" duration="4232000" />
+      <workItem from="1625842026706" duration="6000" />
+      <workItem from="1625883959561" duration="799000" />
+      <workItem from="1625904924902" duration="7080000" />
+      <workItem from="1625970403893" duration="63000" />
+      <workItem from="1626016276510" duration="5000" />
+      <workItem from="1626062273817" duration="5981000" />
+      <workItem from="1626150012225" duration="2088000" />
+      <workItem from="1626170809135" duration="1698000" />
+      <workItem from="1626178665159" duration="2768000" />
+      <workItem from="1626239530109" duration="804000" />
     </task>
     <task id="LOCAL-00049" summary="fix error in construct function">
       <created>1625129616287</created>
@@ -677,7 +657,49 @@
       <option name="project" value="LOCAL" />
       <updated>1625653845528</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="minimize the size">
+      <created>1625669318892</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1625669318892</updated>
+    </task>
+    <task id="LOCAL-00093" summary="modify controllers to ensure performance">
+      <created>1625669351634</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1625669351634</updated>
+    </task>
+    <task id="LOCAL-00094" summary="request form to process the validation request">
+      <created>1625910846003</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1625910846003</updated>
+    </task>
+    <task id="LOCAL-00095" summary="modify the store and update method with validation request">
+      <created>1625912017726</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1625912017726</updated>
+    </task>
+    <task id="LOCAL-00096" summary="modify the store and update method with validation request">
+      <created>1625912031543</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1625912031543</updated>
+    </task>
+    <task id="LOCAL-00097" summary="modify the store and update method with validation request">
+      <created>1625912045198</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1625912045198</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,10 +718,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="review the map size and session flash message" />
-    <MESSAGE value="add session message to task pairing" />
-    <MESSAGE value="modify the page when there are no contents" />
-    <MESSAGE value="modify index view blades when there are no data" />
     <MESSAGE value="fix map icon" />
     <MESSAGE value="fix map icon based on click" />
     <MESSAGE value="modify the div body for session flash messages" />
@@ -721,6 +739,10 @@
     <MESSAGE value="new updates" />
     <MESSAGE value="adjust mobile scalability" />
     <MESSAGE value="adjust tailwind to desktop blades" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust tailwind to desktop blades" />
+    <MESSAGE value="minimize the size" />
+    <MESSAGE value="modify controllers to ensure performance" />
+    <MESSAGE value="request form to process the validation request" />
+    <MESSAGE value="modify the store and update method with validation request" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify the store and update method with validation request" />
   </component>
 </project>
