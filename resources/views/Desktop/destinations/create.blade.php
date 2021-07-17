@@ -184,7 +184,34 @@
                 locatorTask.addressToLocations(params).then((results) => {
                     showResult(results);
                 });
+
+                // getCoordinateOfAddress(address)
             })
+
+            // function getCoordinateOfAddress(address) {
+            //     fetch('http://127.0.0.1:8000/api/GeoSearch?address=' + address, {
+            //         method: "get"
+            //     })
+            //         .then(response => response.json())
+            //         .then(async responseJson => {
+            //             const data = await response.json()
+            //             console.log(data)
+            //             console.log(responseJson)
+            //             setCoordinate(responseJson)
+            //         })
+            //         .catch(error =>{
+            //             console.log(error)
+            //         })
+            // }
+
+            // function setCoordinate(coordinate) {
+            //     document.querySelector("#coordinate").value = `${coordinate.x},${coordinate.y}`
+            //     // showResult(coordinate.x,coordinate.y)
+            // }
+
+            function enterCoordinateValue(lng,lat) {
+                document.querySelector("#coordinate").value = lng + ',' + lat
+            }
 
             function showResult(results) {
                 if (results.length) {
@@ -192,7 +219,6 @@
                     let lng = coordinateFormat(result.location.longitude);
                     let lat = coordinateFormat(result.location.latitude);
                     enterCoordinateValue(lng,lat);
-
                     view.graphics.add(new Graphic({
                             symbol: {
                                 type: "picture-marker",
@@ -203,8 +229,7 @@
                             geometry: result.location,
                             attributes: {
                                 title: "Address",
-                                address: result.address,
-                                score: result.score
+                                address: result.address
                             },
                             popupTemplate: {
                                 title: "{title}",
@@ -212,7 +237,6 @@
                             }
                         }
                     ));
-
                     view.goTo({
                         target: result.location,
                         zoom: 16
