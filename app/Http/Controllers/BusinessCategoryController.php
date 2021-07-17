@@ -55,7 +55,7 @@ class BusinessCategoryController extends Controller
         $category->name = $validateCategory['name'];
         $category->save();
 
-        return redirect()->route('business-categories.index')->with('create',"New business category [$category->name] has been added!");
+        return redirect()->route('business-categories.index')->with('message',"New business category [$category->name] has been added!");
     }
 
     /**
@@ -81,7 +81,7 @@ class BusinessCategoryController extends Controller
         $updatedName = $businessCategory->getAttributeValue('name');
         $businessCategory->update($request->all());
 
-        return redirect()->route('business-categories.index')->with('update',"The business category [$updatedName] has been updated into [$request->name]!");
+        return redirect()->route('business-categories.index')->with('message',"The business category [$updatedName] has been updated into [$request->name]!");
     }
 
     /**
@@ -95,6 +95,6 @@ class BusinessCategoryController extends Controller
         $category_name = $businessCategory->getAttributeValue('name');
         $businessCategory->delete();
 
-        return redirect()->route('business-categories.index')->with('delete',"The business category [$category_name] has been deleted!");
+        return redirect()->route('business-categories.index')->with('message',"The business category [$category_name] has been deleted!");
     }
 }

@@ -74,7 +74,7 @@ class DestinationController extends Controller
         $destination->description = $request->input('description');
         $destination->save();
 
-        return redirect()->route('destinations.index')->with('create',"New destination [$request->destination_name] has been added!");
+        return redirect()->route('destinations.index')->with('message',"New destination [$request->destination_name] has been added!");
     }
 
     /**
@@ -170,7 +170,7 @@ class DestinationController extends Controller
             File::cleanDirectory('storage/destination/'.$folder);
             File::deleteDirectory('storage/destination/'.$folder);
         }
-        return redirect()->route('destinations.index')->with('delete',"The destination [$destination_name] has deleted!");
+        return redirect()->route('destinations.index')->with('message',"The destination [$destination_name] has deleted!");
     }
 
 

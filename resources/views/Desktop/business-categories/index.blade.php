@@ -10,19 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-5 bg-white border-b border-gray-200">
 
-                    @if(session('create'))
+                    @if(session('message'))
                         <x-div-session class="bg-green-200" id="div-session">
-                            <p>{{session('create')}}</p>
-                            <x-close-button id="hideModal"></x-close-button>
-                        </x-div-session>
-                    @elseif(session('delete'))
-                        <x-div-session class="bg-green-200" id="div-session">
-                            {{session('delete')}}
-                            <x-close-button id="hideModal"></x-close-button>
-                        </x-div-session>
-                    @elseif(session('update'))
-                        <x-div-session class="bg-green-200" id="div-session">
-                            {{session('update')}}
+                            <p>{{session('message')}}</p>
                             <x-close-button id="hideModal"></x-close-button>
                         </x-div-session>
                     @endif

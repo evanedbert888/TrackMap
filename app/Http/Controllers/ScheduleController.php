@@ -59,7 +59,7 @@ class ScheduleController extends Controller
     public function store($salesman, $destination): \Illuminate\Http\JsonResponse
     {
         $schedule = new Schedule;
-        $schedule->user_id  = Auth::user()->getAuthIdentifier();
+        $schedule->user_id  = Auth::id();
         $schedule->employee_id = $salesman;
         $schedule->destination_id = $destination;
         $schedule->save();
