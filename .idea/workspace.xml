@@ -22,15 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the zoom in &amp; out for mobile design">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the check-in">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,21 +344,7 @@
       <workItem from="1626239530109" duration="804000" />
       <workItem from="1626493145977" duration="4000000" />
       <workItem from="1626518445381" duration="12000" />
-      <workItem from="1626668512935" duration="5161000" />
-    </task>
-    <task id="LOCAL-00055" summary="fix image routes for task pairing">
-      <created>1625209965088</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1625209965088</updated>
-    </task>
-    <task id="LOCAL-00056" summary="modify default value for image column">
-      <created>1625209993316</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1625209993316</updated>
+      <workItem from="1626668512935" duration="7173000" />
     </task>
     <task id="LOCAL-00057" summary="the route for image cache has been fixed">
       <created>1625214416069</created>
@@ -696,7 +675,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626668578075</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="new commit">
+      <created>1626675029237</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1626675029237</updated>
+    </task>
+    <task id="LOCAL-00105" summary="fix the check-in">
+      <created>1626675111357</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1626675111357</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -715,8 +708,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="no update for now" />
-    <MESSAGE value="fix the dashboard" />
     <MESSAGE value="add locate widget" />
     <MESSAGE value="new update on dashboard" />
     <MESSAGE value="fix coordinate input" />
@@ -740,6 +731,8 @@
     <MESSAGE value="fix the zoom" />
     <MESSAGE value="fix the validation request" />
     <MESSAGE value="fix the zoom in &amp; out for mobile design" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the zoom in &amp; out for mobile design" />
+    <MESSAGE value="new commit" />
+    <MESSAGE value="fix the check-in" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the check-in" />
   </component>
 </project>
