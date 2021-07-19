@@ -14,9 +14,9 @@
     }
 </script>
 <!-- Primary Navigation Menu -->
-<div class="w-full h-full">
+<div class="w-full">
     <div class="flex flex-no-wrap">
-        <div class="w-full h-full">
+        <div class="w-full h-20">
             <div class="flex flex-no-wrap">
                 <!-- Sidebar starts -->
                 <div id="slidebar" class="absolute bg-white shadow h-screen flex-col justify-between transform -translate-x-full z-40 transition duration-500">

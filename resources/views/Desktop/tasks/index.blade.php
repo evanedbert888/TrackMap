@@ -11,8 +11,7 @@
                 <div class="p-5 bg-white border-b border-gray-200">
                     @if (count($goals) == 0)
                         <p class="font-bold text-center text-2xl">Nothing Tasked</p>
-                    @endif
-
+                    @else
                         <h1 class="text-2xl font-bold">Tasked Status</h1>
                         <div class="border border-black border-5 rounded rounded-full h-1 bg-black"></div>
                         <div class="flex mx-auto justify-center">
@@ -51,6 +50,7 @@
                             </table>
                         </div>
                         {{$goals->links()}}
+                    @endif
                 </div>
             </div>
         </div>

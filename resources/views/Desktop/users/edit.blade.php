@@ -24,13 +24,15 @@
                                         </x-savebutton>
                                     </div>
                                     <div>
-                                        <x-editinput id="name" name="name" class="font-bold text-2xl" type="text" value="{{ $details->name }}"/>
-                                    </div>
-                                    <div class="text-sm mt-1">
-                                        <x-editinput id="email" name="email" type="text" value="{{ $details->email }}"/>
-                                    </div>
-                                    <div class="text-sm mt-1">
-                                        <x-editinput id="image" name="image" type="file"/>
+                                        <div>
+                                            <x-editinput id="name" name="name" class="font-bold text-2xl" type="text" value="{{ $details->name }}"/>
+                                        </div>
+                                        <div class="text-sm mt-1">
+                                            <x-editinput id="email" name="email" type="text" value="{{ $details->email }}"/>
+                                        </div>
+                                        <div class="text-sm mt-1">
+                                            <x-editinput id="image" name="image" type="file"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="mt-3">

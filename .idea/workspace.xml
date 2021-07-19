@@ -22,8 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the validation request">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the zoom in &amp; out for mobile design">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/employees/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,13 +351,7 @@
       <workItem from="1626239530109" duration="804000" />
       <workItem from="1626493145977" duration="4000000" />
       <workItem from="1626518445381" duration="12000" />
-    </task>
-    <task id="LOCAL-00054" summary="fix image routes">
-      <created>1625207788109</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1625207788109</updated>
+      <workItem from="1626668512935" duration="5161000" />
     </task>
     <task id="LOCAL-00055" summary="fix image routes for task pairing">
       <created>1625209965088</created>
@@ -688,7 +689,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626495982338</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="fix the zoom in &amp; out for mobile design">
+      <created>1626668578074</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1626668578075</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +715,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update time on dashboard" />
     <MESSAGE value="no update for now" />
     <MESSAGE value="fix the dashboard" />
     <MESSAGE value="add locate widget" />
@@ -732,6 +739,7 @@
     <MESSAGE value="fix the locator task" />
     <MESSAGE value="fix the zoom" />
     <MESSAGE value="fix the validation request" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the validation request" />
+    <MESSAGE value="fix the zoom in &amp; out for mobile design" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the zoom in &amp; out for mobile design" />
   </component>
 </project>
