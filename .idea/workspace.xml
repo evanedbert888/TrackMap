@@ -22,21 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="modify the store and update method with validation request">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the validation request">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BusinessCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/business-categories/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/destinations/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Desktop/employees/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,41 +342,8 @@
       <workItem from="1626170809135" duration="1698000" />
       <workItem from="1626178665159" duration="2768000" />
       <workItem from="1626239530109" duration="804000" />
-    </task>
-    <task id="LOCAL-00049" summary="fix error in construct function">
-      <created>1625129616287</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1625129616287</updated>
-    </task>
-    <task id="LOCAL-00050" summary="set default image in migration tables">
-      <created>1625204818359</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1625204818359</updated>
-    </task>
-    <task id="LOCAL-00051" summary="fix image name in update function">
-      <created>1625205225714</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1625205225714</updated>
-    </task>
-    <task id="LOCAL-00052" summary="add new permissions">
-      <created>1625205240197</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1625205240197</updated>
-    </task>
-    <task id="LOCAL-00053" summary="fix image name in update function">
-      <created>1625205416195</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1625205416195</updated>
+      <workItem from="1626493145977" duration="4000000" />
+      <workItem from="1626518445381" duration="12000" />
     </task>
     <task id="LOCAL-00054" summary="fix image routes">
       <created>1625207788109</created>
@@ -699,7 +653,42 @@
       <option name="project" value="LOCAL" />
       <updated>1625912045198</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="fix the session flash messages">
+      <created>1626493245350</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1626493245350</updated>
+    </task>
+    <task id="LOCAL-00099" summary="fix the locator task">
+      <created>1626495919017</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1626495919017</updated>
+    </task>
+    <task id="LOCAL-00100" summary="fix the zoom">
+      <created>1626495937421</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1626495937421</updated>
+    </task>
+    <task id="LOCAL-00101" summary="fix the zoom">
+      <created>1626495966642</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1626495966642</updated>
+    </task>
+    <task id="LOCAL-00102" summary="fix the validation request">
+      <created>1626495982338</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1626495982338</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,10 +707,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix map icon" />
-    <MESSAGE value="fix map icon based on click" />
-    <MESSAGE value="modify the div body for session flash messages" />
-    <MESSAGE value="new update" />
     <MESSAGE value="update time on dashboard" />
     <MESSAGE value="no update for now" />
     <MESSAGE value="fix the dashboard" />
@@ -743,6 +728,10 @@
     <MESSAGE value="modify controllers to ensure performance" />
     <MESSAGE value="request form to process the validation request" />
     <MESSAGE value="modify the store and update method with validation request" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify the store and update method with validation request" />
+    <MESSAGE value="fix the session flash messages" />
+    <MESSAGE value="fix the locator task" />
+    <MESSAGE value="fix the zoom" />
+    <MESSAGE value="fix the validation request" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the validation request" />
   </component>
 </project>
