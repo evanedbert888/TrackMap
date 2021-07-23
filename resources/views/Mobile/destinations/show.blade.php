@@ -16,17 +16,20 @@
                         <div class="mt-16 md:ml-60 md:mt-0">
                             @if($count == 0)
 
-                            @elseif($count == 1)
+                            @elseif($count >= 1)
                                 @can('mobile update goal')
-                                    <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
-                                    <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
-                                    <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
-                                    <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
-                                    <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
-                                        <x-button id="checkin" type="button" onclick="checkIn()">
-                                            Check-In
-                                        </x-button>
-                                    </div>
+                                    <form method="POST" id="formUpdate">
+                                        @csrf
+                                        <x-editinput type="hidden" name="id" id="id" value="{{$details->id}}"></x-editinput>
+                                        <x-editinput type="hidden" name="name" id="name" value="{{$details->destination_name}}"></x-editinput>
+                                        <x-editinput type="hidden" name="latitude" id="latitude" value=""></x-editinput>
+                                        <x-editinput type="hidden" name="longitude" id="longitude" value=""></x-editinput>
+                                        <div class="float-right mr-2 mt-2 md:mt-0 md:mr-5">
+                                            <x-button id="checkin" type="button" onclick="checkIn()">
+                                                Check-In
+                                            </x-button>
+                                        </div>
+                                    </form>
                                 @endcan
                             @endif
                             <div>
@@ -35,10 +38,6 @@
                             <div class="text-sm">
                                 <h2>{{ $details->email }}</h2>
                             </div>
-
-                            @if(session('fail'))
-                                <x-div-session class="bg-red-400">{{session('fail')}}</x-div-session>
-                            @endif
 
                         </div>
                         <div class="mt-3 md:mt-8">
@@ -104,7 +103,7 @@
 
 <script>
     var checked;
-    
+
     function showModal() {
         document.getElementById('modal').classList.remove('invisible');
         document.getElementById('modal').classList.remove('opacity-0','translate-y-4','sm:translate-y-0','sm:scale-95');
@@ -130,10 +129,20 @@
             showModal();
         }
         else if (checked == 'in') {
-            // url = "{{ route('goals.update') }}";
-            // @method('PATCH')
-            // @csrf
-            $.ajax()
+            let formData = $('#formUpdate').serialize()
+            console.log(formData)
+            $.ajax({
+                 url: "{{ route('goals.update') }}",
+                 method: "PATCH",
+                 data: formData,
+                 success: function (data) {
+                     console.log(data);
+                     location.href = "{{route('goals.index')}}"
+                 },
+                 error: function (error) {
+                     console.log(error);
+                 }
+             })
         }
     }
 
@@ -242,7 +251,7 @@
                 makePoint(
                     curr_long,
                     curr_lat,
-                    "https://image.flaticon.com/icons/png/128/484/484150.png"
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpr6iZeWv6bhUuTJ5Iq7UYQ30WxkpHd_ucEjKutEUMpAQvHCaFqWG5dArKfqhIipkpk3k&usqp=CAU"
                 )
             }
 

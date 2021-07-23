@@ -22,8 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the check-in">
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the check-in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DestinationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GoalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Mobile/destinations/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,14 +347,15 @@
       <workItem from="1626239530109" duration="804000" />
       <workItem from="1626493145977" duration="4000000" />
       <workItem from="1626518445381" duration="12000" />
-      <workItem from="1626668512935" duration="7173000" />
-    </task>
-    <task id="LOCAL-00057" summary="the route for image cache has been fixed">
-      <created>1625214416069</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1625214416069</updated>
+      <workItem from="1626668512935" duration="9277000" />
+      <workItem from="1626695292025" duration="6359000" />
+      <workItem from="1626748709281" duration="2915000" />
+      <workItem from="1626784170717" duration="2801000" />
+      <workItem from="1626833262181" duration="614000" />
+      <workItem from="1626843440175" duration="4722000" />
+      <workItem from="1626861251972" duration="660000" />
+      <workItem from="1626870066481" duration="1507000" />
+      <workItem from="1627006183978" duration="1995000" />
     </task>
     <task id="LOCAL-00058" summary="new component for flash session message">
       <created>1625303191785</created>
@@ -689,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626675111357</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="fix the check-in progress">
+      <created>1626679103371</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1626679103372</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,7 +719,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add locate widget" />
     <MESSAGE value="new update on dashboard" />
     <MESSAGE value="fix coordinate input" />
     <MESSAGE value="simplify calculating user age" />
@@ -733,6 +743,7 @@
     <MESSAGE value="fix the zoom in &amp; out for mobile design" />
     <MESSAGE value="new commit" />
     <MESSAGE value="fix the check-in" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the check-in" />
+    <MESSAGE value="fix the check-in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the check-in progress" />
   </component>
 </project>

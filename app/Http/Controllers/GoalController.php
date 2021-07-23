@@ -7,6 +7,7 @@ use App\Models\Goal;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -41,13 +42,13 @@ class GoalController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request): JsonResponse
     {
         $user_id = Auth::user()->getAuthIdentifier();
 
-        $employee_id = Employee::query()->where('user_id','=',$user_id)->pluck('id');
+        $employee_id = Employee::query()->where('user_id','=',$user_id)->value('id');
         $goal_id = Goal::query()->where('employee_id','=',$employee_id)
             ->where('destination_id','=',$request->input('id'))
             ->where('status','=','unfinished')
@@ -60,7 +61,9 @@ class GoalController extends Controller
             "status" => 'finished',
             "updated_at" => date(now()),
         ));
-        return redirect()->route('goals.index')->with('success','You have finished a task!');
+
+//        return redirect()->route('goals.index')->with('success','You have finished a task!');
+          return response()->json();
     }
 
     /**

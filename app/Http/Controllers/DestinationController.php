@@ -88,14 +88,12 @@ class DestinationController extends Controller
         if (Auth::user()->hasPermissionTo('show destination')) {
             return view('Desktop.destinations.show',['details'=>$destination]);
         } elseif (Auth::user()->hasPermissionTo('mobile show destination')) {
-            $user_id = Auth::user()->getAuthIdentifier();
+            $user_id = Auth::id();
             $employee_id = Employee::query()->where('user_id','=',$user_id)->value('id');
             $count = Goal::query()->where('employee_id','=',$employee_id)
                 ->where('destination_id','=',$destination->getAttributeValue('id'))
-                ->where('status','=','unfinished')
-                ->count();
+                ->where('status','=','unfinished')->count();
             return view('Mobile.destinations.show',['details'=>$destination,'count'=>$count]);
-            // return $count;
         }
     }
 
