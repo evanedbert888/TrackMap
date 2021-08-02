@@ -13,26 +13,22 @@
                 </div>
                 <div class="p-3 bg-white border-b border-gray-200 md:p-6">
                     @can('update user')
+                    <x-savebutton type="button" onclick="showModal()" class="float-right mt-24 md:mt-0">
+                        Update
+                    </x-savebutton>
                         <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="mx-2">
-                                <div class="md:mx-0">
-                                    <div class="mt-16 md:ml-60 md:mt-0">
-                                        <x-savebutton type="button" onclick="showModal()" class="float-right mt-2 md:mt-0">
-                                            Update
-                                        </x-savebutton>
-                                    </div>
+                                <div class="mt-24">
                                     <div>
-                                        <div>
-                                            <x-editinput id="name" name="name" class="font-bold text-2xl" type="text" value="{{ $details->name }}"/>
-                                        </div>
-                                        <div class="text-sm mt-1">
-                                            <x-editinput id="email" name="email" type="text" value="{{ $details->email }}"/>
-                                        </div>
-                                        <div class="text-sm mt-1">
-                                            <x-editinput id="image" name="image" type="file"/>
-                                        </div>
+                                        <x-editinput id="name" name="name" class="font-bold text-2xl" type="text" value="{{ $details->name }}"/>
+                                    </div>
+                                    <div class="text-sm mt-1">
+                                        <x-editinput id="email" name="email" type="text" value="{{ $details->email }}"/>
+                                    </div>
+                                    <div class="text-sm mt-1">
+                                        <x-editinput id="image" name="image" type="file"/>
                                     </div>
                                 </div>
                                 <div class="mt-3">
