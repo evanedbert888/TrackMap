@@ -6,11 +6,8 @@ use App\Models\BusinessCategory;
 use App\Models\Destination;
 use App\Models\Employee;
 use App\Models\Goal;
-use App\Models\Role;
-use App\Models\Schedule;
 use App\Models\Section;
 use App\Models\Temp;
-use Hamcrest\Core\HasToString;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -51,9 +48,7 @@ class TaskController extends Controller
     {
         $sections = Section::query()->orderBy('section_name')->get();
         $businesses = BusinessCategory::query()->orderBy('name')->get();
-        $salesmans = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
-            ->select('employees.id','users.name')
-            ->where('employees.section_id','=', 1)->orderBy('name')->get();
+        $salesmans = Employee::where('employees.section_id','=', 1)->get();
         $temps = Temp::all();
         return view('Desktop.tasks.create',[
             "sections"=>$sections,
@@ -135,9 +130,8 @@ class TaskController extends Controller
 
     public function show_employee_by_role($id): JsonResponse
     {
-        $data = DB::table('users')->join('employees', 'users.id', '=', 'employees.user_id')
-            ->select('employees.id','users.name','users.image','employees.section_id')
-            ->where('employees.section_id','=',$id)->orderBy('name')->get();
+        $data = Employee::where('section_id','=',$id)
+            ->get()->load('user');
         return response()->json($data);
     }
 
@@ -159,11 +153,7 @@ class TaskController extends Controller
 
     public function show_task(): JsonResponse
     {
-        $tasks = DB::table('temps')
-            ->join('employees','temps.employee_id', '=', 'employees.id')
-            ->join('users', 'employees.user_id', '=', 'users.id')
-            ->join('destinations','temps.destination_id', '=', 'destinations.id')
-            ->select('temps.*','users.name as employee_name','destinations.destination_name')->get();
+        $tasks = Temp::get()->load(['employee.user'])->load('destination');
         return response()->json($tasks);
     }
 }

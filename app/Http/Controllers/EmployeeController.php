@@ -130,14 +130,9 @@ class EmployeeController extends Controller
 
     public function map(Request $request) {
         $employee_id = $request->employee;
-        $goals = Goal::query()
-                ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                ->join('users', 'employees.user_id', '=', 'users.id')
-                ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                ->where('goals.status','=','finished')
-                ->where('goals.employee_id','=', $employee_id)
-                ->get();
+        $goals = Goal::where('goals.status','=','finished')
+            ->where('goals.employee_id','=', $employee_id)
+            ->get()->load(['employee.user'])->load('destination');
         return response()->json($goals);
     }
 }
