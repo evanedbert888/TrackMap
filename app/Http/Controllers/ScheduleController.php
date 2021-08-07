@@ -29,14 +29,10 @@ class ScheduleController extends Controller
     public function index(): JsonResponse
     {
         $id = Auth::user()->getAuthIdentifier();
-        $schedules = Schedule::query()
-            ->join('employees','schedules.employee_id','=','employees.id')
-            ->join('users','employees.user_id','=','users.id')
-            ->join('destinations','schedules.destination_id','=','destinations.id')
-            ->select('schedules.id','users.name as employee_name','destinations.destination_name')
-            ->where('schedules.user_id', '=', $id)
-            ->get();
+        $schedules = Schedule::where('user_id', '=', $id)->get()
+            ->load(['employee.user'])->load('destination');
         return response()->json($schedules);
+        
     }
 
     /**

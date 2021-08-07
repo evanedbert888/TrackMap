@@ -34,7 +34,7 @@
             else {
                 data = data + "<option class='hidden'></option>";
                 $.each(employees, function(key, value){
-                    data = data + "<option class='bg-gray-200' value='"+value.id+","+value.name+","+value.image+"'>"+value.name+"</option>"
+                    data = data + "<option class='bg-gray-200' value='"+value.id+","+value.user.name+","+value.user.image+"'>"+value.user.name+"</option>"
                 })
             }
             $('#employee').html(data);
@@ -145,8 +145,8 @@
             $.each(task, function(key, value){
                 data = data + "<tr class='text-lg bg-red-100 border border-white border-b-4 border-t-0 border-r-0 border-l-0'>";
                 data = data + "<td>"+(i+1)+"</td>";
-                data = data + "<td class='text-left'>"+value.employee_name+"</td>";
-                data = data + "<td class='text-left'>"+value.destination_name+"</td>";
+                data = data + "<td class='text-left'>"+value.employee.user.name+"</td>";
+                data = data + "<td class='text-left'>"+value.destination.destination_name+"</td>";
                 data = data + "<td>";
                 data = data + "<button type='submit' value='"+value.id+"' onclick='showTaskModal(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
                 data = data + "<div class='fixed z-10 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modaltask"+value.id+"'>";
@@ -281,8 +281,8 @@
             $.each(schedule, function(key, value){
                 data = data + "<tr class='border border-gray-50 border-b-4 border-t-0 border-r-0 border-l-0'>";
                 data = data + "<td>"+(i+1)+"</td>";
-                data = data + "<td class='text-left'>"+value.employee_name+"</td>";
-                data = data + "<td class='text-left'>"+value.destination_name+"</td>";
+                data = data + "<td class='text-left'>"+value.employee.user.name+"</td>";
+                data = data + "<td class='text-left'>"+value.destination.destination_name+"</td>";
                 data = data + "<td>";
                 data = data + "<button type='button' value='"+value.id+"' onclick='showScheduleModal(this.value)' class='inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150'>DELETE</button>";
                 data = data + "<div class='fixed z-30 inset-0 overflow-y-auto invisible opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95' aria-labelledby='modal-title' role='dialog' aria-modal='true' id='modalSchedule"+value.id+"'>";
@@ -609,7 +609,7 @@
                                         @endif
                                         <option class="hidden" value=""></option>
                                         @foreach ($salesmans as $salesman)
-                                            <option value="{{ $salesman->id }}">{{ $salesman->name }}</option>
+                                            <option value="{{ $salesman->id }}">{{ $salesman->user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

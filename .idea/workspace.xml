@@ -22,9 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the check-in function">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="253f146e-8072-4972-9dfc-58c8fa7ba5a8" name="Default Changelist" comment="fix the check-in function" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -358,14 +356,7 @@
       <workItem from="1627721639876" duration="5000" />
       <workItem from="1627995047730" duration="5000" />
       <workItem from="1628257781716" duration="215000" />
-      <workItem from="1628317406522" duration="1141000" />
-    </task>
-    <task id="LOCAL-00060" summary="fix the check-in problem">
-      <created>1625304912846</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1625304912846</updated>
+      <workItem from="1628317406522" duration="1742000" />
     </task>
     <task id="LOCAL-00061" summary="change role into job">
       <created>1625305166552</created>
@@ -703,7 +694,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628317417645</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="fix the check-in function">
+      <created>1628319677689</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1628319677689</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
