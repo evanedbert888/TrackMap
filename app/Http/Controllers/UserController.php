@@ -143,58 +143,33 @@ class UserController extends Controller
         //Admin
         if ($job == "admin") {
             if ($select == "Today") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.user_id','=',$user_id)
                     ->where('goals.updated_at','like', $date[0].'%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Week") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.user_id','=',$user_id)
                     ->where(DB::raw('yearweek(goals.updated_at)'),'=', DB::raw('yearweek(curdate())'))
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Month") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.user_id','=',$user_id)
                     ->where('goals.updated_at','like', $partDate[0].'-'.$partDate[1].'-%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Year") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.user_id','=',$user_id)
                     ->where('goals.updated_at','like', $partDate[0].'%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.user_id','=',$user_id)
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
         }
 
@@ -202,58 +177,33 @@ class UserController extends Controller
         else if ($job == "employee"){
             $employee = Employee::query()->where('user_id', '=', $user_id)->get();
             if ($select == "Today") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.employee_id','=', $employee[0]->id)
                     ->where('goals.updated_at','like', $date[0].'%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Week") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.employee_id','=', $employee[0]->id)
                     ->where(DB::raw('yearweek(goals.updated_at)'),'=', DB::raw('yearweek(curdate())'))
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Month") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.employee_id','=', $employee[0]->id)
                     ->where('goals.updated_at','like', $partDate[0].'-'.$partDate[1].'-%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else if ($select == "This Year") {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.employee_id','=', $employee[0]->id)
                     ->where('goals.updated_at','like', $partDate[0].'%')
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
             else {
-                $goals = Goal::query()
-                    ->join('employees', 'goals.employee_id', '=', 'employees.id')
-                    ->join('users', 'employees.user_id', '=', 'users.id')
-                    ->join('destinations', 'goals.destination_id', '=', 'destinations.id')
-                    ->select('goals.*', 'users.name as employee_name', 'destinations.destination_name', 'destinations.address')
-                    ->where('goals.status','=','finished')
+                $goals = Goal::where('goals.status','=','finished')
                     ->where('goals.employee_id','=', $employee[0]->id)
-                    ->get();
+                    ->get()->load(['employee.user'])->load('destination');
             }
         }
         return response()->json($goals);

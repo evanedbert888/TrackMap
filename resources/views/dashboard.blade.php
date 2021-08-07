@@ -44,9 +44,9 @@
             var updated_at = time[0].split('T');
             places.push({
                 id: value.id,
-                address: value.address,
-                company: value.destination_name,
-                employee: value.employee_name,
+                address: value.destination.address,
+                company: value.destination.destination_name,
+                employee: value.employee.user.name,
                 longitude: value.longitude,
                 latitude: value.latitude,
                 updated_at: updated_at[1]+" "+updated_at[0]

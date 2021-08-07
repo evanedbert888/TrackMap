@@ -94,9 +94,9 @@
         $.each(data, function(key,value) {
             places.push({
                 id: value.id,
-                address: value.address,
-                company: value.destination_name,
-                employee: value.employee_name,
+                address: value.destination.address,
+                company: value.destination.destination_name,
+                employee: value.employee.employee_name,
                 longitude: value.longitude,
                 latitude: value.latitude
             });
