@@ -20,6 +20,24 @@
                 }
             });
         })
+
+    var places = [];
+    function pushArray(data) {
+        $.each(data, function(key,value) {
+            var time = value.updated_at.split('.');
+            var updated_at = time[0].split('T');
+            places.push({
+                id: value.id,
+                address: value.destination.address,
+                company: value.destination.destination_name,
+                employee: value.employee.user.name,
+                longitude: value.longitude,
+                latitude: value.latitude,
+                updated_at: updated_at[1]+" "+updated_at[0]
+            });
+        })
+        loadmap();
+    }
     </script>
 
     <div class="py-8">
@@ -36,23 +54,7 @@
 </x-app-layout>
 <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
 <script>
-    var places = [];
-
-    function pushArray(data) {
-        $.each(data, function(key,value) {
-            var time = value.updated_at.split('.');
-            var updated_at = time[0].split('T');
-            places.push({
-                id: value.id,
-                address: value.destination.address,
-                company: value.destination.destination_name,
-                employee: value.employee.user.name,
-                longitude: value.longitude,
-                latitude: value.latitude,
-                updated_at: updated_at[1]+" "+updated_at[0]
-            });
-        })
-
+    function loadmap(){
         var role = '{{ Auth::user()->job }}';
 
         require([
@@ -78,8 +80,8 @@
                 zoom: 12,
                 container: "viewMap"
             });
+            showFeature();
 
-            
             // Create a UI with the filter expressions
             const sqlExpressions = ["Today", "This Week", "This Month", "This Year", "All"];
 
@@ -104,7 +106,7 @@
                     type : 'GET',
                     data : {select: expression},
                     success:function(data){
-                        pushArray(data);
+                        pushArrayMap(data);
                     },
                     error:function(err){
                         console.log(err);
@@ -113,150 +115,171 @@
             }
 
             // Event listener
-            selectFilter.addEventListener('change', function (event) {
+            selectFilter.addEventListener('change', (event) => {
                 view.popup.close();
                 view.graphics.removeAll();
                 setFeatureLayerFilter(event.target.value);
             });
-
-            var graphics = places.map(function (place) {
-                return new Graphic({
-                    attributes: {
-                        ObjectId: place.id,
-                        address: place.address,
-                        company: place.company,
-                        employee: place.employee,
-                        finished: place.updated_at
-                    },
-                    geometry: {
-                        longitude: place.longitude,
-                        latitude: place.latitude,
-                        type : "point"
-                    }
-                });
-            });
-
-            if (role == 'admin') {
-                var featureLayer = new FeatureLayer({
-                    source: graphics,
-                    renderer: {
-                        type: "simple",                    // autocasts as new SimpleRenderer()
-                        symbol: {
-                            type: "picture-marker",
-                            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
-                            height: "30px",
-                            width: "30px"
-                        }
-                    },
-                    popupTemplate: {                     // autocasts as new PopupTemplate()
-                        title: "Finished Place",    //belum dapat menampilan nama company
-                        content: [{
-                            type: "fields",
-                            fieldInfos: [
-                                {
-                                    fieldName: "company",
-                                    label: "Company Name",
-                                    visible: true
-                                },
-                                {
-                                    fieldName: "address",
-                                    label: "Company Address",
-                                    visible: true
-                                },
-                                {
-                                    fieldName: "employee",
-                                    label: "Employee Name",
-                                    visible: true
-                                },
-                                {
-                                    fieldName: "finished",
-                                    label: "Finished At",
-                                    visible: true
-                                }
-                            ]
-                        }]
-                    },
-                    objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
-                    fields: [
-                        {
-                            name: "ObjectID",
-                            alias: "ObjectID",
-                            type: "oid"
-                        },
-                        {
-                            name: "address",
-                            alias: "address",
-                            type: "string"
-                        },
-                        {
-                            name: "employee",
-                            alias: "employee",
-                            type: "string"
-                        },
-                        {
-                            name: "company",
-                            alias: "company",
-                            type: "string"
-                        },
-                        {
-                            name: "finished",
-                            alias: "finished",
-                            type: "string"
-                        }
-                    ]
-                });
+            
+            function pushArrayMap(data) {
+                places = [];
+                $.each(data, function(key,value) {
+                    var time = value.updated_at.split('.');
+                    var updated_at = time[0].split('T');
+                    places.push({
+                        id: value.id,
+                        address: value.destination.address,
+                        company: value.destination.destination_name,
+                        employee: value.employee.user.name,
+                        longitude: value.longitude,
+                        latitude: value.latitude,
+                        updated_at: updated_at[1]+" "+updated_at[0]
+                    });
+                })
+                showFeature();
             }
-            else if (role == 'employee') {
-                var featureLayer = new FeatureLayer({
-                    source: graphics,
-                    renderer: {
-                        type: "simple",                    // autocasts as new SimpleRenderer()
-                        symbol: {
-                            type: "picture-marker",
-                            url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
-                            height: "30px",
-                            width: "30px"
-                        }
-                    },
-                    popupTemplate: {                     // autocasts as new PopupTemplate()
-                        title: "Finished Place",    //belum dapat menampilan nama company
-                        content: [{
-                            type: "fields",
-                            fieldInfos: [
-                                {
-                                    fieldName: "company",
-                                    label: "Company Name",
-                                    visible: true
-                                },
-                                {
-                                    fieldName: "address",
-                                    label: "Company Address",
-                                    visible: true
-                                }
-                            ]
-                        }]
-                    },
-                    objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
-                    fields: [
-                        {
-                            name: "ObjectID",
-                            alias: "ObjectID",
-                            type: "oid"
+
+            function showFeature(){
+                var graphics = places.map(function (place) {
+                    return new Graphic({
+                        attributes: {
+                            ObjectId: place.id,
+                            address: place.address,
+                            company: place.company,
+                            employee: place.employee,
+                            finished: place.updated_at
                         },
-                        {
-                            name: "address",
-                            alias: "address",
-                            type: "string"
-                        },
-                        {
-                            name: "company",
-                            alias: "company",
-                            type: "string"
+                        geometry: {
+                            longitude: place.longitude,
+                            latitude: place.latitude,
+                            type : "point"
                         }
-                    ]
+                    });
                 });
+
+                if (role == 'admin') {
+                    var featureLayer = new FeatureLayer({
+                        source: graphics,
+                        renderer: {
+                            type: "simple",                    // autocasts as new SimpleRenderer()
+                            symbol: {
+                                type: "picture-marker",
+                                url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                                height: "30px",
+                                width: "30px"
+                            }
+                        },
+                        popupTemplate: {                     // autocasts as new PopupTemplate()
+                            title: "Finished Place",    //belum dapat menampilan nama company
+                            content: [{
+                                type: "fields",
+                                fieldInfos: [
+                                    {
+                                        fieldName: "company",
+                                        label: "Company Name",
+                                        visible: true
+                                    },
+                                    {
+                                        fieldName: "address",
+                                        label: "Company Address",
+                                        visible: true
+                                    },
+                                    {
+                                        fieldName: "employee",
+                                        label: "Employee Name",
+                                        visible: true
+                                    },
+                                    {
+                                        fieldName: "finished",
+                                        label: "Finished At",
+                                        visible: true
+                                    }
+                                ]
+                            }]
+                        },
+                        objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
+                        fields: [
+                            {
+                                name: "ObjectID",
+                                alias: "ObjectID",
+                                type: "oid"
+                            },
+                            {
+                                name: "address",
+                                alias: "address",
+                                type: "string"
+                            },
+                            {
+                                name: "employee",
+                                alias: "employee",
+                                type: "string"
+                            },
+                            {
+                                name: "company",
+                                alias: "company",
+                                type: "string"
+                            },
+                            {
+                                name: "finished",
+                                alias: "finished",
+                                type: "string"
+                            }
+                        ]
+                    });
+                }
+                else if (role == 'employee') {
+                    var featureLayer = new FeatureLayer({
+                        source: graphics,
+                        renderer: {
+                            type: "simple",                    // autocasts as new SimpleRenderer()
+                            symbol: {
+                                type: "picture-marker",
+                                url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/place-marker-3-599570.png",
+                                height: "30px",
+                                width: "30px"
+                            }
+                        },
+                        popupTemplate: {                     // autocasts as new PopupTemplate()
+                            title: "Finished Place",    //belum dapat menampilan nama company
+                            content: [{
+                                type: "fields",
+                                fieldInfos: [
+                                    {
+                                        fieldName: "company",
+                                        label: "Company Name",
+                                        visible: true
+                                    },
+                                    {
+                                        fieldName: "address",
+                                        label: "Company Address",
+                                        visible: true
+                                    }
+                                ]
+                            }]
+                        },
+                        objectIdField: "ObjectID",           // This must be defined when creating a layer from `Graphic` objects
+                        fields: [
+                            {
+                                name: "ObjectID",
+                                alias: "ObjectID",
+                                type: "oid"
+                            },
+                            {
+                                name: "address",
+                                alias: "address",
+                                type: "string"
+                            },
+                            {
+                                name: "company",
+                                alias: "company",
+                                type: "string"
+                            }
+                        ]
+                    });
+                }
+                map.layers.remove(featureLayer);
+                map.layers.add(featureLayer);
             }
-            map.layers.add(featureLayer);
         });
     }
 </script>
