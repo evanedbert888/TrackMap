@@ -117,7 +117,7 @@
             // Event listener
             selectFilter.addEventListener('change', (event) => {
                 view.popup.close();
-                view.graphics.removeAll();
+                map.layers.removeAll();
                 setFeatureLayerFilter(event.target.value);
             });
             
@@ -276,8 +276,8 @@
                             }
                         ]
                     });
-                }
                 map.layers.remove(featureLayer);
+                }
                 map.layers.add(featureLayer);
             }
         });
